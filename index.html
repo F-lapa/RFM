@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RFM Educação Financeira - Treinamentos, consultoria e ferramentas para finanças pessoais e empresariais.">
+    <meta name="keywords" content="educação financeira, finanças pessoais, investimentos, treinamentos empresariais, consultoria financeira">
+    <title>RFM Educação Financeira - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-leaf logo-icon" aria-label="Ícone de folha do logotipo"></i>
+                <div class="logo-text">
+                    <span class="main">RFM</span>
+                    <span class="sub">Educação Financeira</span>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars" aria-label="Abrir menu"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" id="open-about-modal" aria-label="Abrir modal Sobre">Sobre</a></li>
+                <li><a href="#" id="open-contact-modal" aria-label="Abrir modal Contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div id="particles-js"></div>
+                <h1>Inteligência Financeira para o Seu Sucesso</h1>
+                <h2 class="hero-subtitle">Transforme sua relação com o dinheiro</h2>
+                <p>Treinamentos completos para empresas, conceitos de investimentos e finanças pessoais descomplicados.</p>
+                <p class="cta-text">Comece Agora</p>
+                <div class="hero-explanation">
+                    <h3>O que é Inteligência Financeira?</h3>
+                    <p>Inteligência financeira é mais do que apenas números — é o poder de tomar decisões conscientes que alinham seu dinheiro aos seus sonhos. Na RFM Educação Financeira, nós descompplicamos esse caminho, oferecendo ferramentas, treinamentos e estratégias para que você alcance prosperidade com confiança, seja como indivíduo ou empresa.</p>
+                </div>
+                <!-- Seção de apresentação com classe 'show' adicionada para visibilidade inicial -->
+                <div class="presentation-section show">
+                    <div class="presentation-container">
+                        <div class="presentation-text">
+                            <h3>Roselaine Faustino Machado</h3>
+                            <p class="presentation-subtitle">Contadora de formação e especialista em finanças, durante mais de 15 anos dediquei meu tempo e experiência ajudando empresas a organizar a área contábil e financeira para planejar e gerir melhor seus negócios.</p>
+                            <p>Após experimentar o quanto a educação financeira e o autoconhecimento transformam vidas, hoje me dedico a ajudar mulheres e famílias a buscar e manter a saúde financeira a partir de uma boa relação com o dinheiro que é apenas um meio para você obter mais <strong>SEGURANÇA, TRANQUILIDADE e LIBERDADE.</strong></p>
+                        </div>
+                        <div class="presentation-image">
+                            <img src="rose.png" alt="Roselaine Faustino Machado, especialista em finanças">
+                        </div>
+                    </div>
+                </div>
+                <div class="video-presentation">
+                    <h3>Descubra Como Transformamos Vidas</h3>
+                    <p>Assista ao nosso vídeo e veja como a RFM pode guiar você rumo à prosperidade.</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen aria-label="Vídeo institucional da RFM Educação Financeira"></iframe>
+                    </div>
+                </div>
+                <p class="hero-slogan">Construa hoje o futuro que você merece.</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card" id="open-treinamentos-modal">
+                <i class="fas fa-building icon"></i>
+                <h3>Treinamentos para Empresas</h3>
+                <p>Capacite sua equipe com programas completos de inteligência financeira, otimizando decisões e resultados.</p>
+            </div>
+            <div class="feature-card" id="open-investimentos-modal">
+                <i class="fas fa-chart-line icon"></i>
+                <h3>Conceito de Investimentos</h3>
+                <p>Entenda como investir de forma estratégica, equilibrando riscos e retornos para alcançar seus objetivos.</p>
+            </div>
+            <div class="feature-card" id="open-financas-modal">
+                <i class="fas fa-wallet icon"></i>
+                <h3>Finanças Pessoais</h3>
+                <p>Aprenda a gerir seu dinheiro com eficiência, planejar o futuro e alcançar liberdade financeira.</p>
+            </div>
+            <div class="feature-card" id="show-calculator">
+                <i class="fas fa-calculator icon"></i>
+                <h3>Ferramentas Financeiras</h3>
+                <p>Calcule o poder dos juros compostos e planeje seu futuro financeiro com nossa calculadora interativa.</p>
+            </div>
+            <div class="feature-card" id="open-tips-modal">
+                <i class="fas fa-lightbulb icon"></i>
+                <h3>Dicas Financeiras</h3>
+                <p>Confira dicas práticas para melhorar sua gestão financeira e alcançar seus objetivos.</p>
+            </div>
+            <div class="feature-card" id="open-quiz-modal">
+                <i class="fas fa-question-circle icon"></i>
+                <h3>Perfil Financeiro</h3>
+                <p>Descubra seu perfil financeiro com nosso quiz interativo.</p>
+            </div>
+        </section>
+
+        <section class="calculator-section" id="calculator-section" style="display: none;">
+            <div class="calculator-container">
+                <h2>Calcule o Poder dos Juros Compostos</h2>
+                <p>Descubra quanto você pode acumular com seus investimentos.</p>
+                <form id="calculator-form" class="calculator-form">
+                    <div class="form-group">
+                        <label for="initial-value">Valor Inicial (R$):</label>
+                        <input type="number" id="initial-value" value="1000" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="monthly-value">Aporte Mensal (R$):</label>
+                        <input type="number" id="monthly-value" value="0" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="interest-rate">Taxa de Rendimento Anual (%):</label>
+                        <input type="number" id="interest-rate" value="10" min="0" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="period">Período:</label>
+                        <input type="number" id="period" value="10" min="1" required>
+                        <select id="period-unit">
+                            <option value="years">Anos</option>
+                            <option value="months">Meses</option>
+                        </select>
+                    </div>
+                </form>
+                <div id="calculator-result"></div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2>O Que Nossos Clientes Dizem</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Os treinamentos da RFM transformaram a forma como nossa equipe gerencia os recursos da empresa."</p>
+                    <h4>Mariana S., Gerente de Finanças</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Aprendi a investir com segurança e hoje tenho uma reserva financeira que me dá tranquilidade."</p>
+                    <h4>Juliana M., Cliente Individual</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"A consultoria personalizada da RFM me ajudou a criar um plano financeiro realista para o meu negócio."</p>
+                    <h4>Carla R., Empreendedora</h4>
+                </div>
+            </div>
+        </section>
+
+        <section class="consulting">
+            <h2>Consultoria Personalizada</h2>
+            <p>Soluções sob medida para atender às suas necessidades financeiras específicas.</p>
+            <div class="consulting-details">
+                <div class="consulting-item" id="open-planejamento-modal">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Planejamento Individual</h3>
+                    <p>Um plano financeiro personalizado para você alcançar seus objetivos.</p>
+                </div>
+                <div class="consulting-item" id="open-empresarial-modal">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Consultoria Empresarial</h3>
+                    <p>Estratégias financeiras para o crescimento sustentável do seu negócio.</p>
+                </div>
+                <div class="consulting-item" id="open-acompanhamento-modal">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Acompanhamento Contínuo</h3>
+                    <p>Suporte contínuo para ajustar seu plano financeiro conforme suas necessidades.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="events">
+            <h2>Eventos e Workshops</h2>
+            <p>Participe dos nossos eventos presenciais e online para aprender mais sobre finanças.</p>
+            <div class="event-grid">
+                <div class="event-card">
+                    <h3>Workshop: Investindo com Segurança</h3>
+                    <p>Aprenda as melhores estratégias para investir sem medo.</p>
+                    <p class="date">15 de Maio de 2025 - Online</p>
+                </div>
+                <div class="event-card">
+                    <h3>Palestra: Finanças para Empreendedores</h3>
+                    <p>Descubra como gerir as finanças do seu negócio.</p>
+                    <p class="date">20 de Junho de 2025 - São Paulo, SP</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Blog e Recursos Educacionais</h2>
+            <p>Explore nossos artigos, guias e ferramentas gratuitas.</p>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h3>Guia: Como Criar um Orçamento</h3>
+                    <p>Um guia passo a passo para organizar suas finanças.</p>
+                </div>
+                <div class="resource-card">
+                    <h3>Artigo: O Poder dos Juros Compostos</h3>
+                    <p>Entenda como os juros compostos podem trabalhar a seu favor.</p>
+                </div>
+                <div class="resource-card">
+                    <h3>E-book: Primeiros Passos nos Investimentos</h3>
+                    <p>Um e-book completo para iniciantes que desejam começar a investir.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="about-modal" class="modal" aria-describedby="about-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Quem Somos na RFM Educação Financeira</h1>
+                    <p>Seu parceiro para alcançar a prosperidade que você merece.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="about-modal-description">
+                    <h2>Nossa Missão</h2>
+                    <p>Imagine um futuro onde você tem total controle sobre suas finanças, onde cada decisão que você toma com seu dinheiro te aproxima dos seus sonhos. Na RFM Educação Financeira, nossa missão é tornar esse futuro realidade. Somos mais do que uma empresa de educação — somos um movimento para empoderar pessoas e negócios com inteligência financeira, descomplicando o caminho para a prosperidade com estratégias práticas e personalizadas.</p>
+                    
+                    <h2>Por que Escolher a RFM?</h2>
+                    <p>Porque acreditamos que finanças não precisam ser complicadas. Com a RFM, você terá acesso a treinamentos envolventes, consultorias sob medida e ferramentas inovadoras que transformam conhecimento em resultados. Nossa equipe de especialistas combina paixão, experiência e uma abordagem humana para guiar você em cada passo, seja para sair das dívidas, investir com confiança ou escal Họcado seu negócio. Não oferecemos apenas cursos — oferecemos uma nova forma de enxergar o dinheiro e viver a vida que você sempre quis.</p>
+                    
+                    <h2>Nosso Compromisso com Você</h2>
+                    <p>Seu sucesso é o nosso sucesso. Na RFM, comprometemo-nos a estar ao seu lado, oferecendo suporte contínuo e soluções que evoluem com suas necessidades. Queremos que você sinta a confiança de quem sabe para onde está indo e a liberdade de quem planeja o futuro com segurança. Junte-se a milhares de pessoas e empresas que já transformaram suas finanças com a RFM. Vamos construir juntos o caminho para a sua prosperidade?</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="treinamentos-modal" class="modal" aria-describedby="treinamentos-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Treinamentos para Empresas</h1>
+                    <p>Capacite sua equipe para decisões financeiras estratégicas.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="treinamentos-modal-description">
+                    <h2>Como Transformamos Sua Empresa</h2>
+                    <p>Na RFM Educação Financeira, acreditamos que o sucesso de uma empresa começa com uma equipe bem preparada. Nossos treinamentos corporativos são projetados para alinhar inteligência financeira com os objetivos do seu negócio, promovendo decisões mais assertivas e resultados sustentáveis. Como fazemos isso?</p>
+                    <ul>
+                        <li><strong>Diagnóstico Personalizado</strong>: Começamos analisando as necessidades específicas da sua empresa, identificando desafios financeiros e oportunidades de crescimento.</li>
+                        <li><strong>Workshops Práticos</strong>: Oferecemos sessões interativas que ensinam desde orçamento corporativo até gestão de fluxo de caixa, usando estudos de caso reais adaptados ao seu setor.</li>
+                        <li><strong>Ferramentas Aplicáveis</strong>: Fornecemos planilhas, calculadoras e guias que sua equipe pode usar no dia a dia para monitorar e otimizar recursos.</li>
+                        <li><strong>Acompanhamento Contínuo</strong>: Após o treinamento, oferecemos suporte para garantir que os conceitos sejam aplicados, com relatórios de progresso e ajustes conforme necessário.</li>
+                    </ul>
+                    <p>Nosso objetivo é transformar sua equipe em um time confiante e capacitado, pronto para tomar decisões que impulsionem o crescimento e a estabilidade financeira do seu negócio. Com a RFM, você investe em conhecimento que gera resultados mensuráveis.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="investimentos-modal" class="modal" aria-describedby="investimentos-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Conceito de Investimentos</h1>
+                    <p>Aprenda a investir com estratégia e segurança.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="investimentos-modal-description">
+                    <h2>Descomplicando o Mundo dos Investimentos</h2>
+                    <p>Investir pode parecer intimidador, mas na RFM Educação Financeira, tornamos esse processo claro, acessível e empoderador. Nosso programa de Conceito de Investimentos é projetado para todos os níveis — do iniciante que quer começar com segurança ao investidor experiente que busca estratégias avançadas. Veja como fazemos isso:</p>
+                    <p><strong>1. Educação Fundamental</strong>: Ensinamos os conceitos básicos, como tipos de investimentos (renda fixa, variável, fundos), riscos e retornos, usando exemplos práticos que qualquer pessoa pode entender.</p>
+                    <p><strong>2. Planejamento Personalizado</strong>: Ajudamos você a definir seus objetivos financeiros — seja comprar uma casa, aposentar-se cedo ou crescer seu patrimônio — e mostramos como montar uma carteira alinhada a esses sonhos.</p>
+                    <p><strong>3. Prática Supervisionada</strong>: Oferecemos simulações de investimento e análises de mercado em tempo real, para você ganhar confiança antes de investir seu dinheiro.</p>
+                    <p><strong>4. Suporte Contínuo</strong>: Nossa equipe está disponível para responder dúvidas e ajustar sua estratégia conforme o mercado ou suas metas mudam.</p>
+                    <p>Com a RFM, você não apenas aprende a investir — você ganha a confiança para fazer seu dinheiro trabalhar por você, com estratégias que equilibram segurança e crescimento.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="financas-modal" class="modal" aria-describedby="financas-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Finanças Pessoais</h1>
+                    <p>Domine a gestão do seu dinheiro.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="financas-modal-description">
+                    <h2>Assuma o Controle das Suas Finanças</h2>
+                    <p>Gerir suas finanças pessoais não precisa ser complicado. Na RFM Educação Financeira, oferecemos um programa completo que guia você passo a passo rumo à liberdade financeira. Nosso método é prático, humano e focado em resultados que transformam sua relação com o dinheiro. Como fazemos isso?</p>
+                    <ul>
+                        <li><strong>Orçamento Inteligente</strong>: Ensinamos como criar um orçamento realista que equilibra suas despesas, poupança e lazer, usando ferramentas simples como aplicativos ou planilhas personalizadas.</li>
+                        <li><strong>Redução de Dívidas</strong>: Mostramos estratégias para negociar dívidas, priorizar pagamentos e sair do vermelho de forma sustentável, sem sacrificar sua qualidade de vida.</li>
+                        <li><strong>Reserva de Emergência</strong>: Orientamos você a construir uma reserva financeira que traga segurança, com metas claras e prazos alcançáveis.</li>
+                        <li><strong>Primeiros Investimentos</strong>: Introduzimos conceitos de investimento acessíveis, ajudando você a dar os primeiros passos para fazer seu dinheiro crescer.</li>
+                    </ul>
+                    <p>Além disso, oferecemos mentoria individual para ajustar o plano às suas necessidades e workshops práticos para reforçar o aprendizado. Com a RFM, você ganha clareza, confiança e as ferramentas para construir um futuro financeiro sólido.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="tips-modal" class="modal" aria-describedby="tips-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Dicas Financeiras Práticas</h1>
+                    <p>Confira nossas dicas para melhorar sua gestão financeira.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="tips-modal-description">
+                    <h2>Estratégias Simples para o Seu Sucesso</h2>
+                    <p>Na RFM Educação Financeira, acreditamos que pequenas ações podem gerar grandes resultados. Nossas dicas financeiras são práticas, fáceis de aplicar e projetadas para transformar sua vida financeira. Aqui estão algumas estratégias que usamos para ajudar nossos clientes:</p>
+                    <div class="tip-card">
+                        <h3>5 Passos para Sair das Dívidas</h3>
+                        <p>Liste todas as suas dívidas, começando pelas de maior juros. Negocie com credores para reduzir taxas ou parcelas. Crie um plano de pagamento priorizando as dívidas mais caras, enquanto mantém um orçamento enxuto. Use qualquer renda extra, como bônus, para acelerar o processo. Por fim, celebre cada dívida quitada para manter a motivação!</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Como Começar a Investir com Pouco Dinheiro</h3>
+                        <p>Comece com pequenos aportes em opções acessíveis, como Tesouro Direto ou fundos de investimento. Automatize seus investimentos com aportes mensais fixos, mesmo que sejam R$50. Estude o básico sobre diversificação para reduzir riscos. Use aplicativos de investimento que oferecem opções sem taxas altas. Aos poucos, reinvista os lucros para crescer sua carteira.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>A Importância de uma Reserva de Emergência</h3>
+                        <p>Tenha como meta guardar pelo menos 6 meses de despesas básicas. Comece poupando 10% da sua renda mensal em uma conta separada, como uma poupança ou CDB de liquidez diária. Evite usar essa reserva para gastos não essenciais. Revise seu progresso trimestralmente e ajuste o valor conforme suas despesas mudam. Essa segurança financeira é a base para seus próximos passos!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="contact-modal" class="modal" aria-describedby="contact-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Conecte-se com a RFM</h1>
+                    <p>Entre em contato e comece sua jornada rumo à prosperidade financeira!</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="contact-modal-description">
+                    <div class="contact-grid">
+                        <a href="https://youtube.com" target="_blank" class="contact-item" aria-label="Canal do YouTube da RFM">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/5511999999999" target="_blank" class="contact-item" aria-label="WhatsApp da RFM">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="contact-item" aria-label="Instagram da RFM">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:contato@rfmfinanceira.com" class="contact-item" aria-label="E-mail da RFM">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="quiz-modal" class="modal" aria-describedby="quiz-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Qual é o Seu Perfil Financeiro?</h1>
+                    <p>Responda a algumas perguntas e descubra como você lida com suas finanças!</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="quiz-modal-description">
+                    <div class="quiz-container">
+                        <form id="quiz-form">
+                            <div class="quiz-question">
+                                <h3>1. Como você descreveria sua relação com riscos financeiros?</h3>
+                                <label><input type="radio" name="q1" value="1" required> Evito riscos a todo custo.</label>
+                                <label><input type="radio" name="q1" value="2"> Aceito riscos moderados.</label>
+                                <label><input type="radio" name="q1" value="3"> Gosto de correr riscos para altos retornos.</label>
+                            </div>
+                            <div class="quiz-question">
+                                <h3>2. Quanto você poupa por mês?</h3>
+                                <label><input type="radio" name="q2" value="1" required> Menos de 10% da minha renda.</label>
+                                <label><input type="radio" name="q2" value="2"> Entre 10% e 20% da minha renda.</label>
+                                <label><input type="radio" name="q2" value="3"> Mais de 20% da minha renda.</label>
+                            </div>
+                            <div class="quiz-question">
+                                <h3>3. Qual é o seu principal objetivo financeiro?</h3>
+                                <label><input type="radio" name="q3" value="1" required> Segurança e estabilidade.</label>
+                                <label><input type="radio" name="q3" value="2"> Crescimento moderado a longo prazo.</label>
+                                <label><input type="radio" name="q3" value="3"> Crescimento rápido, mesmo com riscos.</label>
+                            </div>
+                            <button type="submit">Descobrir Meu Perfil</button>
+                        </form>
+                        <div id="quiz-result"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="planejamento-modal" class="modal" aria-describedby="planejamento-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Planejamento Individual</h1>
+                    <p>Seu caminho personalizado para a liberdade financeira.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="planejamento-modal-description">
+                    <h2>Transforme Seus Objetivos em Realidade</h2>
+                    <p>Na RFM Educação Financeira, nosso Planejamento Individual é desenhado para alinhar suas finanças aos seus sonhos. Quer comprar uma casa, viajar o mundo ou se aposentar cedo? Nós criamos um plano sob medida que reflete suas prioridades e realidade financeira.</p>
+                    <ul>
+                        <li><strong>Análise Personalizada</strong>: Avaliamos sua situação atual, incluindo renda, despesas, dívidas e objetivos, para criar um plano realista.</li>
+                        <li><strong>Estratégias Práticas</strong>: Oferecemos passos claros para reduzir dívidas, poupar de forma eficiente e iniciar investimentos que se adequem ao seu perfil.</li>
+                        <li><strong>Ferramentas Exclusivas</strong>: Fornecemos planilhas e aplicativos personalizados para você acompanhar seu progresso com facilidade.</li>
+                        <li><strong>Sessões Individuais</strong>: Reuniões regulares com nossos consultores para ajustar o plano conforme sua vida evolui.</li>
+                    </ul>
+                    <p>Com o Planejamento Individual da RFM, você terá clareza sobre suas finanças e confiança para alcançar seus objetivos, passo a passo, com suporte contínuo.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="empresarial-modal" class="modal" aria-describedby="empresarial-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Consultoria Empresarial</h1>
+                    <p>Estratégias para o crescimento sustentável do seu negócio.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="empresarial-modal-description">
+                    <h2>Leve Sua Empresa ao Próximo Nível</h2>
+                    <p>A Consultoria Empresarial da RFM Educação Financeira é voltada para negócios que buscam estabilidade e crescimento. Trabalhamos com você para otimizar a gestão financeira da sua empresa, garantindo decisões estratégicas que impulsionam resultados.</p>
+                    <ul>
+                        <li><strong>Diagnóstico Financeiro</strong>: Analisamos o fluxo de caixa, margens de lucro e estrutura de custos para identificar oportunidades de melhoria.</li>
+                        <li><strong>Planejamento Estratégico</strong>: Desenvolvemos planos financeiros que alinham suas metas de curto e longo prazo, como expansão ou redução de dívidas.</li>
+                        <li><strong>Treinamento de Equipe</strong>: Capacitamos seus colaboradores com workshops práticos para melhorar a eficiência financeira no dia a dia.</li>
+                        <li><strong>Monitoramento Contínuo</strong>: Acompanhamos indicadores financeiros e sugerimos ajustes para manter sua empresa no caminho certo.</li>
+                    </ul>
+                    <p>Com a RFM, sua empresa ganha uma parceira comprometida em transformar desafios financeiros em oportunidades de crescimento sustentável.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="acompanhamento-modal" class="modal" aria-describedby="acompanhamento-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Acompanhamento Contínuo</h1>
+                    <p>Suporte constante para suas finanças evoluírem com você.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="acompanhamento-modal-description">
+                    <h2>Estamos com Você em Cada Passo</h2>
+                    <p>O Acompanhamento Contínuo da RFM Educação Financeira é ideal para quem deseja manter suas finanças sempre alinhadas com seus objetivos. Nossa abordagem garante que seu plano financeiro evolua junto com suas necessidades, seja na vida pessoal ou nos negócios.</p>
+                    <ul>
+                        <li><strong>Revisões Regulares</strong>: Fazemos análises periódicas do seu plano financeiro para ajustá-lo a mudanças, como novas metas ou imprevistos.</li>
+                        <li><strong>Suporte Personalizado</strong>: Nossa equipe está disponível para esclarecer dúvidas e oferecer orientações em tempo real, por e-mail, WhatsApp ou reuniões.</li>
+                        <li><strong>Relatórios de Progresso</strong>: Fornecemos relatórios detalhados que mostram seu avanço financeiro e sugerem próximos passos.</li>
+                        <li><strong>Educação Contínua</strong>: Oferecemos acesso a novos conteúdos, como webinars e guias, para manter você atualizado sobre finanças.</li>
+                    </ul>
+                    <p>Com o Acompanhamento Contínuo da RFM, você nunca está sozinho. Estamos aqui para garantir que suas finanças estejam sempre no caminho certo.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">
+            <span>RFM</span> <span class="highlight">Educação Financeira</span>
+        </div>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5511999999999" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>© 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

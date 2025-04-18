@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar partículas
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: '#B24514' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5, random: true },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: '#6B8E7B', opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+        },
+        retina_detect: true
+    });
+
     // Toggle mobile menu
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -130,6 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const result = calculateCompoundInterest(initial, monthly, rate, periods, isYears);
         resultDiv.textContent = `Valor Futuro: ${result}`;
+        resultDiv.classList.remove('show'); // Reset animation
+        setTimeout(() => resultDiv.classList.add('show'), 10); // Trigger animation
     }
 
     if (calculatorForm) {
@@ -139,6 +160,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (input) {
                 input.addEventListener('input', updateResult);
             }
+        });
+
+        // Handle form submission for button click
+        calculatorForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            updateResult();
         });
 
         // Initial calculation
@@ -155,21 +182,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const answers = [
                 parseInt(quizForm.querySelector('input[name="q1"]:checked')?.value) || 0,
                 parseInt(quizForm.querySelector('input[name="q2"]:checked')?.value) || 0,
-                parseInt(quizForm.querySelector('input[name="q3"]:checked')?.value) || 0
+                parseInt(quizForm.querySelector('input[name="q3"]:checked')?.value) || 0,
+                parseInt(quizForm.querySelector('input[name="q4"]:checked')?.value) || 0,
+                parseInt(quizForm.querySelector('input[name="q5"]:checked')?.value) || 0,
+                parseInt(quizForm.querySelector('input[name="q6"]:checked')?.value) || 0
             ];
 
             const totalScore = answers.reduce((sum, val) => sum + val, 0);
 
             let profile = '';
-            if (totalScore <= 4) {
-                profile = 'Conservador: Você prefere segurança e estabilidade. Considere investimentos de baixo risco, como Tesouro Direto ou CDBs.';
-            } else if (totalScore <= 7) {
-                profile = 'Moderado: Você aceita algum risco para melhores retornos. Uma carteira diversificada com renda fixa e variável pode ser ideal.';
+            if (totalScore <= 8) {
+                profile = 'Conservador: Você prioriza segurança e evita riscos. Recomendamos investimentos de baixo risco, como Tesouro Direto ou CDBs com liquidez diária.';
+            } else if (totalScore <= 14) {
+                profile = 'Moderado: Você equilibra risco e retorno. Uma carteira diversificada com renda fixa (60%) e renda variável (40%) pode ser ideal.';
             } else {
-                profile = 'Agressivo: Você busca altos retornos e tolera riscos. Ações e fundos de investimento podem ser boas opções.';
+                profile = 'Arrojado: Você busca altos retornos, mesmo com riscos. Considere investir em ações, fundos imobiliários ou ETFs, com até 70% em renda variável.';
             }
 
             quizResult.textContent = `Seu Perfil: ${profile}`;
+            quizResult.classList.remove('show'); // Reset animation
+            setTimeout(() => quizResult.classList.add('show'), 10); // Trigger animation
             quizResult.scrollIntoView({ behavior: 'smooth' });
         });
     }

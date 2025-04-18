@@ -162,18 +162,12 @@ nav {
     max-width: 1200px;
     position: relative;
     z-index: 2;
-    background: linear-gradient(
-            135deg,
-            rgba(253, 251, 243, 0.6),
-            rgba(232, 230, 218, 0.4)
-        ),
-        url('img.png') no-repeat center center / cover;
-    background-attachment: fixed; /* Efeito parallax */
     padding: 3rem;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    animation: imageFadeIn 2s ease-in-out forwards;
     border: 1px solid var(--accent-color);
+    animation: imageFadeIn 2s ease-in-out forwards;
+    overflow: hidden;
 }
 
 @keyframes imageFadeIn {
@@ -181,14 +175,62 @@ nav {
     to { opacity: 1; filter: brightness(1); }
 }
 
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+    transition: transform 0.5s ease;
+    filter: brightness(0.9);
+}
+
+.hero-content:hover .hero-background {
+    transform: scale(1.05);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(253, 251, 243, 0.5),
+        rgba(232, 230, 218, 0.3)
+    );
+    z-index: -1;
+    pointer-events: none;
+}
+
+@media (min-width: 769px) {
+    .hero-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -2;
+    }
+    .hero-content {
+        background: none;
+    }
+}
+
 .hero h1 {
     font-family: 'Dancing Script', cursive;
     font-size: 5rem;
     color: var(--text-primary);
-    text-shadow: 0 3px 6px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 3px 6px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.3);
     margin-bottom: 1rem;
     animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1) 1s forwards;
     opacity: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-subtitle {
@@ -196,10 +238,12 @@ nav {
     font-size: 2.5rem;
     font-weight: 600;
     color: var(--text-primary);
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.3);
     margin: 1rem 0;
     animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
     opacity: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .cta-text {
@@ -209,6 +253,9 @@ nav {
     color: var(--text-primary);
     animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.4s forwards;
     opacity: 0;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .hero-explanation {
@@ -223,6 +270,8 @@ nav {
     transform: translateY(20px);
     animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-explanation:hover {
@@ -251,6 +300,8 @@ nav {
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.5s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .presentation-section.show {
@@ -344,6 +395,8 @@ nav {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.8s forwards;
+    position: relative;
+    z-index: 1;
 }
 
 .video-presentation:hover {
@@ -389,10 +442,12 @@ nav {
     font-size: 4rem;
     font-weight: 700;
     color: var(--text-primary);
-    text-shadow: 0 3px 6px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 3px 6px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.3);
     margin: 2rem 0;
     animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 2s forwards;
     opacity: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .features {
@@ -421,6 +476,9 @@ nav {
 .feature-card:nth-child(1) { animation-delay: 2.4s; }
 .feature-card:nth-child(2) { animation-delay: 2.6s; }
 .feature-card:nth-child(3) { animation-delay: 2.8s; }
+.feature-card:nth-child(4) { animation-delay: 3.0s; }
+.feature-card:nth-child(5) { animation-delay: 3.2s; }
+.feature-card:nth-child(6) { animation-delay: 3.4s; }
 
 @keyframes fadeInCard {
     from { opacity: 0; transform: scale(0.95); }
@@ -874,6 +932,7 @@ footer p {
     .presentation-container { flex-direction: column; gap: 1.5rem; }
     .presentation-image { flex: 0 0 100%; max-width: 400px; }
     .presentation-image img { height: 350px; }
+    .hero-background { object-fit: cover; }
 }
 
 @media (max-width: 768px) {
@@ -895,7 +954,12 @@ footer p {
     .hero h1 { font-size: 3rem; }
     .hero-subtitle { font-size: 1.8rem; }
     .features { grid-template-columns: 1fr; }
-    .hero-content { background-attachment: scroll; } /* Desativa parallax em mobile */
+    .hero-background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 }
 
 @media (max-width: 480px) {
@@ -906,4 +970,5 @@ footer p {
     .hero-slogan { font-size: 2.5rem; }
     .presentation-image img { height: 250px; }
     .modal-content { width: 95%; padding: 1rem; }
+    .hero-content { padding: 2rem; }
 }

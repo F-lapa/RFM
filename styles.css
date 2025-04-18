@@ -171,7 +171,12 @@ nav {
     text-align: center;
     position: relative;
     padding: 5rem 2rem;
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    background: linear-gradient(
+            135deg,
+            rgba(245, 246, 245, 0.7),
+            rgba(154, 165, 157, 0.5)
+        ),
+        url('img.png') no-repeat center center / cover;
     overflow: hidden;
     opacity: 0;
     transform: scale(0.95);
@@ -190,20 +195,46 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(154, 165, 157, 0.2));
-    opacity: 1;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(154, 165, 157, 0.3)
+    );
+    z-index: 1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    z-index: 0;
+    opacity: 0.3;
 }
 
 .hero-content {
     max-width: 1100px;
     position: relative;
+    z-index: 2;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.2),
+        rgba(154, 165, 157, 0.1)
+    );
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .hero h1 {
     font-family: 'Dancing Script', cursive;
     font-size: 5.5rem;
-    color: var(--primary-color);
-    text-shadow: 0 4px 10px rgba(154, 165, 157, 0.5);
+    color: #fff;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     animation: fadeInDown 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 1.5s forwards;
     letter-spacing: 0.5px;
 }
@@ -212,9 +243,9 @@ nav {
     font-family: 'Playfair Display', serif;
     font-size: 3.2rem;
     font-weight: 700;
-    color: var(--text-secondary);
+    color: #fff;
     margin: 2rem 0;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     animation: fadeInUp 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 1.8s forwards;
 }
 
@@ -263,7 +294,6 @@ nav {
     line-height: 1.8;
 }
 
-/* Estilo da seção de apresentação */
 .presentation-section {
     max-width: 1100px;
     margin: 4rem auto;
@@ -455,7 +485,7 @@ nav {
 
 .feature-card:nth-child(1) { animation-delay: 2.8s; }
 .feature-card:nth-child(2) { animation-delay: 3s; }
-.feature-card:nth-child(3) { animation-delay: 3.2s; }
+.feature-card:nth defended-child(3) { animation-delay: 3.2s; }
 .feature-card:nth-child(4) { animation-delay: 3.4s; }
 .feature-card:nth-child(5) { animation-delay: 3.6s; }
 .feature-card:nth-child(6) { animation-delay: 3.8s; }
@@ -955,49 +985,24 @@ nav {
     margin-top: 2.5rem;
     font-size: 1.3rem;
     color: var(--text-primary);
-}
-
-.tip-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(154, 165, 157, 0.2));
-    padding: 2rem;
-    border-radius: 15px;
-    margin-bottom: 2rem;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-.tip-card:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 14px 40px rgba(154, 165, 157, 0.4);
-}
-
-.tip-card h3 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.tip-card p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--text-primary);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(154, 165, 157, 0.3));
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 footer {
-    background: linear-gradient(135deg, #e8ece9, #c4ccc6);
-    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #c4ccc6, var(--primary-color));
+    padding: 2rem;
     text-align: center;
+    color: var(--text-primary);
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-    animation: fadeInUp 1.5s ease-in-out 4.2s forwards;
-    opacity: 0;
 }
 
 .footer-logo {
     font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-    color: var(--logo-primary);
-    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .footer-logo .highlight {
@@ -1007,90 +1012,63 @@ footer {
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 2.5rem;
-    margin-bottom: 2rem;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .social-links a {
-    font-size: 2.2rem;
-    color: var(--primary-color);
+    color: var(--text-primary);
+    font-size: 1.8rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-links a:hover {
-    transform: translateY(-2px) scale(1.1);
     color: var(--accent-color);
-    box-shadow: 0 4px 15px rgba(107, 142, 123, 0.3);
+    transform: scale(1.2);
 }
 
 footer p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-secondary);
 }
 
+/* Animações adicionais */
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px); }
+    from { opacity: 0; transform: translateY(-50px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(50px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Responsividade */
 @media (max-width: 1024px) {
-    .features {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .hero {
-        min-height: 75vh;
-        padding: 4rem 1.5rem;
-    }
-
     .hero h1 {
-        font-size: 4.5rem;
+        font-size: 4rem;
     }
 
     .hero-subtitle {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
     }
 
-    .hero-explanation {
-        padding: 3rem;
-        margin: 3rem auto;
-    }
-
-    .hero-explanation p {
-        font-size: 1.4rem;
+    .features {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .presentation-container {
         flex-direction: column;
         gap: 2rem;
-        padding: 2rem;
     }
 
     .presentation-image {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 400px;
+        flex: 0 0 100%;
+        max-width: 500px;
     }
 
     .presentation-image img {
         height: 400px;
-    }
-
-    .presentation-text h3 {
-        font-size: 2.2rem;
-    }
-
-    .presentation-text .presentation-subtitle {
-        font-size: 1.3rem;
-    }
-
-    .presentation-text p {
-        font-size: 1.1rem;
     }
 }
 
@@ -1103,11 +1081,11 @@ footer p {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 100%;
         left: 0;
         width: 100%;
-        background: linear-gradient(135deg, #e8ece9, #c4ccc6);
-        padding: 1rem 0;
+        background: linear-gradient(135deg, #e8 ALMOSTece9, #c4ccc6);
+        padding: 1rem;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
 
@@ -1116,94 +1094,61 @@ footer p {
     }
 
     .nav-menu li {
-        animation: none;
-        opacity: 1;
         margin: 0.5rem 0;
     }
 
-    .nav-menu li a {
-        display: block;
-        text-align: center;
-        padding: 1rem;
+    .hero {
+        padding: 3rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 2rem;
     }
 
     .features {
         grid-template-columns: 1fr;
     }
 
-    .hero {
-        min-height: 70vh;
-        padding: 3rem 1rem;
+    .hero-explanation {
+        padding: 2rem;
+    }
+
+    .video-presentation {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text .main {
+        font-size: 2rem;
+    }
+
+    .logo-text .sub {
+        font-size: 0.8rem;
     }
 
     .hero h1 {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
     }
 
     .hero-subtitle {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
 
-    .hero-explanation {
-        padding: 2rem;
-        margin: 2rem auto;
-    }
-
-    .hero-explanation p {
-        font-size: 1.2rem;
+    .hero-slogan {
+        font-size: 3rem;
     }
 
     .presentation-image img {
         height: 300px;
     }
 
-    .presentation-text h3 {
-        font-size: 2rem;
-    }
-
-    .video-presentation {
-        padding: 2rem;
-    }
-
-    .video-presentation h3 {
-        font-size: 2.2rem;
-    }
-
-    .hero-slogan {
-        font-size: 3.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2.8rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.8rem;
-    }
-
-    .hero-explanation p {
-        font-size: 1rem;
-    }
-
-    .presentation-text h3 {
-        font-size: 1.8rem;
-    }
-
-    .presentation-text .presentation-subtitle {
-        font-size: 1.1rem;
-    }
-
-    .presentation-text p {
-        font-size: 1rem;
-    }
-
-    .video-presentation h3 {
-        font-size: 1.8rem;
-    }
-
-    .hero-slogan {
-        font-size: 2.5rem;
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
     }
 }

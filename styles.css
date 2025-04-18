@@ -147,7 +147,7 @@ nav {
     text-align: center;
     position: relative;
     padding: 4rem 2rem;
-    background: url('img.png') no-repeat center center / cover;
+    background: url('img.png') no-repeat center center / contain;
     background-attachment: fixed;
     overflow: hidden;
     animation: kenBurns 20s infinite ease-in-out;
@@ -156,7 +156,7 @@ nav {
 
 @keyframes kenBurns {
     0% { transform: scale(1) translate(0, 0); }
-    50% { transform: scale(1.2) translate(-10%, -10%); }
+    50% { transform: scale(1.1) translate(-5%, -5%); }
     100% { transform: scale(1) translate(0, 0); }
 }
 
@@ -169,8 +169,8 @@ nav {
     height: 100%;
     background: linear-gradient(
         135deg,
-        rgba(253, 251, 243, 0.5),
-        rgba(232, 230, 218, 0.3)
+        rgba(253, 251, 243, 0.4),
+        rgba(232, 230, 218, 0.2)
     );
     z-index: 2;
 }
@@ -910,8 +910,9 @@ footer p {
     .nav-menu li { margin: 0.5rem 0; }
     .hero {
         padding: 3rem 1rem;
-        background-attachment: scroll; /* Desativa parallax em mobile */
-        animation: none; /* Desativa ken-burns em mobile para performance */
+        background-attachment: scroll;
+        animation: none;
+        background-size: contain;
     }
     .hero-title {
         font-size: 3.5rem;
@@ -922,9 +923,9 @@ footer p {
     .hero::before {
         background: linear-gradient(
             135deg,
-            rgba(253, 251, 243, 0.7),
-            rgba(232, 230, 218, 0.5)
-        ); /* Aumenta opacidade em mobile */
+            rgba(253, 251, 243, 0.6),
+            rgba(232, 230, 218, 0.4)
+        );
     }
 }
 
@@ -940,4 +941,7 @@ footer p {
     .presentation-image img { height: 250px; }
     .modal-content { width: 95%; padding: 1rem; }
     .hero-content { padding: 2rem; }
+    .hero {
+        background-size: 90% auto;
+    }
 }

@@ -147,17 +147,10 @@ nav {
     text-align: center;
     position: relative;
     padding: 4rem 2rem;
-    background: url('img.png') no-repeat center center / contain;
+    background: url('img.png') no-repeat center top / contain; /* Posicionada no topo com 'center top' */
     background-attachment: fixed;
     overflow: hidden;
-    animation: kenBurns 20s infinite ease-in-out;
     z-index: 1;
-}
-
-@keyframes kenBurns {
-    0% { transform: scale(1) translate(0, 0); }
-    50% { transform: scale(1.1) translate(-5%, -5%); }
-    100% { transform: scale(1) translate(0, 0); }
 }
 
 .hero::before {
@@ -910,8 +903,7 @@ footer p {
     .nav-menu li { margin: 0.5rem 0; }
     .hero {
         padding: 3rem 1rem;
-        background-attachment: scroll;
-        animation: none;
+        background-attachment: scroll; /* Desativa parallax em mobile */
         background-size: contain;
     }
     .hero-title {
@@ -942,6 +934,6 @@ footer p {
     .modal-content { width: 95%; padding: 1rem; }
     .hero-content { padding: 2rem; }
     .hero {
-        background-size: 90% auto;
+        background-size: 90% auto; /* Reduz tamanho em telas pequenas */
     }
 }

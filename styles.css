@@ -172,7 +172,7 @@ nav {
     background: rgba(253, 251, 243, 0.4);
     border-radius: 20px;
     box-sizing: border-box;
-    margin-top: 50vh; /* Alteração: Posiciona o texto mais abaixo da mão da mulher */
+    margin-top: 50vh; /* Posiciona o texto mais abaixo da mão da mulher */
 }
 
 h1 {
@@ -1062,7 +1062,7 @@ footer p {
         max-width: 90%;
         padding: 2rem;
         border-radius: 15px;
-        margin-top: 60vh; /* Alteração: Ajusta o texto mais abaixo em dispositivos móveis */
+        margin-top: 60vh; /* Ajusta o texto mais abaixo em dispositivos móveis */
     }
 
     h1 {
@@ -1092,30 +1092,31 @@ footer p {
         text-align: center;
     }
 
-    .presentation-text h3 {
-        font-size: 2rem;
-        order: 1;
-    }
-
-    .presentation-image {
-        flex: 0 0 auto;
-        max-width: 100%;
-        order: 2;
-    }
-
     .presentation-text {
-        order: 3;
         display: flex;
         flex-direction: column;
         gap: 0.8rem;
     }
 
+    .presentation-text h3 {
+        font-size: 2rem;
+        order: 1; /* Nome aparece primeiro */
+    }
+
+    .presentation-image {
+        flex: 0 0 auto;
+        max-width: 100%;
+        order: 2; /* Foto aparece em segundo */
+    }
+
     .presentation-text .presentation-subtitle {
         font-size: 1.1rem;
+        order: 3; /* Subtítulo aparece depois da foto */
     }
 
     .presentation-text p {
         font-size: 1rem;
+        order: 4; /* Texto descritivo aparece por último */
     }
 
     .presentation-image img {
@@ -1347,7 +1348,7 @@ footer p {
         max-width: 95%;
         padding: 1.5rem;
         border-radius: 10px;
-        margin-top: 70vh; /* Alteração: Ajusta o texto mais abaixo em telas menores */
+        margin-top: 70vh; /* Ajusta o texto mais abaixo em telas menores */
     }
 
     h1 {

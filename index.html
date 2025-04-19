@@ -8,9 +8,1002 @@
     <title>RFM Educação Financeira - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
-    <script src="script.js" defer></script>
+
+    <!-- Integrated CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #FDFBF3;
+            --text-primary: #B24514;
+            --text-hover: #D1642E;
+            --text-shadow: #8A340F;
+            --secondary-bg: #E8E6DA;
+            --accent-color: #6B8E7B;
+            --text-secondary: #4A4A4A;
+        }
+
+        body {
+            font-family: 'Lora', sans-serif;
+            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            opacity: 0;
+            animation: fadeInBody 1.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeInBody {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideInHeader 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+        }
+
+        @keyframes slideInHeader {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-text .main {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-text .sub {
+            font-family: 'Lora', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: rotate(90deg);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-menu li {
+            opacity: 0;
+            animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .nav-menu li:nth-child(1) { animation-delay: 0.6s; }
+        .nav-menu li:nth-child(2) { animation-delay: 0.8s; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-menu li a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg));
+            border: 1px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(107, 142, 123, 0.3);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 4rem 2rem;
+            background: url('img.png') no-repeat center top / contain;
+            background-attachment: fixed;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(253, 251, 243, 0.4),
+                rgba(232, 230, 218, 0.2)
+            );
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            position: relative;
+            z-index: 3;
+            padding: 3rem;
+            background: transparent;
+        }
+
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 6rem;
+            color: var(--text-primary);
+            text-shadow: 0 4px 8px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+            padding: 1rem 2rem;
+            background: rgba(253, 251, 243, 0.85);
+            border-radius: 20px;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(-40px);
+            animation: fadeInDown 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-title:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.3);
+            margin: 1rem 0;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
+            opacity: 0;
+        }
+
+        .cta-text {
+            font-family: 'Lora', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.4s forwards;
+            opacity: 0;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-explanation {
+            background: var(--primary-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid var(--accent-color);
+            max-width: 1000px;
+            margin: 3rem auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
+            transition: all 0.3s ease;
+        }
+
+        .hero-explanation:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-explanation h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-explanation p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .presentation-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .presentation-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .presentation-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: var(--primary-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .presentation-container:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .presentation-text {
+            flex: 1;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s ease 0.3s;
+        }
+
+        .presentation-section.show .presentation-text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .presentation-text h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .presentation-text .presentation-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .presentation-text p {
+            font-family: 'Lora', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .presentation-image {
+            flex: 0 0 350px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.5s ease 0.5s;
+        }
+
+        .presentation-section.show .presentation-image {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .presentation-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .presentation-image img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-presentation {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: var(--primary-bg);
+            border-radius: 15px;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.8s forwards;
+        }
+
+        .video-presentation:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-presentation h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.3rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .video-presentation p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slogan {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 0 3px 6px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.3);
+            margin: 2rem 0;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 2s forwards;
+            opacity: 0;
+        }
+
+        .features {
+            max-width: 1400px;
+            margin: 5rem auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 2.2s forwards;
+        }
+
+        .feature-card {
+            background: var(--primary-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInCard 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 2.4s; }
+        .feature-card:nth-child(2) { animation-delay: 2.6s; }
+        .feature-card:nth-child(3) { animation-delay: 2.8s; }
+        .feature-card:nth-child(4) { animation-delay: 3.0s; }
+        .feature-card:nth-child(5) { animation-delay: 3.2s; }
+        .feature-card:nth-child(6) { animation-delay: 3.4s; }
+
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card .icon {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .icon {
+            transform: scale(1.2);
+        }
+
+        .feature-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .testimonials,
+        .consulting,
+        .events,
+        .resources,
+        .calculator-section {
+            max-width: 1400px;
+            margin: 5rem auto;
+            padding: 3rem 2rem;
+            background: var(--primary-bg);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .testimonials { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 3s forwards; opacity: 0; }
+        .consulting { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 3.2s forwards; opacity: 0; }
+        .events { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 3.4s forwards; opacity: 0; }
+        .resources { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 3.6s forwards; opacity: 0; }
+        .calculator-section { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+        .calculator-section.show { opacity: 1; transform: translateY(0); }
+
+        .testimonials h2,
+        .consulting h2,
+        .events h2,
+        .resources h2,
+        .calculator-container h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-grid,
+        .consulting-details,
+        .event-grid,
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card,
+        .consulting-item,
+        .event-card,
+        .resource-card {
+            background: var(--primary-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInCard 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .testimonial-card:nth-child(1),
+        .consulting-item:nth-child(1),
+        .event-card:nth-child(1),
+        .resource-card:nth-child(1) { animation-delay: 3.8s; }
+        .testimonial-card:nth-child(2),
+        .consulting-item:nth-child(2),
+        .event-card:nth-child(2),
+        .resource-card:nth-child(2) { animation-delay: 4s; }
+        .testimonial-card:nth-child(3),
+        .consulting-item:nth-child(3),
+        .event-card:nth-child(3),
+        .resource-card:nth-child(3) { animation-delay: 4.2s; }
+
+        .testimonial-card:hover,
+        .consulting-item:hover,
+        .event-card:hover,
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-card p,
+        .consulting-item p,
+        .event-card p,
+        .resource-card p {
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .testimonial-card h4,
+        .consulting-item h3,
+        .event-card h3,
+        .resource-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .event-card .date {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .consulting-item i {
+            font-size: 2.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .consulting-item:hover i {
+            transform: scale(1.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--primary-bg);
+            padding: 2rem;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow-y: auto;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: var(--secondary-bg);
+            border-radius: 4px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .close-btn {
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-hero p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .modal-about-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-about-section p,
+        .modal-about-section ul {
+            font-family: 'Lora', sans-serif;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-about-section ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+
+        #contact-modal .modal-content {
+            max-width: 600px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #contact-modal .contact-grid {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        #contact-modal .contact-item {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--secondary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        #contact-modal .contact-item i {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+        }
+
+        #contact-modal .contact-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .calculator-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            text-align: center;
+            background: var(--primary-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .calculator-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .calculator-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .calculator-container p {
+            font-family: 'Lora', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .calculator-form {
+            display: grid;
+            gap: 1.5rem;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 10px;
+            border: 2px solid var(--accent-color);
+            background: var(--secondary-bg);
+            font-size: 1rem;
+            font-family: 'Lora', sans-serif;
+            color: var(--text-primary);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--text-primary);
+            box-shadow: 0 0 8px rgba(178, 69, 20, 0.4);
+            outline: none;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23B24514" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.7rem top 50%;
+            background-size: 1.2rem;
+        }
+
+        #calculator-result {
+            margin-top: 2rem;
+            padding: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-bg);
+            background: var(--text-primary);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        #calculator-result:hover {
+            transform: scale(1.02);
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .quiz-question h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .quiz-question label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            display: block;
+        }
+
+        .quiz-form button {
+            background: var(--text-primary);
+            color: var(--primary-bg);
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .quiz-form button:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #quiz-result {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            background: var(--secondary-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--secondary-bg), var(--primary-bg));
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-primary);
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-logo .highlight {
+            color: var(--text-primary);
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--text-hover);
+            transform: scale(1.2);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 4.5rem; }
+            .hero-subtitle { font-size: 2rem; }
+            .features { grid-template-columns: repeat(2, 1fr); }
+            .presentation-container { flex-direction: column; gap: 1.5rem; }
+            .presentation-image { flex: 0 0 100%; max-width: 400px; }
+            .presentation-image img { height: 350px; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-bg);
+                padding: 1rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            .nav-menu.active { display: flex; }
+            .nav-menu li {
+                margin: 0.5rem 0;
+                opacity: 1;
+                animation: none;
+            }
+            .nav-menu li a {
+                display: block;
+                text-align: center;
+                padding: 0.8rem;
+                font-size: 1.1rem;
+            }
+            .hero {
+                padding: 3rem 1rem;
+                background-attachment: scroll;
+                background-size: cover;
+            }
+            .hero-title {
+                font-size: 3.5rem;
+                padding: 0.8rem 1.5rem;
+            }
+            .hero-subtitle { font-size: 1.8rem; }
+            .features { grid-template-columns: 1fr; }
+            .hero::before {
+                background: linear-gradient(
+                    135deg,
+                    rgba(253, 251, 243, 0.6),
+                    rgba(232, 230, 218, 0.4)
+                );
+            }
+            .modal-content { width: 90%; max-height: 85vh; padding: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text .main { font-size: 1.8rem; }
+            .logo-text .sub { font-size: 0.8rem; }
+            .hero-title {
+                font-size: 2.5rem;
+                padding: 0.5rem 1rem;
+            }
+            .hero-subtitle { font-size: 1.5rem; }
+            .hero-slogan { font-size: 2.5rem; }
+            .presentation-image img { height: 250px; }
+            .modal-content { width: 95%; padding: 1rem; }
+            .hero-content { padding: 1.5rem; }
+            .hero {
+                background-size: cover;
+                background-position: center;
+            }
+            .calculator-container { padding: 1.5rem; }
+            .form-group input,
+            .form-group select { font-size: 0.9rem; padding: 0.6rem; }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -33,7 +1026,6 @@
     </header>
 
     <main>
-        <!-- ALTERADO: Removida a frase <h1 class="hero-title"> e reposicionado o conteúdo -->
         <section class="hero">
             <div class="hero-content">
                 <div id="particles-js"></div>
@@ -100,7 +1092,6 @@
             </div>
         </section>
 
-        <!-- ALTERADO: Texto do parágrafo ajustado para maior clareza -->
         <section class="calculator-section" id="calculator-section" style="display: none;">
             <div class="calculator-container">
                 <h2>Calcule o Poder dos Juros Compostos</h2>
@@ -365,7 +1356,6 @@
         </div>
     </div>
 
-    <!-- ALTERADO: Modal do quiz com 5 perguntas -->
     <div id="quiz-modal" class="modal" aria-describedby="quiz-modal-description">
         <div class="modal-content">
             <span class="close-btn" aria-label="Fechar modal">×</span>
@@ -504,5 +1494,169 @@
         </div>
         <p>© 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
     </footer>
+
+   document.addEventListener('DOMContentLoaded', () => {
+    // Particles.js initialization
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: '#B24514' },
+            shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
+            opacity: { value: 0.5, random: false },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: '#B24514', opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+        },
+        retina_detect: true
+    });
+
+    // Modal handling
+    const modals = document.querySelectorAll('.modal');
+    const openModalButtons = document.querySelectorAll('[id*="open-"]');
+    const closeButtons = document.querySelectorAll('.close-btn');
+
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modalId = button.id.replace('open-', '') + '-modal';
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+        button.addEventListener('touchstart', () => {
+            const modalId = button.id.replace('open-', '') + '-modal';
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+        button.addEventListener('touchstart', () => {
+            const modal = button.closest('.modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+    });
+
+    modals.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+        modal.addEventListener('touchstart', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Menu hamburger for mobile
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+    menuToggle.addEventListener('touchstart', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    // Calculator handling
+    const calculatorElements = {
+        showButton: document.getElementById('show-calculator'),
+        section: document.getElementById('calculator-section'),
+        form: document.getElementById('calculator-form'),
+        result: document.getElementById('calculator-result'),
+    };
+
+    calculatorElements.showButton.addEventListener('click', () => {
+        calculatorElements.section.style.display = 'block';
+        calculatorElements.section.classList.add('show');
+        window.scrollTo({
+            top: calculatorElements.section.offsetTop,
+            behavior: 'smooth',
+        });
+    });
+
+    calculatorElements.form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const initialValue = parseFloat(document.getElementById('initial-value').value);
+        const monthlyValue = parseFloat(document.getElementById('monthly-value').value);
+        const interestRate = parseFloat(document.getElementById('interest-rate').value) / 100;
+        let period = parseInt(document.getElementById('period').value);
+        const periodUnit = document.getElementById('period-unit').value;
+
+        if (periodUnit === 'years') {
+            period *= 12;
+        }
+
+        const monthlyRate = interestRate / 12;
+        let futureValue = initialValue;
+
+        for (let i = 0; i < period; i++) {
+            futureValue = futureValue * (1 + monthlyRate) + monthlyValue;
+        }
+
+        calculatorElements.result.textContent = `Valor Futuro: R$ ${futureValue.toFixed(2).replace('.', ',')}`;
+        calculatorElements.result.style.display = 'block';
+    });
+
+    // Quiz handling
+    const quizModal = document.getElementById('quiz-modal');
+    const quizForm = document.getElementById('quiz-form');
+    const quizResult = document.getElementById('quiz-result');
+
+    quizForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const answers = Array.from(quizForm.querySelectorAll('input:checked')).map(input => parseInt(input.value));
+        const totalScore = answers.reduce((sum, score) => sum + score, 0);
+
+        let profile = '';
+        if (totalScore <= 7) {
+            profile = 'Conservador: Você prefere segurança e evita riscos. Considere investimentos de baixo risco, como renda fixa, e foque em construir uma reserva de emergência.';
+        } else if (totalScore <= 11) {
+            profile = 'Moderado: Você equilibra risco e retorno. Uma carteira diversificada com renda fixa e variável pode ser ideal para seus objetivos.';
+        } else {
+            profile = 'Arrojado: Você busca altos retornos e aceita riscos. Explore investimentos em ações, fundos multimercado e estratégias de longo prazo.';
+        }
+
+        quizResult.textContent = `Seu Perfil Financeiro: ${profile}`;
+        quizResult.style.display = 'block';
+    });
+
+    // Scroll animation for sections
+    const animateOnScroll = () => {
+        const sections = document.querySelectorAll('.presentation-section, .calculator-section');
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (sectionTop < windowHeight * 0.8) {
+                section.classList.add('show');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', animateOnScroll);
+
+    // Initialize scroll animations on page load
+    animateOnScroll();
+});
+                </script>
+
 </body>
 </html>

@@ -172,7 +172,7 @@ nav {
     background: rgba(253, 251, 243, 0.4);
     border-radius: 20px;
     box-sizing: border-box;
-    margin-top: 50vh; /* Posiciona o texto mais abaixo da mão da mulher */
+    margin-top: 55vh; /* Ajustado: Pouca coisa mais abaixo no desktop */
 }
 
 h1 {
@@ -256,6 +256,21 @@ h1:hover {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
+.presentation-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s ease 0.3s;
+}
+
+.presentation-section.show .presentation-name {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 .presentation-text {
     flex: 1;
     opacity: 0;
@@ -266,13 +281,6 @@ h1:hover {
 .presentation-section.show .presentation-text {
     opacity: 1;
     transform: translateX(0);
-}
-
-.presentation-text h3 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.5rem;
-    color: var(--text-primary);
-    margin-bottom: 0.8rem;
 }
 
 .presentation-text .presentation-subtitle {
@@ -1062,7 +1070,7 @@ footer p {
         max-width: 90%;
         padding: 2rem;
         border-radius: 15px;
-        margin-top: 60vh; /* Ajusta o texto mais abaixo em dispositivos móveis */
+        margin-top: 50vh; /* Ajustado: Um pouco mais acima no mobile */
     }
 
     h1 {
@@ -1087,17 +1095,16 @@ footer p {
     }
 
     .presentation-container {
-        display: flex;
         flex-direction: column;
         padding: 1.5rem;
         text-align: center;
         gap: 1rem; /* Espaçamento entre os elementos */
     }
 
-    .presentation-text h3 {
+    .presentation-name {
         font-size: 2rem;
         order: 1; /* Nome aparece primeiro */
-        margin-bottom: 0.5rem;
+        margin-bottom: 0;
     }
 
     .presentation-image {
@@ -1107,7 +1114,7 @@ footer p {
     }
 
     .presentation-text {
-        order: 3; /* Texto descritivo (subtítulo e parágrafo) aparece por último */
+        order: 3; /* Texto descritivo aparece por último */
         display: flex;
         flex-direction: column;
         gap: 0.8rem;
@@ -1125,6 +1132,7 @@ footer p {
         height: 300px;
     }
 
+    .presentation-name,
     .presentation-text,
     .presentation-image {
         transition-delay: 0.2s;
@@ -1350,7 +1358,7 @@ footer p {
         max-width: 95%;
         padding: 1.5rem;
         border-radius: 10px;
-        margin-top: 70vh; /* Ajusta o texto mais abaixo em telas menores */
+        margin-top: 45vh; /* Ajustado: Mais acima em telas menores */
     }
 
     h1 {
@@ -1376,7 +1384,7 @@ footer p {
         padding: 1rem;
     }
 
-    .presentation-text h3 {
+    .presentation-name {
         font-size: 1.8rem;
     }
 

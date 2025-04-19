@@ -172,7 +172,7 @@ nav {
     background: rgba(253, 251, 243, 0.4);
     border-radius: 20px;
     box-sizing: border-box;
-    margin-top: 55vh; /* Ajustado: Pouca coisa mais abaixo no desktop */
+    margin-top: 65vh; /* Ajustado: Ainda mais para baixo no desktop */
 }
 
 h1 {
@@ -1070,7 +1070,7 @@ footer p {
         max-width: 90%;
         padding: 2rem;
         border-radius: 15px;
-        margin-top: 50vh; /* Ajustado: Um pouco mais acima no mobile */
+        margin-top: 45vh; /* Ajustado: Um pouco mais para cima no mobile */
     }
 
     h1 {
@@ -1358,7 +1358,7 @@ footer p {
         max-width: 95%;
         padding: 1.5rem;
         border-radius: 10px;
-        margin-top: 45vh; /* Ajustado: Mais acima em telas menores */
+        margin-top: 40vh; /* Ajustado: Um pouco mais para cima em telas menores */
     }
 
     h1 {

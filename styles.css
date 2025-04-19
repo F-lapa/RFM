@@ -172,7 +172,7 @@ nav {
     background: rgba(253, 251, 243, 0.4);
     border-radius: 20px;
     box-sizing: border-box;
-    margin-top: 65vh; /* Ajustado: Ainda mais para baixo no desktop */
+    margin-top: 75vh; /* Ajustado: Significativamente mais para baixo no desktop */
 }
 
 h1 {
@@ -258,8 +258,14 @@ h1:hover {
 
 .presentation-name {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.5rem;
-    color: var(--text-primary);
+    font-size: 3rem; /* Aumentado para destacar no desktop */
+    background: linear-gradient(45deg, var(--text-primary), var(--accent-color)); /* Gradiente no texto */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Necessário para o gradiente */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    border-bottom: 2px solid var(--accent-color); /* Sublinhado decorativo */
+    padding-bottom: 0.3rem; /* Espaço para o sublinhado */
     margin-bottom: 0.8rem;
     opacity: 0;
     transform: translateX(-20px);
@@ -1070,7 +1076,7 @@ footer p {
         max-width: 90%;
         padding: 2rem;
         border-radius: 15px;
-        margin-top: 45vh; /* Ajustado: Um pouco mais para cima no mobile */
+        margin-top: 45vh; /* Mantido: Um pouco mais para cima no mobile, como solicitado */
     }
 
     h1 {
@@ -1102,7 +1108,11 @@ footer p {
     }
 
     .presentation-name {
-        font-size: 2rem;
+        font-size: 2rem; /* Mantido: Estilo original no mobile */
+        color: var(--text-primary); /* Sem gradiente */
+        text-shadow: none; /* Sem sombra adicional */
+        border-bottom: none; /* Sem sublinhado */
+        padding-bottom: 0; /* Sem espaço extra */
         order: 1; /* Nome aparece primeiro */
         margin-bottom: 0;
     }
@@ -1358,7 +1368,7 @@ footer p {
         max-width: 95%;
         padding: 1.5rem;
         border-radius: 10px;
-        margin-top: 40vh; /* Ajustado: Um pouco mais para cima em telas menores */
+        margin-top: 40vh; /* Mantido: Um pouco mais para cima em telas menores */
     }
 
     h1 {
@@ -1385,7 +1395,7 @@ footer p {
     }
 
     .presentation-name {
-        font-size: 1.8rem;
+        font-size: 1.8rem; /* Mantido: Estilo original em telas menores */
     }
 
     .presentation-text .presentation-subtitle {

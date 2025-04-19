@@ -18,7 +18,7 @@ body {
     font-family: 'Lora', sans-serif;
     background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
     color: var(--text-primary);
-    line    line-height: 1.6;
+    line-height: 1.6;
     min-height: 100vh;
     overflow-x: hidden;
     opacity: 0;
@@ -172,6 +172,7 @@ nav {
     background: rgba(253, 251, 243, 0.4);
     border-radius: 20px;
     box-sizing: border-box;
+    margin-top: 50vh; /* Alteração: Posiciona o texto mais abaixo da mão da mulher */
 }
 
 h1 {
@@ -328,7 +329,6 @@ h1:hover {
 }
 
 .video-presentation:hover {
-    transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -1022,6 +1022,7 @@ footer p {
         background: var(--primary-bg);
         padding: 1rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -1031,6 +1032,7 @@ footer p {
     .nav-menu li {
         margin: 0.8rem 0;
         animation-delay: 0.2s;
+        text-align: center;
     }
 
     .nav-menu li a {
@@ -1060,6 +1062,7 @@ footer p {
         max-width: 90%;
         padding: 2rem;
         border-radius: 15px;
+        margin-top: 60vh; /* Alteração: Ajusta o texto mais abaixo em dispositivos móveis */
     }
 
     h1 {
@@ -1091,6 +1094,20 @@ footer p {
 
     .presentation-text h3 {
         font-size: 2rem;
+        order: 1;
+    }
+
+    .presentation-image {
+        flex: 0 0 auto;
+        max-width: 100%;
+        order: 2;
+    }
+
+    .presentation-text {
+        order: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
     }
 
     .presentation-text .presentation-subtitle {
@@ -1099,11 +1116,6 @@ footer p {
 
     .presentation-text p {
         font-size: 1rem;
-    }
-
-    .presentation-image {
-        flex: 0 0 auto;
-        max-width: 100%;
     }
 
     .presentation-image img {
@@ -1335,6 +1347,7 @@ footer p {
         max-width: 95%;
         padding: 1.5rem;
         border-radius: 10px;
+        margin-top: 70vh; /* Alteração: Ajusta o texto mais abaixo em telas menores */
     }
 
     h1 {

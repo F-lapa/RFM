@@ -30,10 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.add('show');
             document.body.style.overflow = 'hidden';
         });
+        // Adicionado para suportar toque em dispositivos móveis
+        button.addEventListener('touchstart', () => {
+            const modalId = button.id.replace('open-', '') + '-modal';
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
     });
 
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
+            const modal = button.closest('.modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+        // Adicionado para suportar toque em dispositivos móveis
+        button.addEventListener('touchstart', () => {
             const modal = button.closest('.modal');
             modal.classList.remove('show');
             document.body.style.overflow = '';
@@ -47,6 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.overflow = '';
             }
         });
+        // Adicionado para suportar toque em dispositivos móveis
+        modal.addEventListener('touchstart', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
     });
 
     // ALTERADO: Menu hamburger para mobile
@@ -54,6 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.querySelector('.nav-menu');
 
     menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+    // Adicionado para suportar toque em dispositivos móveis
+    menuToggle.addEventListener('touchstart', () => {
         navMenu.classList.toggle('active');
     });
 
@@ -103,6 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('show');
         document.body.style.overflow = 'hidden';
     });
+    // Adicionado para suportar toque em dispositivos móveis
+    quizModal.addEventListener('touchstart', () => {
+        const modal = document.getElementById('quiz-modal');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    });
 
     quizForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -137,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
+    // ALTERADO: Removida a referência ao .hero-explanation
     document.querySelectorAll('.features, .testimonials, .consulting, .events, .resources, .calculator-section, .presentation-section').forEach(section => {
         observer.observe(section);
     });

@@ -1087,20 +1087,17 @@ footer p {
     }
 
     .presentation-container {
+        display: flex;
         flex-direction: column;
         padding: 1.5rem;
         text-align: center;
-    }
-
-    .presentation-text {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
+        gap: 1rem; /* Espaçamento entre os elementos */
     }
 
     .presentation-text h3 {
         font-size: 2rem;
         order: 1; /* Nome aparece primeiro */
+        margin-bottom: 0.5rem;
     }
 
     .presentation-image {
@@ -1109,14 +1106,19 @@ footer p {
         order: 2; /* Foto aparece em segundo */
     }
 
+    .presentation-text {
+        order: 3; /* Texto descritivo (subtítulo e parágrafo) aparece por último */
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
     .presentation-text .presentation-subtitle {
         font-size: 1.1rem;
-        order: 3; /* Subtítulo aparece depois da foto */
     }
 
     .presentation-text p {
         font-size: 1rem;
-        order: 4; /* Texto descritivo aparece por último */
     }
 
     .presentation-image img {

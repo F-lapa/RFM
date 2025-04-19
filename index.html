@@ -8,1096 +8,8 @@
     <title>RFM Educação Financeira - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
-
-    <!-- Integrated CSS -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-bg: #FDFBF3;
-            --text-primary: #B24514;
-            --text-hover: #D1642E;
-            --text-shadow: #8A340F;
-            --secondary-bg: #E8E6DA;
-            --accent-color: #6B8E7B;
-            --text-secondary: #4A4A4A;
-        }
-
-        body {
-            font-family: 'Lora', sans-serif;
-            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
-            opacity: 0;
-            animation: fadeInBody 1.5s ease-in-out forwards;
-        }
-
-        @keyframes fadeInBody {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        header {
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: slideInHeader 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
-        }
-
-        @keyframes slideInHeader {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-            color: var(--accent-color);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
-        }
-
-        .logo-icon:hover {
-            transform: scale(1.1);
-        }
-
-        .logo-text .main {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
-            color: var(--text-primary);
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .logo-text .sub {
-            font-family: 'Lora', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.6rem;
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .menu-toggle:hover {
-            transform: rotate(90deg);
-        }
-
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-menu li {
-            opacity: 0;
-            animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .nav-menu li:nth-child(1) { animation-delay: 0.6s; }
-        .nav-menu li:nth-child(2) { animation-delay: 0.8s; }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .nav-menu li a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 0.6rem 1.2rem;
-            border-radius: 25px;
-            background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg));
-            border: 1px solid var(--accent-color);
-            transition: all 0.3s ease;
-        }
-
-        .nav-menu li a:hover {
-            background: var(--accent-color);
-            color: var(--primary-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(107, 142, 123, 0.3);
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            padding: 4rem 2rem;
-            background: url('img.png') no-repeat center top / contain;
-            background-attachment: fixed;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(253, 251, 243, 0.4),
-                rgba(232, 230, 218, 0.2)
-            );
-            z-index: 2;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            position: relative;
-            z-index: 3;
-            padding: 3rem;
-            background: transparent;
-        }
-
-        .hero-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 6rem;
-            color: var(--text-primary);
-            text-shadow: 0 4px 8px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 2rem;
-            padding: 1rem 2rem;
-            background: rgba(253, 251, 243, 0.85);
-            border-radius: 20px;
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(-40px);
-            animation: fadeInDown 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .hero-title:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-subtitle {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.3);
-            margin: 1rem 0;
-            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
-            opacity: 0;
-        }
-
-        .cta-text {
-            font-family: 'Lora', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.4s forwards;
-            opacity: 0;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-        }
-
-        .hero-explanation {
-            background: var(--primary-bg);
-            padding: 3rem;
-            border-radius: 15px;
-            border: 1px solid var(--accent-color);
-            max-width: 1000px;
-            margin: 3rem auto;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
-            transition: all 0.3s ease;
-        }
-
-        .hero-explanation:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .hero-explanation h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .hero-explanation p {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            line-height: 1.7;
-        }
-
-        .presentation-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.5s ease;
-        }
-
-        .presentation-section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .presentation-container {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            background: var(--primary-bg);
-            padding: 2.5rem;
-            border-radius: 15px;
-            border: 1px solid var(--accent-color);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .presentation-container:hover {
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .presentation-text {
-            flex: 1;
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: all 0.5s ease 0.3s;
-        }
-
-        .presentation-section.show .presentation-text {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .presentation-text h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .presentation-text .presentation-subtitle {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .presentation-text p {
-            font-family: 'Lora', sans-serif;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        .presentation-image {
-            flex: 0 0 350px;
-            opacity: 0;
-            transform: translateX(20px);
-            transition: all 0.5s ease 0.5s;
-        }
-
-        .presentation-section.show .presentation-image {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .presentation-image img {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .presentation-image img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Ajuste para smartphones */
-        @media (max-width: 768px) {
-            .presentation-container {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            .presentation-image {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-            .presentation-image img {
-                max-height: 300px;
-                object-fit: contain;
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .presentation-image img {
-                max-height: 250px;
-            }
-        }
-
-        .video-presentation {
-            max-width: 1000px;
-            margin: 4rem auto;
-            padding: 2rem;
-            background: var(--primary-bg);
-            border-radius: 15px;
-            border: 1px solid var(--accent-color);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.8s forwards;
-        }
-
-        .video-presentation:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .video-presentation h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.3rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .video-presentation p {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background: #000;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-slogan {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-shadow: 0 3px 6px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.3);
-            margin: 2rem 0;
-            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 2s forwards;
-            opacity: 0;
-        }
-
-        .features {
-            max-width: 1400px;
-            margin: 5rem auto;
-            padding: 3rem 2rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 2.2s forwards;
-        }
-
-        .feature-card {
-            background: var(--primary-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid var(--accent-color);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInCard 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .feature-card:nth-child(1) { animation-delay: 2.4s; }
-        .feature-card:nth-child(2) { animation-delay: 2.6s; }
-        .feature-card:nth-child(3) { animation-delay: 2.8s; }
-        .feature-card:nth-child(4) { animation-delay: 3.0s; }
-        .feature-card:nth-child(5) { animation-delay: 3.2s; }
-        .feature-card:nth-child(6) { animation-delay: 3.4s; }
-
-        @keyframes fadeInCard {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .feature-card .icon {
-            font-size: 2.5rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover .icon {
-            transform: scale(1.2);
-        }
-
-        .feature-card h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .feature-card p {
-            font-size: 1rem;
-            color: var(--text-primary);
-        }
-
-        .testimonials,
-        .consulting,
-        .events,
-        .resources,
-        .calculator-section {
-            max-width: 1400px;
-            margin: 5rem auto;
-            padding: 3rem 2rem;
-            background: var(--primary-bg);
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .testimonials { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 3s forwards; opacity: 0; }
-        .consulting { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 3.2s forwards; opacity: 0; }
-        .events { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 3.4s forwards; opacity: 0; }
-        .resources { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 3.6s forwards; opacity: 0; }
-        .calculator-section { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
-        .calculator-section.show { opacity: 1; transform: translateY(0); }
-
-        .testimonials h2,
-        .consulting h2,
-        .events h2,
-        .resources h2,
-        .calculator-container h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .testimonial-grid,
-        .consulting-details,
-        .event-grid,
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card,
-        .consulting-item,
-        .event-card,
-        .resource-card {
-            background: var(--primary-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid var(--accent-color);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInCard 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .testimonial-card:nth-child(1),
-        .consulting-item:nth-child(1),
-        .event-card:nth-child(1),
-        .resource-card:nth-child(1) { animation-delay: 3.8s; }
-        .testimonial-card:nth-child(2),
-        .consulting-item:nth-child(2),
-        .event-card:nth-child(2),
-        .resource-card:nth-child(2) { animation-delay: 4s; }
-        .testimonial-card:nth-child(3),
-        .consulting-item:nth-child(3),
-        .event-card:nth-child(3),
-        .resource-card:nth-child(3) { animation-delay: 4.2s; }
-
-        .testimonial-card:hover,
-        .consulting-item:hover,
-        .event-card:hover,
-        .resource-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .testimonial-card p,
-        .consulting-item p,
-        .event-card p,
-        .resource-card p {
-            font-size: 1rem;
-            color: var(--text-primary);
-        }
-
-        .testimonial-card h4,
-        .consulting-item h3,
-        .event-card h3,
-        .resource-card h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .event-card .date {
-            font-size: 1rem;
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .consulting-item i {
-            font-size: 2.3rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
-        .consulting-item:hover i {
-            transform: scale(1.2);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background: var(--primary-bg);
-            padding: 2rem;
-            width: 90%;
-            max-width: 700px;
-            max-height: 80vh;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow-y: auto;
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.3s ease;
-        }
-
-        .modal.show .modal-content {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .modal-content::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .modal-content::-webkit-scrollbar-track {
-            background: var(--secondary-bg);
-            border-radius: 4px;
-        }
-
-        .modal-content::-webkit-scrollbar-thumb {
-            background: var(--accent-color);
-            border-radius: 4px;
-        }
-
-        .close-btn {
-            background: var(--accent-color);
-            color: var(--primary-bg);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .close-btn:hover {
-            transform: rotate(90deg);
-        }
-
-        .modal-hero h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-hero p {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-        }
-
-        .modal-about-section h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .modal-about-section p,
-        .modal-about-section ul {
-            font-family: 'Lora', sans-serif;
-            font-size: 1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .modal-about-section ul {
-            list-style: disc;
-            padding-left: 1.5rem;
-        }
-
-        #contact-modal .modal-content {
-            max-width: 600px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #contact-modal .contact-grid {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        #contact-modal .contact-item {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--secondary-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        #contact-modal .contact-item i {
-            font-size: 1.8rem;
-            color: var(--text-primary);
-        }
-
-        #contact-modal .contact-item:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Nova Calculadora Estilizada */
-        .calculator-container {
-            max-width: 600px;
-            margin: 2rem auto;
-            text-align: center;
-            background: var(--primary-bg);
-            padding: 3rem;
-            border-radius: 25px;
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .calculator-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-        }
-
-        .calculator-container h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.8rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .calculator-container p {
-            font-family: 'Lora', sans-serif;
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .calculator-form {
-            display: grid;
-            gap: 1.5rem;
-            padding: 0;
-            background: transparent;
-            box-shadow: none;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
-            position: relative;
-        }
-
-        .form-group label {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 12px;
-            border: 2px solid var(--accent-color);
-            background: var(--secondary-bg);
-            font-size: 1rem;
-            font-family: 'Lora', sans-serif;
-            color: var(--text-primary);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: var(--text-primary);
-            box-shadow: 0 0 10px rgba(178, 69, 20, 0.5);
-            outline: none;
-            transform: scale(1.02);
-        }
-
-        .form-group select {
-            appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="%23B24514" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 0.7rem top 50%;
-            background-size: 1.2rem;
-        }
-
-        .form-group input:invalid:not(:focus) {
-            border-color: #e74c3c;
-        }
-
-        .calculator-form button {
-            background: var(--text-primary);
-            color: var(--primary-bg);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .calculator-form button:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        #calculator-result {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary-bg);
-            background: linear-gradient(45deg, var(--text-primary), var(--text-hover));
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
-            transform: translateY(10px);
-        }
-
-        #calculator-result.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Novo Quiz de Perfil Financeiro */
-        .quiz-container {
-            max-width: 650px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: var(--secondary-bg);
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .quiz-question {
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease forwards;
-        }
-
-        .quiz-question:nth-child(1) { animation-delay: 0.2s; }
-        .quiz-question:nth-child(2) { animation-delay: 0.4s; }
-        .quiz-question:nth-child(3) { animation-delay: 0.6s; }
-        .quiz-question:nth-child(4) { animation-delay: 0.8s; }
-        .quiz-question:nth-child(5) { animation-delay: 1.0s; }
-        .quiz-question:nth-child(6) { animation-delay: 1.2s; }
-        .quiz-question:nth-child(7) { animation-delay: 1.4s; }
-        .quiz-question:nth-child(8) { animation-delay: 1.6s; }
-
-        .quiz-question h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .quiz-question label {
-            font-family: 'Lora', sans-serif;
-            font-size: 1.1rem;
-            color: Ascendancy;
-            display: block;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .quiz-question input[type="radio"] {
-            margin-right: 0.5rem;
-        }
-
-        .quiz-question label:hover {
-            background: rgba(107, 142, 123, 0.1);
-        }
-
-        .quiz-form button {
-            background: var(--text-primary);
-            color: var(--primary-bg);
-            padding: 1rem 2rem;
-            border: 2px solid var(--accent-color);
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1.5rem;
-        }
-
-        .quiz-form button:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        #quiz-result {
-            margin-top: 2rem;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            background: var(--primary-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.5s ease;
-        }
-
-        #quiz-result.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        footer {
-            background: linear-gradient(135deg, var(--secondary-bg), var(--primary-bg));
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-primary);
-            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer-logo {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-logo .highlight {
-            color: var(--text-primary);
-        }
-
-        .social-links a {
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--text-hover);
-            transform: scale(1.2);
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 1024px) {
-            .hero-title { font-size: 4.5rem; }
-            .hero-subtitle { font-size: 2rem; }
-            .features { grid-template-columns: repeat(2, 1fr); }
-            .presentation-container { flex-direction: column; gap: 1.5rem; }
-            .presentation-image { flex: 0 0 100%; max-width: 400px; }
-            .presentation-image img { height: 350px; }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--primary-bg);
-                padding: 1rem;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                z-index: 1000;
-            }
-            .nav-menu.active { display: flex; }
-            .nav-menu li {
-                margin: 0.5rem 0;
-                opacity: 1;
-                animation: none;
-            }
-            .nav-menu li a {
-                display: block;
-                text-align: center;
-                padding: 0.8rem;
-                font-size: 1.1rem;
-            }
-            .hero {
-                padding: 3rem 1rem;
-                background-attachment: scroll;
-                background-size: cover;
-            }
-            .hero-title {
-                font-size: 3.5rem;
-                padding: 0.8rem 1.5rem;
-            }
-            .hero-subtitle { font-size: 1.8rem; }
-            .features { grid-template-columns: 1fr; }
-            .hero::before {
-                background: linear-gradient(
-                    135deg,
-                    rgba(253, 251, 243, 0.6),
-                    rgba(232, 230, 218, 0.4)
-                );
-            }
-            .modal-content { width: 90%; max-height: 85vh; padding: 1.5rem; }
-        }
-
-        @media (max-width: 480px) {
-            .logo-text .main { font-size: 1.8rem; }
-            .logo-text .sub { font-size: 0.8rem; }
-            .hero-title {
-                font-size: 2.5rem;
-                padding: 0.5rem 1rem;
-            }
-            .hero-subtitle { font-size: 1.5rem; }
-            .hero-slogan { font-size: 2.5rem; }
-            .presentation-image img { height: 250px; }
-            .modal-content { width: 95%; padding: 1rem; }
-            .hero-content { padding: 1.5rem; }
-            .hero {
-                background-size: cover;
-                background-position: center;
-            }
-            .calculator-container { padding: 1.5rem; }
-            .form-group input,
-            .form-group select { font-size: 0.9rem; padding: 0.6rem; }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -1123,13 +35,9 @@
         <section class="hero">
             <div class="hero-content">
                 <div id="particles-js"></div>
-                <h2 class="hero-subtitle">Transforme sua relação com o dinheiro</h2>
+                <h1>Transforme sua relação com o dinheiro</h1>
                 <p>Treinamentos completos para empresas, conceitos de investimentos e finanças pessoais descomplicados.</p>
                 <p class="cta-text">Comece Agora</p>
-                <div class="hero-explanation">
-                    <h3>O que é Inteligência Financeira?</h3>
-                    <p>Inteligência financeira é mais do que apenas números — é o poder de tomar decisões conscientes que alinham seu dinheiro aos seus sonhos. Na RFM Educação Financeira, nós descomplicamos esse caminho, oferecendo ferramentas, treinamentos e estratégias para que você alcance prosperidade com confiança, seja como indivíduo ou empresa.</p>
-                </div>
                 <div class="presentation-section show">
                     <div class="presentation-container">
                         <div class="presentation-text">
@@ -1146,7 +54,7 @@
                     <h3>Descubra Como Transformamos Vidas</h3>
                     <p>Assista ao nosso vídeo e veja como a RFM pode guiar você rumo à prosperidade.</p>
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Vídeo de Apresentação RFM" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen aria-label="Vídeo institucional da RFM Educação Financeira"></iframe>
                     </div>
                 </div>
                 <p class="hero-slogan">Construa hoje o futuro que você merece.</p>
@@ -1189,47 +97,258 @@
         <section class="calculator-section" id="calculator-section" style="display: none;">
             <div class="calculator-container">
                 <h2>Calcule o Poder dos Juros Compostos</h2>
-                <p>Planeje seu futuro financeiro com nossa calculadora interativa e visualize o crescimento do seu dinheiro.</p>
+                <p>Descubra quanto você pode acumular com seus investimentos.</p>
                 <form id="calculator-form" class="calculator-form">
                     <div class="form-group">
-                        <label for="initial-value">Valor Inicial (R$):</label>
+                        <label for="initial-value"><i class="fas fa-money-bill-wave"></i> Valor Inicial (R$):</label>
                         <input type="number" id="initial-value" value="1000" min="0" step="0.01" required>
                     </div>
                     <div class="form-group">
-                        <label for="monthly-value">Aporte Mensal (R$):</label>
+                        <label for="monthly-value"><i class="fas fa-coins"></i> Aporte Mensal (R$):</label>
                         <input type="number" id="monthly-value" value="0" min="0" step="0.01" required>
                     </div>
                     <div class="form-group">
-                        <label for="interest-rate">Taxa de Rendimento Anual (%):</label>
-                        <input type="number" id="interest-rate" value="10" min="0" max="100" step="0.1" required>
+                        <label for="interest-rate"><i class="fas fa-percentage"></i> Taxa de Rendimento Anual (%):</label>
+                        <input type="number" id="interest-rate" value="10" min="0" step="0.1" required>
                     </div>
-                    <div class="form-group">
-                        <label for="period">Período:</label>
-                        <input type="number" id="period" value="10" min="1" required>
-                        <select id="period-unit">
-                            <option value="years">Anos</option>
-                            <option value="months">Meses</option>
-                        </select>
+                    <div class="form-group period-input">
+                        <label for="period"><i class="fas fa-calendar-alt"></i> Período:</label>
+                        <div class="period-container">
+                            <input type="number" id="period" value="10" min="1" required>
+                            <select id="period-unit">
+                                <option value="years">Anos</option>
+                                <option value="months">Meses</option>
+                            </select>
+                        </div>
                     </div>
-                    <button type="submit">Calcular</button>
+                    <button type="button" class="calculator-btn">Calcular</button>
                 </form>
-                <div id="calculator-result"></div>
+                <div id="calculator-result" class="result-box"></div>
             </div>
         </section>
 
-        <!-- Outras seções (testimonials, consulting, events, resources) permanecem inalteradas -->
+        <section class="testimonials">
+            <h2>O Que Nossos Clientes Dizem</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Os treinamentos da RFM transformaram a forma como nossa equipe gerencia os recursos da empresa."</p>
+                    <h4>Mariana S., Gerente de Finanças</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Aprendi a investir com segurança e hoje tenho uma reserva financeira que me dá tranquilidade."</p>
+                    <h4>Juliana M., Cliente Individual</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"A consultoria personalizada da RFM me ajudou a criar um plano financeiro realista para o meu negócio."</p>
+                    <h4>Carla R., Empreendedora</h4>
+                </div>
+            </div>
+        </section>
 
+        <section class="consulting">
+            <h2>Consultoria Personalizada</h2>
+            <p>Soluções sob medida para atender às suas necessidades financeiras específicas.</p>
+            <div class="consulting-details">
+                <div class="consulting-item" id="open-planejamento-modal">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Planejamento Individual</h3>
+                    <p>Um plano financeiro personalizado para você alcançar seus objetivos.</p>
+                </div>
+                <div class="consulting-item" id="open-empresarial-modal">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Consultoria Empresarial</h3>
+                    <p>Estratégias financeiras para o crescimento sustentável do seu negócio.</p>
+                </div>
+                <div class="consulting-item" id="open-acompanhamento-modal">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Acompanhamento Contínuo</h3>
+                    <p>Suporte contínuo para ajustar seu plano financeiro conforme suas necessidades.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Blog e Recursos Educacionais</h2>
+            <p>Explore nossos artigos, guias e ferramentas gratuitas.</p>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h3>Guia: Como Criar um Orçamento</h3>
+                    <p>Um guia passo a passo para organizar suas finanças.</p>
+                </div>
+                <div class="resource-card">
+                    <h3>Artigo: O Poder dos Juros Compostos</h3>
+                    <p>Entenda como os juros compostos podem trabalhar a seu favor.</p>
+                </div>
+                <div class="resource-card">
+                    <h3>E-book: Primeiros Passos nos Investimentos</h3>
+                    <p>Um e-book completo para iniciantes que desejam começar a investir.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Modais (mantidos inalterados, exceto o quiz-modal) -->
+    <div id="about-modal" class="modal" aria-describedby="about-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Quem Somos na RFM Educação Financeira</h1>
+                    <p>Seu parceiro para alcançar a prosperidade que você merece.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="about-modal-description">
+                    <h2>Nossa Missão</h2>
+                    <p>Imagine um futuro onde você tem total controle sobre suas finanças, onde cada decisão que você toma com seu dinheiro te aproxima dos seus sonhos. Na RFM Educação Financeira, nossa missão é tornar esse futuro realidade. Somos mais do que uma empresa de educação — somos um movimento para empoderar pessoas e negócios com inteligência financeira, descomplicando o caminho para a prosperidade com estratégias práticas e personalizadas.</p>
+                    <h2>Por que Escolher a RFM?</h2>
+                    <p>Porque acreditamos que finanças não precisam ser complicadas. Com a RFM, você terá acesso a treinamentos envolventes, consultorias sob medida e ferramentas inovadoras que transformam conhecimento em resultados. Nossa equipe de especialistas combina paixão, experiência e uma abordagem humana para guiar você em cada passo, seja para sair das dívidas, investir com confiança ou escalar seu negócio. Não oferecemos apenas cursos — oferecemos uma nova forma de enxergar o dinheiro e viver a vida que você sempre quis.</p>
+                    <h2>Nosso Compromisso com Você</h2>
+                    <p>Seu sucesso é o nosso sucesso. Na RFM, comprometemo-nos a estar ao seu lado, oferecendo suporte contínuo e soluções que evoluem com suas necessidades. Queremos que você sinta a confiança de quem sabe para onde está indo e a liberdade de quem planeja o futuro com segurança. Junte-se a milhares de pessoas e empresas que já transformaram suas finanças com a RFM. Vamos construir juntos o caminho para a sua prosperidade?</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="treinamentos-modal" class="modal" aria-describedby="treinamentos-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Treinamentos para Empresas</h1>
+                    <p>Capacite sua equipe para decisões financeiras estratégicas.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="treinamentos-modal-description">
+                    <h2>Como Transformamos Sua Empresa</h2>
+                    <p>Na RFM Educação Financeira, acreditamos que o sucesso de uma empresa começa com uma equipe bem preparada. Nossos treinamentos corporativos são projetados para alinhar inteligência financeira com os objetivos do seu negócio, promovendo decisões mais assertivas e resultados sustentáveis. Como fazemos isso?</p>
+                    <ul>
+                        <li><strong>Diagnóstico Personalizado</strong>: Começamos analisando as necessidades específicas da sua empresa, identificando desafios financeiros e oportunidades de crescimento.</li>
+                        <li><strong>Workshops Práticos</strong>: Oferecemos sessões interativas que ensinam desde orçamento corporativo até gestão de fluxo de caixa, usando estudos de caso reais adaptados ao seu setor.</li>
+                        <li><strong>Ferramentas Aplicáveis</strong>: Fornecemos planilhas, calculadoras e guias que sua equipe pode usar no dia a dia para monitorar e otimizar recursos.</li>
+                        <li><strong>Acompanhamento Contínuo</strong>: Após o treinamento, oferecemos suporte para garantir que os conceitos sejam aplicados, com relatórios de progresso e ajustes conforme necessário.</li>
+                    </ul>
+                    <p>Nosso objetivo é transformar sua equipe em um time confiante e capacitado, pronto para tomar decisões que impulsionem o crescimento e a estabilidade financeira do seu negócio. Com a RFM, você investe em conhecimento que gera resultados mensuráveis.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="investimentos-modal" class="modal" aria-describedby="investimentos-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Conceito de Investimentos</h1>
+                    <p>Aprenda a investir com estratégia e segurança.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="investimentos-modal-description">
+                    <h2>Descomplicando o Mundo dos Investimentos</h2>
+                    <p>Investir pode parecer intimidador, mas na RFM Educação Financeira, tornamos esse processo claro, acessível e empoderador. Nosso programa de Conceito de Investimentos é projetado para todos os níveis — do iniciante que quer começar com segurança ao investidor experiente que busca estratégias avançadas. Veja como fazemos isso:</p>
+                    <p><strong>1. Educação Fundamental</strong>: Ensinamos os conceitos básicos, como tipos de investimentos (renda fixa, variável, fundos), riscos e retornos, usando exemplos práticos que qualquer pessoa pode entender.</p>
+                    <p><strong>2. Planejamento Personalizado</strong>: Ajudamos você a definir seus objetivos financeiros — seja comprar uma casa, aposentar-se cedo ou crescer seu patrimônio — e mostramos como montar uma carteira alinhada a esses sonhos.</p>
+                    <p><strong>3. Prática Supervisionada</strong>: Oferecemos simulações de investimento e análises de mercado em tempo real, para você ganhar confiança antes de investir seu dinheiro.</p>
+                    <p><strong>4. Suporte Contínuo</strong>: Nossa equipe está disponível para responder dúvidas e ajustar sua estratégia conforme o mercado ou suas metas mudam.</p>
+                    <p>Com a RFM, você não apenas aprende a investir — você ganha a confiança para fazer seu dinheiro trabalhar por você, com estratégias que equilibram segurança e crescimento.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="financas-modal" class="modal" aria-describedby="financas-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Finanças Pessoais</h1>
+                    <p>Domine a gestão do seu dinheiro.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="financas-modal-description">
+                    <h2>Assuma o Controle das Suas Finanças</h2>
+                    <p>Gerir suas finanças pessoais não precisa ser complicado. Na RFM Educação Financeira, oferecemos um programa completo que guia você passo a passo rumo à liberdade financeira. Nosso método é prático, humano e focado em resultados que transformam sua relação com o dinheiro. Como fazemos isso?</p>
+                    <ul>
+                        <li><strong>Orçamento Inteligente</strong>: Ensinamos como criar um orçamento realista que equilibra suas despesas, poupança e lazer, usando ferramentas simples como aplicativos ou planilhas personalizadas.</li>
+                        <li><strong>Redução de Dívidas</strong>: Mostramos estratégias para negociar dívidas, priorizar pagamentos e sair do vermelho de forma sustentável, sem sacrificar sua qualidade de vida.</li>
+                        <li><strong>Reserva de Emergência</strong>: Orientamos você a construir uma reserva financeira que traga segurança, com metas claras e prazos alcançáveis.</li>
+                        <li><strong>Primeiros Investimentos</strong>: Introduzimos conceitos de investimento acessíveis, ajudando você a dar os primeiros passos para fazer seu dinheiro crescer.</li>
+                    </ul>
+                    <p>Além disso, oferecemos mentoria individual para ajustar o plano às suas necessidades e workshops práticos para reforçar o aprendizado. Com a RFM, você ganha clareza, confiança e as ferramentas para construir um futuro financeiro sólido.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="tips-modal" class="modal" aria-describedby="tips-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Dicas Financeiras Práticas</h1>
+                    <p>Confira nossas dicas para melhorar sua gestão financeira.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="tips-modal-description">
+                    <h2>Estratégias Simples para o Seu Sucesso</h2>
+                    <p>Na RFM Educação Financeira, acreditamos que pequenas ações podem gerar grandes resultados. Nossas dicas financeiras são práticas, fáceis de aplicar e projetadas para transformar sua vida financeira. Aqui estão algumas estratégias que usamos para ajudar nossos clientes:</p>
+                    <div class="tip-card">
+                        <h3>5 Passos para Sair das Dívidas</h3>
+                        <p>Liste todas as suas dívidas, começando pelas de maior juros. Negocie com credores para reduzir taxas ou parcelas. Crie um plano de pagamento priorizando as dívidas mais caras, enquanto mantém um orçamento enxuto. Use qualquer renda extra, como bônus, para acelerar o processo. Por fim, celebre cada dívida quitada para manter a motivação!</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Como Começar a Investir com Pouco Dinheiro</h3>
+                        <p>Comece com pequenos aportes em opções acessíveis, como Tesouro Direto ou fundos de investimento. Automatize seus investimentos com aportes mensais fixos, mesmo que sejam R$50. Estude o básico sobre diversificação para reduzir riscos. Use aplicativos de investimento que oferecem opções sem taxas altas. Aos poucos, reinvista os lucros para crescer sua carteira.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>A Importância de uma Reserva de Emergência</h3>
+                        <p>Tenha como meta guardar pelo menos 6 meses de despesas básicas. Comece poupando 10% da sua renda mensal em uma conta separada, como uma poupança ou CDB de liquidez diária. Evite usar essa reserva para gastos não essenciais. Revise seu progresso trimestralmente e ajuste o valor conforme suas despesas mudam. Essa segurança financeira é a base para seus próximos passos!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="contact-modal" class="modal" aria-describedby="contact-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Conecte-se com a RFM</h1>
+                    <p>Entre em contato e comece sua jornada rumo à prosperidade financeira!</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="contact-modal-description">
+                    <div class="contact-grid">
+                        <a href="https://youtube.com" target="_blank" class="contact-item" aria-label="Canal do YouTube da RFM">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/5511999999999" target="_blank" class="contact-item" aria-label="WhatsApp da RFM">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="contact-item" aria-label="Instagram da RFM">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:contato@rfmfinanceira.com" class="contact-item" aria-label="E-mail da RFM">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <div id="quiz-modal" class="modal" aria-describedby="quiz-modal-description">
         <div class="modal-content">
             <span class="close-btn" aria-label="Fechar modal">×</span>
             <section class="modal-hero">
                 <div class="modal-hero-content">
-                    <h1>Descubra Seu Perfil Financeiro</h1>
-                    <p>Responda às perguntas abaixo para entender como você lida com suas finanças e receber recomendações personalizadas!</p>
+                    <h1>Qual é o Seu Perfil Financeiro?</h1>
+                    <p>Responda a algumas perguntas e descubra como você lida com suas finanças!</p>
                 </div>
             </section>
             <section class="modal-about-section">
@@ -1238,62 +357,117 @@
                         <form id="quiz-form">
                             <div class="quiz-question">
                                 <h3>1. Como você descreveria sua relação com riscos financeiros?</h3>
-                                <label><input type="radio" name="q1" value="1" required> Evito riscos a todo custo, prefiro segurança.</label>
-                                <label><input type="radio" name="q1" value="2"> Aceito riscos moderados se houver bom potencial de retorno.</label>
-                                <label><input type="radio" name="q1" value="3"> Gosto de correr riscos para maximizar retornos.</label>
+                                <label><input type="radio" name="q1" value="1" required> Evito riscos a todo custo.</label>
+                                <label><input type="radio" name="q1" value="2"> Aceito riscos moderados.</label>
+                                <label><input type="radio" name="q1" value="3"> Gosto de correr riscos para altos retornos.</label>
                             </div>
                             <div class="quiz-question">
-                                <h3>2. Quanto você poupa regularmente da sua renda mensal?</h3>
-                                <label><input type="radio" name="q2" value="1" required> Menos de 10% ou nada.</label>
-                                <label><input type="radio" name="q2" value="2"> Entre 10% e 20%.</label>
-                                <label><input type="radio" name="q2" value="3"> Mais de 20%.</label>
+                                <h3>2. Quanto você poupa por mês?</h3>
+                                <label><input type="radio" name="q2" value="1" required> Menos de 10% da minha renda.</label>
+                                <label><input type="radio" name="q2" value="2"> Entre 10% e 20% da minha renda.</label>
+                                <label><input type="radio" name="q2" value="3"> Mais de 20% da minha renda.</label>
                             </div>
                             <div class="quiz-question">
-                                <h3>3. Qual é o seu principal objetivo financeiro atual?</h3>
-                                <label><input type="radio" name="q3" value="1" required> Construir uma reserva de emergência e segurança.</label>
-                                <label><input type="radio" name="q3" value="2"> Alcançar crescimento financeiro a longo prazo.</label>
-                                <label><input type="radio" name="q3" value="3"> Buscar altos retornos rapidamente, mesmo com riscos.</label>
+                                <h3>3. Qual é o seu principal objetivo financeiro?</h3>
+                                <label><input type="radio" name="q3" value="1" required> Segurança e estabilidade.</label>
+                                <label><input type="radio" name="q3" value="2"> Crescimento moderado a longo prazo.</label>
+                                <label><input type="radio" name="q3" value="3"> Crescimento rápido, mesmo com riscos.</label>
                             </div>
                             <div class="quiz-question">
-                                <h3>4. Como você reage a perdas financeiras inesperadas?</h3>
-                                <label><input type="radio" name="q4" value="1" required> Fico muito preocupado e evito novos investimentos.</label>
-                                <label><input type="radio" name="q4" value="2"> Analiso com calma e ajusto minha estratégia.</label>
-                                <label><input type="radio" name="q4" value="3"> Vejo como aprendizado e continuo investindo.</label>
+                                <h3>4. Como você planeja suas finanças?</h3>
+                                <label><input type="radio" name="q4" value="1" required> Não planejo, vivo o momento.</label>
+                                <label><input type="radio" name="q4" value="2"> Tenho um orçamento básico.</label>
+                                <label><input type="radio" name="q4" value="3"> Planejo detalhadamente com metas claras.</label>
                             </div>
                             <div class="quiz-question">
-                                <h3>5. Qual é o seu nível de conhecimento sobre investimentos?</h3>
-                                <label><input type="radio" name="q5" value="1" required> Sou iniciante e não sei por onde começar.</label>
-                                <label><input type="radio" name="q5" value="2"> Tenho conhecimento básico e invisto com cuidado.</label>
-                                <label><input type="radio" name="q5" value="3"> Sou experiente e acompanho o mercado regularmente.</label>
+                                <h3>5. Qual é sua experiência com investimentos?</h3>
+                                <label><input type="radio" name="q5" value="1" required> Nenhuma, nunca investi.</label>
+                                <label><input type="radio" name="q5" value="2"> Alguma, com investimentos simples.</label>
+                                <label><input type="radio" name="q5" value="3"> Ampla, com carteira diversificada.</label>
                             </div>
-                            <div class="quiz-question">
-                                <h3>6. Como você planeja suas finanças?</h3>
-                                <label><input type="radio" name="q6" value="1" required> Não planejo, vivo o momento.</label>
-                                <label><input type="radio" name="q6" value="2"> Faço um planejamento básico, como um orçamento mensal.</label>
-                                <label><input type="radio" name="q6" value="3"> Tenho um plano financeiro detalhado com metas claras.</label>
-                            </div>
-                            <div class="quiz-question">
-                                <h3>7. Você tem uma reserva de emergência?</h3>
-                                <label><input type="radio" name="q7" value="1" required> Não, não tenho nenhuma reserva.</label>
-                                <label><input type="radio" name="q7" value="2"> Sim, cobre até 3 meses de despesas.</label>
-                                <label><input type="radio" name="q7" value="3"> Sim, cobre 6 meses ou mais de despesas.</label>
-                            </div>
-                            <div class="quiz-question">
-                                <h3>8. O que mais te motiva a gerir suas finanças?</h3>
-                                <label><input type="radio" name="q8" value="1" required> Evitar dívidas e problemas financeiros.</label>
-                                <label><input type="radio" name="q8" value="2"> Alcançar objetivos de médio prazo, como comprar uma casa.</label>
-                                <label><input type="radio" name="q8" value="3"> Construir riqueza significativa para o futuro.</label>
-                            </div>
-                            <button type="submit">Descubra Meu Perfil</button>
+                            <button type="submit" class="quiz-btn">Descobrir Meu Perfil</button>
                         </form>
-                        <div id="quiz-result"></div>
+                        <div id="quiz-result" class="result-box"></div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
 
-    <!-- Outros modais (about, treinamentos, etc.) permanecem inalterados -->
+    <div id="planejamento-modal" class="modal" aria-describedby="planejamento-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Planejamento Individual</h1>
+                    <p>Seu caminho personalizado para a liberdade financeira.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="planejamento-modal-description">
+                    <h2>Transforme Seus Objetivos em Realidade</h2>
+                    <p>Na RFM Educação Financeira, nosso Planejamento Individual é desenhado para alinhar suas finanças aos seus sonhos. Quer comprar uma casa, viajar o mundo ou se aposentar cedo? Nós criamos um plano sob medida que reflete suas prioridades e realidade financeira.</p>
+                    <ul>
+                        <li><strong>Análise Personalizada</strong>: Avaliamos sua situação atual, incluindo renda, despesas, dívidas e objetivos, para criar um plano realista.</li>
+                        <li><strong>Estratégias Práticas</strong>: Oferecemos passos claros para reduzir dívidas, poupar de forma eficiente e iniciar investimentos que se adequem ao seu perfil.</li>
+                        <li><strong>Ferramentas Exclusivas</strong>: Fornecemos planilhas e aplicativos personalizados para você acompanhar seu progresso com facilidade.</li>
+                        <li><strong>Sessões Individuais</strong>: Reuniões regulares com nossos consultores para ajustar o plano conforme sua vida evolui.</li>
+                    </ul>
+                    <p>Com o Planejamento Individual da RFM, você terá clareza sobre suas finanças e confiança para alcançar seus objetivos, passo a passo, com suporte contínuo.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="empresarial-modal" class="modal" aria-describedby="empresarial-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Consultoria Empresarial</h1>
+                    <p>Estratégias para o crescimento sustentável do seu negócio.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="empresarial-modal-description">
+                    <h2>Leve Sua Empresa ao Próximo Nível</h2>
+                    <p>A Consultoria Empresarial da RFM Educação Financeira é voltada para negócios que buscam estabilidade e crescimento. Trabalhamos com você para otimizar a gestão financeira da sua empresa, garantindo decisões estratégicas que impulsionam resultados.</p>
+                    <ul>
+                        <li><strong>Diagnóstico Financeiro</strong>: Analisamos o fluxo de caixa, margens de lucro e estrutura de custos para identificar oportunidades de melhoria.</li>
+                        <li><strong>Planejamento Estratégico</strong>: Desenvolvemos planos financeiros que alinham suas metas de curto e longo prazo, como expansão ou redução de dívidas.</li>
+                        <li><strong>Treinamento de Equipe</strong>: Capacitamos seus colaboradores com workshops práticos para melhorar a eficiência financeira no dia a dia.</li>
+                        <li><strong>Monitoramento Contínuo</strong>: Acompanhamos indicadores financeiros e sugerimos ajustes para manter sua empresa no caminho certo.</li>
+                    </ul>
+                    <p>Com a RFM, sua empresa ganha uma parceira comprometida em transformar desafios financeiros em oportunidades de crescimento sustentável.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="acompanhamento-modal" class="modal" aria-describedby="acompanhamento-modal-description">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fechar modal">×</span>
+            <section class="modal-hero">
+                <div class="modal-hero-content">
+                    <h1>Acompanhamento Contínuo</h1>
+                    <p>Suporte constante para suas finanças evoluírem com você.</p>
+                </div>
+            </section>
+            <section class="modal-about-section">
+                <div class="modal-about-content" id="acompanhamento-modal-description">
+                    <h2>Estamos com Você em Cada Passo</h2>
+                    <p>O Acompanhamento Contínuo da RFM Educação Financeira é ideal para quem deseja manter suas finanças sempre alinhadas com seus objetivos. Nossa abordagem garante que seu plano financeiro evolua junto com suas necessidades, seja na vida pessoal ou nos negócios.</p>
+                    <ul>
+                        <li><strong>Revisões Regulares</strong>: Fazemos análises periódicas do seu plano financeiro para ajustá-lo a mudanças, como novas metas ou imprevistos.</li>
+                        <li><strong>Suporte Personalizado</strong>: Nossa equipe está disponível para esclarecer dúvidas e oferecer orientações em tempo real, por e-mail, WhatsApp ou reuniões.</li>
+                        <li><strong>Relatórios de Progresso</strong>: Fornecemos relatórios detalhados que mostram seu avanço financeiro e sugerem próximos passos.</li>
+                        <li><strong>Educação Contínua</strong>: Oferecemos acesso a novos conteúdos, como webinars e guias, para manter você atualizado sobre finanças.</li>
+                    </ul>
+                    <p>Com o Acompanhamento Contínuo da RFM, você nunca está sozinho. Estamos aqui para garantir que suas finanças estejam sempre no caminho certo.</p>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-logo">
@@ -1309,186 +483,173 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Particles.js initialization
-            particlesJS('particles-js', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: '#B24514' },
-                    shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
-                    opacity: { value: 0.5, random: false },
-                    size: { value: 3, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#B24514', opacity: 0.4, width: 1 },
-                    move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-                },
-                retina_detect: true
-            });
-
-            // Modal handling
-            const modals = document.querySelectorAll('.modal');
-            const openModalButtons = document.querySelectorAll('[id*="open-"]');
-            const closeButtons = document.querySelectorAll('.close-btn');
-
-            openModalButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const modalId = button.id.replace('open-', '') + '-modal';
-                    const modal = document.getElementById(modalId);
-                    modal.classList.add('show');
-                    document.body.style.overflow = 'hidden';
-                    // Gerenciamento de foco
-                    const firstFocusable = modal.querySelector('button, [href], input, select, textarea');
-                    if (firstFocusable) firstFocusable.focus();
-                });
-                button.addEventListener('touchstart', () => {
-                    const modalId = button.id.replace('open-', '') + '-modal';
-                    const modal = document.getElementById(modalId);
-                    modal.classList.add('show');
-                    document.body.style.overflow = 'hidden';
-                    const firstFocusable = modal.querySelector('button, [href], input, select, textarea');
-                    if (firstFocusable) firstFocusable.focus();
-                });
-            });
-
-            closeButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const modal = button.closest('.modal');
-                    modal.classList.remove('show');
-                    document.body.style.overflow = '';
-                });
-                button.addEventListener('touchstart', () => {
-                    const modal = button.closest('.modal');
-                    modal.classList.remove('show');
-                    document.body.style.overflow = '';
-                });
-            });
-
-            modals.forEach(modal => {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        modal.classList.remove('show');
-                        document.body.style.overflow = '';
-                    }
-                });
-                modal.addEventListener('touchstart', (e) => {
-                    if (e.target === modal) {
-                        modal.classList.remove('show');
-                        document.body.style.overflow = '';
-                    }
-                });
-            });
-
-            // Menu hamburger for mobile
+            // Toggle mobile menu
             const menuToggle = document.querySelector('.menu-toggle');
             const navMenu = document.querySelector('.nav-menu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    menuToggle.querySelector('i').classList.toggle('fa-bars');
+                    menuToggle.querySelector('i').classList.toggle('fa-times');
+                });
+            }
 
-            menuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
+            // Modal functionality
+            function openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'flex';
+                    setTimeout(() => modal.classList.add('show'), 10);
+                }
+            }
+
+            function closeModal(modal) {
+                if (modal) {
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 500);
+                }
+            }
+
+            // Attach modal open events
+            const modalTriggers = [
+                'open-about-modal',
+                'open-contact-modal',
+                'open-treinamentos-modal',
+                'open-investimentos-modal',
+                'open-financas-modal',
+                'open-tips-modal',
+                'open-quiz-modal',
+                'open-planejamento-modal',
+                'open-empresarial-modal',
+                'open-acompanhamento-modal'
+            ];
+
+            modalTriggers.forEach(id => {
+                const trigger = document.getElementById(id);
+                if (trigger) {
+                    trigger.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openModal(id.replace('open-', ''));
+                    });
+                }
             });
-            menuToggle.addEventListener('touchstart', () => {
-                navMenu.classList.toggle('active');
-            });
 
-            // Calculator handling
-            const calculatorElements = {
-                showButton: document.getElementById('show-calculator'),
-                section: document.getElementById('calculator-section'),
-                form: document.getElementById('calculator-form'),
-                result: document.getElementById('calculator-result'),
-            };
-
-            calculatorElements.showButton.addEventListener('click', () => {
-                calculatorElements.section.style.display = 'block';
-                calculatorElements.section.classList.add('show');
-                window.scrollTo({
-                    top: calculatorElements.section.offsetTop,
-                    behavior: 'smooth',
+            // Close modals on close button click
+            document.querySelectorAll('.close-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    closeModal(btn.closest('.modal'));
                 });
             });
 
-            calculatorElements.form.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                const initialValue = parseFloat(document.getElementById('initial-value').value);
-                const monthlyValue = parseFloat(document.getElementById('monthly-value').value);
-                const interestRate = parseFloat(document.getElementById('interest-rate').value) / 100;
-                let period = parseInt(document.getElementById('period').value);
-                const periodUnit = document.getElementById('period-unit').value;
-
-                // Validação
-                if (initialValue < 0 || monthlyValue < 0 || interestRate < 0 || interestRate > 1 || period < 1) {
-                    calculatorElements.result.textContent = 'Por favor, insira valores válidos (positivos e realistas).';
-                    calculatorElements.result.style.background = '#e74c3c';
-                    calculatorElements.result.classList.add('show');
-                    return;
-                }
-
-                if (periodUnit === 'years') {
-                    period *= 12;
-                }
-
-                const monthlyRate = interestRate / 12;
-                let futureValue = initialValue;
-
-                for (let i = 0; i < period; i++) {
-                    futureValue = futureValue * (1 + monthlyRate) + monthlyValue;
-                }
-
-                calculatorElements.result.textContent = `Valor Futuro: R$ ${futureValue.toFixed(2).replace('.', ',')}`;
-                calculatorElements.result.style.background = '';
-                calculatorElements.result.classList.add('show');
+            // Close modals on outside click
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal(modal);
+                    }
+                });
             });
 
-            // Quiz handling
-            const quizModal = document.getElementById('quiz-modal');
+            // Close modals on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal.show').forEach(modal => {
+                        closeModal(modal);
+                    });
+                }
+            });
+
+            // Calculator section functionality
+            const calculatorSection = document.getElementById('calculator-section');
+            const showCalculatorBtn = document.getElementById('show-calculator');
+
+            if (showCalculatorBtn && calculatorSection) {
+                showCalculatorBtn.addEventListener('click', () => {
+                    const isVisible = calculatorSection.style.display === 'block';
+                    if (!isVisible) {
+                        calculatorSection.style.display = 'block';
+                        setTimeout(() => calculatorSection.classList.add('show'), 10);
+                        calculatorSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        calculatorSection.classList.remove('show');
+                        setTimeout(() => {
+                            calculatorSection.style.display = 'none';
+                        }, 500);
+                    }
+                });
+            }
+
+            // Calculator logic
+            const calculatorForm = document.getElementById('calculator-form');
+            const resultDiv = document.getElementById('calculator-result');
+            const calculateBtn = calculatorForm?.querySelector('.calculator-btn');
+
+            function calculateCompoundInterest(initial, monthly, rate, periods, isYears) {
+                const monthlyRate = rate / 100 / 12;
+                let totalPeriods = isYears ? periods * 12 : periods;
+
+                if (initial < 0 || monthly < 0 || rate < 0 || totalPeriods <= 0) {
+                    return 'Por favor, insira valores válidos (não negativos e período maior que 0).';
+                }
+
+                let futureValue = initial * Math.pow(1 + monthlyRate, totalPeriods);
+                if (monthly > 0) {
+                    futureValue += monthly * (Math.pow(1 + monthlyRate, totalPeriods) - 1) / monthlyRate;
+                }
+
+                return futureValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            }
+
+            function updateResult() {
+                const initial = parseFloat(document.getElementById('initial-value').value) || 0;
+                const monthly = parseFloat(document.getElementById('monthly-value').value) || 0;
+                const rate = parseFloat(document.getElementById('interest-rate').value) || 0;
+                const periods = parseInt(document.getElementById('period').value) || 1;
+                const periodUnit = document.getElementById('period-unit').value;
+                const isYears = periodUnit === 'years';
+
+                const result = calculateCompoundInterest(initial, monthly, rate, periods, isYears);
+                resultDiv.textContent = `Valor Futuro: ${result}`;
+                resultDiv.classList.add('show');
+            }
+
+            if (calculatorForm && calculateBtn) {
+                calculateBtn.addEventListener('click', updateResult);
+            }
+
+            // Quiz logic
             const quizForm = document.getElementById('quiz-form');
             const quizResult = document.getElementById('quiz-result');
 
-            quizForm.addEventListener('submit', (e) => {
-                e.preventDefault();
+            if (quizForm) {
+                quizForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const answers = [
+                        parseInt(quizForm.querySelector('input[name="q1"]:checked')?.value) || 0,
+                        parseInt(quizForm.querySelector('input[name="q2"]:checked')?.value) || 0,
+                        parseInt(quizForm.querySelector('input[name="q3"]:checked')?.value) || 0,
+                        parseInt(quizForm.querySelector('input[name="q4"]:checked')?.value) || 0,
+                        parseInt(quizForm.querySelector('input[name="q5"]:checked')?.value) || 0
+                    ];
 
-                const answers = Array.from(quizForm.querySelectorAll('input:checked')).map(input => parseInt(input.value));
-                const totalScore = answers.reduce((sum, score) => sum + score, 0);
+                    const totalScore = answers.reduce((sum, val) => sum + val, 0);
 
-                let profile = '';
-                let recommendations = '';
-
-                if (totalScore <= 10) {
-                    profile = 'Conservador';
-                    recommendations = 'Você valoriza segurança acima de tudo. Recomendamos focar em investimentos de baixo risco, como Tesouro Direto e CDBs com liquidez diária. Comece construindo uma reserva de emergência que cubra 6-12 meses de despesas. Considere nossos cursos de finanças pessoais para aprender a planejar melhor.';
-                } else if (totalScore <= 18) {
-                    profile = 'Moderado';
-                    recommendations = 'Você busca um equilíbrio entre segurança e crescimento. Uma carteira diversificada com 60% em renda fixa (ex.: LCI, LCA) e 40% em renda variável (ex.: fundos de ações, ETFs) pode ser ideal. Participe de nossos workshops sobre investimentos para ganhar confiança.';
-                } else {
-                    profile = 'Arrojado';
-                    recommendations = 'Você está confortável com riscos em busca de altos retornos. Considere investir em ações, fundos multimercado e até criptomoedas com moderação. Acompanhe o mercado regularmente e explore nossas consultorias personalizadas para otimizar sua estratégia.';
-                }
-
-                quizResult.innerHTML = `
-                    <h3>Seu Perfil: ${profile}</h3>
-                    <p>${recommendations}</p>
-                    <p>Quer saber mais? <a href="#open-contact-modal" class="contact-link">Entre em contato</a> com nossa equipe!</p>
-                `;
-                quizResult.classList.add('show');
-            });
-
-            // Scroll animation for sections
-            const animateOnScroll = () => {
-                const sections = document.querySelectorAll('.presentation-section, .calculator-section');
-                sections.forEach(section => {
-                    const sectionTop = section.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    if (sectionTop < windowHeight * 0.8) {
-                        section.classList.add('show');
+                    let profile = '';
+                    if (totalScore <= 7) {
+                        profile = 'Conservador: Você prioriza segurança e evita riscos. Investimentos de baixo risco, como Tesouro Direto ou CDBs, são ideais para você. Considere criar um orçamento detalhado para aumentar sua poupança.';
+                    } else if (totalScore <= 11) {
+                        profile = 'Moderado: Você equilibra segurança e crescimento, aceitando riscos moderados. Uma carteira diversificada com renda fixa e alguma exposição à renda variável pode ser adequada. Reforce seu planejamento financeiro para atingir metas de longo prazo.';
+                    } else {
+                        profile = 'Agressivo: Você busca altos retornos e tolera riscos. Ações, fundos imobiliários e investimentos alternativos podem compor sua carteira. Continue aprimorando sua experiência e diversificando para maximizar resultados.';
                     }
-                });
-            };
 
-            window.addEventListener('scroll', animateOnScroll);
-            animateOnScroll();
+                    quizResult.textContent = `Seu Perfil: ${profile}`;
+                    quizResult.classList.add('show');
+                    quizResult.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
         });
     </script>
 </body>

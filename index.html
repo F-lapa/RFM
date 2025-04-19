@@ -33,10 +33,10 @@
     </header>
 
     <main>
+        <!-- ALTERADO: Removida a frase <h1 class="hero-title"> e reposicionado o conteúdo -->
         <section class="hero">
             <div class="hero-content">
                 <div id="particles-js"></div>
-                <h1 class="hero-title">Inteligência Financeira para o Seu Sucesso</h1>
                 <h2 class="hero-subtitle">Transforme sua relação com o dinheiro</h2>
                 <p>Treinamentos completos para empresas, conceitos de investimentos e finanças pessoais descomplicados.</p>
                 <p class="cta-text">Comece Agora</p>
@@ -100,10 +100,11 @@
             </div>
         </section>
 
+        <!-- ALTERADO: Texto do parágrafo ajustado para maior clareza -->
         <section class="calculator-section" id="calculator-section" style="display: none;">
             <div class="calculator-container">
                 <h2>Calcule o Poder dos Juros Compostos</h2>
-                <p>Descubra quanto você pode acumular com seus investimentos.</p>
+                <p>Planeje seu futuro financeiro com nossa calculadora interativa.</p>
                 <form id="calculator-form" class="calculator-form">
                     <div class="form-group">
                         <label for="initial-value">Valor Inicial (R$):</label>
@@ -364,6 +365,7 @@
         </div>
     </div>
 
+    <!-- ALTERADO: Modal do quiz com 5 perguntas -->
     <div id="quiz-modal" class="modal" aria-describedby="quiz-modal-description">
         <div class="modal-content">
             <span class="close-btn" aria-label="Fechar modal">×</span>
@@ -395,7 +397,19 @@
                                 <label><input type="radio" name="q3" value="2"> Crescimento moderado a longo prazo.</label>
                                 <label><input type="radio" name="q3" value="3"> Crescimento rápido, mesmo com riscos.</label>
                             </div>
-                            <button type="submit">Descobrir Meu Perfil</button>
+                            <div class="quiz-question">
+                                <h3>4. Como você reage a perdas financeiras inesperadas?</h3>
+                                <label><input type="radio" name="q4" value="1" required> Fico muito preocupado e evito investir novamente.</label>
+                                <label><input type="radio" name="q4" value="2"> Analiso e ajusto minha estratégia com calma.</label>
+                                <label><input type="radio" name="q4" value="3"> Vejo como uma oportunidade de aprendizado e sigo investindo.</label>
+                            </div>
+                            <div class="quiz-question">
+                                <h3>5. Qual é o seu nível de conhecimento sobre investimentos?</h3>
+                                <label><input type="radio" name="q5" value="1" required> Sou iniciante e não sei por onde começar.</label>
+                                <label><input type="radio" name="q5" value="2"> Tenho conhecimento básico e invisto com cuidado.</label>
+                                <label><input type="radio" name="q5" value="3"> Tenho experiência e acompanho o mercado regularmente.</label>
+                            </div>
+                            <button type="submit">Descubra Meu Perfil</button>
                         </form>
                         <div id="quiz-result"></div>
                     </div>

@@ -172,7 +172,7 @@ nav {
     background: rgba(253, 251, 243, 0.4);
     border-radius: 20px;
     box-sizing: border-box;
-    margin-top: 75vh; /* Ajustado: Significativamente mais para baixo no desktop */
+    margin-top: 75vh;
 }
 
 h1 {
@@ -257,15 +257,15 @@ h1:hover {
 }
 
 .presentation-name {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem; /* Aumentado para destacar no desktop */
-    background: linear-gradient(45deg, var(--text-primary), var(--accent-color)); /* Gradiente no texto */
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, var(--text-primary), var(--accent-color));
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent; /* Necessário para o gradiente */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra suave */
-    border-bottom: 2px solid var(--accent-color); /* Sublinhado decorativo */
-    padding-bottom: 0.3rem; /* Espaço para o sublinhado */
+    color: transparent;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.3rem;
     margin-bottom: 0.8rem;
     opacity: 0;
     transform: translateX(-20px);
@@ -497,7 +497,99 @@ h1:hover {
     margin-bottom: 1.5rem;
 }
 
-.testimonial-grid,
+/* Testimonial Slider Styles */
+.testimonial-slider {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0 3rem; /* Space for arrows */
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-card {
+    flex: 0 0 calc(33.33% - 1.33rem); /* 3 cards visible, accounting for gap */
+    margin-right: 2rem;
+    background: var(--primary-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInCard 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.testimonial-card:nth-child(1) { animation-delay: 3.6s; }
+.testimonial-card:nth-child(2) { animation-delay: 3.8s; }
+.testimonial-card:nth-child(3) { animation-delay: 4.0s; }
+.testimonial-card:nth-child(4) { animation-delay: 4.2s; }
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card p {
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.testimonial-card h4 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.slider-arrow.prev {
+    left: 0;
+}
+
+.slider-arrow.next {
+    right: 0;
+}
+
+.slider-arrow:hover {
+    background: var(--text-primary);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.slider-arrow:disabled {
+    background: var(--secondary-bg);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.slider-arrow i {
+    font-size: 1.2rem;
+}
+
 .consulting-details,
 .resource-grid {
     display: grid;
@@ -505,7 +597,6 @@ h1:hover {
     gap: 2rem;
 }
 
-.testimonial-card,
 .consulting-item,
 .resource-card {
     background: var(--primary-bg);
@@ -515,34 +606,28 @@ h1:hover {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     opacity: 0;
-    animation: fadeInCard 0.8s cubic-bezier(0, 0, 0.2, 1) forwards;
+    animation: fadeInCard 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.testimonial-card:nth-child(1),
 .consulting-item:nth-child(1),
 .resource-card:nth-child(1) { animation-delay: 3.6s; }
-.testimonial-card:nth-child(2),
 .consulting-item:nth-child(2),
 .resource-card:nth-child(2) { animation-delay: 3.8s; }
-.testimonial-card:nth-child(3),
 .consulting-item:nth-child(3),
 .resource-card:nth-child(3) { animation-delay: 4.0s; }
 
-.testimonial-card:hover,
 .consulting-item:hover,
 .resource-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.testimonial-card p,
 .consulting-item p,
 .resource-card p {
     font-size: 1rem;
     color: var(--text-primary);
 }
 
-.testimonial-card h4,
 .consulting-item h3,
 .resource-card h3 {
     font-family: 'Dancing Script', cursive;
@@ -672,7 +757,7 @@ h1:hover {
 
 #contact-modal .modal-content {
     max-width: 600px;
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -680,30 +765,45 @@ h1:hover {
 
 #contact-modal .contact-grid {
     display: flex;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 2rem;
     justify-content: center;
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 #contact-modal .contact-item {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    background: var(--secondary-bg);
+    background: linear-gradient(45deg, var(--accent-color), var(--text-primary));
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--primary-bg);
 }
 
 #contact-modal .contact-item i {
-    font-size: 1.8rem;
-    color: var(--text-primary);
+    font-size: 2rem;
+    color: var(--primary-bg);
 }
 
 #contact-modal .contact-item:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.15);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, var(--text-primary), var(--accent-color));
+}
+
+#contact-modal .contact-item[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#contact-modal .contact-item[disabled]:hover {
+    transform: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, var(--accent-color), var(--text-primary));
 }
 
 .calculator-container {
@@ -1001,6 +1101,16 @@ footer {
     transform: scale(1.2);
 }
 
+.social-links a[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.social-links a[disabled]:hover {
+    color: var(--text-primary);
+    transform: none;
+}
+
 footer p {
     font-family: 'Lora', sans-serif;
     font-size: 0.9rem;
@@ -1076,7 +1186,7 @@ footer p {
         max-width: 90%;
         padding: 2rem;
         border-radius: 15px;
-        margin-top: 45vh; /* Mantido: Um pouco mais para cima no mobile, como solicitado */
+        margin-top: 45vh;
     }
 
     h1 {
@@ -1104,27 +1214,28 @@ footer p {
         flex-direction: column;
         padding: 1.5rem;
         text-align: center;
-        gap: 1rem; /* Espaçamento entre os elementos */
+        gap: 1rem;
     }
 
     .presentation-name {
-        font-size: 2rem; /* Mantido: Estilo original no mobile */
-        color: var(--text-primary); /* Sem gradiente */
-        text-shadow: none; /* Sem sombra adicional */
-        border-bottom: none; /* Sem sublinhado */
-        padding-bottom: 0; /* Sem espaço extra */
-        order: 1; /* Nome aparece primeiro */
+        font-family: 'Dancing Script', cursive;
+        font-size: 2rem;
+        color: var(--text-primary);
+        text-shadow: none;
+        border-bottom: none;
+        padding-bottom: 0;
+        order: 1;
         margin-bottom: 0;
     }
 
     .presentation-image {
         flex: 0 0 auto;
         max-width: 100%;
-        order: 2; /* Foto aparece em segundo */
+        order: 2;
     }
 
     .presentation-text {
-        order: 3; /* Texto descritivo aparece por último */
+        order: 3;
         display: flex;
         flex-direction: column;
         gap: 0.8rem;
@@ -1242,7 +1353,10 @@ footer p {
         font-size: 2.5rem;
     }
 
-    .testimonial-grid,
+    .testimonial-card {
+        flex: 0 0 calc(50% - 1rem); /* Show 2 cards */
+    }
+
     .consulting-details,
     .resource-grid {
         grid-template-columns: 1fr;
@@ -1300,12 +1414,12 @@ footer p {
     }
 
     #contact-modal .contact-item {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
     }
 
     #contact-modal .contact-item i {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
 
     footer {
@@ -1368,7 +1482,7 @@ footer p {
         max-width: 95%;
         padding: 1.5rem;
         border-radius: 10px;
-        margin-top: 40vh; /* Mantido: Um pouco mais para cima em telas menores */
+        margin-top: 40vh;
     }
 
     h1 {
@@ -1395,7 +1509,7 @@ footer p {
     }
 
     .presentation-name {
-        font-size: 1.8rem; /* Mantido: Estilo original em telas menores */
+        font-size: 1.8rem;
     }
 
     .presentation-text .presentation-subtitle {
@@ -1493,6 +1607,10 @@ footer p {
         font-size: 2.2rem;
     }
 
+    .testimonial-card {
+        flex: 0 0 calc(100% - 1rem); /* Show 1 card */
+    }
+
     .testimonial-card,
     .consulting-item,
     .resource-card {
@@ -1545,12 +1663,12 @@ footer p {
     }
 
     #contact-modal .contact-item {
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
     }
 
     #contact-modal .contact-item i {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
 
     footer {
@@ -1571,6 +1689,12 @@ footer p {
 
     footer p {
         font-size: 0.8rem;
+    }
+
+    .slider-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
     }
 }
 

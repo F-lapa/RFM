@@ -339,7 +339,7 @@
                         <a href="https://www.instagram.com/roselaine.fmachado?igsh=dnk4dHRkMzd2bTI5" target="_blank" class="contact-item" aria-label="Instagram da RFM">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/roselainemachado/" class="contact-item" title="LinkedIn">
+                        <a href="https://www.linkedin.com/in/roselainemachado/" target="_blank" class="contact-item" aria-label="LinkedIn da RFM">
                             <i class="fab fa-linkedin"></i>
                         </a>
                         <a href="mailto:contato@rfmeducacao.com.br" class="contact-item" aria-label="E-mail da RFM">
@@ -487,7 +487,7 @@
         <div class="social-links">
             <a href="https://www.instagram.com/roselaine.fmachado?igsh=dnk4dHRkMzd2bTI5" target="_blank" aria-label="Instagram da RFM"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/5548999370943" target="_blank" aria-label="WhatsApp da RFM"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.linkedin.com/in/roselainemachado/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/roselainemachado/" target="_blank" aria-label="LinkedIn da RFM"><i class="fab fa-linkedin"></i></a>
             <a href="mailto:contato@rfmeducacao.com.br" aria-label="E-mail da RFM"><i class="fas fa-envelope"></i></a>
             <a href="https://www.youtube.com/@seu-canal" target="_blank" aria-label="YouTube da RFM"><i class="fab fa-youtube"></i></a>
         </div>
@@ -672,13 +672,18 @@
 
             if (testimonialTrack && prevArrow && nextArrow) {
                 const cards = document.querySelectorAll('.testimonial-card');
-                const cardWidth = cards[0].offsetWidth + 20; // Including margin
+                let cardWidth = cards[0].offsetWidth + 20; // Including margin
                 const maxIndex = cards.length - 3; // Show 3 cards at a time
 
                 function updateSlider() {
                     testimonialTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
                     prevArrow.disabled = currentIndex === 0;
                     nextArrow.disabled = currentIndex >= maxIndex;
+                }
+
+                function updateCardWidth() {
+                    cardWidth = cards[0].offsetWidth + 20; // Recalculate width
+                    updateSlider();
                 }
 
                 nextArrow.addEventListener('click', () => {
@@ -694,6 +699,9 @@
                         updateSlider();
                     }
                 });
+
+                // Update slider on window resize
+                window.addEventListener('resize', updateCardWidth);
 
                 // Initialize slider
                 updateSlider();

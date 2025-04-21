@@ -1,9 +1,11 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Root Variables */
 :root {
     --primary-bg: #FDFBF3;
     --text-primary: #B24514;
@@ -14,6 +16,7 @@
     --text-secondary: #4A4A4A;
 }
 
+/* Body */
 body {
     font-family: 'Lora', sans-serif;
     background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
@@ -30,6 +33,7 @@ body {
     to { opacity: 1; }
 }
 
+/* Header */
 header {
     padding: 1rem 2rem;
     background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
@@ -139,6 +143,7 @@ nav {
     box-shadow: 0 6px 12px rgba(107, 142, 123, 0.3);
 }
 
+/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -226,6 +231,7 @@ h1:hover {
     opacity: 0;
 }
 
+/* Presentation Section */
 .presentation-section {
     max-width: 1200px;
     margin: 4rem auto;
@@ -329,6 +335,7 @@ h1:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* Video Presentation */
 .video-presentation {
     max-width: 1000px;
     margin: 4rem auto;
@@ -390,6 +397,7 @@ h1:hover {
     opacity: 0;
 }
 
+/* Features Section */
 .features {
     max-width: 1400px;
     margin: 5rem auto;
@@ -453,6 +461,7 @@ h1:hover {
     color: var(--text-primary);
 }
 
+/* General Section Styles */
 .testimonials,
 .consulting,
 .resources {
@@ -465,6 +474,7 @@ h1:hover {
     text-align: center;
 }
 
+/* Calculator Section */
 .calculator-section {
     max-width: 1400px;
     margin: 5rem auto;
@@ -590,6 +600,54 @@ h1:hover {
     font-size: 1.2rem;
 }
 
+/* Ensure 3 cards visible on all screen sizes */
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 calc(33.33% - 1.33rem); /* Maintain 3 cards */
+        margin-right: 2rem;
+        padding: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .slider-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+    }
+
+    .slider-arrow.prev {
+        left: -0.5rem;
+    }
+
+    .slider-arrow.next {
+        right: -0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-card {
+        flex: 0 0 calc(33.33% - 1.33rem); /* Maintain 3 cards */
+        margin-right: 2rem;
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .slider-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .slider-arrow.prev {
+        left: -0.5rem;
+    }
+
+    .slider-arrow.next {
+        right: -0.5rem;
+    }
+}
+
+/* Consulting and Resources */
 .consulting-details,
 .resource-grid {
     display: grid;
@@ -647,6 +705,7 @@ h1:hover {
     transform: scale(1.2);
 }
 
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -755,6 +814,7 @@ h1:hover {
     padding-left: 1.5rem;
 }
 
+/* Contact Modal */
 #contact-modal .modal-content {
     max-width: 600px;
     padding: 2rem;
@@ -795,17 +855,7 @@ h1:hover {
     background: linear-gradient(45deg, var(--text-primary), var(--accent-color));
 }
 
-#contact-modal .contact-item[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-#contact-modal .contact-item[disabled]:hover {
-    transform: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(45deg, var(--accent-color), var(--text-primary));
-}
-
+/* Calculator Section */
 .calculator-container {
     max-width: 700px;
     margin: 0 auto;
@@ -943,6 +993,7 @@ h1:hover {
     transform: translateY(0);
 }
 
+/* Quiz Section */
 .quiz-container {
     max-width: 700px;
     margin: 0 auto;
@@ -1035,6 +1086,7 @@ h1:hover {
     transform: translateY(0);
 }
 
+/* Tip Card */
 .tip-card {
     background: var(--secondary-bg);
     padding: 1.5rem;
@@ -1062,6 +1114,7 @@ h1:hover {
     color: var(--text-primary);
 }
 
+/* Footer */
 footer {
     background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
     padding: 2rem;
@@ -1101,22 +1154,13 @@ footer {
     transform: scale(1.2);
 }
 
-.social-links a[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.social-links a[disabled]:hover {
-    color: var(--text-primary);
-    transform: none;
-}
-
 footer p {
     font-family: 'Lora', sans-serif;
     font-size: 0.9rem;
     color: var(--text-secondary);
 }
 
+/* Particles */
 #particles-js {
     position: absolute;
     width: 100%;
@@ -1126,6 +1170,7 @@ footer p {
     z-index: 2;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     header {
         padding: 0.8rem 1.5rem;
@@ -1351,10 +1396,6 @@ footer p {
     .consulting h2,
     .resources h2 {
         font-size: 2.5rem;
-    }
-
-    .testimonial-card {
-        flex: 0 0 calc(50% - 1rem); /* Show 2 cards */
     }
 
     .consulting-details,
@@ -1607,10 +1648,6 @@ footer p {
         font-size: 2.2rem;
     }
 
-    .testimonial-card {
-        flex: 0 0 calc(100% - 1rem); /* Show 1 card */
-    }
-
     .testimonial-card,
     .consulting-item,
     .resource-card {
@@ -1689,12 +1726,6 @@ footer p {
 
     footer p {
         font-size: 0.8rem;
-    }
-
-    .slider-arrow {
-        width: 30px;
-        height: 30px;
-        font-size: 1rem;
     }
 }
 

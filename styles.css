@@ -420,6 +420,7 @@ h1:hover {
     opacity: 0;
     transform: translateX(-20px);
     transition: all 0.5s ease 0.3s;
+    text-align: center;
 }
 
 .presentation-section.show .presentation-name {
@@ -1403,12 +1404,12 @@ footer p {
 /* Responsive Design */
 @media (max-width: 768px) {
     header {
-        padding: 0.8rem 1.5rem;
+        padding: 0.8rem 1rem;
     }
 
     .menu-toggle {
         display: block;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .nav-menu {
@@ -1429,39 +1430,38 @@ footer p {
     }
 
     .nav-menu li {
-        margin: 0.8rem 0;
-        animation-delay: 0.2s;
+        margin: 0.6rem 0;
         text-align: center;
     }
 
     .nav-menu li a {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.8rem;
         font-size: 0.9rem;
     }
 
     .logo-icon {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .logo-text .main {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .logo-text .sub {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     .hero-image {
-        height: 55vh;
+        height: 50vh;
         margin-top: 60px;
     }
 
     .impact-phrase {
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
 
     .impact-phrase p {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .impact-phrase .cta-button {
@@ -1469,72 +1469,65 @@ footer p {
         font-size: 1.1rem;
         font-weight: 700;
         text-transform: uppercase;
-        padding: 1rem 2.5rem;
+        padding: 1rem 2rem;
     }
 
     .hero {
-        min-height: calc(80vh - 55vh - 60px);
+        min-height: calc(80vh - 50vh - 60px);
         padding: 2rem 1rem;
     }
 
     .hero-content {
-        max-width: 90%;
-        padding: 2rem;
-        border-radius: 15px;
+        max-width: 95%;
+        padding: 1.5rem;
+        border-radius: 10px;
     }
 
     h1 {
-        font-size: 3rem;
-        padding: 0.8rem 1.5rem;
-        text-shadow: 0 3px 6px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.5);
+        font-size: 2.8rem;
+        padding: 0.6rem 1rem;
     }
 
     .hero-content p {
-        font-size: 1.2rem;
-        max-width: 85%;
-        text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.5);
+        font-size: 1.1rem;
+        max-width: 90%;
     }
 
     .hero-slogan {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .presentation-section {
-        margin: 3rem auto;
-        padding: 1.5rem;
+        margin: 2rem auto;
+        padding: 1rem;
     }
 
     .presentation-container {
         flex-direction: column;
         align-items: center;
         padding: 1.5rem;
-        text-align: center;
         gap: 1rem;
-    }
-
-    .presentation-name {
-        font-size: 2.5rem;
-        text-shadow: none;
-        border-bottom: 2px solid var(--accent-color);
-        padding-bottom: 0.3rem;
-        order: 2;
-        margin-bottom: 0.8rem;
-        width: 100%;
+        text-align: center;
     }
 
     .presentation-image {
-        flex: 0 0 auto;
-        max-width: 350px;
         order: 1;
+        max-width: 300px;
         width: 100%;
+    }
+
+    .presentation-name {
+        order: 2;
+        font-size: 2.2rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
     }
 
     .presentation-text {
         order: 3;
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
         width: 100%;
+        text-align: left;
     }
 
     .presentation-text .presentation-subtitle {
@@ -1546,18 +1539,13 @@ footer p {
     }
 
     .presentation-image img {
-        height: 300px;
-    }
-
-    .presentation-name,
-    .presentation-text,
-    .presentation-image {
-        transition-delay: 0.2s;
+        height: 250px;
     }
 
     .video-presentation {
-        margin: 3rem auto;
+        margin: 2rem auto;
         padding: 1.5rem;
+        max-width: 90%;
     }
 
     .video-presentation h3 {
@@ -1574,8 +1562,9 @@ footer p {
 
     .features {
         grid-template-columns: 1fr;
-        margin: 3rem auto;
-        padding: 2rem 1.5rem;
+        margin: 2rem auto;
+        padding: 1.5rem 1rem;
+        gap: 1.5rem;
     }
 
     .feature-card {
@@ -1597,38 +1586,68 @@ footer p {
     .testimonials,
     .consulting,
     .resources {
-        margin: 3rem auto;
-        padding: 2rem 1.5rem;
+        margin: 2rem auto;
+        padding: 1.5rem 1rem;
+        max-width: 95%;
     }
 
     .testimonials h2,
     .consulting h2,
     .resources h2 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .consulting-details {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
     .consulting-item {
-        flex: 1;
-        min-width: 250px;
-        max-width: 350px;
+        min-width: 0;
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .consulting-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .consulting-item p {
+        font-size: 0.9rem;
+    }
+
+    .consulting-item i {
+        font-size: 2rem;
     }
 
     .resource-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, auto);
-        gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .resource-card {
+        padding: 1.5rem;
+    }
+
+    .resource-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .resource-card p {
+        font-size: 0.9rem;
+    }
+
+    .resource-card i {
+        font-size: 2rem;
     }
 
     .consulting-section h3 {
         font-size: 1.8rem;
+    }
+
+    .testimonial-slider {
+        padding: 0 2rem;
     }
 
     .testimonial-card {
@@ -1638,7 +1657,7 @@ footer p {
     }
 
     .testimonial-card h4 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .testimonial-card p {
@@ -1646,9 +1665,9 @@ footer p {
     }
 
     .slider-arrow {
-        width: 45px;
-        height: 45px;
-        font-size: 1.4rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
     }
 
     .slider-arrow.prev {
@@ -1660,7 +1679,7 @@ footer p {
     }
 
     .modal-content {
-        width: 95%;
+        width: 90%;
         max-height: 80vh;
         padding: 1.5rem;
     }
@@ -1685,7 +1704,7 @@ footer p {
     }
 
     #contact-modal .modal-content {
-        max-width: 500px;
+        max-width: 90%;
     }
 
     #contact-modal .contact-item {
@@ -1698,7 +1717,7 @@ footer p {
     }
 
     #calculator-modal .calculator-container h2 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     #calculator-modal .calculator-container p {
@@ -1725,7 +1744,6 @@ footer p {
     }
 
     #calculator-modal .period-container select {
-        flex: 0 0 auto;
         width: 100%;
     }
 
@@ -1734,8 +1752,12 @@ footer p {
         font-size: 1rem;
     }
 
+    #quiz-modal .quiz-container {
+        padding: 1rem;
+    }
+
     #quiz-modal .quiz-question h3 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 
     #quiz-modal .quiz-question label {
@@ -1760,7 +1782,7 @@ footer p {
     }
 
     .footer-logo {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .social-links {
@@ -1772,42 +1794,42 @@ footer p {
     }
 
     footer p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 480px) {
     header {
-        padding: 0.6rem 1rem;
+        padding: 0.6rem 0.8rem;
     }
 
     .menu-toggle {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .nav-menu li {
-        margin: 0.6rem 0;
+        margin: 0.5rem 0;
     }
 
     .nav-menu li a {
-        padding: 0.4rem 0.8rem;
+        padding: 0.4rem 0.6rem;
         font-size: 0.8rem;
     }
 
     .logo-icon {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .logo-text .main {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .logo-text .sub {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
 
     .hero-image {
-        height: 45vh;
+        height: 40vh;
         margin-top: 50px;
     }
 
@@ -1816,94 +1838,95 @@ footer p {
     }
 
     .impact-phrase p {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .impact-phrase .cta-button {
         font-family: 'Roboto', sans-serif;
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 700;
         text-transform: uppercase;
-        padding: 0.8rem 2rem;
+        padding: 0.8rem 1.5rem;
     }
 
     .hero {
-        min-height: calc(70vh - 45vh - 50px);
+        min-height: calc(70vh - 40vh - 50px);
         padding: 1.5rem 0.8rem;
     }
 
     .hero-content {
         max-width: 95%;
-        padding: 1.5rem;
-        border-radius: 10px;
+        padding: 1rem;
+        border-radius: 8px;
     }
 
     h1 {
-        font-size: 2.2rem;
-        padding: 0.6rem 1rem;
+        font-size: 2rem;
+        padding: 0.5rem 0.8rem;
     }
 
     .hero-content p {
-        font-size: 1rem;
-        max-width: 90%;
+        font-size: 0.9rem;
+        max-width: 95%;
     }
 
     .hero-slogan {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .presentation-section {
-        margin: 2rem auto;
-        padding: 1rem;
+        margin: 1.5rem auto;
+        padding: 0.8rem;
     }
 
     .presentation-container {
         flex-direction: column;
         align-items: center;
         padding: 1rem;
+        gap: 0.8rem;
         text-align: center;
     }
 
-    .presentation-name {
-        font-size: 2rem;
-        text-shadow: none;
-        border-bottom: 2px solid var(--accent-color);
-        padding-bottom: 0.3rem;
-        order: 2;
-        margin-bottom: 0.8rem;
+    .presentation-image {
+        order: 1;
+        max-width: 250px;
         width: 100%;
+    }
+
+    .presentation-name {
+        order: 2;
+        font-size: 1.8rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
     }
 
     .presentation-text {
         order: 3;
         width: 100%;
+        text-align: left;
     }
 
     .presentation-text .presentation-subtitle {
-        font-size: 1rem;
-    }
-
-    .presentation-text p {
         font-size: 0.9rem;
     }
 
-    .presentation-image {
-        order: 1;
-        max-width: 350px;
-        width: 100%;
+    .presentation-text p {
+        font-size: 0.8rem;
     }
 
     .presentation-image img {
-        height: 250px;
+        height: 200px;
     }
 
     .video-presentation {
-        margin: 2rem auto;
+        margin: 1.5rem auto;
         padding: 1rem;
+        max-width: 95%;
     }
 
     .video-presentation h3 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 
     .video-presentation p {
@@ -1915,9 +1938,9 @@ footer p {
     }
 
     .features {
-        grid-template-columns: 1fr;
-        margin: 2rem auto;
-        padding: 1.5rem 1rem;
+        margin: 1.5rem auto;
+        padding: 1rem 0.8rem;
+        gap: 1rem;
     }
 
     .feature-card {
@@ -1929,68 +1952,92 @@ footer p {
     }
 
     .feature-card h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .feature-card p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .testimonials,
     .consulting,
     .resources {
-        margin: 2rem auto;
-        padding: 1.5rem 1rem;
+        margin: 1.5rem auto;
+        padding: 1rem 0.8rem;
     }
 
     .testimonials h2,
     .consulting h2,
     .resources h2 {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
 
     .consulting-details {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .consulting-item {
-        flex: 1;
-        min-width: 250px;
-        max-width: 350px;
+        padding: 1rem;
+    }
+
+    .consulting-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .consulting-item p {
+        font-size: 0.8rem;
+    }
+
+    .consulting-item i {
+        font-size: 1.8rem;
     }
 
     .resource-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, auto);
-        gap: 2rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .resource-card {
+        padding: 1rem;
+    }
+
+    .resource-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .resource-card p {
+        font-size: 0.8rem;
+    }
+
+    .resource-card i {
+        font-size: 1.8rem;
     }
 
     .consulting-section h3 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+    }
+
+    .testimonial-slider {
+        padding: 0 1.5rem;
     }
 
     .testimonial-card {
-        flex: 0 0 calc(100% - 1rem);
-        margin-right: 1rem;
-        padding: 1.2rem;
+        padding: 1rem;
     }
 
     .testimonial-card h4 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .testimonial-card p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .slider-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 
     .slider-arrow.prev {
@@ -2002,22 +2049,22 @@ footer p {
     }
 
     .modal-content {
-        width: 90%;
+        width: 95%;
         max-height: 75vh;
         padding: 1rem;
     }
 
     .modal-hero h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 
     .modal-about-section h2 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .modal-about-section p,
     .modal-about-section ul {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .close-btn {
@@ -2027,7 +2074,7 @@ footer p {
     }
 
     #contact-modal .modal-content {
-        max-width: 400px;
+        max-width: 95%;
     }
 
     #contact-modal .contact-item {
@@ -2040,7 +2087,7 @@ footer p {
     }
 
     #calculator-modal .calculator-container h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     #calculator-modal .calculator-container p {
@@ -2052,13 +2099,13 @@ footer p {
     }
 
     #calculator-modal .form-group label {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     #calculator-modal .form-group input,
     #calculator-modal .form-group select {
         padding: 0.5rem;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     #calculator-modal .calculator-btn {
@@ -2067,7 +2114,7 @@ footer p {
     }
 
     #quiz-modal .quiz-question h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     #quiz-modal .quiz-question label {
@@ -2080,11 +2127,11 @@ footer p {
     }
 
     #tips-modal .tip-card h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     #tips-modal .tip-card p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     footer {
@@ -2092,7 +2139,7 @@ footer p {
     }
 
     .footer-logo {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .social-links {
@@ -2104,7 +2151,7 @@ footer p {
     }
 
     footer p {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 }
 

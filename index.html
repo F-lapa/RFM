@@ -8,8 +8,10 @@
     <title>RFM Educação Financeira - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    
 </head>
 <body>
     <header>
@@ -125,7 +127,7 @@
                         <h4>Fernanda e Alexandre</h4>
                     </div>
                     <div class="testimonial-card">
-                        <p>"Seu workshop foi leve, o que é difícil quando a gente fala de dinheiro, deu pra sentir teu cuidado, tua atenção, tua entrega! Me senti confortável de abrir um pouco da minha história e espero que tenha sido só o começo!"</p>
+                        <p>"Seu workshop foi leve, o que é difícil quando a gente fala de dinheiro, deu pra sentir teu cuidado, tua atenção, tua entrega! Me senti comfy de abrir um pouco da minha história e espero que tenha sido só o começo!"</p>
                         <h4>Julia</h4>
                     </div>
                     <div class="testimonial-card">
@@ -192,7 +194,7 @@
                     <h2>Nossa Missão</h2>
                     <p>Imagine um futuro onde você tem total controle sobre suas finanças, onde cada decisão que você toma com seu dinheiro te aproxima dos seus sonhos. Na RFM Educação Financeira, nossa missão é tornar esse futuro realidade. Somos mais do que uma empresa de educação — somos um movimento para empoderar pessoas e negócios com inteligência financeira, descomplicando o caminho para a prosperidade com estratégias práticas e personalizadas.</p>
                     <h2>Por que Escolher a RFM?</h2>
-                    <p>Porque acreditamos que finanças não precisam ser complicadas. Com a RFM, você terá acesso a treinamentos envolventes, consultorias sob medida e ferramentas inovadoras que transformam conhecimento em resultados. Nossa equipe de especialistas combina paixão, experiência e uma abordagem humana para guiar você em cada passo, seja para sair das dívidas, investir com confiança ou escalar seu negócio. Não oferecemos apenas cursos — oferecemos uma nova forma de enxergar o dinheiro e viver a vida que você sempre quis.</p>
+                    <p>Porque acreditamos que finanças não precisam ser complicadas. Com a RFM, você terá acesso a treinamentos envolventes, consultorias sob medida e ferramentas inovadoras que transformam conhecimento em resultados. Nossa equipe de especialistas de especialistas combina paixão, experiência e uma abordagem humana para guiar você em cada passo, seja para sair das dívidas, investir com confiança ou escalar seu negócio. Não oferecemos apenas cursos — oferecemos uma nova forma de enxergar o dinheiro e viver a vida que você sempre quis.</p>
                     <h2>Nosso Compromisso com Você</h2>
                     <p>Seu sucesso é o nosso sucesso. Na RFM, comprometemo-nos a estar ao seu lado, oferecendo suporte contínuo e soluções que evoluem com suas necessidades. Queremos que você sinta a confiança de quem sabe para onde está indo e a liberdade de quem planeja o futuro com segurança. Junte-se a milhares de pessoas e empresas que já transformaram suas finanças com a RFM. Vamos construir juntos o caminho para a sua prosperidade?</p>
                 </div>
@@ -690,33 +692,83 @@
                 });
             }
 
-            // Testimonial slider
+            // Testimonial slider with infinite looping
+            const slider = document.querySelector('.testimonial-slider');
             const track = document.querySelector('.testimonial-track');
             const cards = document.querySelectorAll('.testimonial-card');
-            const prevBtn = document.querySelector('.slider-arrow.prev');
-            const nextBtn = document.querySelector('.slider-arrow.next');
-            let currentIndex = 0;
-            const cardWidth = cards[0]?.offsetWidth + 20; // Card width + margin
+            const prevButton = document.querySelector('.slider-arrow.prev');
+            const nextButton = document.querySelector('.slider-arrow.next');
 
-            function updateSlider() {
-                if (track) {
+            if (slider && track && cards.length > 0 && prevButton && nextButton) {
+                // Clonar cards para looping infinito
+                const cardCount = cards.length;
+                const cardWidth = cards[0].offsetWidth + 32; // Inclui margem (2rem = 32px)
+                const clonesStart = [];
+                const clonesEnd = [];
+
+                // Clonar últimos cards e adicionar ao início
+                for (let i = cardCount - 1; i >= Math.max(0, cardCount - 3); i--) {
+                    const clone = cards[i].cloneNode(true);
+                    clonesStart.unshift(clone);
+                    track.prepend(clone);
+                }
+
+                // Clonar primeiros cards e adicionar ao final
+                for (let i = 0; i < Math.min(3, cardCount); i++) {
+                    const clone = cards[i].cloneNode(true);
+                    clonesEnd.push(clone);
+                    track.append(clone);
+                }
+
+                // Configurar estado inicial
+                let currentIndex = clonesStart.length; // Começa após os clones iniciais
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+                // Função para atualizar posição
+                function updateSlider() {
+                    track.style.transition = 'transform 0.5s ease-in-out';
                     track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
                 }
-            }
 
-            if (nextBtn && prevBtn && track) {
-                nextBtn.addEventListener('click', () => {
-                    if (currentIndex < cards.length - 1) {
-                        currentIndex++;
-                        updateSlider();
+                // Função para reposicionar sem animação
+                function moveToIndex(newIndex) {
+                    track.style.transition = 'none';
+                    currentIndex = newIndex;
+                    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                    // Forçar reflow para evitar glitch
+                    track.offsetHeight;
+                }
+
+                // Evento para próxima seta
+                nextButton.addEventListener('click', () => {
+                    currentIndex++;
+                    updateSlider();
+
+                    // Se atingir o último card original, voltar ao início
+                    if (currentIndex >= cardCount + clonesStart.length) {
+                        setTimeout(() => {
+                            moveToIndex(clonesStart.length);
+                        }, 500); // Após a animação
                     }
                 });
 
-                prevBtn.addEventListener('click', () => {
-                    if (currentIndex > 0) {
-                        currentIndex--;
-                        updateSlider();
+                // Evento para seta anterior
+                prevButton.addEventListener('click', () => {
+                    currentIndex--;
+                    updateSlider();
+
+                    // Se atingir o primeiro card original, voltar ao final
+                    if (currentIndex < clonesStart.length) {
+                        setTimeout(() => {
+                            moveToIndex(cardCount + clonesStart.length - 1);
+                        }, 500); // Após a animação
                     }
+                });
+
+                // Ajustar slider ao redimensionar janela
+                window.addEventListener('resize', () => {
+                    const newCardWidth = document.querySelector('.testimonial-card').offsetWidth + 32;
+                    moveToIndex(currentIndex);
                 });
             }
         });

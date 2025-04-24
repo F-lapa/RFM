@@ -658,8 +658,7 @@ h1:hover {
     border: 2px solid transparent;
     border-image: linear-gradient(45deg, var(--accent-color), var(--text-primary)) 1;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease, opacity 0.5s ease;
-    opacity: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Removido opacity da transição */
     transform: translateY(10px);
     animation: slideInTestimonial 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
     z-index: 3;
@@ -1597,10 +1596,62 @@ footer p {
         font-size: 2.2rem;
     }
 
+    .testimonial-slider {
+        padding: 0;
+        overflow-x: auto; /* Permite arrastar horizontalmente */
+        scrollbar-width: none; /* Esconde a barra de rolagem no Firefox */
+        -webkit-overflow-scrolling: touch; /* Melhora a rolagem suave no iOS */
+    }
+
+    .testimonial-slider::-webkit-scrollbar {
+        display: none; /* Esconde a barra de rolagem no Chrome/Safari */
+    }
+
+    .testimonial-track {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory; /* Força o snap ao arrastar */
+        scroll-behavior: smooth; /* Rolagem suave */
+        padding: 0 1rem;
+        gap: 1rem; /* Espaçamento entre cards */
+        transition: none; /* Remove transição para arrastar com dedo */
+    }
+
+    .testimonial-card {
+        flex: 0 0 calc(100% - 1rem); /* Cada card ocupa quase a largura total */
+        margin-right: 1rem;
+        padding: 1.5rem;
+        scroll-snap-align: center; /* Centraliza o card ao arrastar */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Mantém apenas transform e box-shadow */
+        touch-action: pan-x; /* Permite arrastar apenas horizontalmente */
+    }
+
+    .testimonial-card:hover {
+        transform: none; /* Desativa efeito hover em dispositivos móveis */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Mantém sombra padrão */
+        animation: none; /* Remove animação pulseShadow */
+    }
+
+    .testimonial-card h4::after {
+        transform: scaleX(0); /* Desativa o efeito de sublinhado no hover */
+    }
+
+    .slider-arrow {
+        display: none; /* Remove as setas no celular */
+    }
+
     .consulting-details {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem; /* Reduzido de 1.5rem para contêineres mais próximos */
+        justify-items: center; /* Centraliza os itens na grade */
+    }
+
+    /* Centraliza o último contêiner quando há 3 itens */
+    .consulting-details:has(.consulting-item:nth-child(3)) {
+        grid-template-areas: 
+            "item1 item2"
+            "item3 item3"; /* Último item ocupa as duas colunas */
     }
 
     .consulting-item {
@@ -1609,6 +1660,10 @@ footer p {
         word-break: break-word; /* Garante que palavras longas quebrem */
         overflow-wrap: break-word; /* Compatibilidade para quebra de palavras */
         text-align: center;
+    }
+
+    .consulting-item:nth-child(3) {
+        grid-area: item3; /* Associa ao grid-area para centralização */
     }
 
     .consulting-item h3 {
@@ -1648,38 +1703,6 @@ footer p {
 
     .consulting-section h3 {
         font-size: 1.8rem;
-    }
-
-    .testimonial-slider {
-        padding: 0 2rem;
-    }
-
-    .testimonial-card {
-        flex: 0 0 calc(100% - 1rem);
-        margin-right: 1rem;
-        padding: 1.5rem;
-    }
-
-    .testimonial-card h4 {
-        font-size: 1.6rem;
-    }
-
-    .testimonial-card p {
-        font-size: 0.9rem;
-    }
-
-    .slider-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-
-    .slider-arrow.prev {
-        left: 0.5rem;
-    }
-
-    .slider-arrow.next {
-        right: 0.5rem;
     }
 
     .modal-content {
@@ -1976,14 +1999,61 @@ footer p {
         font-size: 1.8rem;
     }
 
+    .testimonial-slider {
+        padding: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .testimonial-slider::-webkit-scrollbar {
+        display: none;
+    }
+
+    .testimonial-track {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        padding: 0 0.8rem;
+        gap: 0.8rem;
+        transition: none;
+    }
+
+    .testimonial-card {
+        flex: 0 0 calc(100% - 0.8rem);
+        margin-right: 0.8rem;
+        padding: 1rem;
+        scroll-snap-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        touch-action: pan-x;
+    }
+
+    .testimonial-card:hover {
+        transform: none;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        animation: none;
+    }
+
+    .testimonial-card h4::after {
+        transform: scaleX(0);
+    }
+
+    .slider-arrow {
+        display: none; /* Remove as setas no celular */
+    }
+
     .consulting-details {
         grid-template-columns: 1fr; /* Mantido como 1 coluna */
         gap: 0.8rem; /* Reduzido de 1rem para maior compacidade */
+        justify-items: center; /* Centraliza todos os itens */
     }
 
     .consulting-item {
         padding: 0.8rem; /* Reduzido de 1rem para contêineres mais enxutos */
         max-width: 100%;
+        width: 100%; /* Garante que o item ocupe a largura disponível */
+        margin: 0 auto; /* Centraliza o item */
         word-break: break-word; /* Garante que palavras longas quebrem */
         overflow-wrap: break-word; /* Compatibilidade para quebra de palavras */
         text-align: center;
@@ -2026,36 +2096,6 @@ footer p {
 
     .consulting-section h3 {
         font-size: 1.5rem;
-    }
-
-    .testimonial-slider {
-        padding: 0 1.5rem;
-    }
-
-    .testimonial-card {
-        padding: 1rem;
-    }
-
-    .testimonial-card h4 {
-        font-size: 1.4rem;
-    }
-
-    .testimonial-card p {
-        font-size: 0.8rem;
-    }
-
-    .slider-arrow {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
-
-    .slider-arrow.prev {
-        left: 0.3rem;
-    }
-
-    .slider-arrow.next {
-        right: 0.3rem;
     }
 
     .modal-content {

@@ -68,7 +68,7 @@
   
   .logo-text .main {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(1.8rem, 5vw, 2rem);
+    font-size: clamp(2rem, 6vw, 2.5rem); /* Aumentado para tornar o texto da logomarca maior */
     color: var(--text-primary);
   }
   
@@ -125,31 +125,34 @@
   
   /* Hero Section */
   .hero {
+    min-height: auto;
     display: flex;
-    flex-direction: column; /* Imagem e textos em coluna */
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Começa do topo */
+    justify-content: center;
     text-align: center;
-    padding: 0; /* Removido padding para imagem começar logo abaixo do header */
-    width: 100%;
+    padding: clamp(1.5rem, 4vw, 2rem) 1rem;
+    gap: 1rem;
   }
   
   /* Hero Image */
   .hero-image {
-    width: 100%;
-    max-width: 100%; /* Garante que a imagem use a largura total */
-    height: auto; /* Mantém proporção sem cortes */
-    padding-top: calc(80px + 1rem); /* Ajustado para header fixo */
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    padding-top: calc(80px + 1rem);
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
   }
   
   .hero-image img {
     width: 100%;
     height: auto;
-    object-fit: contain; /* Garante que a imagem seja exibida inteira */
+    object-fit: contain;
+    aspect-ratio: auto;
     display: block;
     animation: fadeInZoom 1.5s ease-out forwards;
     transition: var(--transition);
@@ -176,12 +179,12 @@
     align-items: center;
     gap: 1rem;
     width: 100%;
-    margin: 1rem 0; /* Espaço acima e abaixo */
+    margin-top: 0;
   }
   
   .impact-phrase p {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(1.8rem, 6vw, 2.2rem);
+    font-size: clamp(2rem, 7vw, 2.5rem);
     color: var(--text-primary);
     animation: slideInUp 1s ease-out forwards;
   }
@@ -189,10 +192,10 @@
   .impact-phrase .cta-button {
     background: linear-gradient(135deg, var(--accent-color), var(--text-hover));
     color: var(--primary-bg);
-    padding: 0.8rem 2rem;
+    padding: 1rem 2.5rem; /* Botão "Fale Conosco" com tamanho ligeiramente aumentado */
     border-radius: 30px;
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem; /* Tamanho do texto ajustado */
     font-weight: 600;
     text-decoration: none;
     transition: var(--transition);
@@ -952,12 +955,17 @@
     header { padding: 0.8rem 1rem; }
   
     .hero-image {
-      padding-top: calc(60px + 0.8rem); /* Ajustado para header menor */
+      width: 90%;
+      padding-top: calc(60px + 0.8rem);
     }
   
-    .impact-phrase p { font-size: clamp(1.5rem, 5vw, 1.8rem); }
+    .impact-phrase p { font-size: clamp(1.8rem, 6vw, 2.2rem); }
   
-    .impact-phrase .cta-button { padding: 0.7rem 1.8rem; font-size: 0.9rem; }
+    .impact-phrase .cta-button { padding: 0.8rem 2rem; font-size: 1rem; }
+  
+    .hero { padding: 1.5rem 0.8rem; }
+  
+    h1, .hero-slogan { font-size: clamp(2rem, 6vw, 2.5rem); }
   
     .hero-content { padding: 1rem; }
   
@@ -983,6 +991,10 @@
   
   @media (max-width: 480px) {
     .logo-text .main { font-size: 1.6rem; }
+  
+    .hero-image {
+      width: 95%;
+    }
   
     .impact-phrase p { font-size: 1.4rem; }
   

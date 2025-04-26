@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    
 </head>
 <body>
     <header>
@@ -141,6 +140,7 @@
                 </div>
                 <button class="slider-arrow prev" aria-label="Depoimento anterior"><i class="fas fa-chevron-left"></i></button>
                 <button class="slider-arrow next" aria-label="Próximo depoimento"><i class="fas fa-chevron-right"></i></button>
+                <div class="slider-dots"></div>
             </div>
         </section>
 
@@ -194,7 +194,7 @@
                     <h2>Nossa Missão</h2>
                     <p>Imagine um futuro onde você tem total controle sobre suas finanças, onde cada decisão que você toma com seu dinheiro te aproxima dos seus sonhos. Na RFM Educação Financeira, nossa missão é tornar esse futuro realidade. Somos mais do que uma empresa de educação — somos um movimento para empoderar pessoas e negócios com inteligência financeira, descomplicando o caminho para a prosperidade com estratégias práticas e personalizadas.</p>
                     <h2>Por que Escolher a RFM?</h2>
-                    <p>Porque acreditamos que finanças não precisam ser complicadas. Com a RFM, você terá acesso a treinamentos envolventes, consultorias sob medida e ferramentas inovadoras que transformam conhecimento em resultados. Nossa equipe de especialistas de especialistas combina paixão, experiência e uma abordagem humana para guiar você em cada passo, seja para sair das dívidas, investir com confiança ou escalar seu negócio. Não oferecemos apenas cursos — oferecemos uma nova forma de enxergar o dinheiro e viver a vida que você sempre quis.</p>
+                    <p>Porque acreditamos que finanças não precisam ser complicadas. Com a RFM, você terá acesso a treinamentos envolventes, consultorias sob medida e ferramentas inovadoras que transformam conhecimento em resultados. Nossa equipe de especialistas combina paixão, experiência e uma abordagem humana para guiar você em cada passo, seja para sair das dívidas, investir com confiança ou escalar seu negócio. Não oferecemos apenas cursos — oferecemos uma nova forma de enxergar o dinheiro e viver a vida que você sempre quis.</p>
                     <h2>Nosso Compromisso com Você</h2>
                     <p>Seu sucesso é o nosso sucesso. Na RFM, comprometemo-nos a estar ao seu lado, oferecendo suporte contínuo e soluções que evoluem com suas necessidades. Queremos que você sinta a confiança de quem sabe para onde está indo e a liberdade de quem planeja o futuro com segurança. Junte-se a milhares de pessoas e empresas que já transformaram suas finanças com a RFM. Vamos construir juntos o caminho para a sua prosperidade?</p>
                 </div>
@@ -692,14 +692,15 @@
                 });
             }
 
-            // Testimonial slider with infinite looping
+            // Testimonial slider with infinite looping and dots
             const slider = document.querySelector('.testimonial-slider');
             const track = document.querySelector('.testimonial-track');
             const cards = document.querySelectorAll('.testimonial-card');
             const prevButton = document.querySelector('.slider-arrow.prev');
             const nextButton = document.querySelector('.slider-arrow.next');
+            const dotsContainer = document.querySelector('.slider-dots');
 
-            if (slider && track && cards.length > 0 && prevButton && nextButton) {
+            if (slider && track && cards.length > 0 && prevButton && nextButton && dotsContainer) {
                 // Clonar cards para looping infinito
                 const cardCount = cards.length;
                 const cardWidth = cards[0].offsetWidth + 32; // Inclui margem (2rem = 32px)
@@ -724,10 +725,32 @@
                 let currentIndex = clonesStart.length; // Começa após os clones iniciais
                 track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 
+                // Criar indicadores (dots)
+                for (let i = 0; i < cardCount; i++) {
+                    const dot = document.createElement('span');
+                    dot.classList.add('slider-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        currentIndex = clonesStart.length + i;
+                        updateSlider();
+                        updateDots(i);
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+
                 // Função para atualizar posição
                 function updateSlider() {
                     track.style.transition = 'transform 0.5s ease-in-out';
                     track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                    const dotIndex = (currentIndex - clonesStart.length) % cardCount;
+                    updateDots(dotIndex >= 0 ? dotIndex : cardCount + dotIndex);
+                }
+
+                // Função para atualizar indicadores
+                function updateDots(index) {
+                    document.querySelectorAll('.slider-dot').forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
                 }
 
                 // Função para reposicionar sem animação
@@ -762,6 +785,53 @@
                         setTimeout(() => {
                             moveToIndex(cardCount + clonesStart.length - 1);
                         }, 500); // Após a animação
+                    }
+                });
+
+                // Suporte a swipe para dispositivos móveis
+                let startX = 0;
+                let isDragging = false;
+
+                track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    track.style.transition = 'none';
+                });
+
+                track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    const currentX = e.touches[0].clientX;
+                    const diffX = currentX - startX;
+                    track.style.transform = `translateX(${-currentIndex * cardWidth + diffX}px)`;
+                });
+
+                track.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    const endX = e.changedTouches[0].clientX;
+                    const diffX = endX - startX;
+                    track.style.transition = 'transform 0.5s ease-in-out';
+
+                    if (Math.abs(diffX) > cardWidth / 3) {
+                        if (diffX < 0) {
+                            currentIndex++;
+                        } else {
+                            currentIndex--;
+                        }
+                        updateSlider();
+
+                        // Verificar looping
+                        if (currentIndex >= cardCount + clonesStart.length) {
+                            setTimeout(() => {
+                                moveToIndex(clonesStart.length);
+                            }, 500);
+                        } else if (currentIndex < clonesStart.length) {
+                            setTimeout(() => {
+                                moveToIndex(cardCount + clonesStart.length - 1);
+                            }, 500);
+                        }
+                    } else {
+                        updateSlider();
                     }
                 });
 

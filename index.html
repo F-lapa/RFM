@@ -1099,7 +1099,10 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    .menu-toggle { display: block; }
+    .menu-toggle { 
+        display: block; 
+        font-size: 1.2rem; /* Reduzido para compactar */
+    }
 
     .nav-menu {
         position: absolute;
@@ -1108,18 +1111,42 @@ footer p {
         width: 100%;
         background: var(--primary-bg);
         flex-direction: column;
-        padding: 1rem;
+        padding: 0.8rem; /* Reduzido para compactar */
         display: none;
         box-shadow: var(--shadow);
     }
 
     .nav-menu.active { display: flex; }
 
-    header { padding: 0.8rem 1rem; }
+    header { 
+        padding: 0.6rem 0.8rem; /* Reduzido para compactar */
+    }
+
+    .logo-icon {
+        font-size: 1.2rem; /* Reduzido para compactar */
+    }
+
+    .logo-text .main {
+        font-size: clamp(1.4rem, 4vw, 1.6rem); /* Reduzido para compactar */
+    }
+
+    .logo-text .sub {
+        font-size: 0.6rem; /* Reduzido para compactar */
+        letter-spacing: 0.5px; /* Ajustado para legibilidade */
+    }
+
+    .logo {
+        gap: 0.3rem; /* Reduzido para compactar */
+    }
+
+    .nav-menu li a {
+        font-size: 0.8rem; /* Reduzido para compactar */
+        padding: 0.4rem 0.8rem; /* Reduzido para compactar */
+    }
 
     .hero-image {
         width: 90%;
-        padding-top: calc(60px + 0.8rem);
+        padding-top: calc(50px + 0.6rem); /* Ajustado para header menor */
     }
 
     .impact-phrase p { font-size: clamp(2rem, 7vw, 2.5rem); }
@@ -1132,7 +1159,11 @@ footer p {
 
     .hero-content { padding: 1rem; }
 
-    .presentation-container { flex-direction: column; padding: 1rem; }
+    .presentation-container { 
+        flex-direction: column; 
+        padding: 1rem; 
+        align-items: center; /* Centralizado */
+    }
 
     .presentation-image {
         order: -1;
@@ -1214,13 +1245,39 @@ footer p {
         max-width: 1200px;
         margin: 0 auto;
         padding: clamp(0.5rem, 2vw, 1rem);
-        padding-top: calc(60px + 0.8rem);
+        padding-top: calc(50px + 0.6rem); /* Ajustado para header menor */
         box-sizing: border-box;
     }
 }
 
+@media (min-width: 769px) {
+    .presentation-text .presentation-name {
+        font-size: clamp(2.2rem, 5vw, 2.5rem); /* Aumentado para destaque */
+    }
+
+    .presentation-text .presentation-subtitle {
+        font-size: 1.3rem; /* Aumentado para destaque */
+        margin-bottom: 0.8rem; /* Ajustado para espaçamento */
+    }
+
+    .presentation-text p {
+        font-size: 1.1rem; /* Aumentado para destaque */
+        line-height: 1.6; /* Ajustado para legibilidade */
+    }
+
+    .presentation-container {
+        padding: 2rem; /* Aumentado para destacar */
+    }
+}
+
 @media (max-width: 480px) {
-    .logo-text .main { font-size: 1.6rem; }
+    .logo-text .main { font-size: clamp(1.2rem, 3.5vw, 1.4rem); } /* Ajustado para compactar mais */
+
+    .logo-icon { font-size: 1rem; } /* Ajustado para compactar mais */
+
+    .logo-text .sub { font-size: 0.5rem; } /* Ajustado para compactar mais */
+
+    .menu-toggle { font-size: 1rem; } /* Ajustado para compactar mais */
 
     .hero-image {
         width: 95%;
@@ -1295,6 +1352,12 @@ footer p {
         padding: 0.8rem;
         min-height: 140px;
     }
+
+    .logo-text .main { font-size: clamp(1rem, 3vw, 1.2rem); } /* Ajustado para compactar ainda mais */
+
+    .logo-icon { font-size: 0.9rem; } /* Ajustado para compactar ainda mais */
+
+    .logo-text .sub { font-size: 0.4rem; } /* Ajustado para compactar ainda mais */
 }
     </style>
 </head>

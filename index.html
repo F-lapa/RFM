@@ -456,26 +456,54 @@
             gap: 1.5rem;
             justify-items: center;
         }
-
         .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            justify-items: center;
-        }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+}
 
-        .resource-card {
-            background: var(--secondary-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--accent-color);
-            text-align: center;
-            min-height: 200px;
-            transition: var(--transition);
-            cursor: pointer;
-            animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
-        }
+.resource-card {
+    background: var(--secondary-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--accent-color);
+    text-align: center;
+    min-height: 200px;
+    transition: var(--transition);
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
+    width: 100%; /* Garante que o cartão ocupe o espaço disponível */
+    max-width: 320px; /* Limita a largura máxima */
+}
 
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+    .resource-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 0 1rem;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .resource-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reduz o tamanho mínimo para telas menores */
+        gap: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .resource-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ainda mais flexível para telas muito pequenas */
+        gap: 0.8rem;
+    }
+    .resource-card {
+        padding: 1rem;
+        min-height: 180px;
+    }
+}
+        
         .resource-card:hover, .resource-card:focus {
             transform: translateY(-4px);
             background: var(--accent-color);
@@ -1631,6 +1659,20 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+    // Função para restaurar visibilidade dos cartões interativos
+    const restoreCardVisibility = () => {
+        const allInteractiveCards = document.querySelectorAll('.consulting-item, .resource-card');
+        allInteractiveCards.forEach(card => {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+            card.style.visibility = 'visible';
+        });
+    };
+
+    // Inicializar visibilidade dos cartões ao carregar a página
+    restoreCardVisibility();
+
     // Toggle mobile menu
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -1672,6 +1714,8 @@
                     closeModal(modal);
                 }
             });
+            // Restaurar visibilidade dos cartões ao abrir o modal
+            restoreCardVisibility();
         }
     }
 
@@ -1680,6 +1724,8 @@
             modal.classList.remove('show');
             setTimeout(() => {
                 modal.style.display = 'none';
+                // Restaurar visibilidade dos cartões após fechar o modal
+                restoreCardVisibility();
             }, 400);
         }
     }
@@ -1700,6 +1746,12 @@
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 closeModal(modal);
+            }
+        });
+        // Restaurar visibilidade após transição do modal
+        modal.addEventListener('transitionend', () => {
+            if (!modal.classList.contains('show')) {
+                restoreCardVisibility();
             }
         });
     });
@@ -1823,6 +1875,8 @@
             if (entry.isIntersecting) {
                 entry.target.classList.add('show');
                 observer.unobserve(entry.target);
+                // Restaurar visibilidade dos cartões quando a seção entra na viewport
+                restoreCardVisibility();
             }
         });
     }, observerOptions);

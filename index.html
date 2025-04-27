@@ -215,30 +215,6 @@ nav {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
 }
 
-@media (max-width: 768px) {
-    .impact-phrase p {
-        font-size: 2rem !important;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 8px rgba(58, 102, 84, 0.4) !important;
-        padding: 0.4rem 0.8rem !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .impact-phrase p {
-        font-size: 2rem !important;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 6px rgba(58, 102, 84, 0.3) !important;
-        padding: 0.3rem 0.6rem !important;
-    }
-}
-
-@media (max-width: 320px) {
-    .impact-phrase p {
-        font-size: 1rem !important;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
-        padding: 0.2rem 0.5rem !important;
-    }
-}
-
 .impact-image {
     width: 100%;
     max-width: 600px;
@@ -312,30 +288,6 @@ nav {
 .hero-slogan:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-    .hero-slogan {
-        font-size: 2rem !important;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 8px rgba(58, 102, 84, 0.4);
-        padding: 0.4rem 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-slogan {
-        font-size: 2rem !important;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 6px rgba(58, 102, 84, 0.3);
-        padding: 0.3rem 0.6rem;
-    }
-}
-
-@media (max-width: 320px) {
-    .hero-slogan {
-        font-size: 1rem !important;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        padding: 0.2rem 0.5rem;
-    }
 }
 
 .hero-content p {
@@ -457,7 +409,6 @@ nav {
     text-align: center;
 }
 
-/* Seção Consultoria Personalizada */
 .consulting-details {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -522,7 +473,6 @@ nav {
     color: var(--primary-bg);
 }
 
-/* Seção Recursos Educacionais (Blogs) */
 .resource-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -587,7 +537,6 @@ nav {
     color: var(--primary-bg);
 }
 
-/* Seção Features */
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1098,143 +1047,63 @@ footer p {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Media Queries para dispositivos móveis */
 @media (max-width: 768px) {
-    .menu-toggle { 
-        display: block; 
-        font-size: 1.2rem; /* Reduzido para compactar */
+    /* Header */
+    header {
+        padding: 0.5rem 1rem;
+        height: 50px;
+    }
+
+    .logo {
+        gap: 0.2rem;
+    }
+
+    .logo-icon {
+        font-size: 1.2rem;
+    }
+
+    .logo-text .main {
+        font-size: clamp(1.2rem, 4vw, 1.4rem);
+    }
+
+    .logo-text .sub {
+        font-size: 0.5rem;
+        letter-spacing: 0.5px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
     }
 
     .nav-menu {
         position: absolute;
-        top: 100%;
+        top: 50px;
         left: 0;
         width: 100%;
         background: var(--primary-bg);
         flex-direction: column;
-        padding: 0.8rem; /* Reduzido para compactar */
+        padding: 0.5rem;
         display: none;
         box-shadow: var(--shadow);
+        z-index: 999;
     }
 
-    .nav-menu.active { display: flex; }
-
-    header { 
-        padding: 0.6rem 0.8rem; /* Reduzido para compactar */
-    }
-
-    .logo-icon {
-        font-size: 1.2rem; /* Reduzido para compactar */
-    }
-
-    .logo-text .main {
-        font-size: clamp(1.4rem, 4vw, 1.6rem); /* Reduzido para compactar */
-    }
-
-    .logo-text .sub {
-        font-size: 0.6rem; /* Reduzido para compactar */
-        letter-spacing: 0.5px; /* Ajustado para legibilidade */
-    }
-
-    .logo {
-        gap: 0.3rem; /* Reduzido para compactar */
+    .nav-menu.active {
+        display: flex;
     }
 
     .nav-menu li a {
-        font-size: 0.8rem; /* Reduzido para compactar */
-        padding: 0.4rem 0.8rem; /* Reduzido para compactar */
-    }
-
-    .hero-image {
-        width: 90%;
-        padding-top: calc(50px + 0.6rem); /* Ajustado para header menor */
-    }
-
-    .impact-phrase p { font-size: clamp(2rem, 7vw, 2.5rem); }
-
-    .impact-phrase .cta-button { padding: 0.8rem 2rem; font-size: 1rem; }
-
-    .hero { padding: 1.5rem 0.8rem; }
-
-    h1, .hero-slogan { font-size: clamp(3rem, 10vw, 4rem); }
-
-    .hero-content { padding: 1rem; }
-
-    .presentation-container { 
-        flex-direction: column; 
-        padding: 1rem; 
-        align-items: center; /* Centralizado */
-    }
-
-    .presentation-image {
-        order: -1;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
         width: 100%;
-        max-width: 300px;
-        margin-bottom: 1rem;
-    }
-
-    .presentation-text {
-        order: 1;
         text-align: center;
     }
 
-    .consulting-details {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1rem;
-        padding: 0.5rem;
-    }
-
-    .consulting-item {
-        padding: 1rem;
-        min-height: 200px;
-        max-width: 320px;
-        font-size: 0.9rem;
-    }
-
-    .consulting-item h3 {
-        font-size: clamp(1.4rem, 3.5vw, 1.5rem);
-    }
-
-    .consulting-item p {
-        font-size: 0.85rem;
-    }
-
-    .resource-grid {
-        grid-template-columns: repeat(2, minmax(140px, 1fr));
-        grid-template-rows: repeat(3, auto);
-        gap: 1rem;
-        padding: 0.5rem;
-    }
-
-    .resource-card {
-        padding: 1rem;
-        min-height: 180px;
-        max-width: 100%;
-        font-size: 0.9rem;
-    }
-
-    .resource-card h3 {
-        font-size: clamp(1.2rem, 3vw, 1.3rem);
-    }
-
-    .resource-card p {
-        font-size: 0.8rem;
-    }
-
-    .features {
-        grid-template-columns: 1fr;
-    }
-
-    .testimonial-card { flex: 0 0 calc(100% - 1rem); }
-
-    .slider-arrow { display: none; }
-
-    .modal-content { max-width: 95%; padding: 1rem; }
-
-    .calculator-container, .quiz-container { max-width: 100%; padding: 1rem; }
-
-    .period-container input { width: 55%; }
-    .period-container select { width: 45%; }
-
+    /* Body */
     body {
         justify-content: flex-start;
         padding: 0;
@@ -1242,57 +1111,96 @@ footer p {
 
     main {
         width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: clamp(0.5rem, 2vw, 1rem);
-        padding-top: calc(50px + 0.6rem); /* Ajustado para header menor */
+        max-width: 100%;
+        margin: 0;
+        padding: 0.5rem;
+        padding-top: 50px;
         box-sizing: border-box;
     }
-}
 
-@media (min-width: 769px) {
-    .presentation-text .presentation-name {
-        font-size: clamp(2.2rem, 5vw, 2.5rem); /* Aumentado para destaque */
+    /* Hero */
+    .hero {
+        padding: 1rem 0.5rem;
+        gap: 0.5rem;
+    }
+
+    .hero-image {
+        width: 100%;
+        padding-top: 50px;
+        margin-bottom: 1rem;
+    }
+
+    .hero-content {
+        padding: 0.8rem;
+        margin: 0 0.5rem;
+    }
+
+    .hero-slogan {
+        font-size: clamp(1.8rem, 6vw, 2rem) !important;
+        padding: 0.3rem 0.6rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Impact Phrase */
+    .impact-phrase {
+        padding: 0.8rem;
+        gap: 0.5rem;
+    }
+
+    .impact-phrase p {
+        font-size: clamp(1.8rem, 6vw, 2rem) !important;
+        padding: 0.3rem 0.6rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .impact-phrase .cta-button {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Presentation Section */
+    .presentation-container {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+
+    .presentation-image {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .presentation-name {
+        font-size: clamp(1.4rem, 5vw, 1.6rem);
     }
 
     .presentation-text .presentation-subtitle {
-        font-size: 1.3rem; /* Aumentado para destaque */
-        margin-bottom: 0.8rem; /* Ajustado para espaçamento */
+        font-size: 0.95rem;
     }
 
     .presentation-text p {
-        font-size: 1.1rem; /* Aumentado para destaque */
-        line-height: 1.6; /* Ajustado para legibilidade */
+        font-size: 0.85rem;
     }
 
-    .presentation-container {
-        padding: 2rem; /* Aumentado para destacar */
-    }
-}
-
-@media (max-width: 480px) {
-    .logo-text .main { font-size: clamp(1.2rem, 3.5vw, 1.4rem); } /* Ajustado para compactar mais */
-
-    .logo-icon { font-size: 1rem; } /* Ajustado para compactar mais */
-
-    .logo-text .sub { font-size: 0.5rem; } /* Ajustado para compactar mais */
-
-    .menu-toggle { font-size: 1rem; } /* Ajustado para compactar mais */
-
-    .hero-image {
-        width: 95%;
+    /* Video Presentation */
+    .video-presentation {
+        padding: 0.8rem;
+        margin: 1rem auto;
     }
 
-    .impact-phrase p { font-size: 1.8rem; }
-
-    h1, .hero-slogan { font-size: clamp(3rem, 10vw, 4.5rem); }
-
-    .consulting-item h3, .resource-card h3 {
-        font-size: clamp(1.2rem, 2.5vw, 1.3rem);
+    .video-presentation h3 {
+        font-size: clamp(1.4rem, 5vw, 1.6rem);
     }
 
-    .consulting-item p, .resource-card p {
-        font-size: 0.8rem;
+    /* Consulting */
+    .consulting {
+        padding: 1rem 0.5rem;
+        margin: 1rem 0.5rem;
+    }
+
+    .consulting h2 {
+        font-size: clamp(1.6rem, 6vw, 1.8rem);
     }
 
     .consulting-details {
@@ -1307,57 +1215,498 @@ footer p {
         max-width: 100%;
     }
 
+    .consulting-item h3 {
+        font-size: clamp(1.3rem, 4vw, 1.4rem);
+    }
+
+    .consulting-item p {
+        font-size: 0.85rem;
+    }
+
+    /* Features */
+    .features {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem 0.5rem;
+    }
+
+    .feature-card {
+        padding: 1rem;
+    }
+
+    .feature-card h3 {
+        font-size: clamp(1.3rem, 4vw, 1.4rem);
+    }
+
+    .feature-card p {
+        font-size: 0.85rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+        padding: 1rem 0;
+    }
+
+    .testimonials h2 {
+        font-size: clamp(1.6rem, 6vw, 1.8rem);
+    }
+
+    .testimonial-card {
+        flex: 0 0 calc(100% - 1rem);
+        margin-right: 1rem;
+        padding: 1rem;
+    }
+
+    .testimonial-card p {
+        font-size: 0.85rem;
+    }
+
+    .testimonial-card h4 {
+        font-size: 1.1rem;
+    }
+
+    .slider-arrow {
+        display: none; /* Oculta setas no mobile */
+    }
+
+    /* Resources */
+    .resources {
+        padding: 1rem 0.5rem;
+        margin: 1rem 0.5rem;
+    }
+
+    .resources h2 {
+        font-size: clamp(1.6rem, 6vw, 1.8rem);
+    }
+
     .resource-grid {
-        grid-template-columns: repeat(2, minmax(120px, 1fr));
-        gap: 0.8rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
         padding: 0.5rem;
     }
 
     .resource-card {
         padding: 1rem;
-        min-height: 160px;
+        min-height: 180px;
         max-width: 100%;
     }
 
-    .testimonial-card p { font-size: 0.85rem; }
+    .resource-card h3 {
+        font-size: clamp(1.3rem, 4vw, 1.4rem);
+    }
 
-    .modal-hero-content h1, .modal-about-content h2 { font-size: 1.5rem; }
+    .resource-card p {
+        font-size: 0.85rem;
+    }
 
-    .calculator-btn, .quiz-btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+    /* Modal */
+    .modal-content {
+        max-width: 90%;
+        padding: 1rem;
+    }
 
-    .quiz-question label { font-size: 0.85rem; padding: 0.6rem; }
+    .modal-hero {
+        padding: 1rem;
+    }
+
+    .modal-hero-content h1 {
+        font-size: clamp(1.4rem, 5vw, 1.6rem);
+    }
+
+    .modal-hero-content p {
+        font-size: 0.85rem;
+    }
+
+    .modal-about-section {
+        padding: 1rem;
+    }
+
+    .modal-about-content h2 {
+        font-size: clamp(1.3rem, 4vw, 1.4rem);
+    }
+
+    .modal-about-content p, .modal-about-content ul {
+        font-size: 0.85rem;
+    }
+
+    /* Calculator */
+    .calculator-container {
+        padding: 1rem;
+    }
+
+    .form-group label {
+        font-size: clamp(1.1rem, 4vw, 1.2rem);
+    }
+
+    .form-group input, .form-group select {
+        font-size: 0.85rem;
+        padding: 0.6rem;
+    }
+
+    .calculator-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Quiz */
+    .quiz-container {
+        padding: 1rem;
+    }
+
+    .quiz-question h3 {
+        font-size: clamp(1.1rem, 4vw, 1.2rem);
+    }
+
+    .quiz-question label {
+        font-size: 0.85rem;
+        padding: 0.6rem;
+    }
+
+    .quiz-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 1rem 0.5rem;
+    }
+
+    .footer-logo {
+        font-size: clamp(1.4rem, 5vw, 1.6rem);
+    }
+
+    .social-links a {
+        font-size: 1.2rem;
+    }
+
+    footer p {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Header */
+    header {
+        padding: 0.4rem 0.8rem;
+        height: 45px;
+    }
+
+    .logo-icon {
+        font-size: 1rem;
+    }
+
+    .logo-text .main {
+        font-size: clamp(1rem, 4vw, 1.2rem);
+    }
+
+    .logo-text .sub {
+        font-size: 0.4rem;
+    }
+
+    .menu-toggle {
+        font-size: 1rem;
+    }
+
+    .nav-menu {
+        top: 45px;
+        padding: 0.4rem;
+    }
+
+    .nav-menu li a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 0.8rem 0.4rem;
+    }
+
+    .hero-image {
+        padding-top: 45px;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-content {
+        padding: 0.6rem;
+        margin: 0 0.4rem;
+    }
+
+    .hero-slogan {
+        font-size: clamp(1.4rem, 6vw, 1.6rem) !important;
+        padding: 0.2rem 0.4rem;
+    }
+
+    /* Impact Phrase */
+    .impact-phrase {
+        padding: 0.6rem;
+    }
+
+    .impact-phrase p {
+        font-size: clamp(1.4rem, 6vw, 1.6rem) !important;
+        padding: 0.2rem 0.4rem;
+    }
+
+    .impact-phrase .cta-button {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    /* Presentation */
+    .presentation-container {
+        padding: 0.8rem;
+        gap: 0.6rem;
+    }
+
+    .presentation-image {
+        max-width: 200px;
+    }
+
+    .presentation-name {
+        font-size: clamp(1.2rem, 5vw, 1.4rem);
+    }
+
+    .presentation-text .presentation-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .presentation-text p {
+        font-size: 0.8rem;
+    }
+
+    /* Consulting */
+    .consulting-item {
+        padding: 0.8rem;
+        min-height: 160px;
+    }
+
+    .consulting-item h3 {
+        font-size: clamp(1.1rem, 4vw, 1.2rem);
+    }
+
+    .consulting-item p {
+        font-size: 0.8rem;
+    }
+
+    /* Features */
+    .feature-card {
+        padding: 0.8rem;
+    }
+
+    .feature-card h3 {
+        font-size: clamp(1.1rem, 4vw, 1.2rem);
+    }
+
+    .feature-card p {
+        font-size: 0.8rem;
+    }
+
+    /* Resources */
+    .resource-card {
+        padding: 0.8rem;
+        min-height: 160px;
+    }
+
+    .resource-card h3 {
+        font-size: clamp(1.1rem, 4vw, 1.2rem);
+    }
+
+    .resource-card p {
+        font-size: 0.8rem;
+    }
+
+    /* Modal */
+    .modal-content {
+        max-width: 95%;
+        padding: 0.8rem;
+    }
+
+    .modal-hero {
+        padding: 0.8rem;
+    }
+
+    .modal-hero-content h1 {
+        font-size: clamp(1.2rem, 5vw, 1.4rem);
+    }
+
+    .modal-hero-content p {
+        font-size: 0.8rem;
+    }
+
+    .modal-about-section {
+        padding: 0.8rem;
+    }
+
+    .modal-about-content h2 {
+        font-size: clamp(1.1rem, 4vw, 1.2rem);
+    }
+
+    .modal-about-content p, .modal-about-content ul {
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 320px) {
-    .impact-phrase p { font-size: 1.6rem; }
-
-    .impact-phrase .cta-button { padding: 0.6rem 1.5rem; font-size: 0.8rem; }
-
-    h1, .hero-slogan { font-size: clamp(2.5rem, 8vw, 4rem); }
-
-    .consulting-item h3, .resource-card h3 {
-        font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+    /* Header */
+    header {
+        padding: 0.3rem 0.6rem;
+        height: 40px;
     }
 
-    .consulting-item p, .resource-card p {
-        font-size: 0.75rem;
+    .logo-icon {
+        font-size: 0.8rem;
     }
 
-    .resource-grid {
-        grid-template-columns: repeat(2, minmax(100px, 1fr));
+    .logo-text .main {
+        font-size: clamp(0.8rem, 4vw, 1rem);
+    }
+
+    .logo-text .sub {
+        font-size: 0.3rem;
+    }
+
+    .menu-toggle {
+        font-size: 0.8rem;
+    }
+
+    .nav-menu {
+        top: 40px;
+        padding: 0.3rem;
+    }
+
+    .nav-menu li a {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 0.6rem 0.3rem;
+    }
+
+    .hero-image {
+        padding-top: 40px;
+        margin-bottom: 0.6rem;
+    }
+
+    .hero-content {
+        padding: 0.5rem;
+        margin: 0 0.3rem;
+    }
+
+    .hero-slogan {
+        font-size: clamp(1.2rem, 6vw, 1.4rem) !important;
+        padding: 0.1rem 0.3rem;
+    }
+
+    /* Impact Phrase */
+    .impact-phrase {
+        padding: 0.5rem;
+    }
+
+    .impact-phrase p {
+        font-size: clamp(1.2rem, 6vw, 1.4rem) !important;
+        padding: 0.1rem 0.3rem;
+    }
+
+    .impact-phrase .cta-button {
+        padding: 0.4rem 1rem;
+        font-size: 0.7rem;
+    }
+
+    /* Presentation */
+    .presentation-container {
+        padding: 0.6rem;
         gap: 0.5rem;
     }
 
-    .resource-card {
-        padding: 0.8rem;
+    .presentation-image {
+        max-width: 180px;
+    }
+
+    .presentation-name {
+        font-size: clamp(1rem, 5vw, 1.2rem);
+    }
+
+    .presentation-text .presentation-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .presentation-text p {
+        font-size: 0.75rem;
+    }
+
+    /* Consulting */
+    .consulting-item {
+        padding: 0.6rem;
         min-height: 140px;
     }
 
-    .logo-text .main { font-size: clamp(1rem, 3vw, 1.2rem); } /* Ajustado para compactar ainda mais */
+    .consulting-item h3 {
+        font-size: clamp(1rem, 4vw, 1.1rem);
+    }
 
-    .logo-icon { font-size: 0.9rem; } /* Ajustado para compactar ainda mais */
+    .consulting-item p {
+        font-size: 0.75rem;
+    }
 
-    .logo-text .sub { font-size: 0.4rem; } /* Ajustado para compactar ainda mais */
+    /* Features */
+    .feature-card {
+        padding: 0.6rem;
+    }
+
+    .feature-card h3 {
+        font-size: clamp(1rem, 4vw, 1.1rem);
+    }
+
+    .feature-card p {
+        font-size: 0.75rem;
+    }
+
+    /* Resources */
+    .resource-card {
+        padding: 0.6rem;
+        min-height: 140px;
+    }
+
+    .resource-card h3 {
+        font-size: clamp(1rem, 4vw, 1.1rem);
+    }
+
+    .resource-card p {
+        font-size: 0.75rem;
+    }
+
+    /* Modal */
+    .modal-content {
+        max-width: 98%;
+        padding: 0.6rem;
+    }
+
+    .modal-hero {
+        padding: 0.6rem;
+    }
+
+    .modal-hero-content h1 {
+        font-size: clamp(1rem, 5vw, 1.2rem);
+    }
+
+    .modal-hero-content p {
+        font-size: 0.75rem;
+    }
+
+    .modal-about-section {
+        padding: 0.6rem;
+    }
+
+    .modal-about-content h2 {
+        font-size: clamp(1rem, 4vw, 1.1rem);
+    }
+
+    .modal-about-content p, .modal-about-content ul {
+        font-size: 0.75rem;
+    }
 }
     </style>
 </head>
@@ -1371,8 +1720,8 @@ footer p {
                     <span class="sub">Educação Financeira</span>
                 </div>
             </div>
-            <div class="menu-toggle">
-                <i class="fas fa-bars" aria-label="Abrir menu"></i>
+            <div class="menu-toggle" aria-expanded="false" aria-label="Abrir menu">
+                <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-menu">
                 <li><a href="#" id="open-about-modal" aria-label="Abrir modal Sobre">Sobre a RFM</a></li>
@@ -1866,9 +2215,8 @@ footer p {
             <a href="mailto:contato@rfmeducacao.com.br" aria-label="E-mail da RFM"><i class="fas fa-envelope"></i></a>
             <a href="https://www.youtube.com/@seu-canal" target="_blank" aria-label="YouTube da RFM"><i class="fab fa-youtube"></i></a>
         </div>
-        <p>&copy; 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
+        <p>© 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
     </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
     // Função para restaurar visibilidade apenas dos cartões interativos

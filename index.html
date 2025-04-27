@@ -10,8 +10,1108 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Dancing+Script:wght@400;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #FFF9F2;
+            --secondary-bg: #F0EDE5;
+            --text-primary: #882B0A;
+            --text-hover: #A33E1C;
+            --accent-color: #3A6654;
+            --text-secondary: #222;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --glow: 0 0 10px rgba(58, 102, 84, 0.5);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+            color: var(--text-primary);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            animation: slideIn 0.8s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .logo-icon:hover { transform: scale(1.1) rotate(10deg); }
+
+        .logo-text .main {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            color: var(--text-primary);
+        }
+
+        .logo-text .sub {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .menu-toggle i {
+            transition: var(--transition);
+        }
+
+        .menu-toggle:hover i { transform: rotate(90deg); }
+
+        .nav-menu {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            animation: slideIn 0.6s ease calc(0.1s * var(--i)) forwards;
+        }
+
+        .nav-menu li a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--accent-color);
+            background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg));
+            transition: var(--transition);
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li a:focus {
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        .hero {
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: clamp(1.5rem, 4vw, 2rem) 1rem;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+            padding-top: calc(80px + 1rem);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            aspect-ratio: auto;
+            display: block;
+            animation: fadeInZoom 1.5s ease-out forwards;
+            transition: var(--transition);
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.03);
+            box-shadow: var(--glow);
+        }
+
+        @keyframes fadeInZoom {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .impact-phrase {
+            background: rgba(255, 249, 242, 0.8);
+            padding: clamp(1rem, 3vw, 1.5rem);
+            text-align: center;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .impact-phrase p {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 4rem !important; /* 96px em desktops */
+    color: var(--text-primary) !important;
+    animation: slideInUp 1s ease-out forwards !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(58, 102, 84, 0.5) !important; /* Sombra suave + brilho */
+    background: linear-gradient(135deg, rgba(255, 249, 242, 0.8), rgba(240, 237, 229, 0.8)) !important; /* Fundo claro com gradiente */
+    padding: 0.5rem 1rem !important; /* Espaço ao redor do texto */
+    border-radius: 12px !important; /* Bordas arredondadas no fundo */
+    display: inline-block !important; /* Faz o fundo se ajustar ao texto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important; /* Suaviza interações */
+    text-align: center !important; /* Centraliza o texto */
+}
+
+.impact-phrase p:hover {
+    transform: scale(1.05) !important; /* Leve aumento ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important; /* Sombra mais forte no hover */
+}
+
+/* Media Queries para telas menores */
+@media (max-width: 768px) {
+    .impact-phrase p {
+        font-size: 2rem !important; /* 48px em tablets */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 8px rgba(58, 102, 84, 0.4) !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .impact-phrase p {
+        font-size: 2rem !important; /* 48px em celulares */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 6px rgba(58, 102, 84, 0.3) !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .impact-phrase p {
+        font-size: 1rem !important; /* 32px em telas muito pequenas */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+        padding: 0.2rem 0.5rem !important;
+    }
+}
+
+        .impact-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border: 5px solid #D4AF37;
+            transition: var(--transition);
+        }
+
+        .impact-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .impact-phrase .cta-button {
+            background: linear-gradient(135deg, var(--accent-color), var(--text-hover));
+            color: var(--primary-bg);
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 1s ease-out forwards;
+        }
+
+        .impact-phrase .cta-button::after {
+            content: '→';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .impact-phrase .cta-button:hover::after { transform: translateY(-50%) scale(1); }
+
+        .impact-phrase .cta-button:hover,
+        .impact-phrase .cta-button:focus {
+            transform: scale(1.05);
+            box-shadow: var(--glow);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 1.5rem;
+            background: rgba(255, 249, 242, 0.3);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+        }
+
+        .hero-slogan {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem !important; /* 96px em desktops */
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    animation: fadeInDown 0.8s ease forwards;
+    /* Destaques */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(58, 102, 84, 0.5); /* Sombra suave + brilho */
+    background: linear-gradient(135deg, rgba(255, 249, 242, 0.8), rgba(240, 237, 229, 0.8)); /* Fundo claro com gradiente */
+    padding: 0.5rem 1rem; /* Espaço ao redor do texto */
+    border-radius: 12px; /* Bordas arredondadas no fundo */
+    display: inline-block; /* Faz o fundo se ajustar ao texto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza interações */
+}
+
+.hero-slogan:hover {
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte no hover */
+}
+
+/* Media Queries para manter o destaque em telas menores */
+@media (max-width: 768px) {
+    .hero-slogan {
+        font-size: 2rem !important; /* 48px em tablets */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 8px rgba(58, 102, 84, 0.4); /* Sombra ajustada */
+        padding: 0.4rem 0.8rem; /* Menos padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-slogan {
+        font-size: 2rem !important; /* 48px em celulares */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 6px rgba(58, 102, 84, 0.3); /* Sombra menor */
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .hero-slogan {
+        font-size: 1rem !important; /* 32px em telas muito pequenas */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra simplificada */
+        padding: 0.2rem 0.5rem;
+    }
+}
+        .hero-content p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            color: var(--text-primary);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .presentation-section {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 1rem;
+            transition: var(--transition);
+        }
+
+        .presentation-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .presentation-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--primary-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .presentation-container:hover { box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); }
+
+        .presentation-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.8rem, 5vw, 2rem);
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.3rem;
+        }
+
+        .presentation-text { flex: 1; }
+
+        .presentation-text .presentation-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .presentation-text p {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .presentation-image {
+            flex: 0 0 280px;
+        }
+
+        .presentation-image img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .presentation-image img:hover { transform: scale(1.02); }
+
+        .video-presentation {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: var(--primary-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .video-presentation h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.6rem, 5vw, 1.8rem);
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .consulting, .features, .resources, .testimonials {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: clamp(1rem, 3vw, 1.5rem) 1rem;
+            background: var(--primary-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .consulting h2, .resources h2, .testimonials h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 6vw, 2.2rem);
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .consulting-details, .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            justify-items: center;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            justify-items: center;
+        }
+
+        .resource-card {
+            background: var(--secondary-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--accent-color);
+            text-align: center;
+            min-height: 200px;
+            transition: var(--transition);
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
+        }
+
+        .resource-card:hover, .resource-card:focus {
+            transform: translateY(-4px);
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            box-shadow: var(--glow);
+        }
+
+        .resource-card .icon {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .resource-card:hover .icon, .resource-card:focus .icon {
+            transform: scale(1.1);
+            color: var(--primary-bg);
+        }
+
+        .resource-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.4rem, 4vw, 1.5rem);
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-card:hover h3, .resource-card:focus h3 {
+            color: var(--primary-bg);
+        }
+
+        .resource-card p {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .resource-card:hover p, .resource-card:focus p {
+            color: var(--primary-bg);
+        }
+
+        .consulting-item, .feature-card, .tip-card {
+            background: var(--secondary-bg);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid var(--accent-color);
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
+        }
+
+        .consulting-item:hover, .feature-card:hover, .tip-card:hover,
+        .consulting-item:focus, .feature-card:focus, .tip-card:focus {
+            transform: translateY(-4px);
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            box-shadow: var(--glow);
+        }
+
+        .consulting-item i, .feature-card .icon {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .consulting-item:hover i, .feature-card:hover .icon,
+        .consulting-item:focus i, .feature-card:focus .icon {
+            transform: scale(1.1);
+            color: var(--primary-bg);
+        }
+
+        .consulting-item h3, .feature-card h3, .tip-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.4rem, 4vw, 1.5rem);
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .consulting-item:hover h3, .feature-card:hover h3, .tip-card:hover h3,
+        .consulting-item:focus h3, .feature-card:focus h3, .tip-card:focus h3 {
+            color: var(--primary-bg);
+        }
+
+        .consulting-item p, .feature-card p, .tip-card p {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .consulting-item:hover p, .feature-card:hover p, .tip-card:hover p,
+        .consulting-item:focus p, .feature-card:focus p, .tip-card:focus p {
+            color: var(--primary-bg);
+        }
+
+        .testimonials {
+            position: relative;
+            overflow: hidden;
+            padding: 0 1rem;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            will-change: transform;
+        }
+
+        .testimonial-card {
+            flex: 0 0 calc(33.33% - 1rem);
+            margin-right: 1.5rem;
+            background: var(--secondary-bg);
+            padding: 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--glow);
+        }
+
+        .testimonial-card p {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .testimonial-card h4 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-arrow:hover, .slider-arrow:focus {
+            background: var(--text-hover);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: var(--glow);
+        }
+
+        .slider-arrow.prev { left: 0; }
+        .slider-arrow.next { right: 0; }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background: var(--accent-color);
+            transform: scale(1.4);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--primary-bg);
+            max-width: 85%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 1rem;
+            padding: 1.5rem;
+            transform: scale(0.9);
+            animation: popIn 0.5s ease-out forwards;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-btn:hover, .close-btn:focus {
+            transform: rotate(90deg);
+            color: var(--text-hover);
+        }
+
+        .modal-hero {
+            background: linear-gradient(135deg, rgba(58, 102, 84, 0.9), rgba(136, 43, 10, 0.7));
+            padding: 1.5rem;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+            color: #FFF;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-hero-content h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.8rem, 5vw, 2rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-hero-content p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .modal-about-section {
+            padding: 1.5rem;
+            text-align: center;
+            width: 100%;
+            background: rgba(255, 249, 242, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+        }
+
+        .modal-about-content h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.6rem, 4vw, 1.8rem);
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-about-content p, .modal-about-content ul {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-about-content ul {
+            list-style: disc;
+            padding-left: 1.2rem;
+            text-align: left;
+        }
+
+        .calculator-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            background: rgba(255, 249, 242, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: grid;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .calculator-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.3rem, 4vw, 1.4rem);
+            color: var(--text-primary);
+            text-align: left;
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.8rem;
+            border: 1px solid var(--accent-color);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+            transition: var(--transition);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--text-hover);
+            transform: scale(1.02);
+            box-shadow: var(--glow);
+        }
+
+        .period-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .period-container input {
+            width: 60%;
+        }
+
+        .period-container select {
+            width: 40%;
+            padding: 0.8rem;
+        }
+
+        .calculator-btn {
+            background: linear-gradient(135deg, var(--accent-color), var(--text-hover));
+            color: var(--primary-bg);
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            justify-self: center;
+        }
+
+        .calculator-btn::after {
+            content: '💸';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .calculator-btn:hover::after { transform: translateY(-50%) scale(1); }
+
+        .calculator-btn:hover, .calculator-btn:focus {
+            background: linear-gradient(135deg, var(--text-hover), var(--accent-color));
+            transform: scale(1.05);
+            box-shadow: var(--glow);
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .quiz-question {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            background: var(--secondary-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--shadow);
+            animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
+        }
+
+        .quiz-question h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.3rem, 4vw, 1.4rem);
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .quiz-question label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            background: var(--primary-bg);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quiz-question label:hover {
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            box-shadow: var(--glow);
+        }
+
+        .quiz-question input[type="radio"] {
+            accent-color: var(--accent-color);
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .quiz-btn {
+            background: linear-gradient(135deg, var(--accent-color), var(--text-hover));
+            color: var(--primary-bg);
+            padding: 1rem 2.5rem;
+            border-radius: 25px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            justify-self: center;
+        }
+
+        .quiz-btn:hover, .quiz-btn:focus {
+            background: linear-gradient(135deg, var(--text-hover), var(--accent-color));
+            transform: scale(1.05);
+            box-shadow: var(--glow);
+        }
+
+        .result-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--secondary-bg);
+            border-radius: 8px;
+            border: 1px solid var(--accent-color);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            text-align: center;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .result-box.show { opacity: 1; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 0.8rem;
+            justify-items: center;
+        }
+
+        .contact-item {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover, .contact-item:focus {
+            transform: scale(1.1);
+            color: var(--text-hover);
+        }
+
+        footer {
+            background: var(--primary-bg);
+            padding: clamp(1rem, 3vw, 1.5rem);
+            text-align: center;
+            border-top: 1px solid var(--accent-color);
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.8rem, 5vw, 2rem);
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover, .social-links a:focus {
+            transform: scale(1.1);
+            color: var(--text-hover);
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-bg);
+                flex-direction: column;
+                padding: 1rem;
+                display: none;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-menu.active { display: flex; }
+
+            header { padding: 0.8rem 1rem; }
+
+            .hero-image {
+                width: 90%;
+                padding-top: calc(60px + 0.8rem);
+            }
+
+            .impact-phrase p { font-size: clamp(2rem, 7vw, 2.5rem); }
+
+            .impact-phrase .cta-button { padding: 0.8rem 2rem; font-size: 1rem; }
+
+            .hero { padding: 1.5rem 0.8rem; }
+
+            h1, .hero-slogan { font-size: clamp(3rem, 10vw, 4rem); }
+
+            .hero-content { padding: 1rem; }
+
+            .presentation-container { flex-direction: column; padding: 1rem; }
+
+            .presentation-image {
+                order: -1;
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 1rem;
+            }
+
+            .presentation-text {
+                order: 1;
+                text-align: center;
+            }
+
+            .consulting-details, .features, .resource-grid { grid-template-columns: 1fr; }
+
+            .resource-grid { gap: 1rem; }
+
+            .testimonial-card { flex: 0 0 calc(100% - 1rem); }
+
+            .slider-arrow { display: none; }
+
+            .modal-content { max-width: 95%; padding: 1rem; }
+
+            .calculator-container, .quiz-container { max-width: 100%; padding: 1rem; }
+
+            .period-container input { width: 55%; }
+            .period-container select { width: 45%; }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text .main { font-size: 1.6rem; }
+
+            .hero-image {
+                width: 95%;
+            }
+
+            .impact-phrase p { font-size: 1.8rem; }
+
+            h1, .hero-slogan { font-size: clamp(3rem, 10vw, 4.5rem); }
+
+            .consulting-item h3, .feature-card h3, .resource-card h3, .tip-card h3 { font-size: 1.3rem; }
+
+            .testimonial-card p { font-size: 0.85rem; }
+
+            .modal-hero-content h1, .modal-about-content h2 { font-size: 1.5rem; }
+
+            .calculator-btn, .quiz-btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+
+            .quiz-question label { font-size: 0.85rem; padding: 0.6rem; }
+        }
+
+        @media (max-width: 320px) {
+            .impact-phrase p { font-size: 1.6rem; }
+
+            .impact-phrase .cta-button { padding: 0.6rem 1.5rem; font-size: 0.8rem; }
+
+            h1, .hero-slogan { font-size: clamp(2.5rem, 8vw, 4rem); }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -28,37 +1128,32 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#" id="open-about-modal" aria-label="Abrir modal Sobre">Sobre a RFM</a></li>
-                <li><a href="#" id="open-contact-modal" aria-label="Abrir modal Contato">Fale Conosco
-
-                </a></li>
+                <li><a href="#" id="open-contact-modal" aria-label="Abrir modal Contato">Fale Conosco</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <!-- Hero Image -->
         <div class="hero-image">
             <img src="img.png" alt="Imagem principal da RFM Educação Financeira">
         </div>
 
-        <!-- Impact Phrase -->
         <div class="impact-phrase">
             <p>Transforme sua relação com o dinheiro e conquiste a tranquilidade e liberdade que merece!</p>
             <a href="#consulting" class="cta-button">COMECE AGORA</a>
         </div>
 
-        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
                 <div class="presentation-section show">
                     <div class="presentation-container">
+                        <div class="presentation-image">
+                            <img src="rose.png" alt="Roselaine Faustino Machado, especialista em finanças">
+                        </div>
                         <div class="presentation-text">
                             <h3 class="presentation-name">Roselaine Faustino Machado</h3>
                             <p class="presentation-subtitle">Contadora de formação e especialista em finanças, durante mais de 15 anos dediquei meu tempo e experiência ajudando empresas a organizar a área contábil e financeira para planejar e gerir melhor seus negócios.</p>
                             <p>Após experimentar o quanto a educação financeira e o autoconhecimento transformam vidas, hoje me dedico a ajudar mulheres e famílias a buscar e manter a saúde financeira a partir de uma boa relação com o dinheiro que é apenas um meio para você obter mais <strong>SEGURANÇA, TRANQUILIDADE e LIBERDADE.</strong></p>
-                        </div>
-                        <div class="presentation-image">
-                            <img src="rose.png" alt="Roselaine Faustino Machado, especialista em finanças">
                         </div>
                     </div>
                 </div>
@@ -100,6 +1195,7 @@
                 </section>
                 <p class="hero-slogan">Construa hoje o futuro que você merece.</p>
             </div>
+            <img src="img1.png" alt="Imagem descritiva" class="impact-image">
         </section>
 
         <section class="features">
@@ -182,7 +1278,6 @@
         </section>
     </main>
 
-    <!-- Modals -->
     <div id="about-modal" class="modal" aria-describedby="about-modal-description">
         <div class="modal-content">
             <span class="close-btn" role="button" aria-label="Fechar modal">×</span>
@@ -428,7 +1523,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="button" class="calculator-btn">Calcular</button>
+                            <button type="submit" class="calculator-btn">Calcular</button>
                         </form>
                         <div id="calculator-result" class="result-box"></div>
                     </div>
@@ -523,328 +1618,282 @@
             <a href="mailto:contato@rfmeducacao.com.br" aria-label="E-mail da RFM"><i class="fas fa-envelope"></i></a>
             <a href="https://www.youtube.com/@seu-canal" target="_blank" aria-label="YouTube da RFM"><i class="fab fa-youtube"></i></a>
         </div>
-        <p>© 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
+        <p>&copy; 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Toggle mobile menu
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                    menuToggle.querySelector('i').classList.toggle('fa-bars');
-                    menuToggle.querySelector('i').classList.toggle('fa-times');
-                });
-            }
+    // Toggle mobile menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+    }
 
-            // Modal functionality
-            function openModal(modalId) {
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.style.display = 'flex';
-                    setTimeout(() => modal.classList.add('show'), 10);
-                    // Trap focus within modal
-                    const focusableElements = modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-                    const firstElement = focusableElements[0];
-                    const lastElement = focusableElements[focusableElements.length - 1];
-                    modal.focus();
-                    modal.addEventListener('keydown', (e) => {
-                        if (e.key === 'Tab') {
-                            if (e.shiftKey && document.activeElement === firstElement) {
+    // Modal functionality
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('show'), 10);
+            const focusableElements = modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusableElements.length) {
+                focusableElements[0].focus();
+                modal.addEventListener('keydown', (e) => {
+                    if (e.key === 'Tab') {
+                        if (e.shiftKey) {
+                            if (document.activeElement === focusableElements[0]) {
                                 e.preventDefault();
-                                lastElement.focus();
-                            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                                focusableElements[focusableElements.length - 1].focus();
+                            }
+                        } else {
+                            if (document.activeElement === focusableElements[focusableElements.length - 1]) {
                                 e.preventDefault();
-                                firstElement.focus();
+                                focusableElements[0].focus();
                             }
                         }
-                    });
-                }
-            }
-
-            function closeModal(modal) {
-                if (modal) {
-                    modal.classList.remove('show');
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 500);
-                }
-            }
-
-            // Attach modal open events
-            const modalTriggers = [
-                'open-about-modal',
-                'open-contact-modal',
-                'open-treinamentos-modal',
-                'open-investimentos-modal',
-                'open-financas-modal',
-                'open-tips-modal',
-                'open-quiz-modal',
-                'open-planejamento-modal',
-                'open-empresarial-modal',
-                'open-acompanhamento-modal',
-                'open-calculator-modal'
-            ];
-
-            modalTriggers.forEach(id => {
-                const trigger = document.getElementById(id);
-                if (trigger) {
-                    trigger.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        openModal(id.replace('open-', ''));
-                    });
-                }
-            });
-
-            // Close modals on close button click
-            document.querySelectorAll('.close-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    closeModal(btn.closest('.modal'));
-                });
-            });
-
-            // Close modals on outside click
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        closeModal(modal);
                     }
                 });
-            });
-
-            // Close modals on Escape key
-            document.addEventListener('keydown', (e) => {
+            }
+            modal.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
-                    document.querySelectorAll('.modal.show').forEach(modal => {
-                        closeModal(modal);
-                    });
+                    closeModal(modal);
                 }
             });
+        }
+    }
 
-            // Calculator logic
-            const calculatorForm = document.getElementById('calculator-form');
-            const resultDiv = document.getElementById('calculator-result');
-            const calculateBtn = calculatorForm?.querySelector('.calculator-btn');
+    function closeModal(modal) {
+        if (modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 400);
+        }
+    }
 
-            function calculateCompoundInterest(initial, monthly, rate, periods, isYears) {
-                if (isNaN(initial) || isNaN(monthly) || isNaN(rate) || isNaN(periods)) {
-                    return 'Por favor, insira valores numéricos válidos.';
-                }
-                if (initial < 0 || monthly < 0 || rate < 0 || periods <= 0) {
-                    return 'Por favor, insira valores não negativos e um período maior que 0.';
-                }
-
-                const monthlyRate = rate / 100 / 12;
-                let totalPeriods = isYears ? periods * 12 : periods;
-
-                let futureValue = initial * Math.pow(1 + monthlyRate, totalPeriods);
-                if (monthly > 0) {
-                    futureValue += monthly * (Math.pow(1 + monthlyRate, totalPeriods) - 1) / monthlyRate;
-                }
-
-                return futureValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            }
-
-            function updateResult() {
-                const initial = parseFloat(document.getElementById('initial-value').value) || 0;
-                const monthly = parseFloat(document.getElementById('monthly-value').value) || 0;
-                const rate = parseFloat(document.getElementById('interest-rate').value) || 0;
-                const periods = parseInt(document.getElementById('period').value) || 1;
-                const periodUnit = document.getElementById('period-unit').value;
-                const isYears = periodUnit === 'years';
-
-                const result = calculateCompoundInterest(initial, monthly, rate, periods, isYears);
-                resultDiv.textContent = `Valor Futuro: ${result}`;
-                resultDiv.classList.add('show');
-            }
-
-            if (calculatorForm && calculateBtn) {
-                calculateBtn.addEventListener('click', updateResult);
-            }
-
-            // Quiz logic
-            const quizForm = document.getElementById('quiz-form');
-            const quizResult = document.getElementById('quiz-result');
-
-            if (quizForm) {
-                quizForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const answers = [
-                        parseInt(quizForm.querySelector('input[name="q1"]:checked')?.value) || 0,
-                        parseInt(quizForm.querySelector('input[name="q2"]:checked')?.value) || 0,
-                        parseInt(quizForm.querySelector('input[name="q3"]:checked')?.value) || 0,
-                        parseInt(quizForm.querySelector('input[name="q4"]:checked')?.value) || 0,
-                        parseInt(quizForm.querySelector('input[name="q5"]:checked')?.value) || 0
-                    ];
-
-                    const totalScore = answers.reduce((sum, val) => sum + val, 0);
-
-                    let profile = '';
-                    if (totalScore <= 7) {
-                        profile = 'Conservador: Você prioriza segurança e evita riscos. Investimentos de baixo risco, como Tesouro Direto ou CDBs, são ideais para você. Considere criar um orçamento detalhado para aumentar sua poupança.';
-                    } else if (totalScore <= 11) {
-                        profile = 'Moderado: Você equilibra segurança e crescimento, aceitando riscos moderados. Uma carteira diversificada com renda fixa e alguma exposição a renda variável pode ser ideal. Planeje metas de longo prazo para maximizar resultados.';
-                    } else {
-                        profile = 'Agressivo: Você busca altos retornos e tolera riscos. Investimentos em ações, fundos multimercado ou criptomoedas podem ser adequados, mas diversifique para gerenciar volatilidade. Mantenha um plano financeiro disciplinado.';
-                    }
-
-                    quizResult.textContent = `Seu Perfil Financeiro: ${profile}`;
-                    quizResult.classList.add('show');
-                });
-            }
-
-            // Testimonial slider with infinite looping and dots
-            const slider = document.querySelector('.testimonial-slider');
-            const track = document.querySelector('.testimonial-track');
-            const cards = document.querySelectorAll('.testimonial-card');
-            const prevButton = document.querySelector('.slider-arrow.prev');
-            const nextButton = document.querySelector('.slider-arrow.next');
-            const dotsContainer = document.querySelector('.slider-dots');
-
-            if (slider && track && cards.length > 0 && prevButton && nextButton && dotsContainer) {
-                // Clonar cards para looping infinito
-                const cardCount = cards.length;
-                const cardWidth = cards[0].offsetWidth + 32; // Inclui margem (2rem = 32px)
-                const clonesStart = [];
-                const clonesEnd = [];
-
-                // Clonar últimos cards e adicionar ao início
-                for (let i = cardCount - 1; i >= Math.max(0, cardCount - 3); i--) {
-                    const clone = cards[i].cloneNode(true);
-                    clonesStart.unshift(clone);
-                    track.prepend(clone);
-                }
-
-                // Clonar primeiros cards e adicionar ao final
-                for (let i = 0; i < Math.min(3, cardCount); i++) {
-                    const clone = cards[i].cloneNode(true);
-                    clonesEnd.push(clone);
-                    track.append(clone);
-                }
-
-                // Configurar estado inicial
-                let currentIndex = clonesStart.length; // Começa após os clones iniciais
-                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-
-                // Criar indicadores (dots)
-                for (let i = 0; i < cardCount; i++) {
-                    const dot = document.createElement('span');
-                    dot.classList.add('slider-dot');
-                    if (i === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => {
-                        currentIndex = clonesStart.length + i;
-                        updateSlider();
-                        updateDots(i);
-                    });
-                    dotsContainer.appendChild(dot);
-                }
-
-                // Função para atualizar posição
-                function updateSlider() {
-                    track.style.transition = 'transform 0.5s ease-in-out';
-                    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-                    const dotIndex = (currentIndex - clonesStart.length) % cardCount;
-                    updateDots(dotIndex >= 0 ? dotIndex : cardCount + dotIndex);
-                }
-
-                // Função para atualizar indicadores
-                function updateDots(index) {
-                    document.querySelectorAll('.slider-dot').forEach((dot, i) => {
-                        dot.classList.toggle('active', i === index);
-                    });
-                }
-
-                // Função para reposicionar sem animação
-                function moveToIndex(newIndex) {
-                    track.style.transition = 'none';
-                    currentIndex = newIndex;
-                    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-                    // Forçar reflow para evitar glitch
-                    track.offsetHeight;
-                }
-
-                // Evento para próxima seta
-                nextButton.addEventListener('click', () => {
-                    currentIndex++;
-                    updateSlider();
-
-                    // Se atingir o último card original, voltar ao início
-                    if (currentIndex >= cardCount + clonesStart.length) {
-                        setTimeout(() => {
-                            moveToIndex(clonesStart.length);
-                        }, 500); // Após a animação
-                    }
-                });
-
-                // Evento para seta anterior
-                prevButton.addEventListener('click', () => {
-                    currentIndex--;
-                    updateSlider();
-
-                    // Se atingir o primeiro card original, voltar ao final
-                    if (currentIndex < clonesStart.length) {
-                        setTimeout(() => {
-                            moveToIndex(cardCount + clonesStart.length - 1);
-                        }, 500); // Após a animação
-                    }
-                });
-
-                // Suporte a swipe para dispositivos móveis
-                let startX = 0;
-                let isDragging = false;
-
-                track.addEventListener('touchstart', (e) => {
-                    startX = e.touches[0].clientX;
-                    isDragging = true;
-                    track.style.transition = 'none';
-                });
-
-                track.addEventListener('touchmove', (e) => {
-                    if (!isDragging) return;
-                    const currentX = e.touches[0].clientX;
-                    const diffX = currentX - startX;
-                    track.style.transform = `translateX(${-currentIndex * cardWidth + diffX}px)`;
-                });
-
-                track.addEventListener('touchend', (e) => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    const endX = e.changedTouches[0].clientX;
-                    const diffX = endX - startX;
-                    track.style.transition = 'transform 0.5s ease-in-out';
-
-                    if (Math.abs(diffX) > cardWidth / 3) {
-                        if (diffX < 0) {
-                            currentIndex++;
-                        } else {
-                            currentIndex--;
-                        }
-                        updateSlider();
-
-                        // Verificar looping
-                        if (currentIndex >= cardCount + clonesStart.length) {
-                            setTimeout(() => {
-                                moveToIndex(clonesStart.length);
-                            }, 500);
-                        } else if (currentIndex < clonesStart.length) {
-                            setTimeout(() => {
-                                moveToIndex(cardCount + clonesStart.length - 1);
-                            }, 500);
-                        }
-                    } else {
-                        updateSlider();
-                    }
-                });
-
-                // Ajustar slider ao redimensionar janela
-                window.addEventListener('resize', () => {
-                    const newCardWidth = document.querySelector('.testimonial-card').offsetWidth + 32;
-                    moveToIndex(currentIndex);
-                });
+    document.querySelectorAll('[id$="-modal"]').forEach(modal => {
+        const modalId = modal.id;
+        const openButton = document.getElementById(`open-${modalId}`);
+        if (openButton) {
+            openButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(modalId);
+            });
+        }
+        const closeButton = modal.querySelector('.close-btn');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => closeModal(modal));
+        }
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal(modal);
             }
         });
-    </script>
+    });
+
+    // Infinite testimonial slider
+    const testimonialTrack = document.querySelector('.testimonial-track');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const prevArrow = document.querySelector('.slider-arrow.prev');
+    const nextArrow = document.querySelector('.slider-arrow.next');
+    const sliderDots = document.querySelector('.slider-dots');
+    let currentIndex = 0;
+    let autoSlideInterval;
+    let isTransitioning = false;
+
+    // Clone cards for infinite loop
+    const originalCardsCount = testimonialCards.length;
+    testimonialCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        testimonialTrack.appendChild(clone);
+    });
+
+    // Create slider dots
+    for (let i = 0; i < originalCardsCount; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('slider-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            currentIndex = i;
+            updateSlider(true);
+        });
+        sliderDots.appendChild(dot);
+    }
+
+    function updateSlider(smooth = true) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        const cardWidth = testimonialCards[0].offsetWidth + 24; // Card width + margin
+        testimonialTrack.style.transition = smooth ? 'transform 0.4s ease-in-out' : 'none';
+        testimonialTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+        // Update active dot
+        const dots = document.querySelectorAll('.slider-dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex % originalCardsCount);
+        });
+
+        // Handle infinite loop
+        if (currentIndex >= originalCardsCount) {
+            setTimeout(() => {
+                testimonialTrack.style.transition = 'none';
+                currentIndex = currentIndex % originalCardsCount;
+                testimonialTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                isTransitioning = false;
+            }, 400);
+        } else if (currentIndex < 0) {
+            setTimeout(() => {
+                testimonialTrack.style.transition = 'none';
+                currentIndex = originalCardsCount - 1;
+                testimonialTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                isTransitioning = false;
+            }, 400);
+        } else {
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 400);
+        }
+    }
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            currentIndex++;
+            updateSlider(true);
+        }, 5000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    if (prevArrow && nextArrow) {
+        prevArrow.addEventListener('click', () => {
+            currentIndex--;
+            updateSlider(true);
+            stopAutoSlide();
+            startAutoSlide();
+        });
+
+        nextArrow.addEventListener('click', () => {
+            currentIndex++;
+            updateSlider(true);
+            stopAutoSlide();
+            startAutoSlide();
+        });
+    }
+
+    testimonialTrack.addEventListener('transitionend', () => {
+        const cardWidth = testimonialCards[0].offsetWidth + 24;
+        if (currentIndex >= originalCardsCount) {
+            testimonialTrack.style.transition = 'none';
+            currentIndex = currentIndex % originalCardsCount;
+            testimonialTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }
+    });
+
+    startAutoSlide();
+
+    // Pause auto-slide on hover
+    const testimonials = document.querySelector('.testimonials');
+    if (testimonials) {
+        testimonials.addEventListener('mouseenter', stopAutoSlide);
+        testimonials.addEventListener('mouseleave', startAutoSlide);
+    }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.2,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.presentation-section, .consulting, .features, .testimonials, .resources').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Calculator functionality
+    const calculatorForm = document.getElementById('calculator-form');
+    const calculatorResult = document.getElementById('calculator-result');
+
+    if (calculatorForm && calculatorResult) {
+        calculatorForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const initialValue = parseFloat(document.getElementById('initial-value').value) || 0;
+            const monthlyValue = parseFloat(document.getElementById('monthly-value').value) || 0;
+            const interestRate = parseFloat(document.getElementById('interest-rate').value) / 100 || 0;
+            let period = parseInt(document.getElementById('period').value) || 1;
+            const periodUnit = document.getElementById('period-unit').value;
+
+            if (periodUnit === 'years') {
+                period *= 12;
+            }
+
+            const monthlyRate = (Math.pow(1 + interestRate, 1 / 12) - 1);
+            let futureValue = initialValue * Math.pow(1 + monthlyRate, period);
+            if (monthlyValue > 0) {
+                futureValue += monthlyValue * ((Math.pow(1 + monthlyRate, period) - 1) / monthlyRate);
+            }
+
+            calculatorResult.textContent = `Após ${periodUnit === 'years' ? period / 12 + ' anos' : period + ' meses'}, seu investimento será de R$${futureValue.toFixed(2).replace('.', ',')}.`;
+            calculatorResult.classList.add('show');
+        });
+    }
+
+    // Quiz functionality
+    const quizForm = document.getElementById('quiz-form');
+    const quizResult = document.getElementById('quiz-result');
+
+    if (quizForm && quizResult) {
+        quizForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const answers = {
+                q1: parseInt(document.querySelector('input[name="q1"]:checked')?.value) || 0,
+                q2: parseInt(document.querySelector('input[name="q2"]:checked')?.value) || 0,
+                q3: parseInt(document.querySelector('input[name="q3"]:checked')?.value) || 0,
+                q4: parseInt(document.querySelector('input[name="q4"]:checked')?.value) || 0,
+                q5: parseInt(document.querySelector('input[name="q5"]:checked')?.value) || 0,
+            };
+
+            const score = Object.values(answers).reduce((sum, value) => sum + value, 0);
+
+            let profile;
+            if (score <= 7) {
+                profile = 'Conservador: Você prefere segurança e evita riscos. Foco em reservas de emergência e investimentos de baixo risco, como Tesouro Direto.';
+            } else if (score <= 11) {
+                profile = 'Moderado: Você equilibra segurança e crescimento. Considere diversificar com fundos de investimento e renda fixa com algum risco.';
+            } else {
+                profile = 'Arrojado: Você busca altos retornos e aceita riscos. Explore ações, fundos imobiliários e investimentos de maior volatilidade.';
+            }
+
+            quizResult.textContent = `Seu perfil financeiro é: ${profile}`;
+            quizResult.classList.add('show');
+        });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = anchor.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

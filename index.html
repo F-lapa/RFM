@@ -13,1140 +13,1254 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Dancing+Script:wght@400;700&display=swap">
     <style>
                 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        :root {
-            --primary-bg: #FFF9F2;
-            --secondary-bg: #F0EDE5;
-            --text-primary: #882B0A;
-            --text-hover: #A33E1C;
-            --accent-color: #3A6654;
-            --text-secondary: #222;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            --glow: 0 0 10px rgba(58, 102, 84, 0.5);
-            --transition: all 0.3s ease-in-out;
-        }
+:root {
+    --primary-bg: #FFF9F2;
+    --secondary-bg: #F0EDE5;
+    --text-primary: #882B0A;
+    --text-hover: #A33E1C;
+    --accent-color: #3A6654;
+    --text-secondary: #222;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --glow: 0 0 10px rgba(58, 102, 84, 0.5);
+    --transition: all 0.3s ease-in-out;
+}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
-            color: var(--text-primary);
-            line-height: 1.5;
-            min-height: 100vh;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+}
 
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
-            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            animation: slideIn 0.8s ease-out forwards;
-        }
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+    background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    animation: slideIn 0.8s ease-out forwards;
+}
 
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
 
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-        .logo-icon {
-            font-size: 1.8rem;
-            color: var(--accent-color);
-            transition: var(--transition);
-        }
+.logo-icon {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    transition: var(--transition);
+}
 
-        .logo-icon:hover { transform: scale(1.1) rotate(10deg); }
+.logo-icon:hover { transform: scale(1.1) rotate(10deg); }
 
-        .logo-text .main {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 6vw, 2.5rem);
-            color: var(--text-primary);
-        }
+.logo-text .main {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    color: var(--text-primary);
+}
 
-        .logo-text .sub {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.logo-text .sub {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: var(--transition);
-        }
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
 
-        .menu-toggle i {
-            transition: var(--transition);
-        }
+.menu-toggle i {
+    transition: var(--transition);
+}
 
-        .menu-toggle:hover i { transform: rotate(90deg); }
+.menu-toggle:hover i { transform: rotate(90deg); }
 
-        .nav-menu {
-            display: flex;
-            gap: 1rem;
-            list-style: none;
-        }
+.nav-menu {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
 
-        .nav-menu li {
-            animation: slideIn 0.6s ease calc(0.1s * var(--i)) forwards;
-        }
+.nav-menu li {
+    animation: slideIn 0.6s ease calc(0.1s * var(--i)) forwards;
+}
 
-        .nav-menu li a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            border: 1px solid var(--accent-color);
-            background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg));
-            transition: var(--transition);
-        }
+.nav-menu li a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--accent-color);
+    background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg));
+    transition: var(--transition);
+}
 
-        .nav-menu li a:hover,
-        .nav-menu li a:focus {
-            background: var(--accent-color);
-            color: var(--primary-bg);
-            transform: translateY(-2px);
-            box-shadow: var(--glow);
-        }
+.nav-menu li a:hover,
+.nav-menu li a:focus {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    transform: translateY(-2px);
+    box-shadow: var(--glow);
+}
 
-        .hero {
-            min-height: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: clamp(1.5rem, 4vw, 2rem) 1rem;
-            gap: 1rem;
-        }
+.hero {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(1.5rem, 4vw, 2rem) 1rem;
+    gap: 1rem;
+}
 
-        .hero-image {
-            width: 80%;
-            max-width: 800px;
-            height: auto;
-            padding-top: calc(80px + 1rem);
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
+.hero-image {
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    padding-top: calc(80px + 1rem);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
 
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            aspect-ratio: auto;
-            display: block;
-            animation: fadeInZoom 1.5s ease-out forwards;
-            transition: var(--transition);
-        }
+.hero-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    aspect-ratio: auto;
+    display: block;
+    animation: fadeInZoom 1.5s ease-out forwards;
+    transition: var(--transition);
+}
 
-        .hero-image img:hover {
-            transform: scale(1.03);
-            box-shadow: var(--glow);
-        }
+.hero-image img:hover {
+    transform: scale(1.03);
+    box-shadow: var(--glow);
+}
 
-        @keyframes fadeInZoom {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
+@keyframes fadeInZoom {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
 
-        .impact-phrase {
-            background: rgba(255, 249, 242, 0.8);
-            padding: clamp(1rem, 3vw, 1.5rem);
-            text-align: center;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            width: 100%;
-            margin-top: 0;
-        }
+.impact-phrase {
+    background: rgba(255, 249, 242, 0.8);
+    padding: clamp(1rem, 3vw, 1.5rem);
+    text-align: center;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 0;
+}
 
-        .impact-phrase p {
-            font-family: 'Dancing Script', cursive !important;
-            font-size: 4rem !important;
-            color: var(--text-primary) !important;
-            animation: slideInUp 1s ease-out forwards !important;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(58, 102, 84, 0.5) !important;
-            background: linear-gradient(135deg, rgba(255, 249, 242, 0.8), rgba(240, 237, 229, 0.8)) !important;
-            padding: 0.5rem 1rem !important;
-            border-radius: 12px !important;
-            display: inline-block !important;
-            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-            text-align: center !important;
-        }
+.impact-phrase p {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 4rem !important;
+    color: var(--text-primary) !important;
+    animation: slideInUp 1s ease-out forwards !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(58, 102, 84, 0.5) !important;
+    background: linear-gradient(135deg, rgba(255, 249, 242, 0.8), rgba(240, 237, 229, 0.8)) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 12px !important;
+    display: inline-block !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    text-align: center !important;
+}
 
-        .impact-phrase p:hover {
-            transform: scale(1.05) !important;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
-        }
+.impact-phrase p:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
 
-        @media (max-width: 768px) {
-            .impact-phrase p {
-                font-size: 2rem !important;
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 8px rgba(58, 102, 84, 0.4) !important;
-                padding: 0.4rem 0.8rem !important;
-            }
-        }
+@media (max-width: 768px) {
+    .impact-phrase p {
+        font-size: 2rem !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 8px rgba(58, 102, 84, 0.4) !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+}
 
-        @media (max-width: 480px) {
-            .impact-phrase p {
-                font-size: 2rem !important;
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 6px rgba(58, 102, 84, 0.3) !important;
-                padding: 0.3rem 0.6rem !important;
-            }
-        }
+@media (max-width: 480px) {
+    .impact-phrase p {
+        font-size: 2rem !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 6px rgba(58, 102, 84, 0.3) !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+}
 
-        @media (max-width: 320px) {
-            .impact-phrase p {
-                font-size: 1rem !important;
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
-                padding: 0.2rem 0.5rem !important;
-            }
-        }
+@media (max-width: 320px) {
+    .impact-phrase p {
+        font-size: 1rem !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+        padding: 0.2rem 0.5rem !important;
+    }
+}
 
-        .impact-image {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            margin: 1rem 0;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            border: 5px solid #D4AF37;
-            transition: var(--transition);
-        }
+.impact-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border: 5px solid #D4AF37;
+    transition: var(--transition);
+}
 
-        .impact-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
+.impact-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 
-        .impact-phrase .cta-button {
-            background: linear-gradient(135deg, var(--accent-color), var(--text-hover));
-            color: var(--primary-bg);
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            animation: slideInUp 1s ease-out forwards;
-        }
+.impact-phrase .cta-button {
+    background: linear-gradient(135deg, var(--accent-color), var(--text-hover));
+    color: var(--primary-bg);
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 1s ease-out forwards;
+}
 
-        .impact-phrase .cta-button::after {
-            content: '→';
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%) scale(0);
-            transition: transform 0.3s ease;
-        }
+.impact-phrase .cta-button::after {
+    content: '→';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    transition: transform 0.3s ease;
+}
 
-        .impact-phrase .cta-button:hover::after { transform: translateY(-50%) scale(1); }
+.impact-phrase .cta-button:hover::after { transform: translateY(-50%) scale(1); }
 
-        .impact-phrase .cta-button:hover,
-        .impact-phrase .cta-button:focus {
-            transform: scale(1.05);
-            box-shadow: var(--glow);
-        }
+.impact-phrase .cta-button:hover,
+.impact-phrase .cta-button:focus {
+    transform: scale(1.05);
+    box-shadow: var(--glow);
+}
 
-        .hero-content {
-            max-width: 900px;
-            padding: 1.5rem;
-            background: rgba(255, 249, 242, 0.3);
-            backdrop-filter: blur(5px);
-            border-radius: 12px;
-        }
+.hero-content {
+    max-width: 900px;
+    padding: 1.5rem;
+    background: rgba(255, 249, 242, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+}
 
-        .hero-slogan {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem !important;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            animation: fadeInDown 0.8s ease forwards;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(58, 102, 84, 0.5);
-            background: linear-gradient(135deg, rgba(255, 249, 242, 0.8), rgba(240, 237, 229, 0.8));
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-            display: inline-block;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.hero-slogan {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem !important;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    animation: fadeInDown 0.8s ease forwards;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(58, 102, 84, 0.5);
+    background: linear-gradient(135deg, rgba(255, 249, 242, 0.8), rgba(240, 237, 229, 0.8));
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .hero-slogan:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+.hero-slogan:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-        @media (max-width: 768px) {
-            .hero-slogan {
-                font-size: 2rem !important;
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 8px rgba(58, 102, 84, 0.4);
-                padding: 0.4rem 0.8rem;
-            }
-        }
+@media (max-width: 768px) {
+    .hero-slogan {
+        font-size: 2rem !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 8px rgba(58, 102, 84, 0.4);
+        padding: 0.4rem 0.8rem;
+    }
+}
 
-        @media (max-width: 480px) {
-            .hero-slogan {
-                font-size: 2rem !important;
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 6px rgba(58, 102, 84, 0.3);
-                padding: 0.3rem 0.6rem;
-            }
-        }
+@media (max-width: 480px) {
+    .hero-slogan {
+        font-size: 2rem !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 6px rgba(58, 102, 84, 0.3);
+        padding: 0.3rem 0.6rem;
+    }
+}
 
-        @media (max-width: 320px) {
-            .hero-slogan {
-                font-size: 1rem !important;
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-                padding: 0.2rem 0.5rem;
-            }
-        }
+@media (max-width: 320px) {
+    .hero-slogan {
+        font-size: 1rem !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        padding: 0.2rem 0.5rem;
+    }
+}
 
-        .hero-content p {
-            font-size: clamp(1rem, 4vw, 1.2rem);
-            color: var(--text-primary);
-            animation: fadeInUp 0.8s ease forwards;
-        }
+.hero-content p {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    color: var(--text-primary);
+    animation: fadeInUp 0.8s ease forwards;
+}
 
-        .presentation-section {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 1rem;
-            transition: var(--transition);
-        }
+.presentation-section {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 1rem;
+    transition: var(--transition);
+}
 
-        .presentation-section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.presentation-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .presentation-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: var(--primary-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid var(--accent-color);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
+.presentation-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--primary-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--accent-color);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
 
-        .presentation-container:hover { box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); }
+.presentation-container:hover { box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); }
 
-        .presentation-name {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.8rem, 5vw, 2rem);
-            color: var(--text-primary);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.3rem;
-        }
+.presentation-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.8rem, 5vw, 2rem);
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.3rem;
+}
 
-        .presentation-text { flex: 1; }
+.presentation-text { flex: 1; }
 
-        .presentation-text .presentation-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
+.presentation-text .presentation-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
 
-        .presentation-text p {
-            font-size: 0.95rem;
-            color: var(--text-primary);
-        }
+.presentation-text p {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
 
-        .presentation-image {
-            flex: 0 0 280px;
-        }
+.presentation-image {
+    flex: 0 0 280px;
+}
 
-        .presentation-image img {
-            width: 100%;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
+.presentation-image img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
 
-        .presentation-image img:hover { transform: scale(1.02); }
+.presentation-image img:hover { transform: scale(1.02); }
 
-        .video-presentation {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background: var(--primary-bg);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            animation: fadeInUp 0.8s ease forwards;
-        }
+.video-presentation {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: var(--primary-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.8s ease forwards;
+}
 
-        .video-presentation h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.6rem, 5vw, 1.8rem);
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
+.video-presentation h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.6rem, 5vw, 1.8rem);
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+}
 
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-        }
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
-        .consulting, .features, .resources, .testimonials {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: clamp(1rem, 3vw, 1.5rem) 1rem;
-            background: var(--primary-bg);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            animation: fadeInUp 0.8s ease forwards;
-        }
+.consulting, .features, .resources, .testimonials {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: clamp(1rem, 3vw, 1.5rem) 1rem;
+    background: var(--primary-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.8s ease forwards;
+}
 
-        .consulting h2, .resources h2, .testimonials h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 6vw, 2.2rem);
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
+.consulting h2, .resources h2, .testimonials h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 6vw, 2.2rem);
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
 
-        .consulting-details, .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            justify-items: center;
-        }
-        .resource-grid {
+/* Seção Consultoria Personalizada - Alterada */
+.consulting-details {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.consulting-item {
+    background: var(--secondary-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--accent-color);
+    text-align: center;
+    min-height: 220px;
+    width: 100%;
+    max-width: 360px;
+    transition: var(--transition);
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
+    box-shadow: var(--shadow);
+}
+
+.consulting-item:hover, .consulting-item:focus {
+    transform: translateY(-4px);
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    box-shadow: var(--glow);
+}
+
+.consulting-item i {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    transition: var(--transition);
+}
+
+.consulting-item:hover i, .consulting-item:focus i {
+    transform: scale(1.1);
+    color: var(--primary-bg);
+}
+
+.consulting-item h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 4vw, 1.6rem);
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.consulting-item:hover h3, .consulting-item:focus h3 {
+    color: var(--primary-bg);
+}
+
+.consulting-item p {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.consulting-item:hover p, .consulting-item:focus p {
+    color: var(--primary-bg);
+}
+
+/* Seção Recursos Educacionais (Blogs) - Alterada */
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 .resource-card {
     background: var(--secondary-bg);
     padding: 1.5rem;
     border-radius: 12px;
-    border: 1px solid var(--accent-color);
+    border: 2px solid var(--accent-color);
     text-align: center;
-    min-height: 200px;
+    min-height: 220px;
+    width: 100%;
+    max-width: 360px;
     transition: var(--transition);
     cursor: pointer;
     animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
-    width: 100%; /* Garante que o cartão ocupe o espaço disponível */
-    max-width: 320px; /* Limita a largura máxima */
+    box-shadow: var(--shadow);
 }
 
-/* Ajustes para mobile */
+.resource-card:hover, .resource-card:focus {
+    transform: translateY(-4px);
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    box-shadow: var(--glow);
+}
+
+.resource-card .icon {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    transition: var(--transition);
+}
+
+.resource-card:hover .icon, .resource-card:focus .icon {
+    transform: scale(1.1);
+    color: var(--primary-bg);
+}
+
+.resource-card h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 4vw, 1.6rem);
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.resource-card:hover h3, .resource-card:focus h3 {
+    color: var(--primary-bg);
+}
+
+.resource-card p {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.resource-card:hover p, .resource-card:focus p {
+    color: var(--primary-bg);
+}
+
+/* Seção Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+}
+
+.feature-card, .tip-card {
+    background: var(--secondary-bg);
+    padding: 1.2rem;
+    border-radius: 12px;
+    border: 1px solid var(--accent-color);
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
+}
+
+.feature-card:hover, .tip-card:hover,
+.feature-card:focus, .tip-card:focus {
+    transform: translateY(-4px);
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    box-shadow: var(--glow);
+}
+
+.feature-card .icon {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.feature-card:hover .icon, .feature-card:focus .icon {
+    transform: scale(1.1);
+    color: var(--primary-bg);
+}
+
+.feature-card h3, .tip-card h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.4rem, 4vw, 1.5rem);
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.feature-card:hover h3, .tip-card:hover h3,
+.feature-card:focus h3, .tip-card:focus h3 {
+    color: var(--primary-bg);
+}
+
+.feature-card p, .tip-card p {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.feature-card:hover p, .tip-card:hover p,
+.feature-card:focus p, .tip-card:focus p {
+    color: var(--primary-bg);
+}
+
+.testimonials {
+    position: relative;
+    overflow: hidden;
+    padding: 0 1rem;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    will-change: transform;
+}
+
+.testimonial-card {
+    flex: 0 0 calc(33.33% - 1rem);
+    margin-right: 1.5rem;
+    background: var(--secondary-bg);
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--accent-color);
+    transition: var(--transition);
+}
+
+.testimonial-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--glow);
+}
+
+.testimonial-card p {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+}
+
+.testimonial-card h4 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.slider-arrow:hover, .slider-arrow:focus {
+    background: var(--text-hover);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: var(--glow);
+}
+
+.slider-arrow.prev { left: 0; }
+.slider-arrow.next { right: 0; }
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.slider-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--text-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.slider-dot.active {
+    background: var(--accent-color);
+    transform: scale(1.4);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--primary-bg);
+    max-width: 85%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+    transform: scale(0.9);
+    animation: popIn 0.5s ease-out forwards;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-btn:hover, .close-btn:focus {
+    transform: rotate(90deg);
+    color: var(--text-hover);
+}
+
+.modal-hero {
+    background: linear-gradient(135deg, rgba(58, 102, 84, 0.9), rgba(136, 43, 10, 0.7));
+    padding: 1.5rem;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+    color: #FFF;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-hero-content h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.8rem, 5vw, 2rem);
+    margin-bottom: 0.5rem;
+}
+
+.modal-hero-content p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.modal-about-section {
+    padding: 1.5rem;
+    text-align: center;
+    width: 100%;
+    background: rgba(255, 249, 242, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+}
+
+.modal-about-content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.6rem, 4vw, 1.8rem);
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+}
+
+.modal-about-content p, .modal-about-content ul {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+}
+
+.modal-about-content ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    text-align: left;
+}
+
+.calculator-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: rgba(255, 249, 242, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 1.5rem;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.calculator-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.3rem, 4vw, 1.4rem);
+    color: var(--text-primary);
+    text-align: left;
+}
+
+.form-group input, .form-group select {
+    padding: 0.8rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+    transition: var(--transition);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--text-hover);
+    transform: scale(1.02);
+    box-shadow: var(--glow);
+}
+
+.period-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.period-container input {
+    width: 60%;
+}
+
+.period-container select {
+    width: 40%;
+    padding: 0.8rem;
+}
+
+.calculator-btn {
+    background: linear-gradient(135deg, var(--accent-color), var(--text-hover));
+    color: var(--primary-bg);
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    justify-self: center;
+}
+
+.calculator-btn::after {
+    content: '💸';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    transition: transform 0.3s ease;
+}
+
+.calculator-btn:hover::after { transform: translateY(-50%) scale(1); }
+
+.calculator-btn:hover, .calculator-btn:focus {
+    background: linear-gradient(135deg, var(--text-hover), var(--accent-color));
+    transform: scale(1.05);
+    box-shadow: var(--glow);
+}
+
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.quiz-question {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--secondary-bg);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--accent-color);
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
+}
+
+.quiz-question h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.3rem, 4vw, 1.4rem);
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.quiz-question label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    background: var(--primary-bg);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.quiz-question label:hover {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    box-shadow: var(--glow);
+}
+
+.quiz-question input[type="radio"] {
+    accent-color: var(--accent-color);
+    width: 1rem;
+    height: 1rem;
+}
+
+.quiz-btn {
+    background: linear-gradient(135deg, var(--accent-color), var(--text-hover));
+    color: var(--primary-bg);
+    padding: 1rem 2.5rem;
+    border-radius: 25px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    justify-self: center;
+}
+
+.quiz-btn:hover, .quiz-btn:focus {
+    background: linear-gradient(135deg, var(--text-hover), var(--accent-color));
+    transform: scale(1.05);
+    box-shadow: var(--glow);
+}
+
+.result-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--secondary-bg);
+    border-radius: 8px;
+    border: 1px solid var(--accent-color);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    text-align: center;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.result-box.show { opacity: 1; }
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 0.8rem;
+    justify-items: center;
+}
+
+.contact-item {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.contact-item:hover, .contact-item:focus {
+    transform: scale(1.1);
+    color: var(--text-hover);
+}
+
+footer {
+    background: var(--primary-bg);
+    padding: clamp(1rem, 3vw, 1.5rem);
+    text-align: center;
+    border-top: 1px solid var(--accent-color);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.footer-logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.8rem, 5vw, 2rem);
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.social-links a:hover, .social-links a:focus {
+    transform: scale(1.1);
+    color: var(--text-hover);
+}
+
+footer p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 768px) {
-    .resource-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        padding: 0 1rem;
-        gap: 1rem;
-    }
-}
+    .menu-toggle { display: block; }
 
-@media (max-width: 600px) {
-    .resource-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reduz o tamanho mínimo para telas menores */
-        gap: 0.8rem;
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--primary-bg);
+        flex-direction: column;
+        padding: 1rem;
+        display: none;
+        box-shadow: var(--shadow);
     }
+
+    .nav-menu.active { display: flex; }
+
+    header { padding: 0.8rem 1rem; }
+
+    .hero-image {
+        width: 90%;
+        padding-top: calc(60px + 0.8rem);
+    }
+
+    .impact-phrase p { font-size: clamp(2rem, 7vw, 2.5rem); }
+
+    .impact-phrase .cta-button { padding: 0.8rem 2rem; font-size: 1rem; }
+
+    .hero { padding: 1.5rem 0.8rem; }
+
+    h1, .hero-slogan { font-size: clamp(3rem, 10vw, 4rem); }
+
+    .hero-content { padding: 1rem; }
+
+    .presentation-container { flex-direction: column; padding: 1rem; }
+
+    .presentation-image {
+        order: -1;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 1rem;
+    }
+
+    .presentation-text {
+        order: 1;
+        text-align: center;
+    }
+
+    .consulting-details {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .consulting-item {
+        padding: 1rem;
+        min-height: 200px;
+        max-width: 320px;
+        font-size: 0.9rem;
+    }
+
+    .consulting-item h3 {
+        font-size: clamp(1.4rem, 3.5vw, 1.5rem);
+    }
+
+    .consulting-item p {
+        font-size: 0.85rem;
+    }
+
+    .resource-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .resource-card {
+        padding: 1rem;
+        min-height: 200px;
+        max-width: 320px;
+        font-size: 0.9rem;
+    }
+
+    .resource-card h3 {
+        font-size: clamp(1.4rem, 3.5vw, 1.5rem);
+    }
+
+    .resource-card p {
+        font-size: 0.85rem;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-card { flex: 0 0 calc(100% - 1rem); }
+
+    .slider-arrow { display: none; }
+
+    .modal-content { max-width: 95%; padding: 1rem; }
+
+    .calculator-container, .quiz-container { max-width: 100%; padding: 1rem; }
+
+    .period-container input { width: 55%; }
+    .period-container select { width: 45%; }
 }
 
 @media (max-width: 480px) {
-    .resource-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ainda mais flexível para telas muito pequenas */
-        gap: 0.8rem;
+    .logo-text .main { font-size: 1.6rem; }
+
+    .hero-image {
+        width: 95%;
     }
+
+    .impact-phrase p { font-size: 1.8rem; }
+
+    h1, .hero-slogan { font-size: clamp(3rem, 10vw, 4.5rem); }
+
+    .consulting-item h3, .resource-card h3 {
+        font-size: clamp(1.2rem, 2.5vw, 1.3rem);
+    }
+
+    .consulting-item p, .resource-card p {
+        font-size: 0.8rem;
+    }
+
+    .consulting-details {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .consulting-item {
+        padding: 1rem;
+        min-height: 180px;
+        max-width: 100%;
+    }
+
+    .resource-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
     .resource-card {
         padding: 1rem;
         min-height: 180px;
+        max-width: 100%;
+    }
+
+    .testimonial-card p { font-size: 0.85rem; }
+
+    .modal-hero-content h1, .modal-about-content h2 { font-size: 1.5rem; }
+
+    .calculator-btn, .quiz-btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+
+    .quiz-question label { font-size: 0.85rem; padding: 0.6rem; }
+}
+
+@media (max-width: 320px) {
+    .impact-phrase p { font-size: 1.6rem; }
+
+    .impact-phrase .cta-button { padding: 0.6rem 1.5rem; font-size: 0.8rem; }
+
+    h1, .hero-slogan { font-size: clamp(2.5rem, 8vw, 4rem); }
+
+    .consulting-item h3, .resource-card h3 {
+        font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+    }
+
+    .consulting-item p, .resource-card p {
+        font-size: 0.75rem;
     }
 }
-        
-        .resource-card:hover, .resource-card:focus {
-            transform: translateY(-4px);
-            background: var(--accent-color);
-            color: var(--primary-bg);
-            box-shadow: var(--glow);
-        }
-
-        .resource-card .icon {
-            font-size: 1.8rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .resource-card:hover .icon, .resource-card:focus .icon {
-            transform: scale(1.1);
-            color: var(--primary-bg);
-        }
-
-        .resource-card h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.4rem, 4vw, 1.5rem);
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .resource-card:hover h3, .resource-card:focus h3 {
-            color: var(--primary-bg);
-        }
-
-        .resource-card p {
-            font-size: 0.9rem;
-            color: var(--text-primary);
-        }
-
-        .resource-card:hover p, .resource-card:focus p {
-            color: var(--primary-bg);
-        }
-
-        .consulting-item, .feature-card, .tip-card {
-            background: var(--secondary-bg);
-            padding: 1.2rem;
-            border-radius: 12px;
-            border: 1px solid var(--accent-color);
-            text-align: center;
-            transition: var(--transition);
-            cursor: pointer;
-            animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
-        }
-
-        .consulting-item:hover, .feature-card:hover, .tip-card:hover,
-        .consulting-item:focus, .feature-card:focus, .tip-card:focus {
-            transform: translateY(-4px);
-            background: var(--accent-color);
-            color: var(--primary-bg);
-            box-shadow: var(--glow);
-        }
-
-        .consulting-item i, .feature-card .icon {
-            font-size: 1.8rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .consulting-item:hover i, .feature-card:hover .icon,
-        .consulting-item:focus i, .feature-card:focus .icon {
-            transform: scale(1.1);
-            color: var(--primary-bg);
-        }
-
-        .consulting-item h3, .feature-card h3, .tip-card h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.4rem, 4vw, 1.5rem);
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .consulting-item:hover h3, .feature-card:hover h3, .tip-card:hover h3,
-        .consulting-item:focus h3, .feature-card:focus h3, .tip-card:focus h3 {
-            color: var(--primary-bg);
-        }
-
-        .consulting-item p, .feature-card p, .tip-card p {
-            font-size: 0.9rem;
-            color: var(--text-primary);
-        }
-
-        .consulting-item:hover p, .feature-card:hover p, .tip-card:hover p,
-        .consulting-item:focus p, .feature-card:focus p, .tip-card:focus p {
-            color: var(--primary-bg);
-        }
-
-        .testimonials {
-            position: relative;
-            overflow: hidden;
-            padding: 0 1rem;
-        }
-
-        .testimonial-track {
-            display: flex;
-            transition: transform 0.4s ease-in-out;
-            will-change: transform;
-        }
-
-        .testimonial-card {
-            flex: 0 0 calc(33.33% - 1rem);
-            margin-right: 1.5rem;
-            background: var(--secondary-bg);
-            padding: 1.2rem;
-            border-radius: 8px;
-            border: 1px solid var(--accent-color);
-            transition: var(--transition);
-        }
-
-        .testimonial-card:hover {
-            transform: scale(1.05);
-            box-shadow: var(--glow);
-        }
-
-        .testimonial-card p {
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .testimonial-card h4 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.3rem;
-            color: var(--text-primary);
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--accent-color);
-            color: var(--primary-bg);
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-arrow:hover, .slider-arrow:focus {
-            background: var(--text-hover);
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: var(--glow);
-        }
-
-        .slider-arrow.prev { left: 0; }
-        .slider-arrow.next { right: 0; }
-
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .slider-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--text-secondary);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active {
-            background: var(--accent-color);
-            transform: scale(1.4);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .modal.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background: var(--primary-bg);
-            max-width: 85%;
-            max-height: 85vh;
-            overflow-y: auto;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            display: grid;
-            grid-template-rows: auto 1fr;
-            gap: 1rem;
-            padding: 1.5rem;
-            transform: scale(0.9);
-            animation: popIn 0.5s ease-out forwards;
-        }
-
-        @keyframes popIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .close-btn:hover, .close-btn:focus {
-            transform: rotate(90deg);
-            color: var(--text-hover);
-        }
-
-        .modal-hero {
-            background: linear-gradient(135deg, rgba(58, 102, 84, 0.9), rgba(136, 43, 10, 0.7));
-            padding: 1.5rem;
-            border-radius: 12px 12px 0 0;
-            text-align: center;
-            color: #FFF;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .modal-hero-content h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.8rem, 5vw, 2rem);
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-hero-content p {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-
-        .modal-about-section {
-            padding: 1.5rem;
-            text-align: center;
-            width: 100%;
-            background: rgba(255, 249, 242, 0.8);
-            backdrop-filter: blur(8px);
-            border-radius: 12px;
-        }
-
-        .modal-about-content h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.6rem, 4vw, 1.8rem);
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .modal-about-content p, .modal-about-content ul {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .modal-about-content ul {
-            list-style: disc;
-            padding-left: 1.2rem;
-            text-align: left;
-        }
-
-        .calculator-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 1.5rem;
-            background: rgba(255, 249, 242, 0.8);
-            backdrop-filter: blur(8px);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            display: grid;
-            gap: 1.5rem;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .calculator-form {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group label {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.3rem, 4vw, 1.4rem);
-            color: var(--text-primary);
-            text-align: left;
-        }
-
-        .form-group input, .form-group select {
-            padding: 0.8rem;
-            border: 1px solid var(--accent-color);
-            border-radius: 8px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
-            transition: var(--transition);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--text-hover);
-            transform: scale(1.02);
-            box-shadow: var(--glow);
-        }
-
-        .period-container {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .period-container input {
-            width: 60%;
-        }
-
-        .period-container select {
-            width: 40%;
-            padding: 0.8rem;
-        }
-
-        .calculator-btn {
-            background: linear-gradient(135deg, var(--accent-color), var(--text-hover));
-            color: var(--primary-bg);
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            border: none;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            justify-self: center;
-        }
-
-        .calculator-btn::after {
-            content: '💸';
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%) scale(0);
-            transition: transform 0.3s ease;
-        }
-
-        .calculator-btn:hover::after { transform: translateY(-50%) scale(1); }
-
-        .calculator-btn:hover, .calculator-btn:focus {
-            background: linear-gradient(135deg, var(--text-hover), var(--accent-color));
-            transform: scale(1.05);
-            box-shadow: var(--glow);
-        }
-
-        .quiz-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 1.5rem;
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .quiz-question {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            background: var(--secondary-bg);
-            padding: 1rem;
-            border-radius: 12px;
-            border: 1px solid var(--accent-color);
-            box-shadow: var(--shadow);
-            animation: fadeInUp 0.8s ease calc(0.1s * var(--i)) forwards;
-        }
-
-        .quiz-question h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.3rem, 4vw, 1.4rem);
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            text-align: left;
-        }
-
-        .quiz-question label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem;
-            background: var(--primary-bg);
-            border-radius: 8px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .quiz-question label:hover {
-            background: var(--accent-color);
-            color: var(--primary-bg);
-            box-shadow: var(--glow);
-        }
-
-        .quiz-question input[type="radio"] {
-            accent-color: var(--accent-color);
-            width: 1rem;
-            height: 1rem;
-        }
-
-        .quiz-btn {
-            background: linear-gradient(135deg, var(--accent-color), var(--text-hover));
-            color: var(--primary-bg);
-            padding: 1rem 2.5rem;
-            border-radius: 25px;
-            border: none;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            justify-self: center;
-        }
-
-        .quiz-btn:hover, .quiz-btn:focus {
-            background: linear-gradient(135deg, var(--text-hover), var(--accent-color));
-            transform: scale(1.05);
-            box-shadow: var(--glow);
-        }
-
-        .result-box {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: var(--secondary-bg);
-            border-radius: 8px;
-            border: 1px solid var(--accent-color);
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            text-align: center;
-            box-shadow: var(--shadow);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .result-box.show { opacity: 1; }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-            gap: 0.8rem;
-            justify-items: center;
-        }
-
-        .contact-item {
-            font-size: 1.8rem;
-            color: var(--text-primary);
-            transition: var(--transition);
-        }
-
-        .contact-item:hover, .contact-item:focus {
-            transform: scale(1.1);
-            color: var(--text-hover);
-        }
-
-        footer {
-            background: var(--primary-bg);
-            padding: clamp(1rem, 3vw, 1.5rem);
-            text-align: center;
-            border-top: 1px solid var(--accent-color);
-            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer-logo {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.8rem, 5vw, 2rem);
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .social-links a {
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            transition: var(--transition);
-        }
-
-        .social-links a:hover, .social-links a:focus {
-            transform: scale(1.1);
-            color: var(--text-hover);
-        }
-
-        footer p {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-
-            .nav-menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--primary-bg);
-                flex-direction: column;
-                padding: 1rem;
-                display: none;
-                box-shadow: var(--shadow);
-            }
-
-            .nav-menu.active { display: flex; }
-
-            header { padding: 0.8rem 1rem; }
-
-            .hero-image {
-                width: 90%;
-                padding-top: calc(60px + 0.8rem);
-            }
-
-            .impact-phrase p { font-size: clamp(2rem, 7vw, 2.5rem); }
-
-            .impact-phrase .cta-button { padding: 0.8rem 2rem; font-size: 1rem; }
-
-            .hero { padding: 1.5rem 0.8rem; }
-
-            h1, .hero-slogan { font-size: clamp(3rem, 10vw, 4rem); }
-
-            .hero-content { padding: 1rem; }
-
-            .presentation-container { flex-direction: column; padding: 1rem; }
-
-            .presentation-image {
-                order: -1;
-                width: 100%;
-                max-width: 300px;
-                margin-bottom: 1rem;
-            }
-
-            .presentation-text {
-                order: 1;
-                text-align: center;
-            }
-
-            .consulting-details, .features { grid-template-columns: 1fr; }
-
-            .resource-grid { 
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                padding: 0 1rem;
-            }
-
-            .testimonial-card { flex: 0 0 calc(100% - 1rem); }
-
-            .slider-arrow { display: none; }
-
-            .modal-content { max-width: 95%; padding: 1rem; }
-
-            .calculator-container, .quiz-container { max-width: 100%; padding: 1rem; }
-
-            .period-container input { width: 55%; }
-            .period-container select { width: 45%; }
-        }
-
-        @media (max-width: 600px) {
-            .resource-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-text .main { font-size: 1.6rem; }
-
-            .hero-image {
-                width: 95%;
-            }
-
-            .impact-phrase p { font-size: 1.8rem; }
-
-            h1, .hero-slogan { font-size: clamp(3rem, 10vw, 4.5rem); }
-
-            .consulting-item h3, .feature-card h3, .resource-card h3, .tip-card h3 { font-size: 1.3rem; }
-
-            .testimonial-card p { font-size: 0.85rem; }
-
-            .modal-hero-content h1, .modal-about-content h2 { font-size: 1.5rem; }
-
-            .calculator-btn, .quiz-btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
-
-            .quiz-question label { font-size: 0.85rem; padding: 0.6rem; }
-        }
-
-        @media (max-width: 320px) {
-            .impact-phrase p { font-size: 1.6rem; }
-
-            .impact-phrase .cta-button { padding: 0.6rem 1.5rem; font-size: 0.8rem; }
-
-            h1, .hero-slogan { font-size: clamp(2.5rem, 8vw, 4rem); }
-        }
     </style>
 </head>
 <body>

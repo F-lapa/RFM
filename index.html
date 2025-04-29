@@ -2218,22 +2218,21 @@ footer p {
         <p>© 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    // Função para restaurar visibilidade apenas dos cartões interativos
+       document.addEventListener('DOMContentLoaded', () => {
+    // Função para restaurar visibilidade dos cartões interativos
     const restoreCardVisibility = () => {
-        const interactiveCards = document.querySelectorAll('.consulting-item, .resource-card');
+        const interactiveCards = document.querySelectorAll('.consulting-item, .resource-card, .feature-card');
         interactiveCards.forEach(card => {
             card.style.display = 'block';
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
             card.style.visibility = 'visible';
+            // Forçar re-renderização para evitar problemas com animações
+            card.offsetHeight; // Trigger reflow
         });
     };
 
-    // Inicializar visibilidade dos cartões ao carregar a página
-    restoreCardVisibility();
-
-    // Garantir que os links do menu permaneçam visíveis
+    // Função para garantir visibilidade dos links do menu
     const ensureNavLinksVisibility = () => {
         const navLinks = document.querySelectorAll('.nav-menu li a');
         navLinks.forEach(link => {
@@ -2244,7 +2243,8 @@ footer p {
         });
     };
 
-    // Inicializar visibilidade dos links do menu
+    // Inicializar visibilidade dos cartões e links do menu ao carregar a página
+    restoreCardVisibility();
     ensureNavLinksVisibility();
 
     // Toggle mobile menu
@@ -2255,11 +2255,11 @@ footer p {
             navMenu.classList.toggle('active');
             menuToggle.querySelector('i').classList.toggle('fa-bars');
             menuToggle.querySelector('i').classList.toggle('fa-times');
-            ensureNavLinksVisibility(); // Garantir visibilidade ao abrir/fechar menu
+            ensureNavLinksVisibility();
         });
     }
 
-    // Modal functionality
+    // Função para abrir modal
     function openModal(modalId) {
         const modal = document.getElementById(modalId);
         if (modal) {
@@ -2268,43 +2268,52 @@ footer p {
             const focusableElements = modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
             if (focusableElements.length) {
                 focusableElements[0].focus();
-                modal.addEventListener('keydown', (e) => {
-                    if (e.key === 'Tab') {
-                        if (e.shiftKey) {
-                            if (document.activeElement === focusableElements[0]) {
-                                e.preventDefault();
-                                focusableElements[focusableElements.length - 1].focus();
-                            }
-                        } else {
-                            if (document.activeElement === focusableElements[focusableElements.length - 1]) {
-                                e.preventDefault();
-                                focusableElements[0].focus();
-                            }
-                        }
-                    }
-                });
+                modal.addEventListener('keydown', trapFocus);
             }
             modal.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeModal(modal);
                 }
             });
-            restoreCardVisibility(); // Restaurar cartões
-            ensureNavLinksVisibility(); // Garantir visibilidade dos links do menu
+            // Garantir que os cartões estejam visíveis ao abrir o modal
+            restoreCardVisibility();
+            ensureNavLinksVisibility();
         }
     }
 
+    // Função para fechar modal
     function closeModal(modal) {
         if (modal) {
             modal.classList.remove('show');
             setTimeout(() => {
                 modal.style.display = 'none';
-                restoreCardVisibility(); // Restaurar cartões
-                ensureNavLinksVisibility(); // Garantir visibilidade dos links do menu
+                // Restaurar visibilidade após fechar o modal
+                restoreCardVisibility();
+                ensureNavLinksVisibility();
             }, 400);
         }
     }
 
+    // Função para gerenciar foco dentro do modal
+    function trapFocus(e) {
+        const modal = e.currentTarget;
+        const focusableElements = modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === focusableElements[0]) {
+                    e.preventDefault();
+                    focusableElements[focusableElements.length - 1].focus();
+                }
+            } else {
+                if (document.activeElement === focusableElements[focusableElements.length - 1]) {
+                    e.preventDefault();
+                    focusableElements[0].focus();
+                }
+            }
+        }
+    }
+
+    // Configurar eventos para modais
     document.querySelectorAll('[id$="-modal"]').forEach(modal => {
         const modalId = modal.id;
         const openButton = document.getElementById(`open-${modalId}`);
@@ -2323,15 +2332,9 @@ footer p {
                 closeModal(modal);
             }
         });
-        modal.addEventListener('transitionend', () => {
-            if (!modal.classList.contains('show')) {
-                restoreCardVisibility();
-                ensureNavLinksVisibility(); // Garantir visibilidade dos links do menu
-            }
-        });
     });
 
-    // Infinite testimonial slider
+    // Configuração do slider de depoimentos
     const testimonialTrack = document.querySelector('.testimonial-track');
     const testimonialCards = document.querySelectorAll('.testimonial-card');
     const prevArrow = document.querySelector('.slider-arrow.prev');
@@ -2341,14 +2344,14 @@ footer p {
     let autoSlideInterval;
     let isTransitioning = false;
 
-    // Clone cards for infinite loop
+    // Clonar cartões para loop infinito
     const originalCardsCount = testimonialCards.length;
     testimonialCards.forEach(card => {
         const clone = card.cloneNode(true);
         testimonialTrack.appendChild(clone);
     });
 
-    // Create slider dots
+    // Criar pontos do slider
     for (let i = 0; i < originalCardsCount; i++) {
         const dot = document.createElement('div');
         dot.classList.add('slider-dot');
@@ -2363,28 +2366,20 @@ footer p {
     function updateSlider(smooth = true) {
         if (isTransitioning) return;
         isTransitioning = true;
-        const cardWidth = testimonialCards[0].offsetWidth + 24; // Card width + margin
+        const cardWidth = testimonialCards[0].offsetWidth + 24;
         testimonialTrack.style.transition = smooth ? 'transform 0.4s ease-in-out' : 'none';
         testimonialTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 
-        // Update active dot
         const dots = document.querySelectorAll('.slider-dot');
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === currentIndex % originalCardsCount);
         });
 
-        // Handle infinite loop
-        if (currentIndex >= originalCardsCount) {
+        if (currentIndex >= originalCardsCount || currentIndex < 0) {
             setTimeout(() => {
                 testimonialTrack.style.transition = 'none';
                 currentIndex = currentIndex % originalCardsCount;
-                testimonialTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-                isTransitioning = false;
-            }, 400);
-        } else if (currentIndex < 0) {
-            setTimeout(() => {
-                testimonialTrack.style.transition = 'none';
-                currentIndex = originalCardsCount - 1;
+                if (currentIndex < 0) currentIndex += originalCardsCount;
                 testimonialTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
                 isTransitioning = false;
             }, 400);
@@ -2422,25 +2417,15 @@ footer p {
         });
     }
 
-    testimonialTrack.addEventListener('transitionend', () => {
-        const cardWidth = testimonialCards[0].offsetWidth + 24;
-        if (currentIndex >= originalCardsCount) {
-            testimonialTrack.style.transition = 'none';
-            currentIndex = currentIndex % originalCardsCount;
-            testimonialTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-        }
-    });
-
     startAutoSlide();
 
-    // Pause auto-slide on hover
     const testimonials = document.querySelector('.testimonials');
     if (testimonials) {
         testimonials.addEventListener('mouseenter', stopAutoSlide);
         testimonials.addEventListener('mouseleave', startAutoSlide);
     }
 
-    // Intersection Observer for animations
+    // Observador para animações
     const observerOptions = {
         threshold: 0.2,
     };
@@ -2451,7 +2436,7 @@ footer p {
                 entry.target.classList.add('show');
                 observer.unobserve(entry.target);
                 restoreCardVisibility();
-                ensureNavLinksVisibility(); // Garantir visibilidade dos links do menu
+                ensureNavLinksVisibility();
             }
         });
     }, observerOptions);
@@ -2460,7 +2445,7 @@ footer p {
         observer.observe(section);
     });
 
-    // Calculator functionality
+    // Funcionalidade da calculadora
     const calculatorForm = document.getElementById('calculator-form');
     const calculatorResult = document.getElementById('calculator-result');
 
@@ -2488,7 +2473,7 @@ footer p {
         });
     }
 
-    // Quiz functionality
+    // Funcionalidade do quiz
     const quizForm = document.getElementById('quiz-form');
     const quizResult = document.getElementById('quiz-result');
 
@@ -2519,7 +2504,7 @@ footer p {
         });
     }
 
-    // Smooth scroll for anchor links
+    // Rolagem suave para links de âncora
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             e.preventDefault();

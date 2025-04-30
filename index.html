@@ -1021,7 +1021,7 @@
             100% { transform: translateY(0); }
         }
 
-        @-webkit@keyframes glowButton {
+        @-webkit-keyframes glowButton {
             0%, 100% { box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6); }
             50% { box-shadow: 0 12px 35px rgba(238, 188, 144, 0.8); }
         }
@@ -1056,12 +1056,12 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        @-webkit-keyframes pulseContent {
+        @-webkit@keyframes pulseContent {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
 
-        @-webkit-keyframes popIn {
+        @-webkit@keyframes popIn {
             from { opacity: 0; transform: scale(0.5); }
             to { opacity: 1; transform: scale(1); }
         }
@@ -1103,12 +1103,11 @@
             }
 
             .hero {
-                padding-top: 60px; /* Ajustado para evitar sobreposição com o header */
+                padding-top: 100px; /* Aumentado para evitar sobreposição com o header */
             }
 
             .hero img {
                 max-height: 350px;
-                margin-top: 0; /* Removido margin-top para usar padding da seção */
             }
 
             .hero-content p {
@@ -1389,7 +1388,7 @@
             }
 
             .hero {
-                padding-top: 50px; /* Ajustado para telas menores */
+                padding-top: 80px; /* Ajustado para telas menores */
             }
 
             .hero img {
@@ -1661,7 +1660,7 @@
             <div class="timeline-item">
                 <div class="timeline-content">
                     <h3>Plataforma Digital</h3>
-                    <p>Em 2020, lançamos cursos online, impactando milhares de pessoas.</p>
+                    <p>EM BREVE.....</p>
                 </div>
                 <div class="timeline-image">
                     <img loading="lazy" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Imagem da plataforma digital da RFM">
@@ -1701,6 +1700,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Verificar se é dispositivo móvel para otimizar animações
 const isMobile = window.innerWidth <= 768;
+
+// Ajustar margem da imagem da Hero para evitar sobreposição com o header em dispositivos móveis
+if (isMobile) {
+    const header = document.querySelector('header');
+    const heroImg = document.querySelector('.hero img');
+    const headerHeight = header.offsetHeight;
+    heroImg.style.marginTop = `${headerHeight}px`;
+}
 
 // Animação da seção Hero (novo efeito com zoom e desfoque)
 gsap.from('.hero img', {
@@ -1901,7 +1908,7 @@ compoundForm.addEventListener('submit', (e) => {
 
     const amount = principal * Math.pow(1 + rate, time);
 
-    // Animar o valor do resultado
+    // Animar o valor do resultado com separadores de milhares
     gsap.fromTo(resultValue, {
         innerHTML: 0,
         color: '#261910'
@@ -1911,7 +1918,8 @@ compoundForm.addEventListener('submit', (e) => {
         duration: 1.5,
         ease: 'power2.out',
         onUpdate: function() {
-            resultValue.textContent = `R$${parseFloat(resultValue.innerHTML).toFixed(2)}`;
+            const value = parseFloat(resultValue.innerHTML);
+            resultValue.textContent = `R$${value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
         }
     });
 
@@ -1960,7 +1968,7 @@ compoundForm.addEventListener('submit', (e) => {
 
 compoundForm.addEventListener('reset', () => {
     compoundResult.style.display = 'none';
-    resultValue.textContent = 'R$0.00';
+    resultValue.textContent = 'R$0,00';
     if (chartInstance) {
         chartInstance.destroy();
         chartInstance = null;
@@ -2083,22 +2091,8 @@ let autoSlide = setInterval(nextTestimonial, 8000);
 
 function showTestimonial(index) {
     testimonials.forEach((t, i) => {
-        t.classList.remove('active');
-        carouselDots[i].classList.remove('active');
-        if (i === index) {
-            t.classList.add('active');
-            carouselDots[i].classList.add('active');
-            gsap.fromTo(t, 
-                { opacity: 0, x: 250, rotateY: isMobile ? 0 : 50 }, 
-                { 
-                    opacity: 1, 
-                    x: 0, 
-                    rotateY: 0, 
-                    duration: 1, 
-                    ease: 'power3.out' 
-                }
-            );
-        }
+        t.classList.toggle('active', i === index);
+        carouselDots[i].classList.toggle('active', i === index);
     });
 }
 
@@ -2119,7 +2113,27 @@ function goToTestimonial(index) {
     autoSlide = setInterval(nextTestimonial, 8000);
 }
 
-// Animação do formulário de contato
+// Adicionar eventos aos botões de navegação
+document.querySelector('.carousel-controls button[onclick="prevTestimonial()"]').addEventListener('click', () => {
+    clearInterval(autoSlide);
+    prevTestimonial();
+    autoSlide = setInterval(nextTestimonial, 8000);
+});
+
+document.querySelector('.carousel-controls button[onclick="nextTestimonial()"]').addEventListener('click', () => {
+    clearInterval(autoSlide);
+    nextTestimonial();
+    autoSlide = setInterval(nextTestimonial, 8000);
+});
+
+// Adicionar eventos aos dots
+carouselDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        goToTestimonial(index);
+    });
+});
+
+// Formulário de Contato
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
 
@@ -2134,22 +2148,6 @@ contactForm.addEventListener('submit', (e) => {
         ease: 'power3.out'
     });
     contactForm.reset();
-});
-
-// Animação dos links sociais no rodapé
-gsap.utils.toArray('.social-links a').forEach((link, index) => {
-    gsap.from(link, {
-        opacity: 0,
-        y: 100,
-        duration: isMobile ? 1 : 1.5,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: 'footer',
-            start: 'top 90%',
-            toggleActions: 'play none none none'
-        },
-        delay: index * (isMobile ? 0.2 : 0.4)
-    });
 });
     </script>
 </body>

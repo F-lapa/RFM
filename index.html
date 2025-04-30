@@ -103,6 +103,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding-top: 80px; /* Adicionado para evitar sobreposição com o header */
         }
 
         .hero img {
@@ -110,7 +111,6 @@
             max-height: 500px;
             object-fit: contain;
             z-index: 1;
-            margin-top: 80px;
         }
 
         .hero-content {
@@ -1036,7 +1036,7 @@
             50% { transform: translateY(-15px); }
         }
 
-        @-webkit@keyframes zoomTestimonial {
+        @-webkit-keyframes zoomTestimonial {
             0%, 100% { transform: rotateY(0) scale(1); }
             50% { transform: rotateY(0) scale(1.05); }
         }
@@ -1056,7 +1056,7 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        @-webkit@keyframes pulseContent {
+        @-webkit-keyframes pulseContent {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
@@ -1102,9 +1102,13 @@
                 font-size: 1rem;
             }
 
+            .hero {
+                padding-top: 60px; /* Ajustado para evitar sobreposição com o header */
+            }
+
             .hero img {
-                margin-top: 60px;
                 max-height: 350px;
+                margin-top: 0; /* Removido margin-top para usar padding da seção */
             }
 
             .hero-content p {
@@ -1384,8 +1388,11 @@
                 font-size: 0.9rem;
             }
 
+            .hero {
+                padding-top: 50px; /* Ajustado para telas menores */
+            }
+
             .hero img {
-                margin-top: 50px;
                 max-height: 300px;
             }
 
@@ -1695,14 +1702,13 @@ gsap.registerPlugin(ScrollTrigger);
 // Verificar se é dispositivo móvel para otimizar animações
 const isMobile = window.innerWidth <= 768;
 
-// Animação da seção Hero
+// Animação da seção Hero (novo efeito com zoom e desfoque)
 gsap.from('.hero img', {
     opacity: 0,
-    scale: 0.8,
-    rotation: 10,
-    y: 50,
+    scale: 1.2,
+    filter: 'blur(10px)',
     duration: 2,
-    ease: 'elastic.out(1, 0.5)'
+    ease: 'power3.out'
 });
 gsap.from('.hero-content p', {
     opacity: 0,
@@ -2084,7 +2090,13 @@ function showTestimonial(index) {
             carouselDots[i].classList.add('active');
             gsap.fromTo(t, 
                 { opacity: 0, x: 250, rotateY: isMobile ? 0 : 50 }, 
-                { opacity: 1, x: 0, rotateY: 0, duration: isMobile ? 1 : 1.8, ease: 'power3.out' }
+                { 
+                    opacity: 1, 
+                    x: 0, 
+                    rotateY: 0, 
+                    duration: 1, 
+                    ease: 'power3.out' 
+                }
             );
         }
     });
@@ -2093,87 +2105,51 @@ function showTestimonial(index) {
 function nextTestimonial() {
     currentTestimonial = (currentTestimonial + 1) % testimonials.length;
     showTestimonial(currentTestimonial);
-    resetAutoSlide();
 }
 
 function prevTestimonial() {
     currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
     showTestimonial(currentTestimonial);
-    resetAutoSlide();
 }
 
 function goToTestimonial(index) {
     currentTestimonial = index;
     showTestimonial(currentTestimonial);
-    resetAutoSlide();
-}
-
-function resetAutoSlide() {
     clearInterval(autoSlide);
     autoSlide = setInterval(nextTestimonial, 8000);
 }
 
-showTestimonial(currentTestimonial);
-
-// Animação da seção de Contato
-gsap.from('.contact h2', {
-    opacity: 0,
-    y: 120,
-    duration: isMobile ? 1.5 : 2,
-    ease: 'power3.out',
-    scrollTrigger: {
-        trigger: '.contact',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-    }
-});
-
-gsap.from('.contact form', {
-    opacity: 0,
-    scale: isMobile ? 0.9 : 0.7,
-    duration: isMobile ? 1.5 : 2.5,
-    ease: 'power3.out',
-    scrollTrigger: {
-        trigger: '.contact',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-    },
-    delay: isMobile ? 0.3 : 0.6
-});
-
-// Animação dos inputs do formulário
-gsap.utils.toArray('.contact input, .contact textarea, .calculator-form input').forEach((input, index) => {
-    input.addEventListener('focus', () => {
-        gsap.to(input, {
-            scale: isMobile ? 1.03 : 1.08,
-            boxShadow: '0 15px 40px rgba(0, 0, 0, 0.5)',
-            duration: 0.5,
-            ease: 'power2.out'
-        });
-    });
-    input.addEventListener('blur', () => {
-        gsap.to(input, {
-            scale: 1,
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
-            duration: 0.5,
-            ease: 'power2.out'
-        });
-    });
-});
-
-// Feedback do formulário de contato
+// Animação do formulário de contato
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
+
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    contactForm.style.display = 'none';
     formSuccess.style.display = 'block';
     gsap.from(formSuccess, {
         opacity: 0,
         scale: 0.5,
-        duration: 0.5,
-        ease: 'power2.out'
+        duration: 0.8,
+        ease: 'power3.out'
     });
     contactForm.reset();
+});
+
+// Animação dos links sociais no rodapé
+gsap.utils.toArray('.social-links a').forEach((link, index) => {
+    gsap.from(link, {
+        opacity: 0,
+        y: 100,
+        duration: isMobile ? 1 : 1.5,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: 'footer',
+            start: 'top 90%',
+            toggleActions: 'play none none none'
+        },
+        delay: index * (isMobile ? 0.2 : 0.4)
+    });
 });
     </script>
 </body>

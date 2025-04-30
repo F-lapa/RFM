@@ -6,7 +6,6 @@
     <title>RFM Educação Financeira</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;700;900&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -99,80 +98,40 @@
 
         /* Seção Hero */
         .hero {
-            height: 100vh;
             position: relative;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            background: #261910;
         }
 
-        #particles-js {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .hero img {
             width: 100%;
-            height: 100%;
-            z-index: 2;
-        }
-
-        .hero video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-height: 500px;
+            object-fit: contain;
             z-index: 1;
-            opacity: 0.45;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(38, 25, 16, 0.8);
-            z-index: 3;
+            margin-top: 80px;
         }
 
         .hero-content {
             text-align: center;
-            color: #fef6e9;
-            z-index: 4;
+            color: #261910;
+            z-index: 2;
             max-width: 1200px;
-            padding: 20px;
-            position: relative;
-        }
-
-        .hero-content h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 7rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 40px;
-            text-shadow: 8px 8px 15px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero-content h1 span {
-            display: inline-block;
-            opacity: 0;
+            padding: 40px 20px;
+            background: #fef6e9;
+            width: 100%;
         }
 
         .hero-content p {
-            font-size: 1.7rem;
-            font-weight: 300;
-            margin-bottom: 80px;
-            line-height: 1.9;
-            animation: fadePulse 3s infinite ease-in-out;
-        }
-
-        @keyframes fadePulse {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
@@ -215,13 +174,65 @@
             animation: none;
         }
 
-        /* Seção de Vídeo de Apresentação */
-        .intro-video {
+        .service-button {
+            background: linear-gradient(45deg, #eebc90, #ffe0a8);
+            color: #261910;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .service-button i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+
+        .service-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: left 0.7s ease;
+        }
+
+        .service-button:hover::before {
+            left: 100%;
+        }
+
+        .service-button:hover {
+            transform: scale(1.2);
+            box-shadow: 0 10px 30px rgba(238, 188, 144, 0.8);
+        }
+
+        /* Seção de Apresentação */
+        .intro-section {
             padding: 100px 100px;
             background: #fef6e9;
-            text-align: center;
             position: relative;
             overflow-x: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 80px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .intro-video {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
         }
 
         .intro-video h2 {
@@ -229,12 +240,11 @@
             font-weight: 900;
             margin-bottom: 60px;
             color: #261910;
+            text-align: center;
             animation: bounceTitle 3s infinite ease-in-out;
         }
 
         .video-container {
-            max-width: 1000px;
-            margin: 0 auto;
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
@@ -283,9 +293,48 @@
             transform: scale(1.2);
         }
 
+        .intro-profile {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+            text-align: center;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        .intro-profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .intro-profile h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #261910;
+            margin-bottom: 20px;
+        }
+
+        .intro-profile p {
+            font-size: 1.2rem;
+            color: #3c2d21;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
         @keyframes bounceTitle {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
         /* Seção de Serviços */
@@ -323,11 +372,9 @@
             position: relative;
             transform-style: preserve-3d;
             animation: float 4s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .service-card img {
@@ -356,298 +403,15 @@
 
         .service-card p {
             font-size: 1.4rem;
-            padding: 0 50px 50px;
+            padding: 0 50px 20px;
             color: #3c2d21;
             line-height: 2;
-        }
-
-        /* Calculadora de Juros Compostos */
-        .calculator {
-            padding: 200px 100px;
-            background: #fef6e9;
-            text-align: center;
-            overflow-x: hidden;
-        }
-
-        .calculator h2 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 100px;
-            color: #261910;
-            animation: bounceTitle 3s infinite ease-in-out;
-        }
-
-        .calculator-form {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            padding: 0 20px;
-            width: 100%;
-        }
-
-        .calculator-form input {
-            padding: 20px;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.3rem;
-            background: #fff;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-            transition: box-shadow 0.5s ease, transform 0.5s ease;
-            animation: breathe 5s infinite ease-in-out;
-            width: 100%;
-        }
-
-        @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-
-        .calculator-form input:focus {
-            outline: none;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
-            transform: scale(1.05);
-            animation: none;
-        }
-
-        .calculator-form button {
-            background: linear-gradient(45deg, #eebc90, #ffe0a8);
-            color: #261910;
-            padding: 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            animation: glowButton 2s infinite ease-in-out;
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .calculator-form button:hover {
-            transform: scale(1.15);
-            box-shadow: 0 12px 35px rgba(238, 188, 144, 0.8);
-        }
-
-        .calculator-result {
-            display: none;
-            margin-top: 40px;
-            font-size: 1.5rem;
-            color: #261910;
-            background: #fff;
-            padding: 20px 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            animation: slideIn 0.8s ease;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Quiz de Perfil Financeiro */
-        .quiz {
-            padding: 200px 100px;
-            background: #ebe2d4;
-            text-align: center;
-            overflow-x: hidden;
-        }
-
-        .quiz h2 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 100px;
-            color: #261910;
-            animation: bounceTitle 3s infinite ease-in-out;
-        }
-
-        .quiz-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-            width: 100%;
-        }
-
-        .quiz-question {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        .quiz-question.active {
-            display: block;
-            opacity: 1;
-            animation: zoomIn 0.8s ease;
-        }
-
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .quiz-question h3 {
-            font-size: 2rem;
-            color: #261910;
-            margin-bottom: 40px;
-        }
-
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-        }
-
-        .quiz-option {
-            background: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            font-size: 1.3rem;
-            color: #3c2d21;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-        }
-
-        .quiz-option:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
-        }
-
-        .quiz-progress {
-            margin: 40px 0;
-            height: 10px;
-            background: #d3c8b5;
-            border-radius: 5px;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .quiz-progress-bar {
-            height: 100%;
-            background: linear-gradient(45deg, #eebc90, #ffe0a8);
-            width: 0;
-            transition: width 0.5s ease;
-        }
-
-        .quiz-result {
-            display: none;
-            margin-top: 40px;
-            font-size: 1.5rem;
-            color: #261910;
-            width: 100%;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Seção Sobre */
-        .about {
-            padding: 200px 100px;
-            background: #fef6e9;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        .about h2 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 100px;
-            color: #261910;
-            text-align: center;
-            animation: bounceTitle 3s infinite ease-in-out;
-        }
-
-        .timeline {
-            max-width: 1600px;
-            margin: 0 auto;
-            position: relative;
-            padding: 0 20px;
-            width: 100%;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 8px;
-            height: 100%;
-            background: linear-gradient(#eebc90, #ffe0a8);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 120px;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            width: 45%;
-            background: #fff;
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-            transition: transform 0.7s ease, box-shadow 0.7s ease;
-            animation: pulseContent 3s infinite ease-in-out;
-        }
-
-        @keyframes pulseContent {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .timeline-content:hover {
-            transform: scale(1.1);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            animation: none;
-        }
-
-        .timeline-content h3 {
-            font-size: 2.2rem;
-            color: #261910;
-            margin-bottom: 25px;
-        }
-
-        .timeline-content p {
-            font-size: 1.3rem;
-            color: #3c2d21;
-            line-height: 1.9;
-        }
-
-        .timeline-image {
-            width: 45%;
-        }
-
-        .timeline-image img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 30px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-            animation: float 4s infinite ease-in-out;
+            flex-grow: 1;
         }
 
         /* Seção de Depoimentos */
         .testimonials {
-            padding: 200px 100px;
+            padding: 100px 100px;
             background: #ebe2d4;
             text-align: center;
             position: relative;
@@ -747,6 +511,330 @@
 
         .carousel-dot.active {
             background: #eebc90;
+        }
+
+        /* Calculadora de Juros Compostos */
+        .calculator {
+            padding: 200px 100px;
+            background: #fef6e9;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .calculator h2 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 100px;
+            color: #261910;
+            animation: bounceTitle 3s infinite ease-in-out;
+        }
+
+        .calculator-form {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .calculator-form input {
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            background: #fff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            transition: box-shadow 0.5s ease, transform 0.5s ease;
+            animation: breathe 5s infinite ease-in-out;
+            width: 100%;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .calculator-form input:focus {
+            outline: none;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+            transform: scale(1.05);
+            animation: none;
+        }
+
+        .calculator-form .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            grid-column: 1 / -1;
+        }
+
+        .calculator-form button {
+            background: linear-gradient(45deg, #eebc90, #ffe0a8);
+            color: #261910;
+            padding: 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            animation: glowButton 2s infinite ease-in-out;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .calculator-form button.reset {
+            background: linear-gradient(45deg, #d3c8b5, #ebe2d4);
+        }
+
+        .calculator-form button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 35px rgba(238, 188, 144, 0.8);
+        }
+
+        .calculator-result {
+            display: none;
+            margin-top: 40px;
+            font-size: 1.5rem;
+            color: #261910;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .calculator-result .result-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #eebc90;
+        }
+
+        .calculator-result .motivational {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #3c2d21;
+            margin-top: 20px;
+        }
+
+        .calculator-result canvas {
+            margin-top: 20px;
+            max-width: 100%;
+            height: 200px;
+        }
+
+        /* Quiz de Perfil Financeiro */
+        .quiz {
+            padding: 200px 100px;
+            background: #ebe2d4;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .quiz h2 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 100px;
+            color: #261910;
+            animation: bounceTitle 3s infinite ease-in-out;
+        }
+
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .quiz-question {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .quiz-question.active {
+            display: block;
+            opacity: 1;
+            animation: zoomIn 0.8s ease;
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .quiz-question h3 {
+            font-size: 2rem;
+            color: #261910;
+            margin-bottom: 40px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .quiz-option {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            color: #3c2d21;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .quiz-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        .quiz-progress {
+            margin: 40px 0;
+            height: 10px;
+            background: #d3c8b5;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(45deg, #eebc90, #ffe0a8);
+            width: 0;
+            transition: width 0.5s ease;
+        }
+
+        .quiz-result {
+            display: none;
+            margin-top: 40px;
+            font-size: 1.5rem;
+            color: #261910;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .quiz-result .profile-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #eebc90;
+            margin-bottom: 20px;
+        }
+
+        .quiz-result .profile-description {
+            font-size: 1.3rem;
+            color: #3c2d21;
+            line-height: 1.6;
+        }
+
+        /* Seção Sobre */
+        .about {
+            padding: 200px 100px;
+            background: #fef6e9;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .about h2 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 100px;
+            color: #261910;
+            text-align: center;
+            animation: bounceTitle 3s infinite ease-in-out;
+        }
+
+        .timeline {
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(#eebc90, #ffe0a8);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 120px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: #fff;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+            transition: transform 0.7s ease, box-shadow 0.7s ease;
+            animation: pulseContent 3s infinite ease-in-out;
+        }
+
+        @keyframes pulseContent {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            animation: none;
+        }
+
+        .timeline-content h3 {
+            font-size: 2.2rem;
+            color: #261910;
+            margin-bottom: 25px;
+        }
+
+        .timeline-content p {
+            font-size: 1.3rem;
+            color: #3c2d21;
+            line-height: 1.9;
+        }
+
+        .timeline-image {
+            width: 45%;
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+            animation: float 4s infinite ease-in-out;
         }
 
         /* Seção de Contato */
@@ -921,6 +1009,68 @@
             animation: none;
         }
 
+        /* Compatibilidade de animações */
+        @-webkit-keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @-webkit-keyframes wave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+
+        @-webkit@keyframes glowButton {
+            0%, 100% { box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6); }
+            50% { box-shadow: 0 12px 35px rgba(238, 188, 144, 0.8); }
+        }
+
+        @-webkit-keyframes bounceTitle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @-webkit-keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @-webkit@keyframes zoomTestimonial {
+            0%, 100% { transform: rotateY(0) scale(1); }
+            50% { transform: rotateY(0) scale(1.05); }
+        }
+
+        @-webkit keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        @-webkit-keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @-webkit-keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @-webkit@keyframes pulseContent {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @-webkit-keyframes popIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @-webkit@keyframes orbitSocial {
+            0%, 100% { transform: rotate(0) scale(1); }
+            50% { transform: rotate(10deg) scale(1.1); }
+        }
+
         /* Responsividade para Celulares */
         @media (max-width: 768px) {
             header {
@@ -952,13 +1102,13 @@
                 font-size: 1rem;
             }
 
-            .hero-content h1 {
-                font-size: 4rem;
-                margin-bottom: 20px;
+            .hero img {
+                margin-top: 60px;
+                max-height: 350px;
             }
 
             .hero-content p {
-                font-size: 1.2rem;
+                font-size: 2.5rem;
                 margin-bottom: 40px;
             }
 
@@ -967,8 +1117,13 @@
                 font-size: 1.2rem;
             }
 
-            .intro-video, .services, .calculator, .quiz, .about, .testimonials, .contact {
+            .intro-section, .services, .calculator, .quiz, .about, .testimonials, .contact {
                 padding: 100px 15px;
+            }
+
+            .intro-section {
+                flex-direction: column;
+                gap: 40px;
             }
 
             .intro-video h2, .services h2, .calculator h2, .quiz h2, .about h2, .testimonials h2, .contact h2 {
@@ -983,6 +1138,24 @@
 
             .play-button {
                 font-size: 2.5rem;
+            }
+
+            .intro-profile {
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            .intro-profile img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .intro-profile h3 {
+                font-size: 2.2rem;
+            }
+
+            .intro-profile p {
+                font-size: 1rem;
             }
 
             .service-grid {
@@ -1006,7 +1179,18 @@
 
             .service-card p {
                 font-size: 1.1rem;
-                padding: 0 30px 30px;
+                padding: 0 30px 20px;
+            }
+
+            .service-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .service-button i {
+                font-size: 1.2rem;
+                margin-right: 8px;
             }
 
             .calculator-form, .quiz-container, .contact form {
@@ -1015,13 +1199,22 @@
                 gap: 20px;
             }
 
+            .calculator-form {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-form .button-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+
             .calculator-form input, .contact input, .contact textarea {
                 padding: 15px;
                 font-size: 1.1rem;
                 border-radius: 12px;
             }
 
-            .calculator-form button, .contact button {
+            .calculator-form button {
                 padding: 15px;
                 font-size: 1.2rem;
                 max-width: 250px;
@@ -1034,9 +1227,26 @@
                 max-width: 100%;
             }
 
+            .calculator-result .result-value {
+                font-size: 1.5rem;
+            }
+
+            .calculator-result canvas {
+                height: 150px;
+            }
+
             .quiz-result {
                 font-size: 1.2rem;
+                padding: 15px 20px;
                 max-width: 100%;
+            }
+
+            .quiz-result .profile-title {
+                font-size: 1.5rem;
+            }
+
+            .quiz-result .profile-description {
+                font-size: 1rem;
             }
 
             .quiz-question h3 {
@@ -1174,12 +1384,13 @@
                 font-size: 0.9rem;
             }
 
-            .hero-content h1 {
-                font-size: 3rem;
+            .hero img {
+                margin-top: 50px;
+                max-height: 300px;
             }
 
             .hero-content p {
-                font-size: 1rem;
+                font-size: 2rem;
             }
 
             .cta-button {
@@ -1203,6 +1414,16 @@
                 font-size: 1rem;
             }
 
+            .service-button {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+
+            .service-button i {
+                font-size: 1rem;
+                margin-right: 6px;
+            }
+
             .timeline-content {
                 padding: 15px;
             }
@@ -1224,7 +1445,7 @@
                 font-size: 1rem;
             }
 
-            .calculator-form button, .contact button {
+            .calculator-form button {
                 padding: 12px;
                 font-size: 1rem;
                 max-width: 200px;
@@ -1252,37 +1473,41 @@
     <header>
         <div class="logo"><span>R</span><span>F</span><span>M</span></div>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#services">Serviços</a>
-            <a href="#calculator">Calculadora</a>
-            <a href="#quiz">Quiz</a>
-            <a href="#about">Sobre</a>
-            <a href="#testimonials">Depoimentos</a>
-            <a href="#contact">Contato</a>
+            <a href="#home" aria-label="Ir para Home">Home</a>
+            <a href="#services" aria-label="Ir para Serviços">Serviços</a>
+            <a href="#calculator" aria-label="Ir para Calculadora">Calculadora</a>
+            <a href="#quiz" aria-label="Ir para Quiz">Quiz</a>
+            <a href="#about" aria-label="Ir para Sobre">Sobre</a>
+            <a href="#testimonials" aria-label="Ir para Depoimentos">Depoimentos</a>
+            <a href="#contact" aria-label="Ir para Contato">Contato</a>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <div id="particles-js"></div>
-        <video autoplay muted loop playsinline>
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-of-colored-ribbons-2889-large.mp4" type="video/mp4">
-        </video>
+        <img src="img.png" alt="Imagem de fundo da RFM Educação Financeira" loading="lazy">
         <div class="hero-content">
-            <h1><span>R</span><span>F</span><span>M</span> Educação Financeira</h1>
-            <p>Desperte seu potencial financeiro com educação prática e transformadora.</p>
-            <a href="#contact" class="cta-button">Inicie Agora</a>
+            <p>Transforme sua relação com o dinheiro e conquiste a tranquilidade e liberdade que merece!</p>
+            <a href="#services" class="cta-button" aria-label="Iniciar agora">Inicie Agora</a>
         </div>
     </section>
 
-    <section class="intro-video">
-        <h2>Conheça a RFM</h2>
-        <div class="video-container">
-            <video controls poster="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=600">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-of-colored-ribbons-2889-large.mp4" type="video/mp4">
-            </video>
-            <div class="video-overlay">
-                <i class="fas fa-play play-button"></i>
+    <section class="intro-section">
+        <div class="intro-video">
+            <h2>Conheça a RFM</h2>
+            <div class="video-container">
+                <video controls poster="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=600">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-of-colored-ribbons-2889-large.mp4" type="video/mp4" />
+                </video>
+                <div class="video-overlay">
+                    <i class="fas fa-play play-button" aria-label="Tocar vídeo"></i>
+                </div>
             </div>
+        </div>
+        <div class="intro-profile">
+            <img src="rose.png" alt="Foto de Roselaine Faustino Machado" loading="lazy">
+            <h3>Roselaine Faustino Machado</h3>
+            <p>Contadora de formação e especialista em finanças, durante mais de 15 anos dediquei meu tempo e experiência ajudando empresas a organizar a área contábil e financeira para planejar e gerir melhor seus negócios.</p>
+            <p>Após experimentar o quanto a educação financeira e o autoconhecimento transformam vidas, hoje me dedico a ajudar mulheres e famílias a buscar e manter a saúde financeira a partir de uma boa relação com o dinheiro que é apenas um meio para você obter mais <strong>SEGURANÇA, TRANQUILIDADE e LIBERDADE.</strong></p>
         </div>
     </section>
 
@@ -1290,32 +1515,75 @@
         <h2>Nossos Serviços</h2>
         <div class="service-grid">
             <div class="service-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1516321310762-1a8fcaa163ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Cursos Online">
-                <h3>Cursos Online</h3>
-                <p>Aprenda finanças com flexibilidade e interatividade, onde estiver.</p>
+                <img loading="lazy" src="familia.png" alt="Planejamento Financeiro Pessoal e Familiar">
+                <h3>Planejamento Financeiro Pessoal e Familiar</h3>
+                <p>Desenvolvemos um plano personalizado para organizar suas finanças, definir metas claras e alcançar segurança financeira para você e sua família, com estratégias práticas e acompanhamento contínuo.</p>
+                <a href="https://wa.me/5548999370943" class="service-button" aria-label="Solicitar proposta para Planejamento Financeiro">Solicite uma Proposta</a>
             </div>
             <div class="service-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Mentoria Individual">
-                <h3>Mentoria Individual</h3>
-                <p>Estratégias personalizadas para alcançar seus objetivos financeiros.</p>
+                <img loading="lazy" src="autonomas.png" alt="Consultoria para Autônomas">
+                <h3>Consultoria e Assessoria Financeira para Autônomas</h3>
+                <p>Orientação especializada para mulheres autônomas, com foco em gestão financeira, precificação, controle de fluxo de caixa e planejamento para crescimento sustentável do seu negócio.</p>
+                <a href="https://wa.me/5548999370943" class="service-button" aria-label="Solicitar proposta para Consultoria para Autônomas">Solicite uma Proposta</a>
             </div>
             <div class="service-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1517245386807-8dd44f7a8f4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Workshops">
-                <h3>Workshops ao Vivo</h3>
-                <p>Experiências práticas para dominar a gestão do seu dinheiro.</p>
+                <img loading="lazy" src="mentoria.png" alt="Mentorias e Workshops em Grupo">
+                <h3>Mentorias e Workshops em Grupo</h3>
+                <p>Encontros dinâmicos em grupo para aprender sobre educação financeira, desenvolver hábitos saudáveis com o dinheiro e compartilhar experiências, com foco em transformação prática.</p>
+                <a href="https://chat.whatsapp.com/DR3kFl2mtxmFRL0axoWGDy" class="service-button" aria-label="Entrar no grupo de Mentorias e Workshops"><i class="fab fa-whatsapp"></i>Entre no Nosso Grupo</a>
             </div>
+            <div class="service-card">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Programa Bem Estar Financeiro para Empresas">
+                <h3>Programa Bem Estar Financeiro para sua Empresa</h3>
+                <p>Soluções corporativas para promover a saúde financeira dos colaboradores, com palestras, treinamentos e programas personalizados que aumentam a produtividade e reduzem o estresse financeiro.</p>
+                <a href="https://wa.me/5548999370943" class="service-button" aria-label="Solicitar proposta para Programa Bem Estar Financeiro">Solicite uma Proposta</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2>O Que Nossos Clientes Dizem:</h2>
+        <div class="testimonial-carousel">
+            <div class="testimonial active">
+                <p>"Obrigada pela parceria esse ano! Creio que vc não tem noção o quanto nos apoiou e quanto isso fez diferença em nossas vidas. Inclusive sobre conversar sobre dinheiro (eu e Alexandre) numa outra perspectiva."</p>
+                <h4>Fernanda e Alexandre</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Seu workshop foi leve, o que é difícil quando a gente fala de dinheiro, deu pra sentir teu cuidado, tua atenção, tua entrega! Me senti comfy de abrir um pouco da minha história e espero que tenha sido só o começo!"</p>
+                <h4>Julia</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Minha vida financeira está ficando muito mais organizada com tua ajuda! Fiquei muito agradecida pelos aprendizados e irei aplicar na minha vida!"</p>
+                <h4>Florência</h4>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button onclick="prevTestimonial()" aria-label="Depoimento anterior"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-dots">
+                <div class="carousel-dot active" onclick="goToTestimonial(0)" aria-label="Ir para depoimento 1"></div>
+                <div class="carousel-dot" onclick="goToTestimonial(1)" aria-label="Ir para depoimento 2"></div>
+                <div class="carousel-dot" onclick="goToTestimonial(2)" aria-label="Ir para depoimento 3"></div>
+            </div>
+            <button onclick="nextTestimonial()" aria-label="Próximo depoimento"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
     <section class="calculator" id="calculator">
         <h2>Calculadora de Juros Compostos</h2>
         <form class="calculator-form" id="compound-form">
-            <input type="number" id="principal" placeholder="Valor Inicial (R$)" min="0" step="0.01" required>
-            <input type="number" id="rate" placeholder="Taxa de Juros Anual (%)" min="0" step="0.01" required>
-            <input type="number" id="time" placeholder="Tempo (anos)" min="1" step="1" required>
-            <button type="submit">Calcular</button>
+            <input type="number" id="principal" placeholder="Valor Inicial (R$)" min="0" step="0.01" required aria-label="Valor inicial em reais">
+            <input type="number" id="rate" placeholder="Taxa de Juros Anual (%)" min="0" step="0.01" required aria-label="Taxa de juros anual em porcentagem">
+            <input type="number" id="time" placeholder="Tempo (anos)" min="1" step="1" required aria-label="Tempo em anos">
+            <div class="button-group">
+                <button type="submit" aria-label="Calcular juros compostos">Calcular</button>
+                <button type="reset" class="reset" aria-label="Limpar formulário">Limpar</button>
+            </div>
         </form>
-        <div class="calculator-result" id="compound-result"></div>
+        <div class="calculator-result" id="compound-result">
+            <p>Seu investimento será: <span class="result-value">R$0.00</span></p>
+            <canvas id="growth-chart"></canvas>
+            <p class="motivational">"Comece hoje e veja seu dinheiro crescer para realizar seus sonhos!"</p>
+        </div>
     </section>
 
     <section class="quiz" id="quiz">
@@ -1327,28 +1595,47 @@
             <div class="quiz-question" id="question-1">
                 <h3>Qual é o seu principal objetivo financeiro?</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="1">Preservar meu capital</div>
-                    <div class="quiz-option" data-value="2">Crescimento moderado</div>
-                    <div class="quiz-option" data-value="3">Maximizar retornos</div>
+                    <div class="quiz-option" data-value="1" aria-label="Preservar meu capital">Preservar meu capital</div>
+                    <div class="quiz-option" data-value="2" aria-label="Crescimento moderado">Crescimento moderado</div>
+                    <div class="quiz-option" data-value="3" aria-label="Maximizar retornos">Maximizar retornos</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-2">
                 <h3>Como você reage a quedas no mercado?</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="1">Fico muito preocupado</div>
-                    <div class="quiz-option" data-value="2">Aceito com cautela</div>
-                    <div class="quiz-option" data-value="3">Vejo como oportunidade</div>
+                    <div class="quiz-option" data-value="1" aria-label="Fico muito preocupado">Fico muito preocupado</div>
+                    <div class="quiz-option" data-value="2" aria-label="Aceito com cautela">Aceito com cautela</div>
+                    <div class="quiz-option" data-value="3" aria-label="Vejo como oportunidade">Vejo como oportunidade</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-3">
                 <h3>Qual é o seu horizonte de investimento?</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="1">Curto prazo (1-3 anos)</div>
-                    <div class="quiz-option" data-value="2">Médio prazo (3-7 anos)</div>
-                    <div class="quiz-option" data-value="3">Longo prazo (7+ anos)</div>
+                    <div class="quiz-option" data-value="1" aria-label="Curto prazo">Curto prazo (1-3 anos)</div>
+                    <div class="quiz-option" data-value="2" aria-label="Médio prazo">Médio prazo (3-7 anos)</div>
+                    <div class="quiz-option" data-value="3" aria-label="Longo prazo">Longo prazo (7+ anos)</div>
                 </div>
             </div>
-            <div class="quiz-result" id="quiz-result"></div>
+            <div class="quiz-question" id="question-4">
+                <h3>Qual é o seu nível de conhecimento sobre investimentos?</h3>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="1" aria-label="Iniciante">Iniciante (pouco ou nenhum)</div>
+                    <div class="quiz-option" data-value="2" aria-label="Intermediário">Intermediário (algum conhecimento)</div>
+                    <div class="quiz-option" data-value="3" aria-label="Avançado">Avançado (muito conhecimento)</div>
+                </div>
+            </div>
+            <div class="quiz-question" id="question-5">
+                <h3>Você prefere investir todo o seu dinheiro em um único ativo?</h3>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="1" aria-label="Não, prefiro diversificar">Não, prefiro diversificar</div>
+                    <div class="quiz-option" data-value="2" aria-label="Depende do ativo">Depende do ativo</div>
+                    <div class="quiz-option" data-value="3" aria-label="Sim, concentrar">Sim, concentrar</div>
+                </div>
+            </div>
+            <div class="quiz-result" id="quiz-result">
+                <div class="profile-title"></div>
+                <div class="profile-description"></div>
+            </div>
         </div>
     </section>
 
@@ -1361,7 +1648,7 @@
                     <p>Em 2018, iniciamos nossa jornada para transformar vidas com educação financeira.</p>
                 </div>
                 <div class="timeline-image">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Fundação">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Imagem da fundação da RFM">
                 </div>
             </div>
             <div class="timeline-item">
@@ -1370,46 +1657,19 @@
                     <p>Em 2020, lançamos cursos online, impactando milhares de pessoas.</p>
                 </div>
                 <div class="timeline-image">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Plataforma">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Imagem da plataforma digital da RFM">
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="testimonials" id="testimonials">
-        <h2>Depoimentos</h2>
-        <div class="testimonial-carousel">
-            <div class="testimonial active">
-                <p>"A RFM me deu controle total sobre minhas finanças. Recomendo!"</p>
-                <h4>Beatriz Lima</h4>
-            </div>
-            <div class="testimonial">
-                <p>"Os workshops são práticos e mudaram minha visão sobre dinheiro."</p>
-                <h4>Thiago Santos</h4>
-            </div>
-            <div class="testimonial">
-                <p>"A mentoria personalizada foi um divisor de águas para mim."</p>
-                <h4>Laura Mendes</h4>
-            </div>
-        </div>
-        <div class="carousel-controls">
-            <button onclick="prevTestimonial()"><i class="fas fa-chevron-left"></i></button>
-            <div class="carousel-dots">
-                <div class="carousel-dot active" onclick="goToTestimonial(0)"></div>
-                <div class="carousel-dot" onclick="goToTestimonial(1)"></div>
-                <div class="carousel-dot" onclick="goToTestimonial(2)"></div>
-            </div>
-            <button onclick="nextTestimonial()"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
     <section class="contact" id="contact">
         <h2>Entre em Contato</h2>
         <form id="contact-form">
-            <input type="text" placeholder="Nome" required>
-            <input type="email" placeholder="E-mail" required>
-            <textarea placeholder="Mensagem" required></textarea>
-            <button type="submit">Enviar Mensagem</button>
+            <input type="text" placeholder="Nome" required aria-label="Seu nome">
+            <input type="email" placeholder="E-mail" required aria-label="Seu e-mail">
+            <textarea placeholder="Mensagem" required aria-label="Sua mensagem"></textarea>
+            <button type="submit" aria-label="Enviar mensagem">Enviar Mensagem</button>
         </form>
         <div class="form-success" id="form-success">Mensagem enviada com sucesso!</div>
     </section>
@@ -1417,477 +1677,504 @@
     <footer>
         <p>© 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
         <div class="social-links">
-            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:contato@rfm.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/roselaine.fmachado?igsh=dnk4dHRkMzd2bTI5" target="_blank" title="Instagram" aria-label="Visitar Instagram da RFM"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5548999370943" target="_blank" title="WhatsApp" aria-label="Contactar via WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:contato@rfmeducacao.com.br" title="Email" aria-label="Enviar e-mail para RFM"><i class="fas fa-envelope"></i></a>
+            <a href="https://youtube.com" target="_blank" title="YouTube" aria-label="Visitar canal do YouTube da RFM"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/roselainemachado/" target="_blank" title="LinkedIn" aria-label="Visitar LinkedIn da RFM"><i class="fab fa-linkedin"></i></a>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Configuração de Partículas
-        const isMobile = window.innerWidth <= 768;
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: isMobile ? 80 : 150, density: { enable: true, value_area: 800 } },
-                color: { value: '#eebc90' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.8, random: true },
-                size: { value: isMobile ? 4 : 6, random: true },
-                line_linked: { enable: true, distance: isMobile ? 60 : 80, color: '#ffe0a8', opacity: 0.5, width: 2 },
-                move: { enable: true, speed: isMobile ? 3 : 5, direction: 'none', random: true }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: !isMobile, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
-                modes: { grab: { distance: 180 }, push: { particles_nb: 6 } }
-            },
-            retina_detect: true
-        });
+    // Registrar ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
-        // Registrar ScrollTrigger
-        gsap.registerPlugin(ScrollTrigger);
+// Verificar se é dispositivo móvel para otimizar animações
+const isMobile = window.innerWidth <= 768;
 
-        // Animação do Hero
-        gsap.from('.hero-content h1 span', {
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'power4.out'
-        });
-        gsap.from('.hero-content p', {
-            opacity: 0,
-            y: 100,
-            duration: 1.5,
-            delay: 0.8,
-            ease: 'power4.out'
-        });
-        gsap.from('.cta-button', {
+// Animação da seção Hero
+gsap.from('.hero img', {
+    opacity: 0,
+    scale: 0.8,
+    rotation: 10,
+    y: 50,
+    duration: 2,
+    ease: 'elastic.out(1, 0.5)'
+});
+gsap.from('.hero-content p', {
+    opacity: 0,
+    y: 100,
+    duration: 1.5,
+    delay: 0.8,
+    ease: 'power4.out'
+});
+gsap.from('.cta-button', {
+    opacity: 0,
+    scale: 0.5,
+    duration: 1.5,
+    delay: 1.2,
+    ease: 'elastic.out(1, 0.5)'
+});
+
+// Animação do cabeçalho ao rolar
+gsap.to('header', {
+    background: 'rgba(38, 25, 16, 1)',
+    duration: 0.5,
+    scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+    }
+});
+
+// Animação da seção de apresentação
+gsap.from('.intro-video', {
+    opacity: 0,
+    y: 100,
+    duration: isMobile ? 1 : 1.5,
+    ease: 'power3.out',
+    scrollTrigger: {
+        trigger: '.intro-section',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+    }
+});
+
+gsap.from('.intro-profile', {
+    opacity: 0,
+    y: 100,
+    duration: isMobile ? 1 : 1.5,
+    ease: 'power3.out',
+    scrollTrigger: {
+        trigger: '.intro-section',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+    },
+    delay: isMobile ? 0.3 : 0.6
+});
+
+// Interatividade do vídeo
+const videoContainer = document.querySelector('.video-container');
+const video = videoContainer.querySelector('video');
+const playButton = videoContainer.querySelector('.play-button');
+const videoOverlay = videoContainer.querySelector('.video-overlay');
+
+playButton.addEventListener('click', () => {
+    if (video.paused) {
+        video.play();
+        gsap.to(playButton, {
             opacity: 0,
             scale: 0.5,
-            duration: 1.5,
-            delay: 1.2,
-            ease: 'elastic.out(1, 0.5)'
+            duration: 0.3,
+            ease: 'power2.in'
         });
-
-        // Animação do cabeçalho
-        gsap.to('header', {
-            background: 'rgba(38, 25, 16, 1)',
-            duration: 0.5,
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
-            }
-        });
-
-        // Animação da seção de vídeo
-        gsap.from('.intro-video h2', {
+        gsap.to(videoOverlay, {
             opacity: 0,
-            y: 100,
-            duration: isMobile ? 1 : 1.5,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.intro-video',
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            }
+            duration: 0.3,
+            ease: 'power2.in'
         });
+    }
+});
 
-        gsap.from('.video-container', {
-            opacity: 0,
-            scale: 0.8,
-            y: 100,
-            duration: isMobile ? 1.2 : 2,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.intro-video',
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            },
-            delay: isMobile ? 0.3 : 0.6
+video.addEventListener('click', () => {
+    if (!video.paused) {
+        video.pause();
+        gsap.to(playButton, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out'
         });
-
-        // Interatividade do vídeo
-        const videoContainer = document.querySelector('.video-container');
-        const video = videoContainer.querySelector('video');
-        const playButton = videoContainer.querySelector('.play-button');
-        const videoOverlay = videoContainer.querySelector('.video-overlay');
-
-        playButton.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-                gsap.to(playButton, {
-                    opacity: 0,
-                    scale: 0.5,
-                    duration: 0.3,
-                    ease: 'power2.in'
-                });
-                gsap.to(videoOverlay, {
-                    opacity: 0,
-                    duration: 0.3,
-                    ease: 'power2.in'
-                });
-            }
+        gsap.to(videoOverlay, {
+            opacity: 1,
+            duration: 0.3,
+            ease: 'power2.out'
         });
+    }
+});
 
-        video.addEventListener('click', () => {
-            if (!video.paused) {
-                video.pause();
-                gsap.to(playButton, {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                });
-                gsap.to(videoOverlay, {
-                    opacity: 1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                });
-            }
-        });
+// Animação dos cards de serviço
+gsap.utils.toArray('.service-card').forEach((card, index) => {
+    gsap.from(card, {
+        opacity: 0,
+        y: 200,
+        rotationX: isMobile ? 0 : 30,
+        duration: isMobile ? 1.5 : 2.5,
+        ease: 'bounce.out',
+        scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+        },
+        delay: index * (isMobile ? 0.3 : 0.6)
+    });
 
-        // Animação dos cards de serviço
-        gsap.utils.toArray('.service-card').forEach((card, index) => {
-            gsap.from(card, {
-                opacity: 0,
-                y: 200,
-                rotationX: isMobile ? 0 : 30,
-                duration: isMobile ? 1.5 : 2.5,
-                ease: 'bounce.out',
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                },
-                delay: index * (isMobile ? 0.3 : 0.6)
-            });
-
-            if (!isMobile) {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
-                    gsap.to(card, {
-                        rotationY: x / 8,
-                        rotationX: -y / 8,
-                        scale: 1.2,
-                        duration: 0.8,
-                        ease: 'power2.out'
-                    });
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    gsap.to(card, {
-                        rotationY: 0,
-                        rotationX: 0,
-                        scale: 1,
-                        duration: 0.8,
-                        ease: 'power2.out'
-                    });
-                });
-            } else {
-                card.addEventListener('touchstart', () => {
-                    gsap.to(card, {
-                        scale: 1.1,
-                        boxShadow: '0 30px 80px rgba(0, 0, 0, 0.45)',
-                        duration: 0.3,
-                        ease: 'power2.out'
-                    });
-                });
-                card.addEventListener('touchend', () => {
-                    gsap.to(card, {
-                        scale: 1,
-                        boxShadow: '0 15px 45px rgba(0, 0, 0, 0.35)',
-                        duration: 0.3,
-                        ease: 'power2.out'
-                    });
-                });
-            }
-        });
-
-        // Calculadora de Juros Compostos
-        const compoundForm = document.getElementById('compound-form');
-        const compoundResult = document.getElementById('compound-result');
-
-        compoundForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const principal = parseFloat(document.getElementById('principal').value);
-            const rate = parseFloat(document.getElementById('rate').value) / 100;
-            const time = parseInt(document.getElementById('time').value);
-
-            // Validação dos inputs
-            if (isNaN(principal) || isNaN(rate) || isNaN(time) || principal <= 0 || rate < 0 || time < 1) {
-                compoundResult.textContent = 'Por favor, insira valores válidos (valor inicial > 0, taxa >= 0, tempo >= 1).';
-                compoundResult.style.display = 'block';
-                gsap.from(compoundResult, {
-                    opacity: 0,
-                    y: 20,
-                    duration: 0.8,
-                    ease: 'power3.out'
-                });
-                return;
-            }
-
-            // Cálculo dos juros compostos
-            const amount = principal * Math.pow(1 + rate, time);
-            compoundResult.textContent = `Após ${time} anos, seu investimento será de R$${amount.toFixed(2)}.`;
-            compoundResult.style.display = 'block';
-            gsap.from(compoundResult, {
-                opacity: 0,
-                y: 20,
+    if (!isMobile) {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            gsap.to(card, {
+                rotationY: x / 8,
+                rotationX: -y / 8,
+                scale: 1.2,
                 duration: 0.8,
-                ease: 'power3.out'
-            });
-        });
-
-        // Quiz de Perfil Financeiro
-        const quizQuestions = document.querySelectorAll('.quiz-question');
-        const quizResult = document.getElementById('quiz-result');
-        const quizProgress = document.getElementById('quiz-progress');
-        let currentQuestion = 0;
-        let score = 0;
-
-        function showQuestion(index) {
-            quizQuestions.forEach((q, i) => {
-                q.style.display = i === index ? 'block' : 'none';
-                q.classList.toggle('active', i === index);
-            });
-            quizProgress.style.width = `${((index + 1) / quizQuestions.length) * 100}%`;
-        }
-
-        function showQuizResult() {
-            quizQuestions.forEach(q => q.style.display = 'none');
-            quizResult.style.display = 'block';
-            let profile = '';
-            if (score <= 4) {
-                profile = 'Conservador: Você prefere segurança e evita riscos altos.';
-            } else if (score <= 7) {
-                profile = 'Moderado: Você busca um equilíbrio entre segurança e crescimento.';
-            } else {
-                profile = 'Agressivo: Você está disposto a assumir riscos para altos retornos.';
-            }
-            quizResult.textContent = `Seu Perfil Financeiro: ${profile}`;
-        }
-
-        // Inicializar eventos do quiz
-        quizQuestions.forEach((question, index) => {
-            const options = question.querySelectorAll('.quiz-option');
-            options.forEach(option => {
-                option.addEventListener('click', () => {
-                    score += parseInt(option.dataset.value);
-                    if (index < quizQuestions.length - 1) {
-                        currentQuestion++;
-                        showQuestion(currentQuestion);
-                    } else {
-                        showQuizResult();
-                    }
-                });
-            });
-        });
-
-        // Inicializar o quiz
-        showQuestion(0);
-
-        // Animação da linha do tempo
-        gsap.utils.toArray('.timeline-item').forEach((item, index) => {
-            gsap.from(item.querySelector('.timeline-content'), {
-                opacity: 0,
-                x: index % 2 === 0 ? -300 : 300,
-                scale: 0.8,
-                duration: isMobile ? 1.5 : 2.5,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 80%',
-                    toggleActions: 'play none none none'
-                }
-            });
-            gsap.from(item.querySelector('.timeline-image'), {
-                opacity: 0,
-                x: index % 2 === 0 ? 300 : -300,
-                scale: 0.8,
-                duration: isMobile ? 1.5 : 2.5,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 80%',
-                    toggleActions: 'play none none none'
-                },
-                delay: isMobile ? 0.3 : 0.6
-            });
-        });
-
-        // Carrossel de depoimentos
-        const testimonials = document.querySelectorAll('.testimonial');
-        const carouselDots = document.querySelectorAll('.carousel-dot');
-        let currentTestimonial = 0;
-        let autoSlide = setInterval(nextTestimonial, 8000);
-
-        function showTestimonial(index) {
-            testimonials.forEach((t, i) => {
-                t.classList.remove('active');
-                carouselDots[i].classList.remove('active');
-                if (i === index) {
-                    t.classList.add('active');
-                    carouselDots[i].classList.add('active');
-                    gsap.fromTo(t, { opacity: 0, x: 250, rotateY: isMobile ? 0 : 50 }, { opacity: 1, x: 0, rotateY: 0, duration: isMobile ? 1 : 1.8, ease: 'power3.out' });
-                }
-            });
-        }
-
-        function nextTestimonial() {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            showTestimonial(currentTestimonial);
-            resetAutoSlide();
-        }
-
-        function prevTestimonial() {
-            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-            showTestimonial(currentTestimonial);
-            resetAutoSlide();
-        }
-
-        function goToTestimonial(index) {
-            currentTestimonial = index;
-            showTestimonial(currentTestimonial);
-            resetAutoSlide();
-        }
-
-        function resetAutoSlide() {
-            clearInterval(autoSlide);
-            autoSlide = setInterval(nextTestimonial, 8000);
-        }
-
-        showTestimonial(currentTestimonial);
-
-        // Animação da seção de Contato
-        gsap.from('.contact h2', {
-            opacity: 0,
-            y: 120,
-            duration: isMobile ? 1.5 : 2,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.contact',
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            }
-        });
-
-        gsap.from('.contact form', {
-            opacity: 0,
-            scale: isMobile ? 0.9 : 0.7,
-            duration: isMobile ? 1.5 : 2.5,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.contact',
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            },
-            delay: isMobile ? 0.3 : 0.6
-        });
-
-        // Animação dos inputs do formulário
-        gsap.utils.toArray('.contact input, .contact textarea, .calculator-form input').forEach((input, index) => {
-            input.addEventListener('focus', () => {
-                gsap.to(input, {
-                    scale: isMobile ? 1.03 : 1.08,
-                    boxShadow: '0 15px 40px rgba(0, 0, 0, 0.5)',
-                    duration: 0.5,
-                    ease: 'power2.out'
-                });
-            });
-            input.addEventListener('blur', () => {
-                gsap.to(input, {
-                    scale: 1,
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
-                    duration: 0.5,
-                    ease: 'power2.out'
-                });
-            });
-        });
-
-        // Feedback do formulário
-        const contactForm = document.getElementById('contact-form');
-        const formSuccess = document.getElementById('form-success');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            formSuccess.style.display = 'block';
-            gsap.from(formSuccess, {
-                opacity: 0,
-                scale: 0.5,
-                duration: 0.5,
                 ease: 'power2.out'
             });
-            contactForm.reset();
-            setTimeout(() => {
-                formSuccess.style.display = 'none';
-            }, 3000);
         });
 
-        // Parallax no vídeo de fundo
-        gsap.to('.hero video', {
-            scale: isMobile ? 1.2 : 1.6,
-            y: isMobile ? 50 : 100,
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
-            }
-        });
-
-        // Animação dos ícones sociais
-        gsap.utils.toArray('.social-links a').forEach((link, index) => {
-            gsap.from(link, {
-                opacity: 0,
-                y: 100,
-                duration: isMobile ? 1.2 : 1.8,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: 'footer',
-                    start: 'top 90%',
-                    toggleActions: 'play none none none'
-                },
-                delay: index * (isMobile ? 0.2 : 0.4)
+        card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+                rotationY: 0,
+                rotationX: 0,
+                scale: 1,
+                duration: 0.8,
+                ease: 'power2.out'
             });
+        });
+    } else {
+        card.addEventListener('touchstart', () => {
+            gsap.to(card, {
+                scale: 1.1,
+                boxShadow: '0 30px 80px rgba(0, 0, 0, 0.45)',
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        });
+        card.addEventListener('touchend', () => {
+            gsap.to(card, {
+                scale: 1,
+                boxShadow: '0 15px 45px rgba(0, 0, 0, 0.35)',
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        });
+    }
+});
 
-            if (!isMobile) {
-                link.addEventListener('mouseenter', () => {
-                    gsap.to(link, {
-                        keyframes: [
-                            { rotation: 30, scale: 1.5, duration: 0.3 },
-                            { rotation: -30, duration: 0.3 },
-                            { rotation: 0, scale: 1.5, duration: 0.3 }
-                        ],
-                        ease: 'power2.out'
-                    });
-                });
+// Animação da seção de depoimentos
+gsap.from('.testimonial-carousel', {
+    opacity: 0,
+    y: 100,
+    duration: isMobile ? 1 : 1.5,
+    ease: 'power3.out',
+    scrollTrigger: {
+        trigger: '.testimonials',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+    }
+});
+
+// Calculadora de Juros Compostos
+const compoundForm = document.getElementById('compound-form');
+const compoundResult = document.getElementById('compound-result');
+const resultValue = compoundResult.querySelector('.result-value');
+let chartInstance = null;
+
+compoundForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const principal = parseFloat(document.getElementById('principal').value);
+    const rate = parseFloat(document.getElementById('rate').value) / 100;
+    const time = parseInt(document.getElementById('time').value);
+
+    if (isNaN(principal) || isNaN(rate) || isNaN(time) || principal <= 0 || rate < 0 || time < 1) {
+        resultValue.textContent = 'Valores inválidos';
+        compoundResult.style.display = 'block';
+        gsap.from(compoundResult, {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+        return;
+    }
+
+    const amount = principal * Math.pow(1 + rate, time);
+
+    // Animar o valor do resultado
+    gsap.fromTo(resultValue, {
+        innerHTML: 0,
+        color: '#261910'
+    }, {
+        innerHTML: amount.toFixed(2),
+        color: '#eebc90',
+        duration: 1.5,
+        ease: 'power2.out',
+        onUpdate: function() {
+            resultValue.textContent = `R$${parseFloat(resultValue.innerHTML).toFixed(2)}`;
+        }
+    });
+
+    compoundResult.style.display = 'block';
+    gsap.from(compoundResult, {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: 'power3.out'
+    });
+
+    // Criar gráfico de crescimento
+    const ctx = document.getElementById('growth-chart').getContext('2d');
+    if (chartInstance) {
+        chartInstance.destroy();
+    }
+
+    const years = Array.from({ length: time + 1 }, (_, i) => i);
+    const amounts = years.map(year => principal * Math.pow(1 + rate, year));
+
+    chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: years,
+            datasets: [{
+                label: 'Crescimento do Investimento',
+                data: amounts,
+                borderColor: '#eebc90',
+                backgroundColor: 'rgba(238, 188, 144, 0.2)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: { title: { display: true, text: 'Anos' } },
+                y: { title: { display: true, text: 'Valor (R$)' } }
+            },
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+});
+
+compoundForm.addEventListener('reset', () => {
+    compoundResult.style.display = 'none';
+    resultValue.textContent = 'R$0.00';
+    if (chartInstance) {
+        chartInstance.destroy();
+        chartInstance = null;
+    }
+});
+
+// Quiz de Perfil Financeiro
+const quizQuestions = document.querySelectorAll('.quiz-question');
+const quizResult = document.getElementById('quiz-result');
+const quizProgress = document.getElementById('quiz-progress');
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion(index) {
+    quizQuestions.forEach((q, i) => {
+        q.style.display = i === index ? 'block' : 'none';
+        q.classList.toggle('active', i === index);
+    });
+    gsap.to(quizProgress, {
+        width: `${((index + 1) / quizQuestions.length) * 100}%`,
+        duration: 0.5,
+        ease: 'power2.out'
+    });
+}
+
+function showQuizResult() {
+    quizQuestions.forEach(q => q.style.display = 'none');
+    quizResult.style.display = 'block';
+
+    let profile = '';
+    let description = '';
+
+    if (score <= 7) {
+        profile = 'Conservador';
+        description = 'Você prefere segurança e evita riscos altos. Seus investimentos tendem a ser em ativos de baixo risco, como renda fixa, para preservar seu capital.';
+    } else if (score <= 11) {
+        profile = 'Moderado';
+        description = 'Você busca um equilíbrio entre segurança e crescimento. Está disposto a assumir riscos moderados para obter retornos maiores, diversificando seus investimentos.';
+    } else {
+        profile = 'Agressivo';
+        description = 'Você está disposto a assumir riscos altos para maximizar retornos. Seus investimentos podem incluir ativos de maior volatilidade, como ações e criptomoedas.';
+    }
+
+    quizResult.querySelector('.profile-title').textContent = `Seu Perfil: ${profile}`;
+    quizResult.querySelector('.profile-description').textContent = description;
+
+    gsap.from(quizResult, {
+        opacity: 0,
+        scale: 0.8,
+        duration: 1,
+        ease: 'elastic.out(1, 0.5)'
+    });
+    gsap.from('.profile-title', {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.2,
+        ease: 'power3.out'
+    });
+    gsap.from('.profile-description', {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.4,
+        ease: 'power3.out'
+    });
+}
+
+quizQuestions.forEach((question, index) => {
+    const options = question.querySelectorAll('.quiz-option');
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            score += parseInt(option.dataset.value);
+            if (index < quizQuestions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
             } else {
-                link.addEventListener('touchstart', () => {
-                    gsap.to(link, {
-                        scale: 1.3,
-                        rotation: 15,
-                        duration: 0.3,
-                        ease: 'power2.out'
-                    });
-                });
-                link.addEventListener('touchend', () => {
-                    gsap.to(link, {
-                        scale: 1,
-                        rotation: 0,
-                        duration: 0.3,
-                        ease: 'power2.out'
-                    });
-                });
+                showQuizResult();
             }
         });
+    });
+});
+
+showQuestion(0);
+
+// Animação da linha do tempo
+gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+    gsap.from(item.querySelector('.timeline-content'), {
+        opacity: 0,
+        x: index % 2 === 0 ? -300 : 300,
+        scale: 0.8,
+        duration: isMobile ? 1.5 : 2.5,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: item,
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        }
+    });
+    gsap.from(item.querySelector('.timeline-image'), {
+        opacity: 0,
+        x: index % 2 === 0 ? 300 : -300,
+        scale: 0.8,
+        duration: isMobile ? 1.5 : 2.5,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: item,
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        delay: isMobile ? 0.3 : 0.6
+    });
+});
+
+// Carrossel de Depoimentos
+const testimonials = document.querySelectorAll('.testimonial');
+const carouselDots = document.querySelectorAll('.carousel-dot');
+let currentTestimonial = 0;
+let autoSlide = setInterval(nextTestimonial, 8000);
+
+function showTestimonial(index) {
+    testimonials.forEach((t, i) => {
+        t.classList.remove('active');
+        carouselDots[i].classList.remove('active');
+        if (i === index) {
+            t.classList.add('active');
+            carouselDots[i].classList.add('active');
+            gsap.fromTo(t, 
+                { opacity: 0, x: 250, rotateY: isMobile ? 0 : 50 }, 
+                { opacity: 1, x: 0, rotateY: 0, duration: isMobile ? 1 : 1.8, ease: 'power3.out' }
+            );
+        }
+    });
+}
+
+function nextTestimonial() {
+    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+    showTestimonial(currentTestimonial);
+    resetAutoSlide();
+}
+
+function prevTestimonial() {
+    currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(currentTestimonial);
+    resetAutoSlide();
+}
+
+function goToTestimonial(index) {
+    currentTestimonial = index;
+    showTestimonial(currentTestimonial);
+    resetAutoSlide();
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(nextTestimonial, 8000);
+}
+
+showTestimonial(currentTestimonial);
+
+// Animação da seção de Contato
+gsap.from('.contact h2', {
+    opacity: 0,
+    y: 120,
+    duration: isMobile ? 1.5 : 2,
+    ease: 'power3.out',
+    scrollTrigger: {
+        trigger: '.contact',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+    }
+});
+
+gsap.from('.contact form', {
+    opacity: 0,
+    scale: isMobile ? 0.9 : 0.7,
+    duration: isMobile ? 1.5 : 2.5,
+    ease: 'power3.out',
+    scrollTrigger: {
+        trigger: '.contact',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+    },
+    delay: isMobile ? 0.3 : 0.6
+});
+
+// Animação dos inputs do formulário
+gsap.utils.toArray('.contact input, .contact textarea, .calculator-form input').forEach((input, index) => {
+    input.addEventListener('focus', () => {
+        gsap.to(input, {
+            scale: isMobile ? 1.03 : 1.08,
+            boxShadow: '0 15px 40px rgba(0, 0, 0, 0.5)',
+            duration: 0.5,
+            ease: 'power2.out'
+        });
+    });
+    input.addEventListener('blur', () => {
+        gsap.to(input, {
+            scale: 1,
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
+            duration: 0.5,
+            ease: 'power2.out'
+        });
+    });
+});
+
+// Feedback do formulário de contato
+const contactForm = document.getElementById('contact-form');
+const formSuccess = document.getElementById('form-success');
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formSuccess.style.display = 'block';
+    gsap.from(formSuccess, {
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.5,
+        ease: 'power2.out'
+    });
+    contactForm.reset();
+});
     </script>
 </body>
 </html>

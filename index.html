@@ -255,7 +255,7 @@
 
         .video-container:hover {
             transform: perspective(1000px) translateY(-20px) rotateX(5deg);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60Tendências de cores para 2025: tons terrosos e vibrantespx rgba(0, 0, 0, 0.5);
         }
 
         .video-container video {
@@ -355,7 +355,7 @@
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 80px;
             max-width: 2200px;
             margin: 0 auto;
@@ -1056,12 +1056,12 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        @-webkit@keyframes pulseContent {
+        @-webkit-keyframes pulseContent {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
 
-        @-webkit@keyframes popIn {
+        @-webkit-keyframes popIn {
             from { opacity: 0; transform: scale(0.5); }
             to { opacity: 1; transform: scale(1); }
         }
@@ -1483,7 +1483,7 @@
             <a href="#services" aria-label="Ir para Serviços">Serviços</a>
             <a href="#calculator" aria-label="Ir para Calculadora">Calculadora</a>
             <a href="#quiz" aria-label="Ir para Quiz">Quiz</a>
-            <a href="#about" aria-label="Ir para Sobre">Sobre</a>
+            <a href="#intro-section" aria-label="Ir para Conheça a RFM">Sobre</a>
             <a href="#testimonials" aria-label="Ir para Depoimentos">Depoimentos</a>
             <a href="#contact" aria-label="Ir para Contato">Contato</a>
         </nav>
@@ -1497,7 +1497,7 @@
         </div>
     </section>
 
-    <section class="intro-section">
+    <section class="intro-section" id="intro-section">
         <div class="intro-video">
             <h2>Conheça a RFM</h2>
             <div class="video-container">
@@ -1578,6 +1578,7 @@
         <h2>Calculadora de Juros Compostos</h2>
         <form class="calculator-form" id="compound-form">
             <input type="number" id="principal" placeholder="Valor Inicial (R$)" min="0" step="0.01" required aria-label="Valor inicial em reais">
+            <input type="number" id="monthly" placeholder="Aporte Mensal (R$)" min="0" step="0.01" required aria-label="Aporte mensal em reais">
             <input type="number" id="rate" placeholder="Taxa de Juros Anual (%)" min="0" step="0.01" required aria-label="Taxa de juros anual em porcentagem">
             <input type="number" id="time" placeholder="Tempo (anos)" min="1" step="1" required aria-label="Tempo em anos">
             <div class="button-group">
@@ -1891,10 +1892,11 @@ let chartInstance = null;
 compoundForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const principal = parseFloat(document.getElementById('principal').value);
+    const monthly = parseFloat(document.getElementById('monthly').value);
     const rate = parseFloat(document.getElementById('rate').value) / 100;
     const time = parseInt(document.getElementById('time').value);
 
-    if (isNaN(principal) || isNaN(rate) || isNaN(time) || principal <= 0 || rate < 0 || time < 1) {
+    if (isNaN(principal) || isNaN(monthly) || isNaN(rate) || isNaN(time) || principal <= 0 || monthly < 0 || rate < 0 || time < 1) {
         resultValue.textContent = 'Valores inválidos';
         compoundResult.style.display = 'block';
         gsap.from(compoundResult, {
@@ -1906,7 +1908,11 @@ compoundForm.addEventListener('submit', (e) => {
         return;
     }
 
-    const amount = principal * Math.pow(1 + rate, time);
+    const months = time * 12;
+    const monthlyRate = rate / 12;
+    const futureValueInitial = principal * Math.pow(1 + monthlyRate, months);
+    const futureValueMonthly = monthly * (Math.pow(1 + monthlyRate, months) - 1) / monthlyRate;
+    const amount = futureValueInitial + futureValueMonthly;
 
     // Animar o valor do resultado com separadores de milhares
     gsap.fromTo(resultValue, {
@@ -1938,7 +1944,12 @@ compoundForm.addEventListener('submit', (e) => {
     }
 
     const years = Array.from({ length: time + 1 }, (_, i) => i);
-    const amounts = years.map(year => principal * Math.pow(1 + rate, year));
+    const amounts = years.map(year => {
+        const yearMonths = year * 12;
+        const fvInitial = principal * Math.pow(1 + monthlyRate, yearMonths);
+        const fvMonthly = monthly * (Math.pow(1 + monthlyRate, yearMonths) - 1) / monthlyRate;
+        return fvInitial + fvMonthly;
+    });
 
     chartInstance = new Chart(ctx, {
         type: 'line',
@@ -2126,28 +2137,32 @@ document.querySelector('.carousel-controls button[onclick="nextTestimonial()"]')
     autoSlide = setInterval(nextTestimonial, 8000);
 });
 
-// Adicionar eventos aos dots
-carouselDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        goToTestimonial(index);
-    });
-});
-
 // Formulário de Contato
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    contactForm.style.display = 'none';
+    // Aqui você pode adicionar a lógica para enviar o formulário (ex.: via API)
     formSuccess.style.display = 'block';
+    contactForm.reset();
     gsap.from(formSuccess, {
         opacity: 0,
         scale: 0.5,
-        duration: 0.8,
+        duration: 0.5,
         ease: 'power3.out'
     });
-    contactForm.reset();
+    setTimeout(() => {
+        gsap.to(formSuccess, {
+            opacity: 0,
+            scale: 0.5,
+            duration: 0.5,
+            ease: 'power3.in',
+            onComplete: () => {
+                formSuccess.style.display = 'none';
+            }
+        });
+    }, 3000);
 });
     </script>
 </body>

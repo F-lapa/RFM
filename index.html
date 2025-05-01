@@ -1,5 +1,3 @@
-html
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -45,7 +43,7 @@ html
 
         .logo {
             font-family: 'Dancing Script', cursive;
-            font-size: 3rem; /* Reduzido de 3.5rem */
+            font-size: 3rem;
             font-weight: 700;
             color: #8B4513;
             letter-spacing: 2px;
@@ -70,8 +68,13 @@ html
             50% { transform: scale(1.2); }
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
         nav a {
-            color: #8B4513; /* Mesma cor do RFM */
+            color: #8B4513;
             text-decoration: none;
             margin-left: 50px;
             font-size: 1.3rem;
@@ -85,7 +88,7 @@ html
             position: absolute;
             width: 0;
             height: 4px;
-            background: #8B4513; /* Mesma cor do RFM */
+            background: #8B4513;
             bottom: -10px;
             left: 0;
             transition: width 0.4s ease;
@@ -106,6 +109,14 @@ html
             100% { transform: translateY(0); }
         }
 
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: #8B4513;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
         /* Seção Hero */
         .hero {
             position: relative;
@@ -113,21 +124,20 @@ html
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-top: 80px; /* Ajustado para alinhar com o header */
         }
 
         .hero img {
             width: 100%;
             height: 100vh;
             object-fit: cover;
-            object-position: center;
+            object-position: top;
             z-index: 1;
             animation: float 4s infinite ease-in-out;
         }
 
         .hero img.touched {
             animation: none;
-            transform: none; /* Remove transformações */
+            transform: none;
         }
 
         .hero-content {
@@ -149,8 +159,8 @@ html
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            color: #8B4513; /* Mesma cor do RFM */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para efeito visual */
+            color: #8B4513;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .cta-button {
@@ -400,21 +410,21 @@ html
 
         .service-card img {
             width: 100%;
-            height: 350px; /* Aumentado para mostrar imagem completa */
-            object-fit: contain; /* Alterado para evitar cortes */
-            object-position: center top; /* Posiciona a imagem mais para cima */
+            height: 350px;
+            object-fit: contain;
+            object-position: center top;
             transition: transform 1s ease;
             will-change: transform;
         }
 
         .service-card.touched {
-            transform: none; /* Remove transformações */
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35); /* Mantém sombra padrão */
+            transform: none;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
             animation: none;
         }
 
         .service-card.touched img {
-            transform: none; /* Remove transformações */
+            transform: none;
             animation: none;
         }
 
@@ -773,6 +783,66 @@ html
             line-height: 1.6;
         }
 
+        /* Nova Seção de Índice de Saúde Financeira */
+        .financial-health {
+            padding: 200px 100px;
+            background: #fef6e9;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .financial-health h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 60px;
+            color: #261910;
+            animation: bounceTitle 3s infinite ease-in-out;
+        }
+
+        .financial-health p {
+            font-size: 1.4rem;
+            color: #3c2d21;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .financial-health-button {
+            background: linear-gradient(45deg, #eebc90, #ffe0a8);
+            color: #261910;
+            padding: 25px 80px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: inline-block;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+            animation: glowButton 2s infinite ease-in-out;
+        }
+
+        .financial-health-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: left 0.7s ease;
+        }
+
+        .financial-health-button:hover::before {
+            left: 100%;
+        }
+
+        .financial-health-button:hover {
+            transform: scale(1.3) translateY(-15px);
+            animation: none;
+        }
+
         /* Seção Sobre */
         .about {
             padding: 200px 100px;
@@ -870,7 +940,7 @@ html
 
         .timeline-image img.touched {
             animation: none;
-            transform: none; /* Remove transformações */
+            transform: none;
         }
 
         /* Seção de Contato */
@@ -987,63 +1057,88 @@ html
         footer {
             background: #261910;
             color: #fef6e9;
-            padding: 100px 100px;
-            text-align: center;
+            padding: 60px 100px;
+            border-top: 5px solid #eebc90;
             overflow-x: hidden;
         }
 
-        footer p {
-            font-size: 1.4rem;
-            margin-bottom: 50px;
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+
+        .footer-logo .logo {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        .footer-logo p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #d3c8b5;
+        }
+
+        .footer-contact h3,
+        .footer-links h3,
+        .footer-social h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #eebc90;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact p,
+        .footer-links a {
+            font-size: 1rem;
+            color: #d3c8b5;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        .footer-links a {
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffe0a8;
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 50px;
+            gap: 20px;
             flex-wrap: wrap;
-            opacity: 1;
         }
 
         .social-links a {
             color: #eebc90;
-            font-size: 3rem;
+            font-size: 1.8rem;
             text-decoration: none;
-            position: relative;
-            transition: transform 0.6s ease, color 0.6s ease;
-            animation: orbitSocial 3s infinite ease-in-out;
+            transition: color 0.3s ease, transform 0.3s ease;
+            animation: orbitSocial 4s infinite ease-in-out;
         }
 
         @keyframes orbitSocial {
-            0%, 100% { transform: rotate(0) scale(1); }
-            50% { transform: rotate(10deg) scale(1.1); }
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 70px;
-            height: 70px;
-            background: radial-gradient(circle, rgba(238, 188, 144, 0.6), transparent);
-            border-radius: 50%;
-            opacity: 0;
-            transform: scale(0);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            z-index: -1;
-        }
-
-        .social-links a:hover::before {
-            opacity: 1;
-            transform: scale(1);
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .social-links a:hover {
             color: #ffe0a8;
-            transform: scale(1.5) rotate(30deg);
-            text-shadow: 0 0 20px rgba(255, 224, 168, 1);
+            transform: scale(1.2);
             animation: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #d3c8b5;
         }
 
         /* Compatibilidade de animações */
@@ -1073,19 +1168,14 @@ html
             50% { transform: translateY(-15px); }
         }
 
-        @-webkit-keyframes zoomTestimonial {
+        @-webkit@keyframes zoomTestimonial {
             0%, 100% { transform: rotateY(0) scale(1); }
             50% { transform: rotateY(0) scale(1.05); }
         }
 
-        @-webkit keyframes breathe {
+        @-webkit-keyframes breathe {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.03); }
-        }
-
-        @-webkit-keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         @-webkit-keyframes zoomIn {
@@ -1093,7 +1183,7 @@ html
             to { opacity: 1; transform: scale(1); }
         }
 
-        @-webkit-keyframes pulseContent {
+        @-webkit@keyframes pulseContent {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
@@ -1103,17 +1193,17 @@ html
             to { opacity: 1; transform: scale(1); }
         }
 
-        @-webkit-keyframes orbitSocial {
-            0%, 100% { transform: rotate(0) scale(1); }
-            50% { transform: rotate(10deg) scale(1.1); }
+        @-webkit@keyframes orbitSocial {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         /* Responsividade para Celulares */
         @media (max-width: 768px) {
             header {
                 padding: 15px 20px;
-                flex-wrap: wrap;
                 justify-content: space-between;
+                align-items: center;
             }
 
             header.scrolled {
@@ -1129,22 +1219,42 @@ html
                 font-size: 2rem;
             }
 
+            .menu-toggle {
+                display: block;
+            }
+
             nav {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                margin-top: 10px;
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
                 width: 100%;
-                justify-content: flex-end;
+                height: 100vh;
+                background: rgba(254, 246, 233, 0.95);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                z-index: 1000;
+            }
+
+            nav.active {
+                display: flex;
             }
 
             nav a {
-                margin-left: 15px;
-                font-size: 1rem;
+                margin: 10px 0;
+                font-size: 1.5rem;
+                color: #8B4513;
             }
 
-            .hero {
-                padding-top: 100px;
+            nav a::after {
+                bottom: -5px;
+                height: 3px;
+            }
+
+            nav a:hover {
+                color: #eebc90;
             }
 
             .hero img {
@@ -1161,16 +1271,11 @@ html
                 font-size: 1.2rem;
             }
 
-            .intro-section, .services, .calculator, .quiz, .about, .testimonials, .contact {
+            .intro-section, .services, .calculator, .quiz, .about, .testimonials, .contact, .financial-health {
                 padding: 100px 15px;
             }
 
-            .intro-section {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .intro-video h2, .services h2, .calculator h2, .quiz h2, .about h2, .testimonials h2, .contact h2 {
+            .intro-video h2, .services h2, .calculator h2, .quiz h2, .about h2, .testimonials h2, .contact h2, .financial-health h2 {
                 font-size: 2.8rem;
                 margin-bottom: 60px;
             }
@@ -1213,7 +1318,7 @@ html
             }
 
             .service-card img {
-                height: 250px; /* Ajustado para mobile */
+                height: 250px;
             }
 
             .service-card h3 {
@@ -1307,6 +1412,16 @@ html
                 margin: 20px 0;
             }
 
+            .financial-health p {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+
+            .financial-health-button {
+                padding: 15px 50px;
+                font-size: 1.2rem;
+            }
+
             .about {
                 padding: 100px 15px;
             }
@@ -1394,27 +1509,36 @@ html
             }
 
             footer {
-                padding: 60px 15px;
+                padding: 40px 15px;
             }
 
-            footer p {
-                font-size: 1.1rem;
-                margin-bottom: 30px;
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
             }
 
-            .social-links {
-                gap: 30px;
+            .footer-logo .logo {
+                font-size: 2rem;
+            }
+
+            .footer-logo p {
+                font-size: 0.9rem;
+            }
+
+            .footer-contact h3,
+            .footer-links h3,
+            .footer-social h3 {
+                font-size: 1.5rem;
+            }
+
+            .footer-contact p,
+            .footer-links a {
+                font-size: 0.9rem;
             }
 
             .social-links a {
-                font-size: 2.2rem;
-            }
-
-            .social-links a::before {
-                top: -15px;
-                left: -15px;
-                width: 50px;
-                height: 50px;
+                font-size: 1.5rem;
             }
         }
 
@@ -1428,12 +1552,7 @@ html
             }
 
             nav a {
-                margin-left: 10px;
-                font-size: 0.9rem;
-            }
-
-            .hero {
-                padding-top: 80px;
+                font-size: 1.2rem;
             }
 
             .hero img {
@@ -1449,7 +1568,7 @@ html
                 font-size: 1rem;
             }
 
-            .intro-video h2, .services h2, .calculator h2, .quiz h2, .about h2, .testimonials h2, .contact h2 {
+            .intro-video h2, .services h2, .calculator h2, .quiz h2, .about h2, .testimonials h2, .contact h2, .financial-health h2 {
                 font-size: 2.2rem;
             }
 
@@ -1510,12 +1629,36 @@ html
                 font-size: 1rem;
             }
 
-            footer p {
+            .financial-health p {
                 font-size: 1rem;
             }
 
+            .financial-health-button {
+                padding: 12px 40px;
+                font-size: 1rem;
+            }
+
+            .footer-logo .logo {
+                font-size: 1.8rem;
+            }
+
+            .footer-logo p {
+                font-size: 0.8rem;
+            }
+
+            .footer-contact h3,
+            .footer-links h3,
+            .footer-social h3 {
+                font-size: 1.3rem;
+            }
+
+            .footer-contact p,
+            .footer-links a {
+                font-size: 0.8rem;
+            }
+
             .social-links a {
-                font-size: 2rem;
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -1523,6 +1666,7 @@ html
 <body>
     <header>
         <div class="logo"><i class="fas fa-leaf"></i><span>R</span><span>F</span><span>M</span></div>
+        <i class="fas fa-bars menu-toggle" aria-label="Abrir ou fechar menu de navegação"></i>
         <nav>
             <a href="#home" aria-label="Ir para Home">Home</a>
             <a href="#services" aria-label="Ir para Serviços">Serviços</a>
@@ -1632,7 +1776,7 @@ html
             </div>
         </form>
         <div class="calculator-result" id="compound-result">
-            <p>Seu investimento será: <span class="result-value">R$0.00</span></p>
+            <p>Seu investimento será: <span class="result-value">R$0,00</span></p>
             <canvas id="growth-chart"></canvas>
             <p class="motivational">"Comece hoje e veja seu dinheiro crescer para realizar seus sonhos!"</p>
         </div>
@@ -1691,6 +1835,12 @@ html
         </div>
     </section>
 
+    <section class="financial-health" id="financial-health">
+        <h2>Calcule seu Índice de Saúde Financeira</h2>
+        <p>Descubra como está sua saúde financeira e receba insights para melhorar sua relação com o dinheiro. Clique abaixo para acessar a ferramenta oficial da Febraban e avaliar seu índice agora mesmo!</p>
+        <a href="https://indice.febraban.org.br/" class="financial-health-button" aria-label="Calcular Índice de Saúde Financeira" target="_blank">Calcular Agora</a>
+    </section>
+
     <section class="about" id="about">
         <h2>Nossa Missão</h2>
         <div class="timeline">
@@ -1727,13 +1877,36 @@ html
     </section>
 
     <footer>
-        <p>© 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
-        <div class="social-links">
-            <a href="https://www.instagram.com/roselaine.fmachado?igsh=dnk4dHRkMzd2bTI5" target="_blank" title="Instagram" aria-label="Visitar Instagram da RFM"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/5548999370943" target="_blank" title="WhatsApp" aria-label="Contactar via WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:contato@rfmeducacao.com.br" title="Email" aria-label="Enviar e-mail para RFM"><i class="fas fa-envelope"></i></a>
-            <a href="https://youtube.com" target="_blank" title="YouTube" aria-label="Visitar canal do YouTube da RFM"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.linkedin.com/in/roselainemachado/" target="_blank" title="LinkedIn" aria-label="Visitar LinkedIn da RFM"><i class="fab fa-linkedin"></i></a>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <div class="logo"><i class="fas fa-leaf"></i><span>R</span><span>F</span><span>M</span></div>
+                <p>Transformando vidas através da educação financeira desde 2018.</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p><i class="fas fa-phone"></i> (48) 99937-0943</p>
+                <p><i class="fas fa-envelope"></i> contato@rfmeducacao.com.br</p>
+            </div>
+            <div class="footer-links">
+                <h3>Links Úteis</h3>
+                <a href="#services" aria-label="Ir para Serviços">Serviços</a>
+                <a href="#calculator" aria-label="Ir para Calculadora">Calculadora</a>
+                <a href="#quiz" aria-label="Ir para Quiz">Quiz</a>
+                <a href="#contact" aria-label="Ir para Contato">Contato</a>
+            </div>
+            <div class="footer-social">
+                <h3>Redes Sociais</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/roselaine.fmachado?igsh=dnk4dHRkMzd2bTI5" target="_blank" title="Instagram" aria-label="Visitar Instagram da RFM"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5548999370943" target="_blank" title="WhatsApp" aria-label="Contactar via WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:contato@rfmeducacao.com.br" title="Email" aria-label="Enviar e-mail para RFM"><i class="fas fa-envelope"></i></a>
+                    <a href="https://youtube.com" target="_blank" title="YouTube" aria-label="Visitar canal do YouTube da RFM"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/roselainemachado/" target="_blank" title="LinkedIn" aria-label="Visitar LinkedIn da RFM"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -1741,12 +1914,55 @@ html
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-
-// Registrar ScrollTrigger
+       // Registrar ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 // Verificar se é dispositivo móvel para otimizar animações
 const isMobile = window.innerWidth <= 768;
+
+// Menu hambúrguer para dispositivos móveis
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+let isMenuOpen = false;
+
+menuToggle.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+    nav.classList.toggle('active', isMenuOpen);
+    menuToggle.classList.toggle('fa-bars', !isMenuOpen);
+    menuToggle.classList.toggle('fa-times', isMenuOpen);
+
+    if (isMenuOpen) {
+        gsap.fromTo(nav, {
+            opacity: 0,
+            y: -50
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power3.out'
+        });
+        gsap.from(nav.querySelectorAll('a'), {
+            opacity: 0,
+            y: 20,
+            stagger: 0.1,
+            duration: 0.5,
+            ease: 'power3.out',
+            delay: 0.2
+        });
+    }
+});
+
+// Fechar menu ao clicar em um link
+nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (isMenuOpen) {
+            isMenuOpen = false;
+            nav.classList.remove('active');
+            menuToggle.classList.add('fa-bars');
+            menuToggle.classList.remove('fa-times');
+        }
+    });
+});
 
 // Ajustar margem da imagem da Hero para alinhar com o fim do header
 const header = document.querySelector('header');
@@ -1820,6 +2036,19 @@ gsap.from('.intro-profile', {
     delay: isMobile ? 0.3 : 0.6
 });
 
+// Animação da seção de saúde financeira
+gsap.from('.financial-health', {
+    opacity: 0,
+    y: 100,
+    duration: isMobile ? 1 : 1.5,
+    ease: 'power3.out',
+    scrollTrigger: {
+        trigger: '.financial-health',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+    }
+});
+
 // Interatividade do vídeo
 const videoContainer = document.querySelector('.video-container');
 const video = videoContainer.querySelector('video');
@@ -1867,116 +2096,92 @@ gsap.utils.toArray('.service-card').forEach((card, index) => {
         y: 200,
         rotationX: isMobile ? 0 : 30,
         duration: isMobile ? 1.5 : 2.5,
-        ease: 'bounce.out',
+        ease: 'power3.out',
         scrollTrigger: {
             trigger: card,
-            start: 'top 85%',
+            start: 'top 90%',
             toggleActions: 'play none none none'
         },
-        delay: index * (isMobile ? 0.3 : 0.6)
+        delay: isMobile ? 0 : index * 0.3
     });
 
-    if (!isMobile) {
-        card.addEventListener('mousemove', (e) => {
-            card.classList.add('touched');
-        });
+    let isTouched = false;
+    let touchTimeout;
 
-        card.addEventListener('mouseleave', () => {
+    card.addEventListener('touchstart', () => {
+        isTouched = true;
+        clearTimeout(touchTimeout);
+        card.classList.add('touched');
+        card.querySelector('img').classList.add('touched');
+    });
+
+    card.addEventListener('touchend', () => {
+        touchTimeout = setTimeout(() => {
+            isTouched = false;
             card.classList.remove('touched');
-        });
-    } else {
-        card.addEventListener('touchstart', () => {
-            card.classList.add('touched');
-        });
-        card.addEventListener('touchend', () => {
-            card.classList.remove('touched');
-        });
-    }
+            card.querySelector('img').classList.remove('touched');
+        }, 2000);
+    });
 });
 
-// Pausar animação da imagem da hero ao interagir
-if (!isMobile) {
-    heroImg.addEventListener('mousemove', () => {
-        heroImg.classList.add('touched');
-    });
-    heroImg.addEventListener('mouseleave', () => {
-        heroImg.classList.remove('touched');
-    });
-} else {
-    heroImg.addEventListener('touchstart', () => {
-        heroImg.classList.add('touched');
-    });
-    heroImg.addEventListener('touchend', () => {
-        heroImg.classList.remove('touched');
-    });
-}
-
-// Pausar animação das imagens da linha do tempo ao interagir
-gsap.utils.toArray('.timeline-image img').forEach(img => {
-    if (!isMobile) {
-        img.addEventListener('mousemove', () => {
-            img.classList.add('touched');
-        });
-        img.addEventListener('mouseleave', () => {
-            img.classList.remove('touched');
-        });
-    } else {
-        img.addEventListener('touchstart', () => {
-            img.classList.add('touched');
-        });
-        img.addEventListener('touchend', () => {
-            img.classList.remove('touched');
-        });
-    }
-});
-
-// Animação da seção de depoimentos
-gsap.from('.testimonial-carousel', {
-    opacity: 0,
-    y: 100,
-    duration: isMobile ? 1 : 1.5,
-    ease: 'power3.out',
-    scrollTrigger: {
-        trigger: '.testimonials',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-    }
-});
-
-// Carrossel de Depoimentos
+// Carrossel de depoimentos
 const testimonials = document.querySelectorAll('.testimonial');
 const dots = document.querySelectorAll('.carousel-dot');
 let currentTestimonial = 0;
+let autoSlide = null;
 
-function showTestimonial(index) {
+function updateTestimonial(index) {
     testimonials.forEach((t, i) => {
         t.classList.toggle('active', i === index);
     });
-    dots.forEach((d, i) => {
-        d.classList.toggle('active', i === index);
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
     });
     currentTestimonial = index;
 }
 
 function nextTestimonial() {
     const next = (currentTestimonial + 1) % testimonials.length;
-    showTestimonial(next);
+    updateTestimonial(next);
 }
 
 function prevTestimonial() {
     const prev = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-    showTestimonial(prev);
+    updateTestimonial(prev);
 }
 
 function goToTestimonial(index) {
-    showTestimonial(index);
+    updateTestimonial(index);
+}
+
+function startAutoSlide() {
+    if (autoSlide) clearInterval(autoSlide);
+    autoSlide = setInterval(nextTestimonial, 5000);
+}
+
+function stopAutoSlide() {
+    if (autoSlide) clearInterval(autoSlide);
+}
+
+document.querySelector('.testimonials').addEventListener('mouseenter', stopAutoSlide);
+document.querySelector('.testimonials').addEventListener('mouseleave', startAutoSlide);
+
+startAutoSlide();
+updateTestimonial(0);
+
+// Função para formatar números no padrão brasileiro
+function formatNumber(number) {
+    return number.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 }
 
 // Calculadora de Juros Compostos
 const compoundForm = document.getElementById('compound-form');
 const compoundResult = document.getElementById('compound-result');
-const resultValue = compoundResult.querySelector('.result-value');
-let chartInstance = null;
+const growthChartCanvas = document.getElementById('growth-chart');
+let growthChart = null;
 
 compoundForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -1985,66 +2190,36 @@ compoundForm.addEventListener('submit', (e) => {
     const rate = parseFloat(document.getElementById('rate').value) / 100;
     const time = parseInt(document.getElementById('time').value);
 
-    if (isNaN(principal) || isNaN(monthly) || isNaN(rate) || isNaN(time) || principal <= 0 || monthly < 0 || rate < 0 || time < 1) {
-        resultValue.textContent = 'Valores inválidos';
-        compoundResult.style.display = 'block';
-        gsap.from(compoundResult, {
-            opacity: 0,
-            y: 20,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
-        return;
-    }
-
-    const months = time * 12;
     const monthlyRate = rate / 12;
-    const futureValueInitial = principal * Math.pow(1 + monthlyRate, months);
-    const futureValueMonthly = monthly * (Math.pow(1 + monthlyRate, months) - 1) / monthlyRate;
-    const amount = futureValueInitial + futureValueMonthly;
-
-    gsap.fromTo(resultValue, {
-        innerHTML: 0,
-        color: '#261910'
-    }, {
-        innerHTML: amount.toFixed(2),
-        color: '#eebc90',
-        duration: 1.5,
-        ease: 'power2.out',
-        onUpdate: function() {
-            const value = parseFloat(resultValue.innerHTML);
-            resultValue.textContent = `R$${value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        }
-    });
-
-    compoundResult.style.display = 'block';
-    gsap.from(compoundResult, {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        ease: 'power3.out'
-    });
-
-    const ctx = document.getElementById('growth-chart').getContext('2d');
-    if (chartInstance) {
-        chartInstance.destroy();
+    const months = time * 12;
+    let futureValue = principal * Math.pow(1 + monthlyRate, months);
+    for (let i = 1; i <= months; i++) {
+        futureValue += monthly * Math.pow(1 + monthlyRate, months - i);
     }
 
-    const years = Array.from({ length: time + 1 }, (_, i) => i);
-    const amounts = years.map(year => {
-        const yearMonths = year * 12;
-        const fvInitial = principal * Math.pow(1 + monthlyRate, yearMonths);
-        const fvMonthly = monthly * (Math.pow(1 + monthlyRate, yearMonths) - 1) / monthlyRate;
-        return fvInitial + fvMonthly;
-    });
+    const formattedValue = formatNumber(futureValue);
+    compoundResult.querySelector('.result-value').textContent = `R$${formattedValue}`;
+    compoundResult.style.display = 'block';
 
-    chartInstance = new Chart(ctx, {
+    const labels = Array.from({ length: time + 1 }, (_, i) => `Ano ${i}`);
+    const data = [];
+    let currentValue = principal;
+    data.push(currentValue);
+    for (let year = 1; year <= time; year++) {
+        currentValue = currentValue * (1 + rate) + monthly * 12;
+        data.push(currentValue);
+    }
+
+    const formattedData = data.map(value => formatNumber(value));
+
+    if (growthChart) growthChart.destroy();
+    growthChart = new Chart(growthChartCanvas, {
         type: 'line',
         data: {
-            labels: years,
+            labels: labels,
             datasets: [{
-                label: 'Crescimento do Investimento',
-                data: amounts,
+                label: 'Crescimento do Investimento (R$)',
+                data: data,
                 borderColor: '#eebc90',
                 backgroundColor: 'rgba(238, 188, 144, 0.2)',
                 fill: true,
@@ -2053,24 +2228,40 @@ compoundForm.addEventListener('submit', (e) => {
         },
         options: {
             responsive: true,
-            scales: {
-                x: { title: { display: true, text: 'Anos' } },
-                y: { title: { display: true, text: 'Valor (R$)' } }
-            },
             plugins: {
-                legend: { display: false }
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            return `R$${formatNumber(context.parsed.y)}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function (value) {
+                            return `R$${formatNumber(value)}`;
+                        }
+                    }
+                }
             }
         }
+    });
+
+    gsap.from(compoundResult, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: 'power3.out'
     });
 });
 
 compoundForm.addEventListener('reset', () => {
     compoundResult.style.display = 'none';
-    resultValue.textContent = 'R$0,00';
-    if (chartInstance) {
-        chartInstance.destroy();
-        chartInstance = null;
-    }
+    if (growthChart) growthChart.destroy();
+    compoundForm.querySelectorAll('input').forEach(input => input.value = '');
 });
 
 // Quiz de Perfil Financeiro
@@ -2080,32 +2271,42 @@ const quizProgress = document.getElementById('quiz-progress');
 let currentQuestion = 0;
 let score = 0;
 
+function updateQuizProgress() {
+    const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+    quizProgress.style.width = `${progress}%`;
+}
+
 function showQuestion(index) {
     quizQuestions.forEach((q, i) => {
         q.classList.toggle('active', i === index);
     });
-    quizProgress.style.width = `${((index + 1) / quizQuestions.length) * 100}%`;
+    updateQuizProgress();
 }
 
-function calculateProfile() {
-    let profileTitle, profileDescription;
+function showQuizResult() {
+    quizQuestions.forEach(q => q.classList.remove('active'));
+    quizResult.style.display = 'block';
+    let profileTitle = '';
+    let profileDescription = '';
+
     if (score <= 7) {
         profileTitle = 'Conservador';
-        profileDescription = 'Você prefere segurança e estabilidade, optando por investimentos de baixo risco. Foco em preservar o capital.';
+        profileDescription = 'Você prefere segurança e estabilidade, optando por investimentos de baixo risco. Considere renda fixa e diversificação para proteger seu capital.';
     } else if (score <= 11) {
         profileTitle = 'Moderado';
-        profileDescription = 'Você busca um equilíbrio entre segurança e crescimento, aceitando riscos moderados para melhores retornos.';
+        profileDescription = 'Você busca um equilíbrio entre segurança e crescimento, aceitando riscos moderados. Uma carteira diversificada com renda fixa e variável pode ser ideal.';
     } else {
         profileTitle = 'Agressivo';
-        profileDescription = 'Você está disposto a assumir riscos altos em busca de maiores retornos, com foco em crescimento de longo prazo.';
+        profileDescription = 'Você está disposto a assumir riscos para maximizar retornos. Investimentos em ações e fundos de maior risco podem alinhar-se aos seus objetivos.';
     }
-    quizResult.querySelector('.profile-title').textContent = profileTitle;
+
+    quizResult.querySelector('.profile-title').textContent = `Seu Perfil: ${profileTitle}`;
     quizResult.querySelector('.profile-description').textContent = profileDescription;
-    quizResult.style.display = 'block';
+
     gsap.from(quizResult, {
         opacity: 0,
-        y: 20,
-        duration: 0.8,
+        scale: 0.8,
+        duration: 1,
         ease: 'power3.out'
     });
 }
@@ -2114,36 +2315,18 @@ quizQuestions.forEach((question, index) => {
     const options = question.querySelectorAll('.quiz-option');
     options.forEach(option => {
         option.addEventListener('click', () => {
-            score += parseInt(option.dataset.value);
-            if (index < quizQuestions.length - 1) {
-                currentQuestion++;
+            score += parseInt(option.getAttribute('data-value'));
+            currentQuestion++;
+            if (currentQuestion < quizQuestions.length) {
                 showQuestion(currentQuestion);
             } else {
-                quizQuestions.forEach(q => q.style.display = 'none');
-                calculateProfile();
+                showQuizResult();
             }
         });
     });
 });
 
-// Inicializar quiz
-showQuestion(currentQuestion);
-
-// Animação da linha do tempo
-gsap.utils.toArray('.timeline-item').forEach((item, index) => {
-    gsap.from(item, {
-        opacity: 0,
-        y: 100,
-        duration: isMobile ? 1 : 1.5,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: item,
-            start: 'top 80%',
-            toggleActions: 'play none none none'
-        },
-        delay: index * (isMobile ? 0.3 : 0.5)
-    });
-});
+showQuestion(0);
 
 // Formulário de Contato
 const contactForm = document.getElementById('contact-form');
@@ -2153,12 +2336,14 @@ contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     formSuccess.style.display = 'block';
     contactForm.reset();
+
     gsap.from(formSuccess, {
         opacity: 0,
         scale: 0.5,
         duration: 0.5,
         ease: 'power3.out'
     });
+
     setTimeout(() => {
         gsap.to(formSuccess, {
             opacity: 0,
@@ -2171,7 +2356,47 @@ contactForm.addEventListener('submit', (e) => {
         });
     }, 3000);
 });
-    
-    </script>
-</body>
+
+// Animação da linha do tempo
+gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+    gsap.from(item.querySelector('.timeline-content'), {
+        opacity: 0,
+        x: index % 2 === 0 ? -100 : 100,
+        duration: isMobile ? 1 : 1.5,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: item,
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        }
+    });
+
+    gsap.from(item.querySelector('.timeline-image'), {
+        opacity: 0,
+        x: index % 2 === 0 ? 100 : -100,
+        duration: isMobile ? 1 : 1.5,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: item,
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        delay: isMobile ? 0.3 : 0.5
+    });
+});
+
+// Animação do rodapé
+gsap.from('footer', {
+    opacity: 0,
+    y: 100,
+    duration: isMobile ? 1 : 1.5,
+    ease: 'power3.out',
+    scrollTrigger: {
+        trigger: 'footer',
+        start: 'top 90%',
+        toggleActions: 'play none none none'
+    }
+});
+       </script>
+       </body>
 </html>

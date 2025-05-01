@@ -1,3 +1,5 @@
+html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -26,7 +28,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(38, 25, 16, 0.95);
+            background: #fef6e9;
             backdrop-filter: blur(30px);
             padding: 20px 100px;
             display: flex;
@@ -37,17 +39,25 @@
         }
 
         header.scrolled {
-            background: rgba(38, 25, 16, 1);
+            background: #fef6e9;
             padding: 15px 100px;
         }
 
         .logo {
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
+            font-size: 3rem; /* Reduzido de 3.5rem */
             font-weight: 700;
-            color: #eebc90;
+            color: #8B4513;
             letter-spacing: 2px;
             position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: #228B22;
+            margin-right: 10px;
         }
 
         .logo span {
@@ -61,7 +71,7 @@
         }
 
         nav a {
-            color: #fef6e9;
+            color: #8B4513; /* Mesma cor do RFM */
             text-decoration: none;
             margin-left: 50px;
             font-size: 1.3rem;
@@ -75,7 +85,7 @@
             position: absolute;
             width: 0;
             height: 4px;
-            background: linear-gradient(90deg, #eebc90, #ffe0a8);
+            background: #8B4513; /* Mesma cor do RFM */
             bottom: -10px;
             left: 0;
             transition: width 0.4s ease;
@@ -103,14 +113,21 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-top: 80px; /* Adicionado para evitar sobreposição com o header */
+            padding-top: 80px; /* Ajustado para alinhar com o header */
         }
 
         .hero img {
             width: 100%;
-            max-height: 500px;
-            object-fit: contain;
+            height: 100vh;
+            object-fit: cover;
+            object-position: center;
             z-index: 1;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        .hero img.touched {
+            animation: none;
+            transform: none; /* Remove transformações */
         }
 
         .hero-content {
@@ -132,6 +149,8 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            color: #8B4513; /* Mesma cor do RFM */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para efeito visual */
         }
 
         .cta-button {
@@ -236,6 +255,7 @@
         }
 
         .intro-video h2 {
+            font-family: 'Dancing Script', cursive;
             font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 60px;
@@ -255,7 +275,7 @@
 
         .video-container:hover {
             transform: perspective(1000px) translateY(-20px) rotateX(5deg);
-            box-shadow: 0 20px 60Tendências de cores para 2025: tons terrosos e vibrantespx rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         .video-container video {
@@ -346,6 +366,7 @@
         }
 
         .services h2 {
+            font-family: 'Dancing Script', cursive;
             font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 120px;
@@ -379,23 +400,26 @@
 
         .service-card img {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
+            height: 350px; /* Aumentado para mostrar imagem completa */
+            object-fit: contain; /* Alterado para evitar cortes */
+            object-position: center top; /* Posiciona a imagem mais para cima */
             transition: transform 1s ease;
             will-change: transform;
         }
 
-        .service-card:hover {
-            transform: translateY(-40px) rotateX(15deg) rotateY(15deg);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+        .service-card.touched {
+            transform: none; /* Remove transformações */
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35); /* Mantém sombra padrão */
             animation: none;
         }
 
-        .service-card:hover img {
-            transform: scale(1.4);
+        .service-card.touched img {
+            transform: none; /* Remove transformações */
+            animation: none;
         }
 
         .service-card h3 {
+            font-family: 'Dancing Script', cursive;
             font-size: 2.5rem;
             margin: 50px 0 30px;
             color: #261910;
@@ -419,6 +443,7 @@
         }
 
         .testimonials h2 {
+            font-family: 'Dancing Script', cursive;
             font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 120px;
@@ -522,6 +547,7 @@
         }
 
         .calculator h2 {
+            font-family: 'Dancing Script', cursive;
             font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 100px;
@@ -639,6 +665,7 @@
         }
 
         .quiz h2 {
+            font-family: 'Dancing Script', cursive;
             font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 100px;
@@ -671,6 +698,7 @@
         }
 
         .quiz-question h3 {
+            font-family: 'Dancing Script', cursive;
             font-size: 2rem;
             color: #261910;
             margin-bottom: 40px;
@@ -732,6 +760,7 @@
         }
 
         .quiz-result .profile-title {
+            font-family: 'Dancing Script', cursive;
             font-size: 2rem;
             font-weight: 700;
             color: #eebc90;
@@ -753,6 +782,7 @@
         }
 
         .about h2 {
+            font-family: 'Dancing Script', cursive;
             font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 100px;
@@ -813,6 +843,7 @@
         }
 
         .timeline-content h3 {
+            font-family: 'Dancing Script', cursive;
             font-size: 2.2rem;
             color: #261910;
             margin-bottom: 25px;
@@ -837,6 +868,11 @@
             animation: float 4s infinite ease-in-out;
         }
 
+        .timeline-image img.touched {
+            animation: none;
+            transform: none; /* Remove transformações */
+        }
+
         /* Seção de Contato */
         .contact {
             padding: 200px 100px;
@@ -846,6 +882,7 @@
         }
 
         .contact h2 {
+            font-family: 'Dancing Script', cursive;
             font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 100px;
@@ -1066,7 +1103,7 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        @-webkit@keyframes orbitSocial {
+        @-webkit-keyframes orbitSocial {
             0%, 100% { transform: rotate(0) scale(1); }
             50% { transform: rotate(10deg) scale(1.1); }
         }
@@ -1088,6 +1125,10 @@
                 letter-spacing: 1px;
             }
 
+            .logo i {
+                font-size: 2rem;
+            }
+
             nav {
                 display: flex;
                 flex-wrap: wrap;
@@ -1103,11 +1144,11 @@
             }
 
             .hero {
-                padding-top: 100px; /* Aumentado para evitar sobreposição com o header */
+                padding-top: 100px;
             }
 
             .hero img {
-                max-height: 350px;
+                height: 80vh;
             }
 
             .hero-content p {
@@ -1172,7 +1213,7 @@
             }
 
             .service-card img {
-                height: 200px;
+                height: 250px; /* Ajustado para mobile */
             }
 
             .service-card h3 {
@@ -1382,17 +1423,21 @@
                 font-size: 2rem;
             }
 
+            .logo i {
+                font-size: 1.5rem;
+            }
+
             nav a {
                 margin-left: 10px;
                 font-size: 0.9rem;
             }
 
             .hero {
-                padding-top: 80px; /* Ajustado para telas menores */
+                padding-top: 80px;
             }
 
             .hero img {
-                max-height: 300px;
+                height: 70vh;
             }
 
             .hero-content p {
@@ -1409,7 +1454,7 @@
             }
 
             .service-card img {
-                height: 160px;
+                height: 200px;
             }
 
             .service-card h3 {
@@ -1477,7 +1522,7 @@
 </head>
 <body>
     <header>
-        <div class="logo"><span>R</span><span>F</span><span>M</span></div>
+        <div class="logo"><i class="fas fa-leaf"></i><span>R</span><span>F</span><span>M</span></div>
         <nav>
             <a href="#home" aria-label="Ir para Home">Home</a>
             <a href="#services" aria-label="Ir para Serviços">Serviços</a>
@@ -1632,7 +1677,7 @@
                 </div>
             </div>
             <div class="quiz-question" id="question-5">
-                <h3>Você prefere investir todo o seu dinheiro em um único ativo?</h3>
+                <h3>Você prefere investir todo o seu dinheiro em um único ativo</h3>
                 <div class="quiz-options">
                     <div class="quiz-option" data-value="1" aria-label="Não, prefiro diversificar">Não, prefiro diversificar</div>
                     <div class="quiz-option" data-value="2" aria-label="Depende do ativo">Depende do ativo</div>
@@ -1696,21 +1741,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-    // Registrar ScrollTrigger
+
+// Registrar ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 // Verificar se é dispositivo móvel para otimizar animações
 const isMobile = window.innerWidth <= 768;
 
-// Ajustar margem da imagem da Hero para evitar sobreposição com o header em dispositivos móveis
-if (isMobile) {
-    const header = document.querySelector('header');
-    const heroImg = document.querySelector('.hero img');
+// Ajustar margem da imagem da Hero para alinhar com o fim do header
+const header = document.querySelector('header');
+const heroImg = document.querySelector('.hero img');
+const heroSection = document.querySelector('.hero');
+const adjustHeroImage = () => {
     const headerHeight = header.offsetHeight;
-    heroImg.style.marginTop = `${headerHeight}px`;
-}
+    heroSection.style.paddingTop = `${headerHeight}px`;
+};
+adjustHeroImage();
+window.addEventListener('resize', adjustHeroImage);
 
-// Animação da seção Hero (novo efeito com zoom e desfoque)
+// Animação da seção Hero
 gsap.from('.hero img', {
     opacity: 0,
     scale: 1.2,
@@ -1735,7 +1784,7 @@ gsap.from('.cta-button', {
 
 // Animação do cabeçalho ao rolar
 gsap.to('header', {
-    background: 'rgba(38, 25, 16, 1)',
+    background: '#fef6e9',
     duration: 0.5,
     scrollTrigger: {
         trigger: '.hero',
@@ -1811,7 +1860,7 @@ video.addEventListener('click', () => {
     }
 });
 
-// Animação dos cards de serviço
+// Animação dos cards de serviço e pausar animação ao interagir
 gsap.utils.toArray('.service-card').forEach((card, index) => {
     gsap.from(card, {
         opacity: 0,
@@ -1829,43 +1878,54 @@ gsap.utils.toArray('.service-card').forEach((card, index) => {
 
     if (!isMobile) {
         card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            gsap.to(card, {
-                rotationY: x / 8,
-                rotationX: -y / 8,
-                scale: 1.2,
-                duration: 0.8,
-                ease: 'power2.out'
-            });
+            card.classList.add('touched');
         });
 
         card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-                rotationY: 0,
-                rotationX: 0,
-                scale: 1,
-                duration: 0.8,
-                ease: 'power2.out'
-            });
+            card.classList.remove('touched');
         });
     } else {
         card.addEventListener('touchstart', () => {
-            gsap.to(card, {
-                scale: 1.1,
-                boxShadow: '0 30px 80px rgba(0, 0, 0, 0.45)',
-                duration: 0.3,
-                ease: 'power2.out'
-            });
+            card.classList.add('touched');
         });
         card.addEventListener('touchend', () => {
-            gsap.to(card, {
-                scale: 1,
-                boxShadow: '0 15px 45px rgba(0, 0, 0, 0.35)',
-                duration: 0.3,
-                ease: 'power2.out'
-            });
+            card.classList.remove('touched');
+        });
+    }
+});
+
+// Pausar animação da imagem da hero ao interagir
+if (!isMobile) {
+    heroImg.addEventListener('mousemove', () => {
+        heroImg.classList.add('touched');
+    });
+    heroImg.addEventListener('mouseleave', () => {
+        heroImg.classList.remove('touched');
+    });
+} else {
+    heroImg.addEventListener('touchstart', () => {
+        heroImg.classList.add('touched');
+    });
+    heroImg.addEventListener('touchend', () => {
+        heroImg.classList.remove('touched');
+    });
+}
+
+// Pausar animação das imagens da linha do tempo ao interagir
+gsap.utils.toArray('.timeline-image img').forEach(img => {
+    if (!isMobile) {
+        img.addEventListener('mousemove', () => {
+            img.classList.add('touched');
+        });
+        img.addEventListener('mouseleave', () => {
+            img.classList.remove('touched');
+        });
+    } else {
+        img.addEventListener('touchstart', () => {
+            img.classList.add('touched');
+        });
+        img.addEventListener('touchend', () => {
+            img.classList.remove('touched');
         });
     }
 });
@@ -1882,6 +1942,35 @@ gsap.from('.testimonial-carousel', {
         toggleActions: 'play none none none'
     }
 });
+
+// Carrossel de Depoimentos
+const testimonials = document.querySelectorAll('.testimonial');
+const dots = document.querySelectorAll('.carousel-dot');
+let currentTestimonial = 0;
+
+function showTestimonial(index) {
+    testimonials.forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+    });
+    dots.forEach((d, i) => {
+        d.classList.toggle('active', i === index);
+    });
+    currentTestimonial = index;
+}
+
+function nextTestimonial() {
+    const next = (currentTestimonial + 1) % testimonials.length;
+    showTestimonial(next);
+}
+
+function prevTestimonial() {
+    const prev = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(prev);
+}
+
+function goToTestimonial(index) {
+    showTestimonial(index);
+}
 
 // Calculadora de Juros Compostos
 const compoundForm = document.getElementById('compound-form');
@@ -1914,7 +2003,6 @@ compoundForm.addEventListener('submit', (e) => {
     const futureValueMonthly = monthly * (Math.pow(1 + monthlyRate, months) - 1) / monthlyRate;
     const amount = futureValueInitial + futureValueMonthly;
 
-    // Animar o valor do resultado com separadores de milhares
     gsap.fromTo(resultValue, {
         innerHTML: 0,
         color: '#261910'
@@ -1937,7 +2025,6 @@ compoundForm.addEventListener('submit', (e) => {
         ease: 'power3.out'
     });
 
-    // Criar gráfico de crescimento
     const ctx = document.getElementById('growth-chart').getContext('2d');
     if (chartInstance) {
         chartInstance.destroy();
@@ -1995,55 +2082,30 @@ let score = 0;
 
 function showQuestion(index) {
     quizQuestions.forEach((q, i) => {
-        q.style.display = i === index ? 'block' : 'none';
         q.classList.toggle('active', i === index);
     });
-    gsap.to(quizProgress, {
-        width: `${((index + 1) / quizQuestions.length) * 100}%`,
-        duration: 0.5,
-        ease: 'power2.out'
-    });
+    quizProgress.style.width = `${((index + 1) / quizQuestions.length) * 100}%`;
 }
 
-function showQuizResult() {
-    quizQuestions.forEach(q => q.style.display = 'none');
-    quizResult.style.display = 'block';
-
-    let profile = '';
-    let description = '';
-
+function calculateProfile() {
+    let profileTitle, profileDescription;
     if (score <= 7) {
-        profile = 'Conservador';
-        description = 'Você prefere segurança e evita riscos altos. Seus investimentos tendem a ser em ativos de baixo risco, como renda fixa, para preservar seu capital.';
+        profileTitle = 'Conservador';
+        profileDescription = 'Você prefere segurança e estabilidade, optando por investimentos de baixo risco. Foco em preservar o capital.';
     } else if (score <= 11) {
-        profile = 'Moderado';
-        description = 'Você busca um equilíbrio entre segurança e crescimento. Está disposto a assumir riscos moderados para obter retornos maiores, diversificando seus investimentos.';
+        profileTitle = 'Moderado';
+        profileDescription = 'Você busca um equilíbrio entre segurança e crescimento, aceitando riscos moderados para melhores retornos.';
     } else {
-        profile = 'Agressivo';
-        description = 'Você está disposto a assumir riscos altos para maximizar retornos. Seus investimentos podem incluir ativos de maior volatilidade, como ações e criptomoedas.';
+        profileTitle = 'Agressivo';
+        profileDescription = 'Você está disposto a assumir riscos altos em busca de maiores retornos, com foco em crescimento de longo prazo.';
     }
-
-    quizResult.querySelector('.profile-title').textContent = `Seu Perfil: ${profile}`;
-    quizResult.querySelector('.profile-description').textContent = description;
-
+    quizResult.querySelector('.profile-title').textContent = profileTitle;
+    quizResult.querySelector('.profile-description').textContent = profileDescription;
+    quizResult.style.display = 'block';
     gsap.from(quizResult, {
         opacity: 0,
-        scale: 0.8,
-        duration: 1,
-        ease: 'elastic.out(1, 0.5)'
-    });
-    gsap.from('.profile-title', {
-        y: 50,
-        opacity: 0,
+        y: 20,
         duration: 0.8,
-        delay: 0.2,
-        ease: 'power3.out'
-    });
-    gsap.from('.profile-description', {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        delay: 0.4,
         ease: 'power3.out'
     });
 }
@@ -2057,84 +2119,30 @@ quizQuestions.forEach((question, index) => {
                 currentQuestion++;
                 showQuestion(currentQuestion);
             } else {
-                showQuizResult();
+                quizQuestions.forEach(q => q.style.display = 'none');
+                calculateProfile();
             }
         });
     });
 });
 
-showQuestion(0);
+// Inicializar quiz
+showQuestion(currentQuestion);
 
 // Animação da linha do tempo
 gsap.utils.toArray('.timeline-item').forEach((item, index) => {
-    gsap.from(item.querySelector('.timeline-content'), {
+    gsap.from(item, {
         opacity: 0,
-        x: index % 2 === 0 ? -300 : 300,
-        scale: 0.8,
-        duration: isMobile ? 1.5 : 2.5,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: item,
-            start: 'top 80%',
-            toggleActions: 'play none none none'
-        }
-    });
-    gsap.from(item.querySelector('.timeline-image'), {
-        opacity: 0,
-        x: index % 2 === 0 ? 300 : -300,
-        scale: 0.8,
-        duration: isMobile ? 1.5 : 2.5,
+        y: 100,
+        duration: isMobile ? 1 : 1.5,
         ease: 'power3.out',
         scrollTrigger: {
             trigger: item,
             start: 'top 80%',
             toggleActions: 'play none none none'
         },
-        delay: isMobile ? 0.3 : 0.6
+        delay: index * (isMobile ? 0.3 : 0.5)
     });
-});
-
-// Carrossel de Depoimentos
-const testimonials = document.querySelectorAll('.testimonial');
-const carouselDots = document.querySelectorAll('.carousel-dot');
-let currentTestimonial = 0;
-let autoSlide = setInterval(nextTestimonial, 8000);
-
-function showTestimonial(index) {
-    testimonials.forEach((t, i) => {
-        t.classList.toggle('active', i === index);
-        carouselDots[i].classList.toggle('active', i === index);
-    });
-}
-
-function nextTestimonial() {
-    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-    showTestimonial(currentTestimonial);
-}
-
-function prevTestimonial() {
-    currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-    showTestimonial(currentTestimonial);
-}
-
-function goToTestimonial(index) {
-    currentTestimonial = index;
-    showTestimonial(currentTestimonial);
-    clearInterval(autoSlide);
-    autoSlide = setInterval(nextTestimonial, 8000);
-}
-
-// Adicionar eventos aos botões de navegação
-document.querySelector('.carousel-controls button[onclick="prevTestimonial()"]').addEventListener('click', () => {
-    clearInterval(autoSlide);
-    prevTestimonial();
-    autoSlide = setInterval(nextTestimonial, 8000);
-});
-
-document.querySelector('.carousel-controls button[onclick="nextTestimonial()"]').addEventListener('click', () => {
-    clearInterval(autoSlide);
-    nextTestimonial();
-    autoSlide = setInterval(nextTestimonial, 8000);
 });
 
 // Formulário de Contato
@@ -2143,7 +2151,6 @@ const formSuccess = document.getElementById('form-success');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    // Aqui você pode adicionar a lógica para enviar o formulário (ex.: via API)
     formSuccess.style.display = 'block';
     contactForm.reset();
     gsap.from(formSuccess, {
@@ -2164,6 +2171,7 @@ contactForm.addEventListener('submit', (e) => {
         });
     }, 3000);
 });
+    
     </script>
 </body>
 </html>

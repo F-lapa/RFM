@@ -1124,24 +1124,27 @@
         }
 
         /* Rodapé */
-        footer {
-            background: #d3c8b5;
-            color: #261910;
-            padding: 40px 100px;
-            border-top: 5px solid #6B8E23;
-            border-bottom: 5px solid #6B8E23;
-            overflow-x: hidden;
-        }
+ footer {
+    background: #d3c8b5;
+    color: #261910;
+    padding: 40px 100px;
+    border-top: 5px solid #6B8E23;
+    border-bottom: 5px solid #6B8E23;
+    overflow-x: hidden;
+    display: flex; /* Adiciona flex para centralizar conteúdo */
+    flex-direction: column;
+    align-items: center;
+}
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: left;
-        }
-
+.footer-container {
+    width: 100%; /* Garante que o container use toda a largura */
+    max-width: 1200px; /* Mantém o limite máximo em telas grandes */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
         .footer-logo .logo {
             margin-bottom: 15px;
             font-size: 2.5rem;
@@ -1666,12 +1669,47 @@
                 font-size: 1.5rem;
             }
 
-            .footer-bottom {
-                margin-top: 15px;
-                font-size: 0.8rem;
-                padding-top: 10px;
-                border-top: 1px solid #6B8E23;
-            }
+            footer {
+    padding: 15px 10px; /* Menos padding para ocupar menos espaço */
+    border-top: 3px solid #6B8E23; /* Borda mais fina */
+    border-bottom: 3px solid #6B8E23;
+}
+.footer-container {
+    gap: 10px; /* Reduz o espaço entre colunas */
+    text-align: center;
+}
+.footer-logo .logo {
+    font-size: 1.6rem; /* Logo menor */
+    margin-bottom: 5px;
+}
+.footer-logo p {
+    font-size: 0.85rem; /* Texto menor e mais compacto */
+    max-width: 250px;
+    margin: 0 auto 8px;
+}
+.footer-contact h3,
+.footer-links h3,
+.footer-social h3 {
+    font-size: 1.2rem; /* Títulos menores */
+    margin-bottom: 5px;
+}
+.footer-contact p,
+.footer-links a {
+    font-size: 0.85rem; /* Texto menor */
+    margin-bottom: 4px;
+}
+.social-links {
+    gap: 8px; /* Menos espaço entre ícones */
+    justify-content: center;
+    margin-top: 5px;
+}
+.social-links a {
+    font-size: 1.4rem; /* Ícones menores */
+}
+.footer-bottom {
+    margin-top: 10px; /* Menos margem */
+    font-size: 0.75rem; /* Texto menor */
+}
         }
 
         @media (max-width: 480px) {
@@ -1788,28 +1826,31 @@
                 font-size: 1rem;
             }
 
-            .footer-logo .logo {
-                font-size: 1.8rem;
-            }
-
-            .footer-logo p {
-                font-size: 0.8rem;
-            }
-
-            .footer-contact h3,
-            .footer-links h3,
-            .footer-social h3 {
-                font-size: 1.3rem;
-            }
-
-            .footer-contact p,
-            .footer-links a {
-                font-size: 0.8rem;
-            }
-
-            .social-links a {
-                font-size: 1.3rem;
-            }
+            footer {
+    padding: 10px 8px; /* Ainda menos padding para telas muito pequenas */
+}
+.footer-logo .logo {
+    font-size: 1.4rem; /* Logo ainda menor */
+}
+.footer-logo p {
+    font-size: 0.8rem;
+    max-width: 200px;
+}
+.footer-contact h3,
+.footer-links h3,
+.footer-social h3 {
+    font-size: 1.1rem; /* Títulos ainda menores */
+}
+.footer-contact p,
+.footer-links a {
+    font-size: 0.8rem;
+}
+.social-links a {
+    font-size: 1.2rem; /* Ícones bem pequenos */
+}
+.footer-bottom {
+    font-size: 0.7rem; /* Texto bem pequeno */
+}
         }
     </style>
 </head>

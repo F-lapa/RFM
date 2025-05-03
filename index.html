@@ -687,7 +687,11 @@
         .calculator-result canvas {
             margin-top: 30px;
             max-width: 100%;
-            height: 250px !important;
+            height: 300px !important;
+            border-radius: 10px;
+            background: #fef6e9;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Quiz de Perfil Financeiro */
@@ -805,6 +809,42 @@
             font-size: 1.3rem;
             color: #3c2d21;
             line-height: 1.6;
+        }
+
+        .quiz-result .restart-quiz {
+            background: linear-gradient(45deg, #eebc90, #ffe0a8);
+            color: #261910;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-result .restart-quiz:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(238, 188, 144, 0.6);
+        }
+
+        .quiz-result .restart-quiz::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .quiz-result .restart-quiz:hover::before {
+            left: 100%;
         }
 
         /* Nova Seção de Índice de Saúde Financeira */
@@ -1044,7 +1084,7 @@
             width: 100%;
             height: 100%;
             background: rgba(255, 255, 255, 0.5);
-            transition: left 0.7s ease;
+            transition: left: 0.7s ease;
         }
 
         .contact button:hover::before {
@@ -1203,7 +1243,7 @@
             50% { transform: scale(1.03); }
         }
 
-        @-webkit@keyframes zoomIn {
+        @-webkit-keyframes zoomIn {
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
@@ -1213,7 +1253,7 @@
             50% { transform: scale(1.05); }
         }
 
-        @-webkit-keyframes popIn {
+        @-webkit@keyframes popIn {
             from { opacity: 0; transform: scale(0.5); }
             to { opacity: 1; transform: scale(1); }
         }
@@ -1285,6 +1325,8 @@
             .hero {
                 padding-top: 0;
                 background: none;
+                position: relative;
+                overflow: hidden;
             }
 
             .hero img {
@@ -1298,12 +1340,14 @@
                 z-index: 1;
                 background: transparent;
                 margin-top: 0;
+                display: block;
             }
 
             .hero-content {
                 padding: 20px 15px;
                 background: #fef6e9;
                 z-index: 2;
+                position: relative;
             }
 
             .hero-content p {
@@ -1429,7 +1473,7 @@
             }
 
             .calculator-result canvas {
-                height: 200px !important;
+                height: 250px !important;
             }
 
             .quiz-container, .contact form {
@@ -1449,6 +1493,11 @@
             }
 
             .quiz-result .profile-description {
+                font-size: 1rem;
+            }
+
+            .quiz-result .restart-quiz {
+                padding: 12px 30px;
                 font-size: 1rem;
             }
 
@@ -1563,31 +1612,31 @@
             }
 
             footer {
-                padding: 40px 20px;
+                padding: 30px 20px;
             }
 
             .footer-container {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 20px;
                 text-align: center;
             }
 
             .footer-logo .logo {
                 font-size: 2rem;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
             }
 
             .footer-logo p {
                 font-size: 0.9rem;
                 max-width: 300px;
-                margin: 0 auto;
+                margin: 0 auto 15px;
             }
 
             .footer-contact h3,
             .footer-links h3,
             .footer-social h3 {
                 font-size: 1.5rem;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
             }
 
             .footer-contact p,
@@ -1596,9 +1645,14 @@
                 margin-bottom: 8px;
             }
 
+            .footer-contact p i {
+                margin-right: 8px;
+            }
+
             .social-links {
                 justify-content: center;
                 gap: 15px;
+                margin-top: 10px;
             }
 
             .social-links a {
@@ -1606,8 +1660,10 @@
             }
 
             .footer-bottom {
-                margin-top: 30px;
+                margin-top: 20px;
                 font-size: 0.8rem;
+                padding-top: 15px;
+                border-top: 1px solid #6B8E23;
             }
         }
 
@@ -1709,6 +1765,11 @@
 
             .quiz-option {
                 font-size: 1rem;
+            }
+
+            .quiz-result .restart-quiz {
+                padding: 10px 25px;
+                font-size: 0.9rem;
             }
 
             .financial-health p {
@@ -1914,6 +1975,7 @@
             <div class="quiz-result" id="quiz-result">
                 <div class="profile-title"></div>
                 <div class="profile-description"></div>
+                <button class="restart-quiz" aria-label="Reiniciar quiz">Reiniciar Quiz</button>
             </div>
         </div>
     </section>
@@ -1997,11 +2059,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Registrar ScrollTrigger
+// Registrar ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 // Verificar se é dispositivo móvel para otimizar animações
 const isMobile = window.innerWidth <= 768;
+
+// Scroll to top on page refresh
+window.onload = () => {
+    window.scrollTo(0, 0);
+};
 
 // Menu hambúrguer para dispositivos móveis
 const menuToggle = document.querySelector('.menu-toggle');
@@ -2053,11 +2120,11 @@ const heroImg = document.querySelector('.hero img');
 const heroSection = document.querySelector('.hero');
 const adjustHeroImage = () => {
     const headerHeight = header.offsetHeight;
-    heroSection.style.paddingTop = isMobile ? `0` : `${headerHeight}px`;
+    heroSection.style.paddingTop = isMobile ? `${headerHeight}px` : `${headerHeight}px`;
 
     if (isMobile) {
         heroImg.style.height = 'auto';
-        heroImg.style.maxHeight = '40vh'; // Reduzido para melhor proporção em telas menores
+        heroImg.style.maxHeight = '40vh';
         heroImg.style.objectFit = 'contain';
         heroImg.style.objectPosition = 'center';
         heroImg.style.width = '100%';
@@ -2080,82 +2147,127 @@ window.addEventListener('resize', adjustHeroImage);
 // Animação da seção Hero (otimizada para dispositivos móveis)
 gsap.from('.hero img', {
     opacity: 0,
-    scale: isMobile ? 1.05 : 1.2, // Escala reduzida em dispositivos móveis
-    filter: isMobile ? 'blur(3px)' : 'blur(10px)', // Menos desfoque em móveis
+    scale: isMobile ? 1.05 : 1.2,
+    filter: isMobile ? 'blur(3px)' : 'blur(10px)',
     duration: isMobile ? 1 : 2,
     ease: 'power3.out'
 });
 gsap.from('.hero-content p', {
     opacity: 0,
-    y: isMobile ? 50 : 100, // Menos deslocamento em móveis
+    y: isMobile ? 50 : 100,
     duration: isMobile ? 1 : 1.5,
     delay: isMobile ? 0.4 : 0.8,
     ease: 'power4.out'
 });
 gsap.from('.cta-button', {
     opacity: 0,
-    scale: isMobile ? 0.7 : 0.5, // Escala ajustada para móveis
-    duration: isMobile ? 1 : 1.5,
+    scale: 0.8,
+    duration: isMobile ? 0.8 : 1.2,
     delay: isMobile ? 0.6 : 1.2,
     ease: 'elastic.out(1, 0.5)'
 });
 
-// Animação do cabeçalho ao rolar
-gsap.to('header', {
-    background: '#fef6e9',
-    duration: 0.5,
-    scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
+// Scroll suave para links de navegação
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            const headerHeight = header.offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Animação do header ao rolar
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
     }
+    lastScroll = currentScroll;
 });
 
-// Animação da seção de apresentação
-gsap.from('.intro-video', {
-    opacity: 0,
-    y: isMobile ? 50 : 100,
-    duration: isMobile ? 0.8 : 1.5,
-    ease: 'power3.out',
-    scrollTrigger: {
-        trigger: '.intro-section',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-    }
+// Animações para seções com ScrollTrigger
+const sections = document.querySelectorAll('.intro-section, .services, .testimonials, .calculator, .quiz, .about, .contact, .financial-health');
+sections.forEach(section => {
+    gsap.from(section, {
+        opacity: 0,
+        y: isMobile ? 50 : 100,
+        duration: isMobile ? 0.8 : 1.5,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: section,
+            start: isMobile ? 'top 85%' : 'top 80%',
+            toggleActions: 'play none none none'
+        }
+    });
 });
 
-gsap.from('.intro-profile', {
-    opacity: 0,
-    y: isMobile ? 50 : 100,
-    duration: isMobile ? 0.8 : 1.5,
-    ease: 'power3.out',
-    scrollTrigger: {
-        trigger: '.intro-section',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-    },
-    delay: isMobile ? 0.2 : 0.6
+// Animação para cards de serviço
+const serviceCards = document.querySelectorAll('.service-card');
+serviceCards.forEach((card, index) => {
+    gsap.from(card, {
+        opacity: 0,
+        y: isMobile ? 50 : 100,
+        rotationX: isMobile ? 0 : 30,
+        duration: isMobile ? 0.8 : 1.5,
+        delay: isMobile ? 0 : index * 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: card,
+            start: isMobile ? 'top 90%' : 'top 85%',
+            toggleActions: 'play none none none'
+        }
+    });
+
+    // Desativar animação ao tocar em dispositivos móveis
+    card.addEventListener('touchstart', () => {
+        card.classList.add('touched');
+        card.querySelector('img').classList.add('touched');
+    });
 });
 
-// Animação da seção de saúde financeira
-gsap.from('.financial-health', {
-    opacity: 0,
-    y: isMobile ? 50 : 100,
-    duration: isMobile ? 0.8 : 1.5,
-    ease: 'power3.out',
-    scrollTrigger: {
-        trigger: '.financial-health',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-    }
+// Animação para itens da timeline
+const timelineItems = document.querySelectorAll('.timeline-item');
+timelineItems.forEach((item, index) => {
+    gsap.from(item.querySelector('.timeline-content'), {
+        opacity: 0,
+        x: index % 2 === 0 ? -100 : 100,
+        duration: isMobile ? 0.8 : 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: item,
+            start: isMobile ? 'top 90%' : 'top 80%',
+            toggleActions: 'play none none none'
+        }
+    });
+    gsap.from(item.querySelector('.timeline-image img'), {
+        opacity: 0,
+        x: index % 2 === 0 ? 100 : -100,
+        duration: isMobile ? 0.8 : 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: item,
+            start: isMobile ? 'top 90%' : 'top 80%',
+            toggleActions: 'play none none none'
+        }
+    });
 });
 
-// Interatividade do vídeo
+// Controle de vídeo
 const videoContainer = document.querySelector('.video-container');
 const video = videoContainer.querySelector('video');
 const playButton = videoContainer.querySelector('.play-button');
-
 playButton.addEventListener('click', () => {
     if (video.paused) {
         video.play();
@@ -2165,7 +2277,6 @@ playButton.addEventListener('click', () => {
         playButton.style.opacity = '1';
     }
 });
-
 video.addEventListener('play', () => {
     playButton.style.opacity = '0';
 });
@@ -2173,192 +2284,23 @@ video.addEventListener('pause', () => {
     playButton.style.opacity = '1';
 });
 
-// Animação para seção de serviços
-document.querySelectorAll('.service-card').forEach((card, index) => {
-    gsap.from(card, {
-        opacity: 0,
-        y: isMobile ? 50 : 100,
-        duration: isMobile ? 0.8 : 1.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-        },
-        delay: isMobile ? index * 0.1 : index * 0.2
-    });
-});
-
-// Calculadora de Juros Compostos
-const compoundForm = document.getElementById('compound-form');
-const compoundResult = document.getElementById('compound-result');
-const resultValue = compoundResult.querySelector('.result-value');
-let growthChart = null;
-
-compoundForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const principal = parseFloat(document.getElementById('principal').value);
-    const monthly = parseFloat(document.getElementById('monthly').value);
-    const rate = parseFloat(document.getElementById('rate').value) / 100;
-    const time = parseInt(document.getElementById('time').value);
-
-    const monthlyRate = rate / 12;
-    const totalMonths = time * 12;
-    let futureValue = principal * Math.pow(1 + monthlyRate, totalMonths);
-    for (let i = 1; i <= totalMonths; i++) {
-        futureValue += monthly * Math.pow(1 + monthlyRate, totalMonths - i);
-    }
-
-    resultValue.textContent = `R$ ${futureValue.toFixed(2).replace('.', ',')}`;
-    compoundResult.style.display = 'block';
-
-    // Dados para o gráfico
-    const labels = Array.from({ length: time + 1 }, (_, i) => i);
-    const data = [];
-    let currentValue = principal;
-    data.push(currentValue);
-    for (let year = 1; year <= time; year++) {
-        for (let month = 1; month <= 12; month++) {
-            currentValue = currentValue * (1 + monthlyRate) + monthly;
-        }
-        data.push(currentValue);
-    }
-
-    if (growthChart) {
-        growthChart.destroy();
-    }
-
-    const ctx = document.getElementById('growth-chart').getContext('2d');
-    growthChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Crescimento do Investimento',
-                data: data,
-                borderColor: '#eebc90',
-                backgroundColor: 'rgba(238, 188, 144, 0.2)',
-                fill: true,
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Anos'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Valor (R$)'
-                    },
-                    beginAtZero: true
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
-
-    gsap.from(compoundResult, {
-        opacity: 0,
-        y: 50,
-        duration: isMobile ? 0.8 : 1,
-        ease: 'power3.out'
-    });
-});
-
-compoundForm.addEventListener('reset', () => {
-    compoundResult.style.display = 'none';
-    if (growthChart) {
-        growthChart.destroy();
-        growthChart = null;
-    }
-});
-
-// Quiz de Perfil Financeiro
-const quizContainer = document.querySelector('.quiz-container');
-const quizQuestions = document.querySelectorAll('.quiz-question');
-const quizResult = document.getElementById('quiz-result');
-const progressBar = document.getElementById('quiz-progress');
-let currentQuestion = 0;
-let score = 0;
-
-quizContainer.addEventListener('click', (e) => {
-    if (e.target.classList.contains('quiz-option')) {
-        score += parseInt(e.target.dataset.value);
-        quizQuestions[currentQuestion].classList.remove('active');
-        currentQuestion++;
-        progressBar.style.width = `${(currentQuestion / quizQuestions.length) * 100}%`;
-
-        if (currentQuestion < quizQuestions.length) {
-            quizQuestions[currentQuestion].classList.add('active');
-        } else {
-            let profile = '';
-            let description = '';
-            if (score <= 7) {
-                profile = 'Conservador';
-                description = 'Você prefere segurança e estabilidade, optando por investimentos de baixo risco. Foco em preservar o capital.';
-            } else if (score <= 11) {
-                profile = 'Moderado';
-                description = 'Você busca um equilíbrio entre segurança e crescimento, aceitando riscos moderados para melhores retornos.';
-            } else {
-                profile = 'Arrojado';
-                description = 'Você está disposto a assumir riscos maiores em busca de retornos elevados, com foco no longo prazo.';
-            }
-
-            quizResult.querySelector('.profile-title').textContent = `Seu Perfil: ${profile}`;
-            quizResult.querySelector('.profile-description').textContent = description;
-            quizResult.style.display = 'block';
-            gsap.from(quizResult, {
-                opacity: 0,
-                y: 50,
-                duration: isMobile ? 0.8 : 1,
-                ease: 'power3.out'
-            });
-        }
-    }
-});
-
-quizQuestions[0].classList.add('active');
-
-// Formulário de Contato
-const contactForm = document.getElementById('contact-form');
-const formSuccess = document.getElementById('form-success');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    contactForm.style.display = 'none';
-    formSuccess.style.display = 'block';
-    gsap.from(formSuccess, {
-        opacity: 0,
-        scale: 0.5,
-        duration: isMobile ? 0.8 : 1,
-        ease: 'back.out(1.7)'
-    });
-});
-
-// Carrossel de Depoimentos
+// Carrossel de depoimentos
 let currentTestimonial = 0;
 const testimonials = document.querySelectorAll('.testimonial');
 const dots = document.querySelectorAll('.carousel-dot');
 
 function updateTestimonial(index) {
-    testimonials.forEach(t => t.classList.remove('active'));
-    dots.forEach(d => d.classList.remove('active'));
-    testimonials[index].classList.add('active');
-    dots[index].classList.add('active');
-    gsap.from(testimonials[index], {
+    testimonials.forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+        dots[i].classList.toggle('active', i === index);
+    });
+    gsap.fromTo(testimonials[index], {
         opacity: 0,
-        x: isMobile ? 30 : 50,
-        duration: isMobile ? 0.8 : 1,
+        x: 50
+    }, {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
         ease: 'power3.out'
     });
 }
@@ -2378,58 +2320,240 @@ function goToTestimonial(index) {
     updateTestimonial(currentTestimonial);
 }
 
-setInterval(nextTestimonial, 5000);
+// Auto-play do carrossel
+let testimonialInterval = setInterval(nextTestimonial, 5000);
+document.querySelector('.testimonial-carousel').addEventListener('mouseenter', () => clearInterval(testimonialInterval));
+document.querySelector('.testimonial-carousel').addEventListener('mouseleave', () => {
+    testimonialInterval = setInterval(nextTestimonial, 5000);
+});
 
-// Animação da seção Sobre (Timeline)
-document.querySelectorAll('.timeline-item').forEach((item, index) => {
-    gsap.from(item, {
-        opacity: 0,
-        y: isMobile ? 50 : 100,
-        duration: isMobile ? 0.8 : 1.5,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: item,
-            start: 'top 80%',
-            toggleActions: 'play none none none'
+// Calculadora de Juros Compostos
+const compoundForm = document.getElementById('compound-form');
+const compoundResult = document.getElementById('compound-result');
+const resultValue = compoundResult.querySelector('.result-value');
+let growthChart = null;
+
+compoundForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const principal = parseFloat(document.getElementById('principal').value);
+    const monthly = parseFloat(document.getElementById('monthly').value);
+    const rate = parseFloat(document.getElementById('rate').value) / 100;
+    const time = parseInt(document.getElementById('time').value);
+
+    const monthlyRate = rate / 12;
+    const totalMonths = time * 12;
+    let balance = principal;
+    const balances = [principal];
+
+    for (let i = 1; i <= totalMonths; i++) {
+        balance = balance * (1 + monthlyRate) + monthly;
+        balances.push(balance);
+    }
+
+    const finalAmount = balance.toFixed(2);
+    resultValue.textContent = `R$ ${finalAmount.replace('.', ',')}`;
+    compoundResult.style.display = 'block';
+
+    // Destruir gráfico existente, se houver
+    if (growthChart) {
+        growthChart.destroy();
+    }
+
+    // Criar novo gráfico com Chart.js
+    const ctx = document.getElementById('growth-chart').getContext('2d');
+    growthChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array.from({ length: totalMonths + 1 }, (_, i) => `Mês ${i}`),
+            datasets: [{
+                label: 'Crescimento do Investimento',
+                data: balances,
+                borderColor: '#eebc90',
+                backgroundColor: 'rgba(238, 188, 144, 0.2)',
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#261910',
+                pointBorderColor: '#fff',
+                pointRadius: 4,
+                pointHoverRadius: 8
+            }]
         },
-        delay: isMobile ? index * 0.1 : index * 0.3
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: '#261910',
+                    titleFont: { family: 'Poppins', size: 14 },
+                    bodyFont: { family: 'Poppins', size: 12 },
+                    callbacks: {
+                        label: (context) => `R$ ${context.parsed.y.toFixed(2).replace('.', ',')}`
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    display: totalMonths <= 120, // Mostrar eixo x apenas para períodos menores
+                    grid: { display: false },
+                    ticks: {
+                        maxTicksLimit: isMobile ? 5 : 10,
+                        font: { family: 'Poppins', size: isMobile ? 10 : 12 }
+                    }
+                },
+                y: {
+                    grid: { borderDash: [5, 5] },
+                    ticks: {
+                        callback: (value) => `R$ ${value.toFixed(0).replace('.', ',')}`,
+                        font: { family: 'Poppins', size: isMobile ? 10 : 12 }
+                    }
+                }
+            },
+            animation: {
+                duration: isMobile ? 800 : 1500,
+                easing: 'easeOutCubic'
+            }
+        }
+    });
+
+    // Animação do resultado
+    gsap.from(compoundResult, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: 'power3.out'
+    });
+    gsap.from(resultValue, {
+        scale: 0.8,
+        opacity: 0,
+        duration: 1,
+        delay: 0.5,
+        ease: 'elastic.out(1, 0.5)'
     });
 });
 
-// Animação da seção de Contato
-gsap.from('.contact form', {
-    opacity: 0,
-    y: isMobile ? 50 : 100,
-    duration: isMobile ? 0.8 : 1.5,
-    ease: 'power3.out',
-    scrollTrigger: {
-        trigger: '.contact',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
+compoundForm.addEventListener('reset', () => {
+    compoundResult.style.display = 'none';
+    if (growthChart) {
+        growthChart.destroy();
+        growthChart = null;
     }
 });
 
-// Animação dos ícones sociais no footer (otimizada para dispositivos móveis)
-gsap.from('.social-links a', {
-    opacity: 0,
-    y: isMobile ? 20 : 30,
-    stagger: 0.1,
-    duration: isMobile ? 0.5 : 0.8,
-    ease: 'power3.out',
-    scrollTrigger: {
-        trigger: 'footer',
-        start: 'top 90%',
-        toggleActions: 'play none none none'
-    }
-});
+// Quiz de Perfil Financeiro
+const quizQuestions = document.querySelectorAll('.quiz-question');
+const quizResult = document.getElementById('quiz-result');
+const progressBar = document.getElementById('quiz-progress');
+const profileTitle = quizResult.querySelector('.profile-title');
+const profileDescription = quizResult.querySelector('.profile-description');
+const restartButton = quizResult.querySelector('.restart-quiz');
+let currentQuestion = 0;
+let score = 0;
 
-// Desativar animações em dispositivos móveis com preferência de animação reduzida
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    gsap.globalTimeline.pause();
-    document.querySelectorAll('.service-card, .timeline-image img').forEach(el => {
-        el.classList.add('touched');
+function updateQuizProgress() {
+    const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+}
+
+function showQuestion(index) {
+    quizQuestions.forEach((q, i) => {
+        q.classList.toggle('active', i === index);
+    });
+    updateQuizProgress();
+}
+
+function calculateProfile() {
+    let title, description;
+    if (score <= 7) {
+        title = 'Conservador';
+        description = 'Você prefere segurança e preservação do capital, evitando riscos. Recomendamos investimentos de baixo risco, como renda fixa e fundos conservadores.';
+    } else if (score <= 11) {
+        title = 'Moderado';
+        description = 'Você busca um equilíbrio entre segurança e crescimento, aceitando riscos moderados. Considere diversificar com renda fixa e uma pequena exposição a renda variável.';
+    } else {
+        title = 'Arrojado';
+        description = 'Você está disposto a assumir riscos para maximizar retornos. Investimentos em ações, fundos multimercado e criptoativos podem ser adequados para o seu perfil.';
+    }
+    profileTitle.textContent = `Seu Perfil: ${title}`;
+    profileDescription.textContent = description;
+    quizResult.style.display = 'block';
+    gsap.from(quizResult, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: 'power3.out'
     });
 }
+
+quizQuestions.forEach((question, index) => {
+    const options = question.querySelectorAll('.quiz-option');
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            score += parseInt(option.dataset.value);
+            currentQuestion++;
+            if (currentQuestion < quizQuestions.length) {
+                showQuestion(currentQuestion);
+            } else {
+                calculateProfile();
+            }
+        });
+    });
+});
+
+// Reiniciar quiz
+restartButton.addEventListener('click', () => {
+    currentQuestion = 0;
+    score = 0;
+    quizResult.style.display = 'none';
+    showQuestion(0);
+    progressBar.style.width = '20%'; // Reinicia a barra de progresso
+    gsap.from(quizQuestions[0], {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.8,
+        ease: 'power3.out'
+    });
+});
+
+showQuestion(0);
+
+// Formulário de contato
+const contactForm = document.getElementById('contact-form');
+const formSuccess = document.getElementById('form-success');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formSuccess.style.display = 'block';
+    contactForm.reset();
+    gsap.from(formSuccess, {
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.5,
+        ease: 'power3.out'
+    });
+    setTimeout(() => {
+        formSuccess.style.display = 'none';
+    }, 3000);
+});
+
+// Desativar animações de flutuação em dispositivos móveis ao tocar
+const floatingElements = document.querySelectorAll('.hero img, .service-card img, .intro-profile, .timeline-image img');
+floatingElements.forEach(element => {
+    element.addEventListener('touchstart', () => {
+        element.classList.add('touched');
+    });
+});
+
+// Ajustar animações para dispositivos móveis
+if (isMobile) {
+    gsap.globalTimeline.timeScale(1.5); // Acelerar animações em dispositivos móveis
+    ScrollTrigger.defaults({
+        start: 'top 90%'
+    });
+}
+
         </script>
-        </body>
+</body>
 </html>

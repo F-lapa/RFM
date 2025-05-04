@@ -85,13 +85,6 @@
             transition: color 0.3s ease;
         }
 
-        nav span {
-    color: #8B4513;
-    margin-left: 50px;
-    font-size: 1.3rem;
-    font-weight: 500;
-}
-
         nav a::after {
             content: '';
             position: absolute;
@@ -1776,6 +1769,130 @@ footer {
         font-size: 0.7rem;
     }
         }
+        /* Modal de Contato */
+.contact-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(38, 25, 16, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.contact-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #261910;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #8B4513;
+    transform: scale(1.2);
+}
+
+.modal-content h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #8B4513;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+    color: #3c2d21;
+    margin-bottom: 20px;
+}
+
+.modal-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.modal-social-links a {
+    color: #3c2d21;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.modal-social-links a:hover {
+    color: #8B4513;
+    transform: scale(1.3);
+}
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .modal-content h3 {
+        font-size: 2rem;
+    }
+
+    .modal-content p {
+        font-size: 1rem;
+    }
+
+    .modal-social-links a {
+        font-size: 1.8rem;
+    }
+
+    .modal-close {
+        font-size: 1.8rem;
+        top: 10px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 15px;
+    }
+
+    .modal-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .modal-content p {
+        font-size: 0.9rem;
+    }
+
+    .modal-social-links a {
+        font-size: 1.6rem;
+    }
+
+    .modal-close {
+        font-size: 1.6rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -1789,10 +1906,10 @@ footer {
             <a href="#quiz" aria-label="Ir para Quiz">Quiz</a>
             <a href="#intro-section" aria-label="Ir para Conheça a RFM">Sobre</a>
             <a href="#testimonials" aria-label="Ir para Depoimentos">Depoimentos</a>
-            <span>Contato</span>
+            <a href="#" id="open-contact-modal" aria-label="Abrir modal de contato">Contato</a>
             <a href="index1.html" aria-label="Acessar Página Antiga">Página Antiga</a>
         </nav>
-    </header> 
+    </header>
 
     <section class="hero" id="home">
         <img src="img.png" alt="Imagem de fundo da RFM Educação Financeira" loading="lazy">
@@ -2059,6 +2176,22 @@ footer {
             <p>© 2025 RFM Educação Financeira. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <!-- Modal de Contato -->
+<div class="contact-modal" id="contact-modal">
+    <div class="modal-content">
+        <span class="modal-close" id="close-contact-modal" aria-label="Fechar modal">&times;</span>
+        <h3>Entre em Contato</h3>
+        <p>Conecte-se conosco pelas redes sociais!</p>
+        <div class="modal-social-links">
+            <a href="https://www.instagram.com/roselaine.fmachado?igsh=dnk4dHRkMzd2bTI5" target="_blank" title="Instagram" aria-label="Visitar Instagram da RFM"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5548999370943" target="_blank" title="WhatsApp" aria-label="Contactar via WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:contato@rfmeducacao.com.br" title="Email" aria-label="Enviar e-mail para RFM"><i class="fas fa-envelope"></i></a>
+            <a href="https://youtube.com" target="_blank" title="YouTube" aria-label="Visitar canal do YouTube da RFM"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/roselainemachado/" target="_blank" title="LinkedIn" aria-label="Visitar LinkedIn da RFM"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
@@ -2618,6 +2751,64 @@ playButton.addEventListener('click', () => {
 
 // Evitar comportamento de overscroll em dispositivos móveis
 document.body.style.overscrollBehavior = 'none';
+
+// Modal de Contato
+const openModalButton = document.getElementById('open-contact-modal');
+const closeModalButton = document.getElementById('close-contact-modal');
+const contactModal = document.getElementById('contact-modal');
+
+openModalButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    contactModal.classList.add('active');
+    gsap.fromTo('.modal-content', {
+        opacity: 0,
+        scale: 0.8,
+        y: 50
+    }, {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power3.out'
+    });
+    gsap.from('.modal-social-links a', {
+        opacity: 0,
+        y: 20,
+        stagger: 0.1,
+        duration: 0.5,
+        ease: 'power3.out',
+        delay: 0.2
+    });
+});
+
+closeModalButton.addEventListener('click', () => {
+    gsap.to('.modal-content', {
+        opacity: 0,
+        scale: 0.8,
+        y: 50,
+        duration: 0.3,
+        ease: 'power3.in',
+        onComplete: () => {
+            contactModal.classList.remove('active');
+        }
+    });
+});
+
+// Fechar modal ao clicar fora
+contactModal.addEventListener('click', (e) => {
+    if (e.target === contactModal) {
+        gsap.to('.modal-content', {
+            opacity: 0,
+            scale: 0.8,
+            y: 50,
+            duration: 0.3,
+            ease: 'power3.in',
+            onComplete: () => {
+                contactModal.classList.remove('active');
+            }
+        });
+    }
+});
         </script>
 </body>
 </html>

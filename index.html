@@ -56,7 +56,7 @@
 
         .logo i {
             font-size: 2.5rem;
-            color: #228B22;
+            color: #006400;
             margin-right: 10px;
         }
 
@@ -84,6 +84,13 @@
             position: relative;
             transition: color 0.3s ease;
         }
+
+        nav span {
+    color: #8B4513;
+    margin-left: 50px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
 
         nav a::after {
             content: '';
@@ -1013,123 +1020,13 @@
             transform: none;
         }
 
-        /* Seção de Contato */
-        .contact {
-            padding: 200px 100px;
-            background: #fef6e9;
-            text-align: center;
-            overflow-x: hidden;
-        }
-
-        .contact h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 100px;
-            color: #8B4513;
-            animation: bounceTitle 3s infinite ease-in-out;
-        }
-
-        .contact form {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            padding: 0 20px;
-            width: 100%;
-        }
-
-        .contact input, .contact textarea {
-            padding: 25px;
-            border: none;
-            border-radius: 20px;
-            font-size: 1.4rem;
-            background: #fff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            transition: box-shadow 0.5s ease, transform 0.5s ease;
-            resize: vertical;
-            animation: breathe 5s infinite ease-in-out;
-            width: 100%;
-        }
-
-        .contact input:focus, .contact textarea:focus {
-            outline: none;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
-            transform: scale(1.05);
-            animation: none;
-        }
-
-        .contact textarea {
-            min-height: 240px;
-        }
-
-        .contact button {
-            background: linear-gradient(45deg, #eebc90, #ffe0a8);
-            color: #261910;
-            padding: 25px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
-            animation: glowButton 2s infinite ease-in-out;
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .contact button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.5);
-            transition: left: 0.7s ease;
-        }
-
-        .contact button:hover::before {
-            left: 100%;
-        }
-
-        .contact button:hover {
-            transform: scale(1.25);
-            animation: none;
-        }
-
-        .form-success {
-            display: none;
-            color: #261910;
-            font-size: 1.4rem;
-            margin-top: 20px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            animation: popIn 0.5s ease;
-            width: 100%;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @keyframes popIn {
-            from { opacity: 0; transform: scale(0.5); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
         /* Rodapé */
  footer {
     background: #d3c8b5;
     color: #261910;
     padding: 40px 100px;
-    border-top: 5px solid #6B8E23;
-    border-bottom: 5px solid #6B8E23;
+    border-top: 5px solid #006400;
+    border-bottom: 5px solid #006400;
     overflow-x: hidden;
     display: flex; /* Adiciona flex para centralizar conteúdo */
     flex-direction: column;
@@ -1157,7 +1054,6 @@
         }
 
         .footer-contact h3,
-        .footer-links h3,
         .footer-social h3 {
             font-family: 'Dancing Script', cursive;
             font-size: 1.8rem;
@@ -1165,22 +1061,12 @@
             margin-bottom: 15px;
         }
 
-        .footer-contact p,
-        .footer-links a {
+        .footer-contact p {
             font-size: 1rem;
             color: #261910;
             line-height: 1.8;
             margin-bottom: 8px;
             text-decoration: none;
-        }
-
-        .footer-links a {
-            display: block;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #ffe0a8;
         }
 
         .social-links {
@@ -1616,20 +1502,27 @@
                 width: 10px;
                 height: 10px;
             }
-
-            .contact textarea {
-                min-height: 150px;
-            }
-
             footer {
-                padding: 20px 15px;
-            }
+    background: #d3c8b5;
+    color: #261910;
+    padding: 15px 10px;
+    border-top: 5px solid #006400;
+    border-bottom: 5px solid #006400;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                text-align: center;
-            }
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    text-align: left;
+}
 
             .footer-logo .logo {
                 font-size: 2rem;
@@ -1669,15 +1562,7 @@
                 font-size: 1.5rem;
             }
 
-            footer {
-    padding: 15px 10px; /* Menos padding para ocupar menos espaço */
-    border-top: 3px solid #6B8E23; /* Borda mais fina */
-    border-bottom: 3px solid #6B8E23;
-}
-.footer-container {
-    gap: 10px; /* Reduz o espaço entre colunas */
-    text-align: center;
-}
+           
 .footer-logo .logo {
     font-size: 1.6rem; /* Logo menor */
     margin-bottom: 5px;
@@ -1707,8 +1592,10 @@
     font-size: 1.4rem; /* Ícones menores */
 }
 .footer-bottom {
-    margin-top: 10px; /* Menos margem */
-    font-size: 0.75rem; /* Texto menor */
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #261910;
 }
         }
 
@@ -1829,6 +1716,12 @@
             footer {
     padding: 10px 8px; /* Ainda menos padding para telas muito pequenas */
 }
+
+.footer-container {
+        gap: 8px;
+        text-align: center;
+    }
+
 .footer-logo .logo {
     font-size: 1.4rem; /* Logo ainda menor */
 }
@@ -1865,7 +1758,7 @@
             <a href="#quiz" aria-label="Ir para Quiz">Quiz</a>
             <a href="#intro-section" aria-label="Ir para Conheça a RFM">Sobre</a>
             <a href="#testimonials" aria-label="Ir para Depoimentos">Depoimentos</a>
-            <a href="#contact" aria-label="Ir para Contato">Contato</a>
+            <span>Contato</span>
             <a href="index1.html" aria-label="Acessar Página Antiga">Página Antiga</a>
         </nav>
     </header> 
@@ -2117,18 +2010,6 @@
             </div>
         </div>
     </section>
-
-    <section class="contact" id="contact">
-        <h2>Entre em Contato</h2>
-        <form id="contact-form">
-            <input type="text" placeholder="Nome" required aria-label="Seu nome">
-            <input type="email" placeholder="E-mail" required aria-label="Seu e-mail">
-            <textarea placeholder="Mensagem" required aria-label="Sua mensagem"></textarea>
-            <button type="submit" aria-label="Enviar mensagem">Enviar Mensagem</button>
-        </form>
-        <div class="form-success" id="form-success">Mensagem enviada com sucesso!</div>
-    </section>
-
     <footer>
         <div class="footer-container">
             <div class="footer-logo">
@@ -2139,13 +2020,6 @@
                 <h3>Contato</h3>
                 <p><i class="fas fa-phone"></i> (48) 99937-0943</p>
                 <p><i class="fas fa-envelope"></i> contato@rfmeducacao.com.br</p>
-            </div>
-            <div class="footer-links">
-                <h3>Links Úteis</h3>
-                <a href="#services" aria-label="Ir para Serviços">Serviços</a>
-                <a href="#calculator" aria-label="Ir para Calculadora">Calculadora</a>
-                <a href="#quiz" aria-label="Ir para Quiz">Quiz</a>
-                <a href="#contact" aria-label="Ir para Contato">Contato</a>
             </div>
             <div class="footer-social">
                 <h3>Redes Sociais</h3>
@@ -2706,29 +2580,6 @@ quizResult.querySelector('.restart-quiz').addEventListener('click', restartQuiz)
 
 // Iniciar quiz
 showQuestion(currentQuestion);
-
-// Formulário de Contato
-const contactForm = document.getElementById('contact-form');
-const formSuccess = document.getElementById('form-success');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    contactForm.style.display = 'none';
-    formSuccess.style.display = 'block';
-    contactForm.reset();
-
-    gsap.from(formSuccess, {
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.5,
-        ease: 'back.out(1.7)'
-    });
-
-    setTimeout(() => {
-        formSuccess.style.display = 'none';
-        contactForm.style.display = 'flex';
-    }, 3000);
-});
 
 // Animação para vídeo ao clicar no play
 const videoContainer = document.querySelector('.video-container');

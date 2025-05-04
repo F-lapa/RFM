@@ -1893,6 +1893,740 @@ footer {
         font-size: 1.6rem;
     }
 }
+
+/* Responsividade para Modo Paisagem no Celular */
+@media (min-width: 768px) and (max-width: 1024px) and (max-height: 600px) {
+    /* Header */
+    header {
+        padding: 10px 15px;
+        height: 60px;
+    }
+
+    header.scrolled {
+        padding: 8px 15px;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .logo i {
+        font-size: 1.5rem;
+        margin-right: 5px;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 1.5rem;
+    }
+
+    nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(254, 246, 233, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        z-index: 1000;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        margin: 8px 0;
+        font-size: 1.2rem;
+    }
+
+    nav a::after {
+        height: 2px;
+        bottom: -4px;
+    }
+
+    /* Hero */
+    .hero {
+        padding-top: 60px;
+    }
+
+    .hero img {
+        height: 30vh;
+        object-fit: contain;
+        object-position: center;
+        margin-top: 0;
+    }
+
+    .hero-content {
+        padding: 15px 10px;
+    }
+
+    .hero-content p {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .cta-button {
+        padding: 12px 40px;
+        font-size: 1rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Seções Gerais */
+    .intro-section, .services, .calculator, .quiz, .about, .testimonials, .financial-health {
+        padding: 60px 10px;
+    }
+
+    .intro-video h2, .services h2, .calculator h2, .quiz h2, .about h2, .testimonials h2, .financial-health h2 {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+
+    /* Intro Section */
+    .intro-section {
+        gap: 40px;
+    }
+
+    .intro-video {
+        min-width: 100%;
+    }
+
+    .video-container {
+        border-radius: 10px;
+    }
+
+    .play-button {
+        font-size: 2rem;
+    }
+
+    .intro-profile {
+        padding: 15px;
+        min-width: 100%;
+    }
+
+    .intro-profile img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .intro-profile h3 {
+        font-size: 1.8rem;
+    }
+
+    .intro-profile p {
+        font-size: 0.9rem;
+    }
+
+    /* Serviços */
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 5px;
+    }
+
+    .service-card {
+        border-radius: 15px;
+    }
+
+    .service-card img {
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .service-card h3 {
+        font-size: 1.5rem;
+        margin: 20px 0 15px;
+    }
+
+    .service-card p {
+        font-size: 1rem;
+        padding: 0 20px 15px;
+    }
+
+    .service-button {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-button i {
+        font-size: 1rem;
+        margin-right: 5px;
+    }
+
+    /* Depoimentos */
+    .testimonial-carousel {
+        padding: 0 5px;
+    }
+
+    .testimonial p {
+        font-size: 1rem;
+    }
+
+    .testimonial h4 {
+        font-size: 0.9rem;
+    }
+
+    .carousel-controls {
+        bottom: -40px;
+        gap: 10px;
+    }
+
+    .carousel-controls button {
+        width: 25px;
+        height: 25px;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Calculadora */
+    .calculator-form {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 5px;
+    }
+
+    .calculator-form input {
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+
+    .calculator-form .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .calculator-form button {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .calculator-result {
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    .calculator-result p {
+        font-size: 1rem;
+    }
+
+    .calculator-result .result-value {
+        font-size: 1.5rem;
+    }
+
+    .calculator-result .motivational {
+        font-size: 0.9rem;
+    }
+
+    .calculator-result canvas {
+        height: 200px !important;
+    }
+
+    /* Quiz */
+    .quiz-container {
+        padding: 0 5px;
+    }
+
+    .quiz-question h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .quiz-option {
+        padding: 12px;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .quiz-progress {
+        margin: 15px 0;
+        height: 8px;
+    }
+
+    .quiz-result {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+
+    .quiz-result .profile-title {
+        font-size: 1.3rem;
+    }
+
+    .quiz-result .profile-description {
+        font-size: 0.9rem;
+    }
+
+    .quiz-result .restart-quiz {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+
+    /* Financial Health */
+    .financial-health p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .financial-health-button {
+        padding: 12px 40px;
+        font-size: 1rem;
+    }
+
+    /* Sobre (Timeline) */
+    .timeline {
+        padding: 0 5px;
+    }
+
+    .timeline::before {
+        left: 8px;
+        width: 4px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+
+    .timeline-item:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .timeline-content, .timeline-image {
+        width: 100%;
+        margin: 0;
+    }
+
+    .timeline-content {
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+
+    .timeline-image img {
+        height: 120px;
+        border-radius: 10px;
+    }
+
+    /* Rodapé */
+    footer {
+        padding: 10px 5px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .footer-logo .logo {
+        font-size: 1.5rem;
+    }
+
+    .footer-logo .logo i {
+        font-size: 1rem;
+    }
+
+    .footer-logo p {
+        font-size: 0.8rem;
+        max-width: 200px;
+    }
+
+    .social-links {
+        gap: 8px;
+    }
+
+    .social-links a {
+        font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.7rem;
+        margin-top: 10px;
+    }
+    
+}
+/* Responsividade para Modo Paisagem no Celular */
+@media (min-width: 768px) and (max-width: 1024px) and (max-height: 600px) {
+    /* Header */
+    header {
+        padding: 10px 15px;
+        height: 60px;
+    }
+
+    header.scrolled {
+        padding: 8px 15px;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .logo i {
+        font-size: 1.5rem;
+        margin-right: 5px;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 1.5rem;
+    }
+
+    nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(254, 246, 233, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        z-index: 1000;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        margin: 8px 0;
+        font-size: 1.2rem;
+    }
+
+    nav a::after {
+        height: 2px;
+        bottom: -4px;
+    }
+
+    /* Hero */
+    .hero {
+        padding-top: 60px;
+    }
+
+    .hero img {
+        height: 30vh;
+        object-fit: contain;
+        object-position: center;
+        margin-top: 0;
+    }
+
+    .hero-content {
+        padding: 15px 10px;
+    }
+
+    .hero-content p {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .cta-button {
+        padding: 12px 40px;
+        font-size: 1rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Seções Gerais */
+    .intro-section, .services, .calculator, .quiz, .about, .testimonials, .financial-health {
+        padding: 60px 10px;
+    }
+
+    .intro-video h2, .services h2, .calculator h2, .quiz h2, .about h2, .testimonials h2, .financial-health h2 {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+
+    /* Intro Section */
+    .intro-section {
+        gap: 40px;
+    }
+
+    .intro-video {
+        min-width: 100%;
+    }
+
+    .video-container {
+        border-radius: 10px;
+    }
+
+    .play-button {
+        font-size: 2rem;
+    }
+
+    .intro-profile {
+        padding: 15px;
+        min-width: 100%;
+    }
+
+    .intro-profile img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .intro-profile h3 {
+        font-size: 1.8rem;
+    }
+
+    .intro-profile p {
+        font-size: 0.9rem;
+    }
+
+    /* Serviços */
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 5px;
+    }
+
+    .service-card {
+        border-radius: 15px;
+    }
+
+    .service-card img {
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .service-card h3 {
+        font-size: 1.5rem;
+        margin: 20px 0 15px;
+    }
+
+    .service-card p {
+        font-size: 1rem;
+        padding: 0 20px 15px;
+    }
+
+    .service-button {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-button i {
+        font-size: 1rem;
+        margin-right: 5px;
+    }
+
+    /* Depoimentos */
+    .testimonial-carousel {
+        padding: 0 5px;
+    }
+
+    .testimonial p {
+        font-size: 1rem;
+    }
+
+    .testimonial h4 {
+        font-size: 0.9rem;
+    }
+
+    .carousel-controls {
+        bottom: -40px;
+        gap: 10px;
+    }
+
+    .carousel-controls button {
+        width: 25px;
+        height: 25px;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Calculadora */
+    .calculator-form entdeckt-grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 5px;
+    }
+
+    .calculator-form input {
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+
+    .calculator-form .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .calculator-form button {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .calculator-result {
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    .calculator-result p {
+        font-size: 1rem;
+    }
+
+    .calculator-result .result-value {
+        font-size: 1.5rem;
+    }
+
+    .calculator-result .motivational {
+        font-size: 0.9rem;
+    }
+
+    .calculator-result canvas {
+        height: 200px !important;
+    }
+
+    /* Quiz */
+    .quiz-container {
+        padding: 0 5px;
+    }
+
+    .quiz-question h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .quiz-option {
+        padding: 12px;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .quiz-progress {
+        margin: 15px 0;
+        height: 8px;
+    }
+
+    .quiz-result {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+
+    .quiz-result .profile-title {
+        font-size: 1.3rem;
+    }
+
+    .quiz-result .profile-description {
+        font-size: 0.9rem;
+    }
+
+    .quiz-result .restart-quiz {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+
+    /* Financial Health */
+    .financial-health p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .financial-health-button {
+        padding: 12px 40px;
+        font-size: 1rem;
+    }
+
+    /* Sobre (Timeline) */
+    .timeline {
+        padding: 0 5px;
+    }
+
+    .timeline::before {
+        left: 8px;
+        width: 4px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+
+    .timeline-item:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .timeline-content, .timeline-image {
+        width: 100%;
+        margin: 0;
+    }
+
+    .timeline-content {
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+
+    .timeline-image img {
+        height: 120px;
+        border-radius: 10px;
+    }
+
+    /* Rodapé */
+    footer {
+        padding: 10px 5px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .footer-logo .logo {
+        font-size: 1.5rem;
+    }
+
+    .footer-logo .logo i {
+        font-size: 1rem;
+    }
+
+    .footer-logo p {
+        font-size: 0.8rem;
+        max-width: 200px;
+    }
+
+    .social-links {
+        gap: 8px;
+    }
+
+    .social-links a {
+        font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.7rem;
+        margin-top: 10px;
+    }
+
+
     </style>
 </head>
 <body>

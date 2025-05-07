@@ -796,6 +796,33 @@
     text-align: center;
 }
 
+.quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.quiz-nav-button {
+    background: linear-gradient(45deg, #eebc90, #ffe0a8);
+    color: #261910;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.quiz-nav-button:disabled {
+    background: #d3c8b5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+.quiz-nav-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(238, 188, 144, 0.6);
+}
+
+
 .profile-title {
     font-family: 'Dancing Script', cursive;
     font-size: 1.8rem;
@@ -848,6 +875,16 @@
         font-size: 1rem;
         padding: 12px;
     }
+
+    .quiz-navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .quiz-nav-button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
     .profile-title {
         font-size: 1.5rem;
     }
@@ -2435,19 +2472,19 @@ footer {
             <div class="quiz-question" id="question-1">
                 <h3>Sucesso financeiro é:</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Não sou bom e não falo de dinheiro">Não sou bom e não falo de dinheiro</div>
-                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Não sou bom gerenciando, mas não me importo de falar sobre o assunto">Não sou bom gerenciando, mas não me importo de falar sobre o assunto</div>
-                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Sou bom em gerenciar minhas finanças e não me importo de falar disso">Sou bom em gerenciar minhas finanças e não me importo de falar disso</div>
-                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Sou bom gestor do meu dinheiro, mas não falo disso">Sou bom gestor do meu dinheiro, mas não falo disso</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Não pensar em dinheiro o tempo todo">Não pensar em dinheiro o tempo todo</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Viver uma vida de rico">Viver uma vida de rico</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Acumular patrimônio">Acumular patrimônio</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Evitar armadilhas com dinheiro">Evitar armadilhas com dinheiro</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-2">
                 <h3>Como resumo minha relação com o dinheiro:</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Não pensar em dinheiro o tempo todo">Não pensar em dinheiro o tempo todo</div>
-                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Viver uma vida de rico">Viver uma vida de rico</div>
-                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Acumular patrimônio">Acumular patrimônio</div>
-                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Evitar armadilhas com dinheiro">Evitar armadilhas com dinheiro</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Não sou bom e não falo de dinheiro">Não sou bom e não falo de dinheiro</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Não sou bom gerenciando, mas não me importo de falar sobre o assunto">Não sou bom gerenciando, mas não me importo de falar sobre o assunto</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Sou bom em gerenciar minhas finanças e não me importo de falar disso">Sou bom em gerenciar minhas finanças e não me importo de falar disso</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Sou bom gestor do meu dinheiro, mas não falo disso">Sou bom gestor do meu dinheiro, mas não falo disso</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-3">
@@ -2471,7 +2508,7 @@ footer {
             <div class="quiz-question" id="question-5">
                 <h3>Se você herdasse R$ 500 mil, você se sentiria:</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Um pouco ansioso — o que fazer com tanto?">Um pouco ansioso — o que fazer com tanto?</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Um pouco ansioso - o que fazer com tanto?">Um pouco ansioso - o que fazer com tanto?</div>
                     <div class="quiz-option" data-value="b" tabindex="0" aria-label="Animado com tudo que poderia fazer">Animado com tudo que poderia fazer</div>
                     <div class="quiz-option" data-value="c" tabindex="0" aria-label="Feliz porque isso me colocaria anos à frente dos meus planos">Feliz porque isso me colocaria anos à frente dos meus planos</div>
                     <div class="quiz-option" data-value="d" tabindex="0" aria-label="Motivado a pensar onde eu alocaria">Motivado a pensar onde eu alocaria</div>
@@ -2514,7 +2551,7 @@ footer {
                 </div>
             </div>
             <div class="quiz-question" id="question-10">
-                <h3>“Gaste com você!” Como você reagiria a esse conselho?</h3>
+                <h3>Gaste com você! Como você reagiria a esse conselho?</h3>
                 <div class="quiz-options">
                     <div class="quiz-option" data-value="a" tabindex="0" aria-label="Mas eu não fiz nada para merecer isso">Mas eu não fiz nada para merecer isso</div>
                     <div class="quiz-option" data-value="b" tabindex="0" aria-label="Ok!">Ok!</div>
@@ -2535,7 +2572,7 @@ footer {
                 <h3>Qual a maior lição sobre dinheiro?</h3>
                 <div class="quiz-options">
                     <div class="quiz-option" data-value="a" tabindex="0" aria-label="Dinheiro é complicado e difícil de lidar">Dinheiro é complicado e difícil de lidar</div>
-                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Dinheiro é a chave para o bem-estar">Dinheiro é a chave para o bem-estar</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Dinheiro é a chave para o bem estar">Dinheiro é a chave para o bem estar</div>
                     <div class="quiz-option" data-value="c" tabindex="0" aria-label="Você nunca tem tudo que realmente precisa">Você nunca tem tudo que realmente precisa</div>
                     <div class="quiz-option" data-value="d" tabindex="0" aria-label="Ser capaz de mantê-lo é mais importante do que ter dinheiro">Ser capaz de mantê-lo é mais importante do que ter dinheiro</div>
                 </div>
@@ -3068,27 +3105,100 @@ const quizResult = document.getElementById('quiz-result');
 const progressBar = document.getElementById('quiz-progress');
 const restartButton = document.querySelector('.restart-quiz');
 let currentQuestion = 0;
-let answers = { a: 0, b: 0, c: 0, d: 0 };
+let answers = Array(quizQuestions.length).fill(null);
+let answerCounts = { a: 0, b: 0, c: 0, d: 0 };
 
+// Função para adicionar botões de navegação dinamicamente
+function addNavigationButtons() {
+    quizQuestions.forEach((question, index) => {
+        // Remove qualquer navegação existente para evitar duplicatas
+        const existingNav = question.querySelector('.quiz-navigation');
+        if (existingNav) existingNav.remove();
+
+        const navDiv = document.createElement('div');
+        navDiv.className = 'quiz-navigation';
+
+        // Adicionar botão "Anterior" a partir da segunda pergunta (index > 0)
+        if (index > 0) {
+            const prevButton = document.createElement('button');
+            prevButton.className = 'quiz-nav-button';
+            prevButton.textContent = 'Anterior';
+            prevButton.setAttribute('aria-label', 'Voltar para a pergunta anterior');
+            prevButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            });
+            navDiv.appendChild(prevButton);
+        }
+
+        // Adicionar botão "Ver Resultado" apenas na última pergunta
+        if (index === quizQuestions.length - 1) {
+            const submitButton = document.createElement('button');
+            submitButton.className = 'quiz-nav-button';
+            submitButton.textContent = 'Ver Resultado';
+            submitButton.setAttribute('aria-label', 'Ver resultado do quiz');
+            submitButton.disabled = !answers[index];
+            submitButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (answers[index]) {
+                    showResult();
+                }
+            });
+            navDiv.appendChild(submitButton);
+        }
+
+        question.appendChild(navDiv);
+    });
+}
+
+// Função para atualizar estado dos botões
+function updateButtonStates() {
+    quizQuestions.forEach((question, index) => {
+        // Atualizar botão "Ver Resultado" na última pergunta
+        if (index === quizQuestions.length - 1) {
+            const submitButton = question.querySelector('.quiz-nav-button[textContent="Ver Resultado"]');
+            if (submitButton) {
+                submitButton.disabled = !answers[index];
+            }
+        }
+    });
+}
+
+// Função para exibir uma pergunta
 function showQuestion(index) {
     quizQuestions.forEach((q, i) => {
         q.classList.toggle('active', i === index);
     });
     progressBar.style.width = `${((index + 1) / quizQuestions.length) * 100}%`;
+    // Destacar a opção selecionada
+    const options = quizQuestions[index].querySelectorAll('.quiz-option');
+    options.forEach(option => {
+        option.classList.toggle('selected', answers[index] === option.dataset.value);
+    });
+    // Atualizar botões após exibir a pergunta
+    updateButtonStates();
 }
 
+// Função para exibir o resultado
 function showResult() {
     quizQuestions.forEach(q => q.classList.remove('active'));
     quizResult.style.display = 'block';
     progressBar.style.width = '100%';
 
+    // Contar respostas
+    answerCounts = { a: 0, b: 0, c: 0, d: 0 };
+    answers.forEach(answer => {
+        if (answer) answerCounts[answer]++;
+    });
+
     // Determinar a persona dominante
-    let maxCount = Math.max(...Object.values(answers));
-    let personas = Object.keys(answers).filter(key => answers[key] === maxCount);
+    let maxCount = Math.max(...Object.values(answerCounts));
+    let personas = Object.keys(answerCounts).filter(key => answerCounts[key] === maxCount);
     let dominantPersona = personas[0]; // Escolhe a primeira em caso de empate
 
     // Mostrar contagem de respostas
-    const countsText = `Suas respostas: ${answers.a} Avestruz, ${answers.b} Status, ${answers.c} Adoração, ${answers.d} Vigilante`;
+    const countsText = `Suas respostas: Avestruz: ${answerCounts.a}, Status: ${answerCounts.b}, Adoração: ${answerCounts.c}, Vigilante: ${answerCounts.d}`;
     quizResult.querySelector('.profile-counts').textContent = countsText;
 
     // Definir título e descrição
@@ -3097,28 +3207,28 @@ function showResult() {
     switch (dominantPersona) {
         case 'a':
             profile = 'Avestruz';
-            description = 'Você é influenciado pela crença de que dinheiro é complicado e você não é digno disso. Tende a evitar lidar com questões financeiras, mas tem potencial para gerenciar bem se superar o medo. <strong>Dica:</strong> Leia suas declarações financeiras, experimente aplicativos de orçamento e peça ajuda.';
+            description = 'Você é influenciado pela crença de que dinheiro é complicado e você é indigno disso. Ao invés de lidar com questões de dinheiro de frente, você tende a deixá-las se acumular, como suas contas fechadas e extratos bancários. Você é o menos provável de todas as personas para pedir um aumento ou para falar com seu parceiro ou família sobre dinheiro. <br><strong>A boa notícia:</strong> avestruzes são bons no manejo do dinheiro, se conseguirem superar o medo. Leia todas as suas declarações, brinque com novos aplicativos de orçamento e não tenha medo de pedir ajuda.';
             break;
         case 'b':
             profile = 'Status';
-            description = 'Você associa autoestima e felicidade ao estilo de vida. O desafio é evitar gastos impulsivos. Falar sobre dinheiro é fácil para você. <strong>Dica:</strong> Converse com amigos, familiares ou profissionais para criar um planejamento financeiro gamificado.';
+            description = 'Você é influenciado pela crença de que sua autoestima e felicidade são diretamente ligados ao tipo de estilo de vida que você tem. Seu maior desafio é superar o "compre agora, descubra mais tarde". A realidade é que provavelmente você não está tão seguro financeiramente como sugere seu estilo de vida. Você é o mais provável de todas as personas a ser atraído por esquemas de enriquecimento rápido. <br><strong>A boa notícia:</strong> você tem facilidade de falar abertamente sobre dinheiro. Aproveite para conversar com familiares, amigos e profissionais que podem orientar você a gamificar seu planejamento.';
             break;
         case 'c':
             profile = 'Adoração';
-            description = 'Você vê o dinheiro como importante e escasso, poupando muito. Gosta de economizar, mas pode evitar gastar consigo mesmo. <strong>Dica:</strong> Reconheça que é saudável equilibrar poupança e gastos para aproveitar a vida.';
+            description = 'Você é influenciado pela crença de que o dinheiro é importante e escasso, o que significa que você nunca pode ter o suficiente disso para pagar todas as coisas que deseja na vida. É uma emoção fazer dinheiro e uma emoção ainda maior estocá-lo. Você gosta de cupons de desconto e ofertas promocionais. De todas as personas, você é o menos provável de gastar dinheiro consigo mesmo. <br><strong>A boa notícia:</strong> você é inteligente com dinheiro. O que mais precisa é relaxar! Reconheça que o dinheiro é um equilíbrio de poupança e gasto, e que é saudável aproveitar seu dinheiro de vez em quando.';
             break;
         case 'd':
             profile = 'Vigilante';
-            description = 'Você desconfia de riscos e investimentos, preferindo guardar dinheiro. É bom com orçamento, mas pode perder para a inflação. <strong>Dica:</strong> Busque orientação financeira e comece a investir em produtos seguros.';
+            description = 'Você é influenciado pela crença de que as perdas potenciais de um risco sempre superarão os ganhos potenciais. Isso se traduz em desconfiança de produtos de investimento e até mesmo instituições financeiras. De todas as personas, você é o mais vulnerável aos efeitos negativos da inflação, porque segurar seu dinheiro parece mais seguro para você do que investi-lo. <br><strong>A boa notícia:</strong> você tem habilidades sólidas de orçamento e raramente gasta mais. Seu maior obstáculo é procurar orientação financeira e investir em novos produtos.';
             break;
     }
 
     if (personas.length > 1) {
-        description += ' <strong>Nota:</strong> Você tem características de mais de uma persona, o que indica uma relação equilibrada com o dinheiro!';
+        description += ' <br><strong>Nota:</strong> Você tem características de mais de uma persona, o que indica uma relação equilibrada com o dinheiro!';
     }
 
     quizResult.querySelector('.profile-title').textContent = `Seu Perfil: ${profile}`;
-    quizResult.querySelector('.profile-description').textContent = description;
+    quizResult.querySelector('.profile-description').innerHTML = description;
 
     // Animação com GSAP
     gsap.from(quizResult, {
@@ -3129,12 +3239,20 @@ function showResult() {
     });
 }
 
+// Função para reiniciar o quiz
 function restartQuiz() {
     currentQuestion = 0;
-    answers = { a: 0, b: 0, c: 0, d: 0 };
+    answers = Array(quizQuestions.length).fill(null);
+    answerCounts = { a: 0, b: 0, c: 0, d: 0 };
     quizResult.style.display = 'none';
+    // Remover botões de navegação existentes
+    quizQuestions.forEach(question => {
+        const navDiv = question.querySelector('.quiz-navigation');
+        if (navDiv) navDiv.remove();
+    });
+    // Adicionar botões novamente
+    addNavigationButtons();
     showQuestion(currentQuestion);
-    progressBar.style.width = `${(1 / quizQuestions.length) * 100}%`;
 }
 
 // Adicionar eventos às opções
@@ -3142,7 +3260,9 @@ quizQuestions.forEach((question, index) => {
     question.querySelectorAll('.quiz-option').forEach(option => {
         // Clique com mouse
         option.addEventListener('click', () => {
-            answers[option.dataset.value]++;
+            answers[index] = option.dataset.value;
+            // Atualizar botões de navegação
+            addNavigationButtons();
             if (index < quizQuestions.length - 1) {
                 currentQuestion++;
                 showQuestion(currentQuestion);
@@ -3161,6 +3281,9 @@ quizQuestions.forEach((question, index) => {
 
 // Evento do botão de reiniciar
 restartButton.addEventListener('click', restartQuiz);
+
+// Adicionar botões de navegação
+addNavigationButtons();
 
 // Iniciar quiz
 showQuestion(0);

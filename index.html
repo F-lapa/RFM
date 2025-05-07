@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -338,8 +339,8 @@
         }
 
         .intro-profile img {
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             margin-bottom: 20px;
             object-fit: cover;
@@ -396,28 +397,28 @@
         }
 
         .service-card {
-            background: #fff;
-            border-radius: 40px;
-            overflow: hidden;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-            transition: transform 0.8s ease, box-shadow 0.8s ease;
-            perspective: 2500px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: float 4s infinite ease-in-out;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    background: #fff;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+    transition: transform 0.8s ease, box-shadow 0.8s ease;
+    perspective: 2500px;
+    position: relative;
+    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .service-card img {
-            width: 100%;
-            height: 350px;
-            object-fit: contain;
-            object-position: center top;
-            transition: transform 1s ease;
-            will-change: transform;
-        }
+.service-card img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center top;
+    transition: transform 1s ease;
+    will-change: transform;
+}
 
         .service-card.touched {
             transform: none;
@@ -501,6 +502,14 @@
         .testimonial h4 {
             font-size: 1.5rem;
             color: #261910;
+            font-weight: 700;
+        }
+
+        .testimonial h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #8B4513;
+            margin-bottom: 20px;
             font-weight: 700;
         }
 
@@ -696,157 +705,160 @@
         }
 
         /* Quiz de Perfil Financeiro */
-        .quiz {
-            padding: 200px 100px;
-            background: #ebe2d4;
-            text-align: center;
-            overflow-x: hidden;
-        }
+.quiz {
+    padding: 100px 20px;
+    background: #ebe2d4;
+    text-align: center;
+    overflow-x: hidden;
+}
 
-        .quiz h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 100px;
-            color: #8B4513;
-            animation: bounceTitle 3s infinite ease-in-out;
-        }
+.quiz h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #8B4513;
+    margin-bottom: 50px;
+    animation: bounceTitle 3s infinite ease-in-out;
+}
 
-        .quiz-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-            width: 100%;
-        }
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-        .quiz-question {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
+.quiz-progress {
+    height: 8px;
+    background: #d3c8b5;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 20px 0;
+}
 
-        .quiz-question.active {
-            display: block;
-            opacity: 1;
-            animation: zoomIn 0.8s ease;
-        }
+.quiz-progress-bar {
+    height: 100%;
+    background: linear-gradient(45deg, #eebc90, #ffe0a8);
+    transition: width 0.5s ease;
+}
 
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
+.quiz-question {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
 
-        .quiz-question h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
-            color: #261910;
-            margin-bottom: 40px;
-        }
+.quiz-question.active {
+    display: block;
+    opacity: 1;
+    animation: zoomIn 0.5s ease;
+}
 
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-        }
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
 
-        .quiz-option {
-            background: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            font-size: 1.3rem;
-            color: #3c2d21;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-        }
+.quiz-question h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #261910;
+    margin-bottom: 20px;
+}
 
-        .quiz-option:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
-        }
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
-        .quiz-progress {
-            margin: 40px 0;
-            height: 10px;
-            background: #d3c8b5;
-            border-radius: 5px;
-            overflow: hidden;
-            width: 100%;
-        }
+.quiz-option {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #3c2d21;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
 
-        .quiz-progress-bar {
-            height: 100%;
-            background: linear-gradient(45deg, #eebc90, #ffe0a8);
-            width: 0;
-            transition: width 0.5s ease;
-        }
+.quiz-option:hover, .quiz-option:focus {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
 
-        .quiz-result {
-            display: none;
-            margin-top: 40px;
-            font-size: 1.5rem;
-            color: #261910;
-            background: #fff;
-            padding: 20px 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
+.quiz-result {
+    display: none;
+    margin-top: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
 
-        .quiz-result .profile-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #eebc90;
-            margin-bottom: 20px;
-        }
+.profile-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #eebc90;
+    margin-bottom: 10px;
+}
 
-        .quiz-result .profile-description {
-            font-size: 1.3rem;
-            color: #3c2d21;
-            line-height: 1.6;
-        }
+.profile-counts {
+    font-size: 1rem;
+    color: #3c2d21;
+    margin-bottom: 15px;
+}
 
-        .quiz-result .restart-quiz {
-            background: linear-gradient(45deg, #eebc90, #ffe0a8);
-            color: #261910;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            position: relative;
-            overflow: hidden;
-        }
+.profile-description {
+    font-size: 1rem;
+    color: #3c2d21;
+    line-height: 1.5;
+}
 
-        .quiz-result .restart-quiz:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(238, 188, 144, 0.6);
-        }
+.restart-quiz {
+    background: linear-gradient(45deg, #eebc90, #ffe0a8);
+    color: #261910;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .quiz-result .restart-quiz::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.3);
-            transition: left 0.5s ease;
-        }
+.restart-quiz:hover, .restart-quiz:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(238, 188, 144, 0.6);
+}
 
-        .quiz-result .restart-quiz:hover::before {
-            left: 100%;
-        }
+/* Responsividade */
+@media (max-width: 768px) {
+    .quiz {
+        padding: 50px 10px;
+    }
+    .quiz h2 {
+        font-size: 2.5rem;
+    }
+    .quiz-question h3 {
+        font-size: 1.5rem;
+    }
+    .quiz-option {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    .profile-title {
+        font-size: 1.5rem;
+    }
+    .profile-counts, .profile-description {
+        font-size: 0.9rem;
+    }
+    .restart-quiz {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
 
         /* Nova Seção de Índice de Saúde Financeira */
         .financial-health {
@@ -1005,7 +1017,6 @@
             object-fit: cover;
             border-radius: 30px;
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-            animation: float 4s infinite ease-in-out;
         }
 
         .timeline-image img.touched {
@@ -1103,6 +1114,7 @@ footer {
     .footer-bottom {
         font-size: 0.8rem;
     }
+
 }
 
 @media (max-width: 480px) {
@@ -1311,8 +1323,8 @@ footer {
             }
 
             .intro-profile img {
-                width: 120px;
-                height: 120px;
+                width: 220px;
+                height: 220px;
             }
 
             .intro-profile h3 {
@@ -1334,9 +1346,9 @@ footer {
             }
 
             .service-card img {
-                height: 250px;
+                height: auto;
+                max-width: 100%;
             }
-
             .service-card h3 {
                 font-size: 1.8rem;
                 margin: 30px 0 20px;
@@ -1518,6 +1530,11 @@ footer {
             .testimonial h4 {
                 font-size: 1.1rem;
             }
+             
+            .testimonial h3 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
 
             .carousel-controls {
                 bottom: -50px;
@@ -1663,9 +1680,9 @@ footer {
             }
 
             .service-card img {
-                height: 200px;
+                height: auto;
+                max-width: 100%;
             }
-
             .service-card h3 {
                 font-size: 1.5rem;
             }
@@ -1698,6 +1715,11 @@ footer {
 
             .testimonial h4 {
                 font-size: 1rem;
+            }
+
+            .testimonial h3 {
+                font-size: 1.6rem;
+                margin-bottom: 10px;
             }
 
             .calculator-form input {
@@ -2009,8 +2031,8 @@ footer {
     }
 
     .intro-profile img {
-        width: 100px;
-        height: 100px;
+        width: 200px;
+        height: 200px;
     }
 
     .intro-profile h3 {
@@ -2033,9 +2055,10 @@ footer {
     }
 
     .service-card img {
-        height: 150px;
-        object-fit: cover;
-    }
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
 
     .service-card h3 {
         font-size: 1.5rem;
@@ -2305,7 +2328,7 @@ footer {
             <img src="rose.png" alt="Foto de Roselaine Faustino Machado" loading="lazy">
             <h3>Roselaine Faustino Machado</h3>
             <p>Contadora de formação e especialista em finanças, durante mais de 15 anos dediquei meu tempo e experiência ajudando empresas a organizar a área contábil e financeira para planejar e gerir melhor seus negócios.</p>
-            <p>Após experimentar o quanto a educação financeira e o autoconhecimento transformam vidas, hoje me dedico a ajudar mulheres e famílias a buscar e manter a saúde financeira a partir de uma boa relação com o dinheiro que é apenas um meio para você obter mais <strong>SEGURANÇA, TRANQUILIDADE e LIBERDADE.</strong></p>
+            <p>Após experimentar o quanto a educação financeira e o autoconhecimento transformam vidas, hoje também sou especialista em investimentos certificada pela ANBIMA e me dedico a ajudar mulheres e famílias a buscar e manter a saúde financeira a partir de uma boa relação com o dinheiro que é apenas um meio para você obter mais <strong>SEGURANÇA, TRANQUILIDADE e LIBERDADE.</strong></p>
         </div>
     </section>
 
@@ -2315,19 +2338,21 @@ footer {
             <div class="service-card">
                 <img loading="lazy" src="familia.png" alt="Planejamento Financeiro Pessoal e Familiar">
                 <h3>Planejamento Financeiro Pessoal e Familiar</h3>
-                <p>Desenvolvemos um plano personalizado para organizar suas finanças, definir metas claras e alcançar segurança financeira para você e sua família, com estratégias práticas e acompanhamento contínuo.</p>
+                <p>Desenvolvemos um plano personalizado para organizar suas finanças, quitar dívidas, definir metas claras e investir para alcançar liberdade financeira para você e sua família!
+                    Para agendar um diagnóstico inicial gratuito e receber uma planilha para mapeamento completo da sua situação financeira informe seus dados que entraremos em contato.
+                    </p>
                 <a href="https://wa.me/5548999370943" class="service-button" aria-label="Solicitar proposta para Planejamento Financeiro">Solicite uma Proposta</a>
             </div>
             <div class="service-card">
                 <img loading="lazy" src="autonomas.png" alt="Consultoria para Autônomas">
                 <h3>Consultoria e Assessoria Financeira para Autônomas</h3>
-                <p>Orientação especializada para mulheres autônomas, com foco em gestão financeira, precificação, controle de fluxo de caixa e planejamento para crescimento sustentável do seu negócio.</p>
+                <p>Orientação especializada para empreendedoras autônomas, com foco em gestão financeira, precificação, controle de fluxo de caixa e planejamento para crescimento sustentável do seu negócio.</p>
                 <a href="https://wa.me/5548999370943" class="service-button" aria-label="Solicitar proposta para Consultoria para Autônomas">Solicite uma Proposta</a>
             </div>
             <div class="service-card">
                 <img loading="lazy" src="mentoria.png" alt="Mentorias e Workshops em Grupo">
                 <h3>Mentorias e Workshops em Grupo</h3>
-                <p>Venha para o nosso espaço de partilha de experiências, dicas e divulgação de trabalhos que possam ajudar a manifestarmos uma vida mais abundante a partir do autoconhecimento e de uma relação saudável com as finanças</p>
+                <p>Venha para o nosso espaço de partilha de experiências, dicas e onde são divulgados os próximos eventos que podem ajudar você a ter uma vida mais abundante a partir do autoconhecimento e de uma relação saudável com as finanças!</p>
                 <a href="https://chat.whatsapp.com/DR3kFl2mtxmFRL0axoWGDy" class="service-button" aria-label="Entrar no grupo de Mentorias e Workshops"><i class="fab fa-whatsapp"></i>Entre no Nosso Grupo</a>
             </div>
             <div class="service-card">
@@ -2343,16 +2368,29 @@ footer {
         <h2>O Que Nossos Clientes Dizem:</h2>
         <div class="testimonial-carousel">
             <div class="testimonial active">
-                <p>"Obrigada pela parceria esse ano! Creio que vc não tem noção o quanto nos apoiou e quanto isso fez diferença em nossas vidas. Inclusive sobre conversar sobre dinheiro (eu e Alexandre) numa outra perspectiva."</p>
+                <h3>Planejamento Financeiro Pessoal e Familiar</h3>
+                <p>"Obrigada pela parceria esse ano! Creio que vc não tem noção o quanto nos apoiou..."</p>
                 <h4>Fernanda e Alexandre</h4>
             </div>
             <div class="testimonial">
-                <p>"Seu workshop foi leve, o que é difícil quando a gente fala de dinheiro, deu pra sentir teu cuidado, tua atenção, tua entrega! Me senti comfy de abrir um pouco da minha história e espero que tenha sido só o começo!"</p>
+                <h3>Workshop</h3>
+                <p>"Seu workshop foi leve, o que é difícil quando a gente fala de dinheiro..."</p>
                 <h4>Julia</h4>
             </div>
             <div class="testimonial">
-                <p>"Minha vida financeira está ficando muito mais organizada com tua ajuda! Fiquei muito agradecida pelos aprendizados e irei aplicar na minha vida!"</p>
+                <h3>Mentoria em grupo</h3>
+                <p>"Minha vida financeira está ficando muito mais organizada com tua ajuda..."</p>
                 <h4>Florência</h4>
+            </div>
+            <div class="testimonial">
+                <h3>Mentoria em grupo</h3>
+                <p>“Foi a primeira vez que eu tive contato com um estudo de finanças focado no autoconhecimento. Achei o curso bem claro e objetivo, temos o material de apoio que fez toda a diferença. Os encontros e as trocas que fizemos foram fundamentais e me trouxeram insights importantes.”</p>
+                <h4>Luisa</h4>
+            </div>
+            <div class="testimonial">
+                <h3>Consultoria de Investimentos</h3>
+                <p>“O raio-x deu uma visibilidade bem boa do cenário que estamos e trouxe uma visão mais clara do que precisamos fazer pra chegar onde queremos. Outro ponto importante foi ter definido onde investir mês a mês. Achei bem importante ter esse apoio para abrir mais a mente. Com as suas sugestões vamos diversificar melhor a carteira, e possivelmente ter maiores ganhos.”</p>
+                <h4>Débora e André</h4>
             </div>
         </div>
         <div class="carousel-controls">
@@ -2361,6 +2399,8 @@ footer {
                 <div class="carousel-dot active" onclick="goToTestimonial(0)" aria-label="Ir para depoimento 1"></div>
                 <div class="carousel-dot" onclick="goToTestimonial(1)" aria-label="Ir para depoimento 2"></div>
                 <div class="carousel-dot" onclick="goToTestimonial(2)" aria-label="Ir para depoimento 3"></div>
+                <div class="carousel-dot" onclick="goToTestimonial(3)" aria-label="Ir para depoimento 4"></div>
+                <div class="carousel-dot" onclick="goToTestimonial(4)" aria-label="Ir para depoimento 5"></div>
             </div>
             <button onclick="nextTestimonial()" aria-label="Próximo depoimento"><i class="fas fa-chevron-right"></i></button>
         </div>
@@ -2372,7 +2412,7 @@ footer {
             <input type="number" id="principal" placeholder="Valor Inicial (R$)" min="0" step="0.01" required aria-label="Valor inicial em reais">
             <input type="number" id="monthly" placeholder="Aporte Mensal (R$)" min="0" step="0.01" required aria-label="Aporte mensal em reais">
             <input type="number" id="rate" placeholder="Taxa de Juros Anual (%)" min="0" step="0.01" required aria-label="Taxa de juros anual em porcentagem">
-            <input type="number" id="time" placeholder="Tempo (anos)" min="1" step="1" required aria-label="Tempo em anos">
+            <input type="number" id="time" placeholder="Tempo (meses)" min="1" step="0.1" required aria-label="Tempo em meses">
             <div class="button-group">
                 <button type="submit" aria-label="Calcular juros compostos">Calcular</button>
                 <button type="reset" class="reset" aria-label="Limpar formulário">Limpar</button>
@@ -2395,113 +2435,114 @@ footer {
             <div class="quiz-question" id="question-1">
                 <h3>Sucesso financeiro é:</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Não sou bom e não falo de dinheiro">Não sou bom e não falo de dinheiro</div>
-                    <div class="quiz-option" data-value="b" aria-label="Não sou bom gerenciando, mas não me importo de falar sobre o assunto">Não sou bom gerenciando, mas não me importo de falar sobre o assunto</div>
-                    <div class="quiz-option" data-value="c" aria-label="Sou bom em gerenciar minhas finanças e não me importo de falar disso">Sou bom em gerenciar minhas finanças e não me importo de falar disso</div>
-                    <div class="quiz-option" data-value="d" aria-label="Sou bom gestor do meu dinheiro, mas não falo disso">Sou bom gestor do meu dinheiro, mas não falo disso</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Não sou bom e não falo de dinheiro">Não sou bom e não falo de dinheiro</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Não sou bom gerenciando, mas não me importo de falar sobre o assunto">Não sou bom gerenciando, mas não me importo de falar sobre o assunto</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Sou bom em gerenciar minhas finanças e não me importo de falar disso">Sou bom em gerenciar minhas finanças e não me importo de falar disso</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Sou bom gestor do meu dinheiro, mas não falo disso">Sou bom gestor do meu dinheiro, mas não falo disso</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-2">
                 <h3>Como resumo minha relação com o dinheiro:</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Não pensar em dinheiro o tempo todo">Não pensar em dinheiro o tempo todo</div>
-                    <div class="quiz-option" data-value="b" aria-label="Viver uma vida de rico">Viver uma vida de rico</div>
-                    <div class="quiz-option" data-value="c" aria-label="Acumular patrimônio">Acumular patrimônio</div>
-                    <div class="quiz-option" data-value="d" aria-label="Evitar armadilhas com dinheiro">Evitar armadilhas com dinheiro</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Não pensar em dinheiro o tempo todo">Não pensar em dinheiro o tempo todo</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Viver uma vida de rico">Viver uma vida de rico</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Acumular patrimônio">Acumular patrimônio</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Evitar armadilhas com dinheiro">Evitar armadilhas com dinheiro</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-3">
                 <h3>O que te dá energia:</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Ter um tempo pra mim">Ter um tempo pra mim</div>
-                    <div class="quiz-option" data-value="b" aria-label="Sair com amigos ou com família">Sair com amigos ou com família</div>
-                    <div class="quiz-option" data-value="c" aria-label="Uma agenda cheia! Me sinto viva!">Uma agenda cheia! Me sinto viva!</div>
-                    <div class="quiz-option" data-value="d" aria-label="Planejar um projeto novo e pensar nos detalhes">Planejar um projeto novo e pensar nos detalhes</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Ter um tempo pra mim">Ter um tempo pra mim</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Sair com amigos ou com família">Sair com amigos ou com família</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Uma agenda cheia! Me sinto viva!">Uma agenda cheia! Me sinto viva!</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Planejar um projeto novo e pensar nos detalhes">Planejar um projeto novo e pensar nos detalhes</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-4">
                 <h3>Em relação às minhas finanças, eu gostaria de ser mais:</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Consciente">Consciente</div>
-                    <div class="quiz-option" data-value="b" aria-label="Livre">Livre</div>
-                    <div class="quiz-option" data-value="c" aria-label="Preparado">Preparado</div>
-                    <div class="quiz-option" data-value="d" aria-label="No controle">No controle</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Consciente">Consciente</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Livre">Livre</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Preparado">Preparado</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="No controle">No controle</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-5">
                 <h3>Se você herdasse R$ 500 mil, você se sentiria:</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Um pouco ansioso — o que fazer com tanto?">Um pouco ansioso — o que fazer com tanto?</div>
-                    <div class="quiz-option" data-value="b" aria-label="Animado com tudo que poderia fazer">Animado com tudo que poderia fazer</div>
-                    <div class="quiz-option" data-value="c" aria-label="Feliz porque isso me colocaria anos à frente dos meus planos">Feliz porque isso me colocaria anos à frente dos meus planos</div>
-                    <div class="quiz-option" data-value="d" aria-label="Motivado a pensar onde eu alocaria">Motivado a pensar onde eu alocaria</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Um pouco ansioso — o que fazer com tanto?">Um pouco ansioso — o que fazer com tanto?</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Animado com tudo que poderia fazer">Animado com tudo que poderia fazer</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Feliz porque isso me colocaria anos à frente dos meus planos">Feliz porque isso me colocaria anos à frente dos meus planos</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Motivado a pensar onde eu alocaria">Motivado a pensar onde eu alocaria</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-6">
                 <h3>Eu acredito que a maioria dos problemas financeiros é resultado de:</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Pessoas querendo ter um padrão de vida que não podem">Pessoas querendo ter um padrão de vida que não podem</div>
-                    <div class="quiz-option" data-value="b" aria-label="Tratar o dinheiro como algo estressante e não agradável">Tratar o dinheiro como algo estressante e não agradável</div>
-                    <div class="quiz-option" data-value="c" aria-label="Não ter educação financeira">Não ter educação financeira</div>
-                    <div class="quiz-option" data-value="d" aria-label="Um sistema econômico corrupto">Um sistema econômico corrupto</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Pessoas querendo ter um padrão de vida que não podem">Pessoas querendo ter um padrão de vida que não podem</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Tratar o dinheiro como algo estressante e não agradável">Tratar o dinheiro como algo estressante e não agradável</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Não ter educação financeira">Não ter educação financeira</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Um sistema econômico corrupto">Um sistema econômico corrupto</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-7">
                 <h3>Mais dinheiro, mais...</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Problemas">Problemas</div>
-                    <div class="quiz-option" data-value="b" aria-label="Liberdade">Liberdade</div>
-                    <div class="quiz-option" data-value="c" aria-label="Felicidade">Felicidade</div>
-                    <div class="quiz-option" data-value="d" aria-label="Nada — dinheiro não muda nada">Nada — dinheiro não muda nada</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Problemas">Problemas</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Liberdade">Liberdade</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Felicidade">Felicidade</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Nada — dinheiro não muda nada">Nada — dinheiro não muda nada</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-8">
                 <h3>Qual sua fraqueza:</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Sou um pouco preguiçoso">Sou um pouco preguiçoso</div>
-                    <div class="quiz-option" data-value="b" aria-label="Sou uma pessoa mais egocêntrica">Sou uma pessoa mais egocêntrica</div>
-                    <div class="quiz-option" data-value="c" aria-label="Às vezes sou competitivo demais">Às vezes sou competitivo demais</div>
-                    <div class="quiz-option" data-value="d" aria-label="Tenho problemas em confiar">Tenho problemas em confiar</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Sou um pouco preguiçoso">Sou um pouco preguiçoso</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Sou uma pessoa mais egocêntrica">Sou uma pessoa mais egocêntrica</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Às vezes sou competitivo demais">Às vezes sou competitivo demais</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Tenho problemas em confiar">Tenho problemas em confiar</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-9">
                 <h3>Quais suas forças?</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Penso bastante">Penso bastante</div>
-                    <div class="quiz-option" data-value="b" aria-label="Sou amigável">Sou amigável</div>
-                    <div class="quiz-option" data-value="c" aria-label="Sou determinado">Sou determinado</div>
-                    <div class="quiz-option" data-value="d" aria-label="Sou esperto/inteligente">Sou esperto/inteligente</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Penso bastante">Penso bastante</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Sou amigável">Sou amigável</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Sou determinado">Sou determinado</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Sou esperto/inteligente">Sou esperto/inteligente</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-10">
                 <h3>“Gaste com você!” Como você reagiria a esse conselho?</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Mas eu não fiz nada para merecer isso">Mas eu não fiz nada para merecer isso</div>
-                    <div class="quiz-option" data-value="b" aria-label="Ok!">Ok!</div>
-                    <div class="quiz-option" data-value="c" aria-label="Eu prefiro poupar do que gastar">Eu prefiro poupar do que gastar</div>
-                    <div class="quiz-option" data-value="d" aria-label="Não, eu não preciso de tratamento especial agora">Não, eu não preciso de tratamento especial agora</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Mas eu não fiz nada para merecer isso">Mas eu não fiz nada para merecer isso</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Ok!">Ok!</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Eu prefiro poupar do que gastar">Eu prefiro poupar do que gastar</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Não, eu não preciso de tratamento especial agora">Não, eu não preciso de tratamento especial agora</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-11">
                 <h3>Qual frase te resume quando se trata de investimentos?</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Eu não tenho tempo para estudar">Eu não tenho tempo para estudar</div>
-                    <div class="quiz-option" data-value="b" aria-label="Quanto maior o risco, maior o retorno">Quanto maior o risco, maior o retorno</div>
-                    <div class="quiz-option" data-value="c" aria-label="Quanto mais investimentos eu tenho, mais seguro eu me sinto">Quanto mais investimentos eu tenho, mais seguro eu me sinto</div>
-                    <div class="quiz-option" data-value="d" aria-label="Não invisto pelo risco de perder tudo">Não invisto pelo risco de perder tudo</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Eu não tenho tempo para estudar">Eu não tenho tempo para estudar</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Quanto maior o risco, maior o retorno">Quanto maior o risco, maior o retorno</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Quanto mais investimentos eu tenho, mais seguro eu me sinto">Quanto mais investimentos eu tenho, mais seguro eu me sinto</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Não invisto pelo risco de perder tudo">Não invisto pelo risco de perder tudo</div>
                 </div>
             </div>
             <div class="quiz-question" id="question-12">
                 <h3>Qual a maior lição sobre dinheiro?</h3>
                 <div class="quiz-options">
-                    <div class="quiz-option" data-value="a" aria-label="Dinheiro é complicado e difícil de lidar">Dinheiro é complicado e difícil de lidar</div>
-                    <div class="quiz-option" data-value="b" aria-label="Dinheiro é a chave para o bem-estar">Dinheiro é a chave para o bem-estar</div>
-                    <div class="quiz-option" data-value="c" aria-label="Você nunca tem tudo que realmente precisa">Você nunca tem tudo que realmente precisa</div>
-                    <div class="quiz-option" data-value="d" aria-label="Ser capaz de mantê-lo é mais importante do que ter dinheiro">Ser capaz de mantê-lo é mais importante do que ter dinheiro</div>
+                    <div class="quiz-option" data-value="a" tabindex="0" aria-label="Dinheiro é complicado e difícil de lidar">Dinheiro é complicado e difícil de lidar</div>
+                    <div class="quiz-option" data-value="b" tabindex="0" aria-label="Dinheiro é a chave para o bem-estar">Dinheiro é a chave para o bem-estar</div>
+                    <div class="quiz-option" data-value="c" tabindex="0" aria-label="Você nunca tem tudo que realmente precisa">Você nunca tem tudo que realmente precisa</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Ser capaz de mantê-lo é mais importante do que ter dinheiro">Ser capaz de mantê-lo é mais importante do que ter dinheiro</div>
                 </div>
             </div>
             <div class="quiz-result" id="quiz-result">
                 <div class="profile-title"></div>
+                <div class="profile-counts"></div>
                 <div class="profile-description"></div>
                 <button class="restart-quiz" aria-label="Reiniciar quiz">Reiniciar Quiz</button>
             </div>
@@ -2799,7 +2840,7 @@ compoundForm.addEventListener('submit', (e) => {
     const principal = parseFloat(document.getElementById('principal').value) || 0;
     const monthly = parseFloat(document.getElementById('monthly').value) || 0;
     const rate = parseFloat(document.getElementById('rate').value) / 100 || 0;
-    const time = parseInt(document.getElementById('time').value) || 1;
+    const time = parseFloat(document.getElementById('time').value) || 1;
 
     // Validar entradas
     if (principal < 0 || monthly < 0 || rate < 0 || time <= 0) {
@@ -2808,7 +2849,7 @@ compoundForm.addEventListener('submit', (e) => {
     }
 
     const monthlyRate = rate / 12;
-    const totalMonths = time * 12;
+    const totalMonths = time;
 
     // Fórmula de juros compostos com aportes mensais
     const futureValue = principal * Math.pow(1 + monthlyRate, totalMonths) +
@@ -2826,7 +2867,7 @@ compoundForm.addEventListener('submit', (e) => {
     animateValue(resultValue, 0, futureValue, 2000); // Animação de 2 segundos
 
     // Dados para o gráfico
-    const labels = Array.from({ length: totalMonths + 1 }, (_, i) => i);
+    const labels = Array.from({ length: Math.ceil(totalMonths) + 1 }, (_, i) => i);
     const data = labels.map(month => {
         return principal * Math.pow(1 + monthlyRate, month) +
             monthly * ((Math.pow(1 + monthlyRate, month) - 1) / monthlyRate);
@@ -2869,7 +2910,7 @@ compoundForm.addEventListener('submit', (e) => {
             responsive: true,
             maintainAspectRatio: false,
             animation: {
-                duration: 2000, // Animação sincronizada com a contagem
+                duration: 2000,
                 easing: 'easeOutQuart',
                 onProgress: function(animation) {
                     const chart = animation.chart;
@@ -2885,7 +2926,7 @@ compoundForm.addEventListener('submit', (e) => {
                 x: {
                     title: {
                         display: true,
-                        text: 'Período',
+                        text: 'Período (meses)',
                         color: '#261910',
                         font: {
                             family: 'Poppins',
@@ -2903,8 +2944,10 @@ compoundForm.addEventListener('submit', (e) => {
                         maxRotation: 45,
                         minRotation: 45,
                         callback: function(value, index) {
-                            if (index % 12 === 0) {
-                                return `${index / 12} ano${index / 12 !== 1 ? 's' : ''}`;
+                            if (index % 12 === 0 && index !== 0) {
+                                return `${index}º mês`;
+                            } else if (index === 0) {
+                                return 'Início';
                             }
                             return '';
                         }
@@ -3008,6 +3051,7 @@ compoundForm.addEventListener('submit', (e) => {
     });
 });
 
+
 compoundForm.addEventListener('reset', () => {
     compoundResult.style.display = 'none';
     resultValue.textContent = `R$ ${formatNumber(0)}`;
@@ -3022,6 +3066,7 @@ compoundForm.addEventListener('reset', () => {
 const quizQuestions = document.querySelectorAll('.quiz-question');
 const quizResult = document.getElementById('quiz-result');
 const progressBar = document.getElementById('quiz-progress');
+const restartButton = document.querySelector('.restart-quiz');
 let currentQuestion = 0;
 let answers = { a: 0, b: 0, c: 0, d: 0 };
 
@@ -3038,36 +3083,44 @@ function showResult() {
     progressBar.style.width = '100%';
 
     // Determinar a persona dominante
-    let maxCount = 0;
-    let dominantPersona = '';
-    for (let key in answers) {
-        if (answers[key] > maxCount) {
-            maxCount = answers[key];
-            dominantPersona = key;
-        }
-    }
+    let maxCount = Math.max(...Object.values(answers));
+    let personas = Object.keys(answers).filter(key => answers[key] === maxCount);
+    let dominantPersona = personas[0]; // Escolhe a primeira em caso de empate
 
-    // Definir título e descrição com base na persona
+    // Mostrar contagem de respostas
+    const countsText = `Suas respostas: ${answers.a} Avestruz, ${answers.b} Status, ${answers.c} Adoração, ${answers.d} Vigilante`;
+    quizResult.querySelector('.profile-counts').textContent = countsText;
+
+    // Definir título e descrição
     let profile = '';
     let description = '';
+    switch (dominantPersona) {
+        case 'a':
+            profile = 'Avestruz';
+            description = 'Você é influenciado pela crença de que dinheiro é complicado e você não é digno disso. Tende a evitar lidar com questões financeiras, mas tem potencial para gerenciar bem se superar o medo. <strong>Dica:</strong> Leia suas declarações financeiras, experimente aplicativos de orçamento e peça ajuda.';
+            break;
+        case 'b':
+            profile = 'Status';
+            description = 'Você associa autoestima e felicidade ao estilo de vida. O desafio é evitar gastos impulsivos. Falar sobre dinheiro é fácil para você. <strong>Dica:</strong> Converse com amigos, familiares ou profissionais para criar um planejamento financeiro gamificado.';
+            break;
+        case 'c':
+            profile = 'Adoração';
+            description = 'Você vê o dinheiro como importante e escasso, poupando muito. Gosta de economizar, mas pode evitar gastar consigo mesmo. <strong>Dica:</strong> Reconheça que é saudável equilibrar poupança e gastos para aproveitar a vida.';
+            break;
+        case 'd':
+            profile = 'Vigilante';
+            description = 'Você desconfia de riscos e investimentos, preferindo guardar dinheiro. É bom com orçamento, mas pode perder para a inflação. <strong>Dica:</strong> Busque orientação financeira e comece a investir em produtos seguros.';
+            break;
+    }
 
-    if (dominantPersona === 'a') {
-        profile = 'Avestruz';
-        description = 'Você tende a evitar lidar com dinheiro, pois acha o tema complicado. Evita enfrentar problemas financeiros diretamente, mas tem potencial para ser bom com finanças se superar o medo. <strong>Dica:</strong> Comece enfrentando sua situação financeira, use aplicativos de orçamento e peça ajuda para ganhar confiança.';
-    } else if (dominantPersona === 'b') {
-        profile = 'Status';
-        description = 'Sua autoestima está ligada ao estilo de vida, e você gasta para manter uma aparência de riqueza, o que pode levá-lo a armadilhas financeiras. Falar sobre dinheiro é fácil para você. <strong>Dica:</strong> Foque no planejamento financeiro e busque orientação para alinhar seus gastos com seus objetivos reais.';
-    } else if (dominantPersona === 'c') {
-        profile = 'Adoração';
-        description = 'Você valoriza muito o dinheiro, poupa bastante e evita gastos desnecessários, o que demonstra inteligência financeira. No entanto, pode ser difícil relaxar e aproveitar. <strong>Dica:</strong> Encontre um equilíbrio entre poupar e viver bem, permitindo-se desfrutar sem culpa.';
-    } else if (dominantPersona === 'd') {
-        profile = 'Vigilante';
-        description = 'Você tem medo de riscos e desconfia de investimentos, preferindo guardar dinheiro. É bom com orçamento e evita gastos excessivos, mas pode perder para a inflação. <strong>Dica:</strong> Busque orientação para investir de forma segura e diversificada, começando aos poucos.';
+    if (personas.length > 1) {
+        description += ' <strong>Nota:</strong> Você tem características de mais de uma persona, o que indica uma relação equilibrada com o dinheiro!';
     }
 
     quizResult.querySelector('.profile-title').textContent = `Seu Perfil: ${profile}`;
     quizResult.querySelector('.profile-description').textContent = description;
 
+    // Animação com GSAP
     gsap.from(quizResult, {
         opacity: 0,
         y: 20,
@@ -3076,7 +3129,6 @@ function showResult() {
     });
 }
 
-// Função para reiniciar o quiz
 function restartQuiz() {
     currentQuestion = 0;
     answers = { a: 0, b: 0, c: 0, d: 0 };
@@ -3085,12 +3137,12 @@ function restartQuiz() {
     progressBar.style.width = `${(1 / quizQuestions.length) * 100}%`;
 }
 
+// Adicionar eventos às opções
 quizQuestions.forEach((question, index) => {
     question.querySelectorAll('.quiz-option').forEach(option => {
+        // Clique com mouse
         option.addEventListener('click', () => {
-            // Incrementar a contagem da letra escolhida
-            const value = option.dataset.value;
-            answers[value]++;
+            answers[option.dataset.value]++;
             if (index < quizQuestions.length - 1) {
                 currentQuestion++;
                 showQuestion(currentQuestion);
@@ -3098,14 +3150,20 @@ quizQuestions.forEach((question, index) => {
                 showResult();
             }
         });
+        // Suporte para teclado
+        option.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                option.click();
+            }
+        });
     });
 });
 
-// Evento para o botão de reiniciar quiz
-quizResult.querySelector('.restart-quiz').addEventListener('click', restartQuiz);
+// Evento do botão de reiniciar
+restartButton.addEventListener('click', restartQuiz);
 
 // Iniciar quiz
-showQuestion(currentQuestion);
+showQuestion(0);
 
 // Animação para vídeo ao clicar no play
 const videoContainer = document.querySelector('.video-container');

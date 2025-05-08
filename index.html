@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -45,25 +46,38 @@
         }
 
         .logo {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            font-weight: 700;
-            color: #8B4513;
-            letter-spacing: 2px;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #8B4513;
+    letter-spacing: 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
-        .logo i {
-            font-size: 2.5rem;
-            color: #006400;
-            margin-right: 10px;
-        }
+.logo i {
+    font-size: 2.5rem;
+    color: #006400;
+    margin-right: 10px;
+}
+
+.logo span {
+    display: inline-block;
+}
+
+        .logo .educacao-financeira {
+         font-family: 'Poppins', sans-serif;
+         font-size: 1.0rem; /* Menor que o RFM (3rem) */
+         font-weight: 500;
+         color: #3d3d3c;
+         text-transform: uppercase;
+         margin-left: 10px;
+         letter-spacing: 1px;
+}
 
         .logo span {
             display: inline-block;
-            animation: pulseLogo 2s infinite ease-in-out;
         }
 
         @keyframes pulseLogo {
@@ -327,15 +341,15 @@
         }
 
         .intro-profile {
-            flex: 1;
-            min-width: 300px;
-            max-width: 600px;
-            background: #fff;
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-            text-align: center;
-            animation: float 4s infinite ease-in-out;
+        flex: 1;
+        min-width: 300px;
+        max-width: 600px;
+        background: #fff;
+        border-radius: 30px;
+        padding: 40px;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+        text-align: center;
+    
         }
 
         .intro-profile img {
@@ -432,12 +446,11 @@
         }
 
         .service-card h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            margin: 50px 0 30px;
-            color: #261910;
-        }
-
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    margin: 50px 0 30px;
+    color: #4A7043; /* Verde terroso */
+}
         .service-card p {
             font-size: 1.4rem;
             padding: 0 50px 20px;
@@ -1130,20 +1143,22 @@ footer {
         padding: 20px 15px;
     }
 
+    .logo {
+        font-size: 2.5rem;
+    }
+    .logo i {
+        font-size: 2rem;
+    }
+    .logo .educacao-financeira {
+        font-size: 1rem;
+    }
     .footer-logo .logo {
         font-size: 1.8rem;
     }
-
-    .footer-logo .logo i {
-        font-size: 1.3rem;
+    .footer-logo .logo .educacao-financeira {
+        font-size: 0.8rem;
     }
-
-    .footer-logo p {
-        font-size: 0.9rem;
-        max-width: 300px;
-        margin: 0 auto 10px;
-    }
-
+    
     .social-links a {
         font-size: 1.4rem;
     }
@@ -1159,17 +1174,20 @@ footer {
         padding: 15px 10px;
     }
 
+    .logo {
+        font-size: 2rem;
+    }
+    .logo i {
+        font-size: 1.5rem;
+    }
+    .logo .educacao-financeira {
+        font-size: 0.8rem;
+    }
     .footer-logo .logo {
         font-size: 1.6rem;
     }
-
-    .footer-logo .logo i {
-        font-size: 1.2rem;
-    }
-
-    .footer-logo p {
-        font-size: 0.8rem;
-        max-width: 250px;
+    .footer-logo .logo .educacao-financeira {
+        font-size: 0.7rem;
     }
 
     .social-links a {
@@ -2321,13 +2339,294 @@ footer {
     }
     
 }
+
+/* Seção de Artigos */
+.articles {
+    padding: 200px 100px;
+    background: #ebe2d4;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.articles h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin-bottom: 120px;
+    color: #8B4513;
+    animation: bounceTitle 3s infinite ease-in-out;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 80px;
+    max-width: 2200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Seção de Artigos - Article Card */
+.article-card {
+    background: #fff;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+    transition: transform 0.8s ease, box-shadow 0.8s ease;
+    perspective: 2500px;
+    position: relative;
+    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0; /* Remove qualquer margem */
+    padding: 0; /* Remove qualquer padding */
+    width: 100%; /* Garante que o cartão ocupe toda a largura disponível */
+    cursor: pointer;
+}
+
+.article-card img {
+    width: 100%;
+    height: 450px; /* Reduzindo a altura para aplicar um leve zoom out */
+    max-width: 100%;
+    object-fit: cover; /* Mantém o preenchimento da imagem */
+    object-position: center; /* Centraliza a imagem */
+    margin: 0;
+    padding: 0;
+    display: block;
+    transition: transform 1s ease;
+}
+
+.article-card h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    margin: 0;
+    padding: 10px 0;
+    color: #4A7043; /* Verde terroso */
+    width: 100%;
+    text-align: center;
+    background: #fff;
+    line-height: 1.2;
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 768px) {
+    .article-card {
+        border-radius: 20px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .article-card img {
+        height: 300px; /* Reduz a altura para tablets/celulares */
+        max-height: 300px;
+        object-fit: cover;
+        object-position: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .article-card h3 {
+        font-size: 2.2rem;
+        padding: 8px 0; /* Reduz padding vertical */
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-card {
+        border-radius: 15px;
+    }
+
+    .article-card img {
+        height: 200px; /* Reduz ainda mais para celulares pequenos */
+        max-height: 200px;
+        object-fit: cover;
+        object-position: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .article-card h3 {
+        font-size: 1.8rem;
+        padding: 6px 0; /* Ajusta ainda mais para telas pequenas */
+        margin: 0;
+    }
+}
+
+/* Modal de Artigos */
+.article-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(38, 25, 16, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.article-modal.active {
+    display: flex;
+}
+
+.article-modal-content {
+    background: #fef6e9;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 800px;
+    width: 90%;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.article-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #261910;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.article-modal-close:hover {
+    color: #8B4513;
+    transform: scale(1.2);
+}
+
+.article-modal-content h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #8B4513;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.article-content {
+    font-family: 'Poppins', sans-serif;
+    color: #3c2d21;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.article-content p {
+    margin-bottom: 20px;
+}
+
+.article-content h4 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #8B4513;
+    margin: 30px 0 15px;
+}
+
+.article-content ul {
+    list-style-type: disc;
+    margin: 20px 0;
+    padding-left: 30px;
+}
+
+.article-content ul li {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #3c2d21;
+}
+
+/* Estilizar barra de rolagem */
+.article-modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.article-modal-content::-webkit-scrollbar-track {
+    background: #ebe2d4;
+    border-radius: 10px;
+}
+
+.article-modal-content::-webkit-scrollbar-thumb {
+    background: #eebc90;
+    border-radius: 10px;
+}
+
+.article-modal-content::-webkit-scrollbar-thumb:hover {
+    background: #8B4513;
+}
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .article-modal-content {
+        padding: 20px;
+        max-width: 90%;
+        max-height: 85vh;
+    }
+
+    .article-modal-content h3 {
+        font-size: 2.2rem;
+    }
+
+    .article-content {
+        font-size: 1rem;
+    }
+
+    .article-content h4 {
+        font-size: 1.8rem;
+        margin: 20px 0 10px;
+    }
+
+    .article-content ul li {
+        font-size: 1rem;
+    }
+
+    .article-modal-close {
+        font-size: 1.8rem;
+        top: 10px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-modal-content {
+        padding: 15px;
+        max-height: 90vh;
+    }
+
+    .article-modal-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .article-content {
+        font-size: 0.9rem;
+    }
+
+    .article-content h4 {
+        font-size: 1.5rem;
+    }
+
+    .article-content ul li {
+        font-size: 0.9rem;
+    }
+
+    .article-modal-close {
+        font-size: 1.6rem;
+    }
+}
  
 
     </style>
 </head>
 <body>
     <header>
-        <div class="logo"><i class="fas fa-leaf"></i><span>R</span><span>F</span><span>M</span></div>
+        <div class="logo">
+            <i class="fas fa-leaf"></i>
+            <span>R</span><span>F</span><span>M</span>
+            <span class="educacao-financeira">EDUCAÇÃO FINANCEIRA</span>
+        </div>
         <i class="fas fa-bars menu-toggle" aria-label="Abrir ou fechar menu de navegação"></i>
         <nav>
             <a href="#home" aria-label="Ir para Home">Home</a>
@@ -2337,7 +2636,6 @@ footer {
             <a href="#intro-section" aria-label="Ir para Conheça a RFM">Sobre</a>
             <a href="#testimonials" aria-label="Ir para Depoimentos">Depoimentos</a>
             <a href="#" id="open-contact-modal" aria-label="Abrir modal de contato">Contato</a>
-            <a href="index1.html" aria-label="Acessar Página Antiga">Página Antiga</a>
         </nav>
     </header>
 
@@ -2592,6 +2890,22 @@ footer {
         <a href="https://indice.febraban.org.br/" class="financial-health-button" aria-label="Calcular Índice de Saúde Financeira" target="_blank">Calcular Agora</a>
     </section>
 
+    <section class="articles" id="articles">
+        <h2>Artigos Educativos</h2>
+        <div class="article-grid">
+            <div class="article-card" id="open-article-modal-1">
+                <img loading="lazy" src="artigo1.png" alt="Como aprender a investir desde cedo">
+                <h3>Como aprender a investir desde cedo.</h3>
+            </div>
+            <div class="article-card" id="open-article-modal-2">
+                <img loading="lazy" src="artigo2.png" alt="Como investir com pouco dinheiro">
+                <h3>Como investir com pouco dinheiro.</h3>
+            </div>
+        </div>
+    </section>
+
+
+
     <section class="about" id="about">
         <h2>Novidades!!!</h2>
         <div class="timeline">
@@ -2609,7 +2923,11 @@ footer {
     <footer>
         <div class="footer-container">
             <div class="footer-logo">
-                <div class="logo"><i class="fas fa-leaf"></i><span>R</span><span>F</span><span>M</span></div>
+                <div class="logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>R</span><span>F</span><span>M</span>
+                    <span class="educacao-financeira">EDUCAÇÃO FINANCEIRA</span>
+                </div>
                 <p>Transformando vidas através da educação financeira desde 2018.</p>
                 <div class="social-links">
                     <a href="https://www.instagram.com/roselaine.fmachado?igsh=dnk4dHRkMzd2bTI5" target="_blank" title="Instagram" aria-label="Visitar Instagram da RFM"><i class="fab fa-instagram"></i></a>
@@ -2637,6 +2955,93 @@ footer {
             <a href="mailto:contato@rfmeducacao.com.br" title="Email" aria-label="Enviar e-mail para RFM"><i class="fas fa-envelope"></i></a>
             <a href="https://youtube.com" target="_blank" title="YouTube" aria-label="Visitar canal do YouTube da RFM"><i class="fab fa-youtube"></i></a>
             <a href="https://www.linkedin.com/in/roselainemachado/" target="_blank" title="LinkedIn" aria-label="Visitar LinkedIn da RFM"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Artigo 1: Como aprender a investir desde cedo -->
+<div class="article-modal" id="article-modal-1">
+    <div class="article-modal-content">
+        <span class="article-modal-close" id="close-article-modal-1" aria-label="Fechar modal do artigo">×</span>
+        <h3>Como aprender a investir desde cedo</h3>
+        <div class="article-content">
+            <p>Conheça formas de investir desde cedo para conquistar objetivos e construir estabilidade financeira ao aplicar boas práticas de educação financeira no seu dia a dia e utilizar a tecnologia a seu favor.</p>
+            <p>Conseguir poupar para investir ainda é um desafio para a maioria dos brasileiros, seja pela falta de renda suficiente ou pela cultura do consumismo onde pensar no futuro quase sempre fica para depois.</p>
+            <p>Nesse sentido, o investimento em educação continua sendo a melhor opção para criar oportunidades de geração de renda e bons hábitos financeiros. No entanto, é aprendendo a investir desde cedo que fará diferença no longo prazo pelo efeito dos juros compostos que multiplicam seu dinheiro.</p>
+            <p>Para te ajudar a começar o quanto antes a gerar renda passiva, nesse artigo você aprenderá:</p>
+            <ul>
+                <li>Por que começar a investir cedo?</li>
+                <li>Como poupar para investir.</li>
+                <li>Por onde começar a investir.</li>
+                <li>Como usar a tecnologia a seu favor para investir.</li>
+            </ul>
+            <h4>Por que começar a investir cedo?</h4>
+            <p>O tempo e os juros compostos são os responsáveis por fazer o dinheiro crescer. É por isso que quanto antes você começar a investir, maior será o efeito multiplicador dos juros e menor será o valor necessário de aplicação para gerar riqueza.</p>
+            <p>Além disso, quando você é jovem tem mais espaço para tomar riscos ao fazer investimentos que oferecem melhor rentabilidade, e mais tempo para se recuperar no caso de eventuais perdas financeiras.</p>
+            <p>Utilize o tempo a seu favor poupando todos os meses para investir.</p>
+            <h4>Como poupar para investir</h4>
+            <p>Conhecer seus hábitos de consumo é o primeiro passo para entender o que e porque você compra e como isso afeta seu orçamento para conseguir poupar.</p>
+            <p>Dessa forma, liste todos os seus gastos mensais para separá-los em categorias (Exemplo: alimentação, transporte, moradia, empréstimos, lazer, educação etc.)</p>
+            <p>Logo depois, identifique quais gastos são essenciais, ou seja, aqueles que você não consegue viver sem e os não essenciais que você pode diminuir ou eliminar.</p>
+            <p>Os gastos variáveis dependem do seu consumo e são aqueles que mais exigem mudança de comportamento e hábitos para serem reduzidos, então criar metas de economia ou limites de gastos ajudam nesse processo. Você pode por exemplo buscar reduzir 10% de despesas com alimentação ou gastar até determinado valor por semana ou mês.</p>
+            <p>Monitorar semanalmente esses gastos também é uma boa estratégia para o controle do orçamento, assim você terá oportunidade de fazer as adequações necessárias antes de encerrar o mês.</p>
+            <p>Esse controle pode ser feito por anotações manuais, planilhas ou aplicativos que facilitam esse mapeamento dos gastos. Abra espaço no orçamento para investir nos seus sonhos.</p>
+            <h4>Por onde começar a investir?</h4>
+            <p>Definir metas ajuda a direcionar seus investimentos, mas sabemos que quando se é jovem muitas vezes é normal a falta de clareza nos objetivos. Nesse caso, você pode começar com duas metas iniciais: criar uma reserva financeira para emergências ou imprevistos e se preparar para a aposentadoria. Isso quer dizer que você vai investir para viver bem hoje e lá na frente.</p>
+            <p>Para sua reserva de emergências você pode optar por investimentos mais simples e de baixo risco que rendem no mínimo 100% do CDI ou da Selic e tem resgate imediato.</p>
+            <p>Já para aposentadoria você deve preocupar-se em proteger seu poder de compra da inflação, buscando opções de investimentos que são atrelados ao IPCA (índice que mede a inflação no Brasil) ou fundos de previdência complementar. Busque conhecer os produtos do seu banco ou corretora, e considere pedir ajuda de um profissional da área para planejar e investir com mais segurança.</p>
+            <p>E por fim, não espere acumular grandes quantias para investir. Comece com o que consegue poupar mesmo que seja pouco e busque manter a regularidade de fazer aplicações todos os meses.</p>
+            <h4>Como usar a tecnologia a seu favor para investir</h4>
+            <p>Usar a tecnologia pode ser muito benéfico para o seu bolso. Com a chegada da internet e dos smartphones, nunca foi tão acessível cuidar das finanças. Nas palmas das mãos podemos aprender sobre educação financeira, fazer pagamentos, controlar o orçamento, realizar e monitorar os investimentos.</p>
+            <p>E para criar o hábito de investir com regularidade, recomenda-se não esperar sobrar dinheiro no fim do mês. Nesse sentido, a tecnologia também é uma grande aliada para que você se pague primeiro ao utilizar as funções de aplicações programadas.</p>
+            <p>Basta escolher o produto no seu banco ou corretora que permite essa programação, definir o valor e data para que automaticamente seu dinheiro seja investido todos os meses até que você altere ou cancele essa funcionalidade.</p>
+            <p>Assim como no agendamento de pagamento das suas contas mensais, investir de forma programada elimina as chances de você esquecer esse compromisso com o seu futuro ou acabar gastando o dinheiro com o que não vai te gerar riqueza.</p>
+            <p>Investir desde cedo é priorizar seus sonhos e construir um alicerce sólido para uma vida mais tranquila. Suas decisões do presente determinam o futuro, então não espere as melhores condições, o melhor momento de começar a investir é agora. Apenas comece a plantar seus pés de dinheiro, em breve com certeza eles trarão os frutos desejados.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Artigo 2: Como investir com pouco dinheiro -->
+<div class="article-modal" id="article-modal-2">
+    <div class="article-modal-content">
+        <span class="article-modal-close" id="close-article-modal-2" aria-label="Fechar modal do artigo">×</span>
+        <h3>Como investir com pouco dinheiro</h3>
+        <div class="article-content">
+            <p>Conheça opções de investimento que cabem no seu bolso e como investir com pouco todos os meses para alcançar seus objetivos.</p>
+            <p>Com a crescente democratização da educação financeira e novas opções de investimentos, está cada vez mais acessível investir mesmo com pouco dinheiro para objetivos diferentes respeitando seu perfil de investidor.</p>
+            <p>Apesar do desafio que existe em aumentar a capacidade de poupança, ou seja, gerar mais renda do que despesas, é cada vez mais importante começar a investir com o que é possível no momento. Com investimentos mínimos a partir de R$1,00 você já encontra boas opções que podem fazer diferença no seu futuro, mas lembre-se que manter a regularidade nas aplicações é tão importante quanto o valor delas.</p>
+            <p>A seguir apresentamos como começar a investir com pouco e fazer escolhas de acordo com seus objetivos.</p>
+            <ul>
+                <li>Invista em educação financeira</li>
+                <li>Entenda o que é investimento mínimo</li>
+                <li>Conheça seu perfil de investidor</li>
+                <li>Como investir com pouco de acordo com seus objetivos</li>
+            </ul>
+            <h4>Invista em Educação Financeira</h4>
+            <p>Investir em educação financeira é aprender a usar o dinheiro de forma mais inteligente para desfrutar de uma vida melhor. Quando você busca esse conhecimento, está cuidando da sua saúde financeira ao desenvolver habilidades de organização, planejamento e tomada de decisões com relação ao seu dinheiro.</p>
+            <p>Durante esse aprendizado também é fundamental dedicar-se a entender seus hábitos financeiros e a saber quais precisam ser transformados para conseguir poupar mais e investir.</p>
+            <p>Apesar do conhecimento estar cada vez mais acessível por meio da internet, muitos produtos de investimento ainda são desconhecidos pela maioria dos brasileiros, principalmente de famílias que tem um orçamento apertado. Nessa realidade ainda existe o mito de que investir é só para quem tem muito dinheiro, o que não é verdade.</p>
+            <p>Dessa forma, a educação financeira é o caminho para derrubarmos esse mito e o medo de investir. Aprender sobre investimentos é um passo importante para acelerar a construção de patrimônio e realizar grandes sonhos. E a boa notícia é que você pode começar agora com valores que cabem no seu orçamento.</p>
+            <h4>Entenda o que é investimento mínimo</h4>
+            <p>O investimento mínimo é o menor valor que pode ser aplicado em um determinado produto. As instituições financeiras e empresas de investimento determinam esse valor mínimo necessário para garantir acessibilidade e igualdade aos investidores para que tenham as mesmas condições de participar, independentemente do tamanho de seu patrimônio.</p>
+            <p>O investimento mínimo também tem por objetivo proteger investidores inexperientes ou com pouco conhecimento quando exige um valor maior para aplicações em produtos de alto risco, podendo assim evitar possíveis perdas para esses investidores.</p>
+            <p>A acessibilidade é uma grande vantagem do investimento mínimo para produtos de baixo risco, incentivando assim mais pessoas a investir todos os meses. Mas é importante saber que quanto menor o valor do investimento mínimo, mais limitado pode ser o seu retorno.</p>
+            <p>Então, antes de escolher qualquer investimento apenas pelo seu valor mínimo, é necessário conhecer seu perfil de investidor e estabelecer os objetivos que almeja alcançar. Saber porque você está investindo e o quanto está disposto a se expor aos riscos, são requisitos fundamentais para que possa escolher investimentos mais adequados ao seu bolso e perfil.</p>
+            <h4>Conheça seu perfil de investidor</h4>
+            <p>Antes de começar a investir, é necessário responder a um questionário da instituição financeira que avalia o seu perfil de investidor. É a partir dele que as instituições podem oferecer produtos adequados ao seu perfil e você poder conhecer sua tolerância ao risco.</p>
+            <p>As perguntas são relacionadas ao seu conhecimento e experiência com investimentos, tamanho da renda e patrimônio, objetivos e tolerância para assumir riscos de perda. O resultado será um dos 3 perfis classificados como investidor Conservador, Moderado ou Arrojado.</p>
+            <p>O perfil conservador é o que preza pela segurança e não pelo retorno. É o investidor que deseja saber previamente quanto pode ganhar e quando pode resgatar seu dinheiro sem sofrer perdas. Então os investimentos com menor risco são os mais indicados para esse perfil, e os que geralmente possuem valores mais baixos para começar a investir.</p>
+            <p>O perfil moderado é o que preza pela segurança, mas também consegue assumir um pouco de risco para obter melhores rendimentos. São investidores que já possuem uma determinada experiência e conhecimento dos produtos e tem um patrimônio que possibilite diversificar parte dos investimentos em busca de maior retorno.</p>
+            <p>O perfil arrojado é o que preza pelo retorno e por isso está disposto a correr mais riscos. Esse perfil pode conviver com grandes oscilações do valor investido pelo seu conhecimento, controle emocional e pelo patrimônio mais sólido que construiu. Isso quer dizer que ele pode ter mais tempo e condições para se recuperar de perdas ou tomar decisões mais assertivas no momento de aplicar ou resgatar o dinheiro.</p>
+            <p>Para esse perfil existem investimentos com valores mínimos baixos como a compra de ações de algumas empresas, mas que são de alto risco. Por isso a importância de sempre respeitar a classificação do perfil e não escolher investimentos apenas pelo seu valor de aplicação.</p>
+            <p>Essa avaliação do perfil não é definitiva, pois depende do momento de vida do investidor. Por isso as instituições solicitam a atualização desse questionário pelo menos a cada 24 meses. Após conhecer seu perfil, você pode iniciar a escolha dos produtos conforme seus objetivos.</p>
+            <h4>Como investir com pouco de acordo com seus objetivos</h4>
+            <p>Conhecer os seus objetivos é fundamental nesse momento de escolher os investimentos. E o primeiro deles deve ser constituir uma reserva financeira capaz de trazer segurança para imprevistos e emergências que podem surgir, como por exemplo a perda do emprego, um problema de saúde, acidentes e outras situações que exigem a disponibilidade de recursos para evitar dívidas.</p>
+            <p>Para a reserva você deve escolher investimentos mais seguros e com acesso rápido ao dinheiro. São produtos como o CDB de resgate imediato, onde é possível aplicar a partir de R$1,00 com rendimento de pelo menos 100% do CDI e estar protegido pelo Fundo Garantidor de Crédito (FGC).</p>
+            <p>É recomendado que você busque acumular o valor de pelo menos 3 meses dos seus gastos essenciais para que então comece a investir para os demais objetivos.</p>
+            <p>Defina um ou dois objetivos para começar e estabeleça em quanto tempo gostaria de realizá-los. Para perfis de investidores mais conservadores, existem bons produtos com valores mínimos baixos, na modalidade de fundos de investimento, LCI, LCA e Tesouro Direto. O que diferencia são os prazos de vencimento, ou seja, em quantos meses ou anos você pode resgatar sem correr o risco de ter alguma perda ou redução na rentabilidade.</p>
+            <p>Os títulos do Tesouro Direto, por exemplo, são produtos que se tornaram populares por ter valores mínimos menores que R$50,00 e você pode investir para objetivos de médio a longo prazo (acima de 2 anos), com boas opções para a aposentadoria.</p>
+            <p>Veja que é possível começar a investir para os seus objetivos com pouco dinheiro e respeitando seu perfil de investidor. E ao criar o hábito de poupar e investir todos os meses, você fará o dinheiro trabalhar por você para te proporcionar mais segurança e tranquilidade.</p>
         </div>
     </div>
 </div>
@@ -3360,6 +3765,83 @@ contactModal.addEventListener('click', (e) => {
         });
     }
 });
+
+// Modal de Artigos
+const openArticleModal1 = document.getElementById('open-article-modal-1');
+const openArticleModal2 = document.getElementById('open-article-modal-2');
+const closeArticleModal1 = document.getElementById('close-article-modal-1');
+const closeArticleModal2 = document.getElementById('close-article-modal-2');
+const articleModal1 = document.getElementById('article-modal-1');
+const articleModal2 = document.getElementById('article-modal-2');
+
+function openModal(modal) {
+    modal.classList.add('active');
+    gsap.fromTo('.article-modal-content', {
+        opacity: 0,
+        scale: 0.8,
+        y: 50
+    }, {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power3.out'
+    });
+    gsap.from('.article-content', {
+        opacity: 0,
+        y: 20,
+        duration: 0.5,
+        ease: 'power3.out',
+        delay: 0.2
+    });
+}
+
+function closeModal(modal) {
+    gsap.to('.article-modal-content', {
+        opacity: 0,
+        scale: 0.8,
+        y: 50,
+        duration: 0.3,
+        ease: 'power3.in',
+        onComplete: () => {
+            modal.classList.remove('active');
+        }
+    });
+}
+
+// Abrir modais ao clicar nos quadros
+openArticleModal1.addEventListener('click', () => {
+    closeModal(articleModal2); // Fecha o outro modal, se aberto
+    openModal(articleModal1);
+});
+
+openArticleModal2.addEventListener('click', () => {
+    closeModal(articleModal1); // Fecha o outro modal, se aberto
+    openModal(articleModal2);
+});
+
+// Fechar modais ao clicar no botão de fechar
+closeArticleModal1.addEventListener('click', () => {
+    closeModal(articleModal1);
+});
+
+closeArticleModal2.addEventListener('click', () => {
+    closeModal(articleModal2);
+});
+
+// Fechar modais ao clicar fora do conteúdo
+articleModal1.addEventListener('click', (e) => {
+    if (e.target === articleModal1) {
+        closeModal(articleModal1);
+    }
+});
+
+articleModal2.addEventListener('click', (e) => {
+    if (e.target === articleModal2) {
+        closeModal(articleModal2);
+    }
+});
+
         </script>
 </body>
 </html>

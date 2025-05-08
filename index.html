@@ -2342,7 +2342,7 @@ footer {
 
 /* Seção de Artigos */
 .articles {
-    padding: 200px 100px;
+    padding: 100px 20px; /* Reduced padding for better mobile fit */
     background: #ebe2d4;
     text-align: center;
     overflow-x: hidden;
@@ -2350,58 +2350,69 @@ footer {
 
 .articles h2 {
     font-family: 'Dancing Script', cursive;
-    font-size: 4.5rem;
+    font-size: 3.5rem; /* Slightly smaller for mobile */
     font-weight: 900;
-    margin-bottom: 120px;
+    margin-bottom: 60px; /* Reduced margin */
     color: #8B4513;
     animation: bounceTitle 3s infinite ease-in-out;
 }
 
 .article-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 80px;
-    max-width: 2200px;
+    display: flex; /* Changed to flex for centering */
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: center; /* Center cards horizontally */
+    gap: 40px; /* Reduced gap for compactness */
+    max-width: 1200px; /* Smaller max-width for compact layout */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 10px; /* Reduced padding */
 }
 
 /* Seção de Artigos - Article Card */
 .article-card {
     background: #fff;
-    border-radius: 40px;
+    border-radius: 20px; /* Slightly smaller radius */
     overflow: hidden;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-    transition: transform 0.8s ease, box-shadow 0.8s ease;
-    perspective: 2500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Softer shadow */
+    transition: transform 0.5s ease, box-shadow 0.5s ease; /* Smoother transition */
+    perspective: 1500px;
     position: relative;
     transform-style: preserve-3d;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0; /* Remove qualquer margem */
-    padding: 0; /* Remove qualquer padding */
-    width: 100%; /* Garante que o cartão ocupe toda a largura disponível */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 450px; /* Reduced max-width for smaller cards */
     cursor: pointer;
+}
+
+.article-card:hover {
+    transform: translateY(-10px); /* Less aggressive hover */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
 }
 
 .article-card img {
     width: 100%;
-    height: 450px; /* Reduzindo a altura para aplicar um leve zoom out */
+    height: 350px; /* Reduced height for smaller cards */
     max-width: 100%;
-    object-fit: cover; /* Mantém o preenchimento da imagem */
-    object-position: center; /* Centraliza a imagem */
+    object-fit: cover;
+    object-position: center;
     margin: 0;
     padding: 0;
     display: block;
-    transition: transform 1s ease;
+    transition: transform 0.5s ease; /* Smoother image transition */
+}
+
+.article-card:hover img {
+    transform: scale(1.05); /* Subtle zoom on hover */
 }
 
 .article-card h3 {
     font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
+    font-size: 2rem; /* Smaller font size */
     margin: 0;
-    padding: 10px 0;
+    padding: 8px 10px; /* Reduced padding */
     color: #4A7043; /* Verde terroso */
     width: 100%;
     text-align: center;
@@ -2411,36 +2422,31 @@ footer {
 
 /* Responsividade para Celulares */
 @media (max-width: 768px) {
-    .article-card {
-        border-radius: 20px;
-        margin: 0;
-        padding: 0;
+    .articles {
+        padding: 50px 15px; /* Further reduced padding */
     }
 
-    .article-card img {
-        height: 300px; /* Reduz a altura para tablets/celulares */
-        max-height: 300px;
-        object-fit: cover;
-        object-position: center;
-        margin: 0;
-        padding: 0;
+    .articles h2 {
+        font-size: 2.5rem; /* Smaller title */
+        margin-bottom: 40px;
     }
 
-    .article-card h3 {
-        font-size: 2.2rem;
-        padding: 8px 0; /* Reduz padding vertical */
-        margin: 0;
+    .article-grid {
+        flex-direction: column; /* Stack cards vertically */
+        gap: 30px; /* Smaller gap */
+        padding: 0 10px;
     }
-}
 
-@media (max-width: 480px) {
     .article-card {
         border-radius: 15px;
+        max-width: 100%; /* Full width on mobile */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Softer shadow */
+        margin: 0 auto; /* Center cards */
     }
 
     .article-card img {
-        height: 200px; /* Reduz ainda mais para celulares pequenos */
-        max-height: 200px;
+        height: 250px; /* Smaller image height */
+        max-height: 250px;
         object-fit: cover;
         object-position: center;
         margin: 0;
@@ -2449,8 +2455,52 @@ footer {
 
     .article-card h3 {
         font-size: 1.8rem;
-        padding: 6px 0; /* Ajusta ainda mais para telas pequenas */
+        padding: 6px 8px; /* Tighter padding */
         margin: 0;
+    }
+
+    .article-card:hover {
+        transform: translateY(-5px); /* Less aggressive hover on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .articles {
+        padding: 40px 10px;
+    }
+
+    .articles h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .article-grid {
+        gap: 20px;
+    }
+
+    .article-card {
+        border-radius: 12px;
+        max-width: 100%;
+    }
+
+    .article-card img {
+        height: 180px; /* Even smaller for tiny screens */
+        max-height: 180px;
+        object-fit: cover;
+        object-position: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .article-card h3 {
+        font-size: 1.5rem;
+        padding: 5px 6px;
+        margin: 0;
+    }
+
+    .article-card:hover {
+        transform: none; /* Disable hover transform on very small screens */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     }
 }
 

@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -2884,7 +2885,7 @@ footer {
                 <div class="intro-box-inner">
                     <div class="video-container">
                         <iframe
-                            src="https://www.youtube.com/embed/-iiXN1m95YU"
+                            src="https://www.youtube.com/embed/-iiXN1m95YU?enablejsapi=1"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
@@ -2904,6 +2905,7 @@ footer {
             </div>
         </div>
     </section>
+
     <section class="services" id="services">
         <h2>Nossos Serviços</h2>
         <div class="service-grid">
@@ -4004,12 +4006,24 @@ showQuestion(0);
 
 // Carregar a API do YouTube
 let player;
+let apiLoaded = false;
+
 function onYouTubeIframeAPIReady() {
-    player = new YT.Player(document.querySelector('.youtube-iframe'), {
-        events: {
-            onReady: onPlayerReady
-        }
-    });
+    apiLoaded = true;
+    try {
+        player = new YT.Player(document.querySelector('.youtube-iframe'), {
+            events: {
+                onReady: onPlayerReady,
+                onError: (event) => {
+                    console.error('Erro no YouTube Player:', event.data);
+                    fallbackPlayVideo();
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Erro ao inicializar YT.Player:', error);
+        fallbackPlayVideo();
+    }
 }
 
 function onPlayerReady(event) {
@@ -4017,22 +4031,43 @@ function onPlayerReady(event) {
     const playButton = document.querySelector('.play-button');
 
     playButton.addEventListener('click', () => {
-        player.playVideo();
-        videoContainer.classList.add('playing');
+        try {
+            player.playVideo();
+            videoContainer.classList.add('playing');
+        } catch (error) {
+            console.error('Erro ao reproduzir vídeo:', error);
+            fallbackPlayVideo();
+        }
     });
+}
+
+// Fallback: Adicionar ?autoplay=1 à URL do iframe
+function fallbackPlayVideo() {
+    const iframe = document.querySelector('.youtube-iframe');
+    const videoContainer = document.querySelector('.video-container');
+    if (iframe && !iframe.src.includes('autoplay=1')) {
+        iframe.src += '?autoplay=1';
+        videoContainer.classList.add('playing');
+    }
 }
 
 // Injetar a API do YouTube dinamicamente
 const tag = document.createElement('script');
 tag.src = 'https://www.youtube.com/iframe_api';
+tag.onerror = () => {
+    console.error('Falha ao carregar YouTube IFrame API');
+    fallbackPlayVideo();
+};
 const firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// Lazy loading para imagens (já implementado via atributo loading="lazy")
-
-// Evitar comportamento de overscroll em dispositivos móveis
-document.body.style.overscrollBehavior = 'none';
-
+// Timeout para verificar se a API carregou
+setTimeout(() => {
+    if (!apiLoaded) {
+        console.warn('YouTube API não carregou a tempo');
+        fallbackPlayVideo();
+    }
+}, 5000);
 // Modal de Contato
 const openModalButton = document.getElementById('open-contact-modal');
 const closeModalButton = document.getElementById('close-contact-modal');

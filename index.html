@@ -259,7 +259,7 @@
             box-shadow: 0 10px 30px rgba(238, 188, 144, 0.8);
         }
 
-   /* Estilização da seção intro */
+  /* Estilização da seção intro */
 .intro-section {
     padding: 50px 15px;
     background: linear-gradient(135deg, #f9f2e7 0%, #f5e6cc 100%); /* Degradê bege claro */
@@ -295,15 +295,12 @@
     font-size: 3.2rem;
     color: #3c220f; /* Marrom escuro vibrante */
     font-family: 'Dancing Script', cursive;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); /* Sombra mais definida */
-    background: rgba(255, 255, 255, 0.2); /* Fundo sutil para contraste */
-    padding: 10px 20px;
-    border-radius: 10px;
-    display: inline-block;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); /* Sombra definida */
     margin-bottom: 30px;
     font-weight: 900; /* Maior peso para destaque */
     letter-spacing: 2px;
-    animation: fadeInDown 1s ease-out;
+    display: block; /* Garante fluxo consistente */
+    animation: fadeInDown 0.8s ease-out forwards; /* Animação corrigida */
 }
 
 /* Estilização do quadro */
@@ -499,15 +496,13 @@
     }
 
     .intro-container h2 {
-        font-size: 3rem; /* Aumentado para maior destaque */
-        color: #3c220f; /* Mesmo marrom vibrante do desktop */
+        font-size: 3rem; /* Aumentado para destaque */
+        color: #3c220f; /* Mesmo marrom vibrante */
         text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); /* Mesma sombra definida */
-        background: rgba(255, 255, 255, 0.2); /* Mesmo fundo sutil */
-        padding: 8px 15px;
-        border-radius: 8px;
-        display: inline-block;
-        font-weight: 900; /* Mesmo peso do desktop */
+        font-weight: 900; /* Mesmo peso */
         margin-bottom: 25px;
+        display: block; /* Garante fluxo consistente */
+        animation: fadeInDown 0.8s ease-out forwards; /* Animação corrigida */
     }
 
     .intro-box-inner {

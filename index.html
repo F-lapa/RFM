@@ -289,54 +289,72 @@
         }
 
         .video-container {
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-            position: relative;
-            transform: perspective(1000px);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
+    position: relative;
+    padding-bottom: 56.25%; /* Proporção 16:9 para vídeos */
+    height: 0;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+    transform: perspective(1000px);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
 
-        .video-container:hover {
-            transform: perspective(1000px) translateY(-20px) rotateX(5deg);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
+.video-container:hover {
+    transform: perspective(1000px) translateY(-20px) rotateX(5deg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
 
-        .video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+.video-container iframe.youtube-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
 
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(38, 25, 16, 0.3);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(38, 25, 16, 0.5); /* Ajustado para maior visibilidade */
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
 
-        .video-container:hover .video-overlay {
-            opacity: 1;
-        }
+.video-container.playing .video-overlay {
+    opacity: 0;
+    pointer-events: none; /* Impede interação após iniciar o vídeo */
+}
 
-        .play-button {
-            font-size: 4rem;
-            color: #eebc90;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+.play-button {
+    font-size: 4rem;
+    color: #eebc90;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
 
-        .play-button:hover {
-            transform: scale(1.2);
-        }
+.play-button:hover {
+    transform: scale(1.2);
+}
 
+/* Responsividade */
+@media (max-width: 768px) {
+    .video-container {
+        padding-bottom: 56.25%; /* Mantém proporção 16:9 */
+        border-radius: 15px;
+    }
+
+    .play-button {
+        font-size: 2.5rem;
+    }
+}
         .intro-profile {
         flex: 1;
         min-width: 300px;
@@ -2698,9 +2716,14 @@ footer {
         <div class="intro-video">
             <h2>Conheça a RFM</h2>
             <div class="video-container">
-                <video controls poster="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=600">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-of-colored-ribbons-2889-large.mp4" type="video/mp4" />
-                </video>
+                <iframe
+                    src="https://www.youtube.com/embed/k31XZu_kDVw?enablejsapi=1"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    class="youtube-iframe"
+                    title="Vídeo de apresentação da RFM Educação Financeira"
+                ></iframe>
                 <div class="video-overlay">
                     <i class="fas fa-play play-button" aria-label="Tocar vídeo"></i>
                 </div>
@@ -3741,14 +3764,32 @@ addNavigationButtons();
 showQuestion(0);
 
 // Animação para vídeo ao clicar no play
-const videoContainer = document.querySelector('.video-container');
-const playButton = document.querySelector('.play-button');
-const video = videoContainer.querySelector('video');
 
-playButton.addEventListener('click', () => {
-    video.play();
-    videoContainer.querySelector('.video-overlay').style.opacity = '0';
-});
+// Carregar a API do YouTube
+let player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player(document.querySelector('.youtube-iframe'), {
+        events: {
+            onReady: onPlayerReady
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    const videoContainer = document.querySelector('.video-container');
+    const playButton = document.querySelector('.play-button');
+
+    playButton.addEventListener('click', () => {
+        player.playVideo();
+        videoContainer.classList.add('playing');
+    });
+}
+
+// Injetar a API do YouTube dinamicamente
+const tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // Lazy loading para imagens (já implementado via atributo loading="lazy")
 
@@ -3888,6 +3929,7 @@ articleModal2.addEventListener('click', (e) => {
         closeModal(articleModal2);
     }
 });
+
 
         </script>
 </body>

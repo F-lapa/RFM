@@ -886,6 +886,7 @@
         }
 
         /* Quiz de Perfil Financeiro */
+/* Quiz de Perfil Financeiro */
 .quiz {
     padding: 100px 20px;
     background: #ebe2d4;
@@ -896,7 +897,7 @@
 .quiz h2 {
     font-family: 'Dancing Script', cursive;
     font-size: 3rem;
-    color: #4A7043; /* Alterado de #8B4513 para verde terroso */
+    color: #4A7043;
     margin-bottom: 50px;
     animation: bounceTitle 3s infinite ease-in-out;
 }
@@ -982,6 +983,7 @@
     justify-content: space-between;
     margin-top: 20px;
 }
+
 .quiz-nav-button {
     background: linear-gradient(45deg, #eebc90, #ffe0a8);
     color: #261910;
@@ -993,21 +995,22 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .quiz-nav-button:disabled {
     background: #d3c8b5;
     cursor: not-allowed;
     box-shadow: none;
 }
+
 .quiz-nav-button:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(238, 188, 144, 0.6);
 }
 
-
 .profile-title {
     font-family: 'Dancing Script', cursive;
     font-size: 1.8rem;
-    color: #eebc90;
+    color: #8B4513; /* Alterado para marrom */
     margin-bottom: 10px;
 }
 
@@ -1015,6 +1018,10 @@
     font-size: 1rem;
     color: #3c2d21;
     margin-bottom: 15px;
+}
+
+.profile-counts:empty {
+    display: none; /* Adicionado para ocultar quando vazio */
 }
 
 .profile-description {
@@ -1056,7 +1063,6 @@
         font-size: 1rem;
         padding: 12px;
     }
-
     .quiz-navigation {
         flex-direction: column;
         gap: 10px;
@@ -1065,7 +1071,6 @@
         padding: 8px 15px;
         font-size: 0.9rem;
     }
-    
     .profile-title {
         font-size: 1.5rem;
     }
@@ -3103,12 +3108,11 @@ footer {
                     <div class="quiz-option" data-value="a" tabindex="0" aria-label="Dinheiro é complicado e difícil de lidar">Dinheiro é complicado e difícil de lidar</div>
                     <div class="quiz-option" data-value="b" tabindex="0" aria-label="Dinheiro é a chave para o bem estar">Dinheiro é a chave para o bem estar</div>
                     <div class="quiz-option" data-value="c" tabindex="0" aria-label="Você nunca tem tudo que realmente precisa">Você nunca tem tudo que realmente precisa</div>
-                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Ser capaz de mantê-lo é mais importante do que ter dinheiro">Ser capaz de mantê-lo é mais importante do que ter dinheiro</div>
+                    <div class="quiz-option" data-value="d" tabindex="0" aria-label="Ser capaz de mantê-lo é mais importante do que ter dinheiro">Ser capaz de mantê-lo é mais importante do que ganhar dinheiro</div>
                 </div>
             </div>
             <div class="quiz-result" id="quiz-result">
                 <div class="profile-title"></div>
-                <div class="profile-counts"></div>
                 <div class="profile-description"></div>
                 <button class="restart-quiz" aria-label="Reiniciar quiz">Reiniciar Quiz</button>
             </div>
@@ -3815,11 +3819,20 @@ function showQuestion(index) {
     updateButtonStates();
 }
 
-// Função para exibir o resultado
 function showResult() {
+    // Depuração: Log inicial
+    console.log('Iniciando showResult...');
+
+    // Ocultar perguntas e exibir resultado
     quizQuestions.forEach(q => q.classList.remove('active'));
     quizResult.style.display = 'block';
     progressBar.style.width = '100%';
+
+    // Depuração: Verificar se quizResult existe
+    if (!quizResult) {
+        console.error('Erro: quizResult não encontrado no DOM.');
+        return;
+    }
 
     // Contar respostas
     answerCounts = { a: 0, b: 0, c: 0, d: 0 };
@@ -3827,14 +3840,16 @@ function showResult() {
         if (answer) answerCounts[answer]++;
     });
 
+    // Depuração: Log das contagens
+    console.log('Contagem de respostas:', answerCounts);
+
     // Determinar a persona dominante
     let maxCount = Math.max(...Object.values(answerCounts));
     let personas = Object.keys(answerCounts).filter(key => answerCounts[key] === maxCount);
     let dominantPersona = personas[0]; // Escolhe a primeira em caso de empate
 
-    // Mostrar contagem de respostas
-    const countsText = `Suas respostas: Avestruz: ${answerCounts.a}, Status: ${answerCounts.b}, Adoração: ${answerCounts.c}, Vigilante: ${answerCounts.d}`;
-    quizResult.querySelector('.profile-counts').textContent = countsText;
+    // Depuração: Log da persona dominante
+    console.log('Persona dominante:', dominantPersona);
 
     // Definir título e descrição
     let profile = '';
@@ -3856,14 +3871,53 @@ function showResult() {
             profile = 'Vigilante';
             description = 'Você é influenciado pela crença de que as perdas potenciais de um risco sempre superarão os ganhos potenciais. Isso se traduz em desconfiança de produtos de investimento e até mesmo instituições financeiras. De todas as personas, você é o mais vulnerável aos efeitos negativos da inflação, porque segurar seu dinheiro parece mais seguro para você do que investi-lo. <br><strong>A boa notícia:</strong> você tem habilidades sólidas de orçamento e raramente gasta mais. Seu maior obstáculo é procurar orientação financeira e investir em novos produtos.';
             break;
+        default:
+            profile = 'Indefinido';
+            description = 'Não foi possível determinar seu perfil financeiro. Por favor, tente novamente.';
+            break;
     }
 
     if (personas.length > 1) {
         description += ' <br><strong>Nota:</strong> Você tem características de mais de uma persona, o que indica uma relação equilibrada com o dinheiro!';
     }
 
-    quizResult.querySelector('.profile-title').textContent = `Seu Perfil: ${profile}`;
-    quizResult.querySelector('.profile-description').innerHTML = description;
+    // Depuração: Log do perfil e descrição
+    console.log('Perfil:', profile);
+    console.log('Descrição:', description);
+
+    // Exibir resultados
+    const profileTitle = quizResult.querySelector('.profile-title');
+    const profileCounts = quizResult.querySelector('.profile-counts');
+    const profileDescription = quizResult.querySelector('.profile-description');
+
+    // Depuração: Verificar se os elementos existem
+    if (!profileTitle) {
+        console.error('Erro: Elemento .profile-title não encontrado no quizResult.');
+    }
+    if (!profileCounts) {
+        console.error('Erro: Elemento .profile-counts não encontrado no quizResult.');
+    }
+    if (!profileDescription) {
+        console.error('Erro: Elemento .profile-description não encontrado no quizResult.');
+    }
+
+    // Atribuir valores
+    if (profileTitle) {
+        profileTitle.textContent = `Seu Perfil: ${profile}`;
+    }
+    if (profileCounts) {
+        profileCounts.textContent = ''; // Deixa vazio
+    }
+    if (profileDescription) {
+        profileDescription.innerHTML = description; // Garante que a descrição seja inserida
+    } else {
+        console.warn('Tentando criar .profile-description dinamicamente...');
+        // Criar elemento dinamicamente como último recurso
+        const newDescription = document.createElement('div');
+        newDescription.className = 'profile-description';
+        newDescription.innerHTML = description;
+        quizResult.appendChild(newDescription);
+    }
 
     // Animação com GSAP
     gsap.from(quizResult, {

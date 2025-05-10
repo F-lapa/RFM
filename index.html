@@ -2839,7 +2839,9 @@ footer {
         font-size: 1.6rem;
     }
 }
- 
+.bold-title {
+    font-weight: 900; /* Negrito mais forte */
+}
 
     </style>
 </head>
@@ -2882,7 +2884,7 @@ footer {
                 <div class="intro-box-inner">
                     <div class="video-container">
                         <iframe
-                            src="https://www.youtube.com/watch?v=-iiXN1m95YU"
+                            src="https://www.youtube.com/embed/-iiXN1m95YU"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
@@ -2902,7 +2904,6 @@ footer {
             </div>
         </div>
     </section>
-
     <section class="services" id="services">
         <h2>Nossos Serviços</h2>
         <div class="service-grid">
@@ -2911,12 +2912,12 @@ footer {
                 <h3>Planejamento Financeiro Pessoal e Familiar</h3>
                 <p>Desenvolvemos um plano personalizado para organizar suas finanças, quitar dívidas, definir metas claras e investir para alcançar liberdade financeira para você e sua família!
                 <p>Para agendar um diagnóstico inicial gratuito e receber uma planilha para mapeamento completo da sua situação financeira informe seus dados que entraremos em contato.</p>
-                    </p>
+                </p>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmQM8b3VQBaf44SRbG-Y6z0FCNgNuVc7pE782SoDYxLC0XFQ/viewform" class="service-button" aria-label="Solicitar proposta para Planejamento Financeiro">Preencha seus Dados</a>
             </div>
             <div class="service-card">
                 <img loading="lazy" src="autonomas.png" alt="Consultoria para Autônomas">
-                <h3>Consultoria e Assessoria Financeira para Autônomas</h3>
+                <h3>Consultoria e Assessoria Financeira.<br><span class="bold-title">Para Autônomas</span></h3>
                 <p>Orientação especializada para empreendedoras autônomas, com foco em gestão financeira, precificação, controle de fluxo de caixa e planejamento para crescimento sustentável do seu negócio.</p>
                 <a href="https://wa.me/5548999370943" class="service-button" aria-label="Solicitar proposta para Consultoria para Autônomas">Solicite uma Proposta</a>
             </div>
@@ -2928,7 +2929,7 @@ footer {
             </div>
             <div class="service-card">
                 <img loading="lazy" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Programa Bem Estar Financeiro para Empresas">
-                <h3>Programa Bem Estar Financeiro para sua Empresa</h3>
+                <h3>Programa Bem Estar Financeiro.<br><span class="bold-title">Para sua Empresa</span></h3>
                 <p>Soluções corporativas para promover a saúde financeira dos colaboradores, com palestras, treinamentos e programas personalizados que aumentam a produtividade e reduzem o estresse financeiro.</p>
                 <a href="https://wa.me/5548999370943" class="service-button" aria-label="Solicitar proposta para Programa Bem Estar Financeiro">Solicite uma Proposta</a>
             </div>
@@ -2940,17 +2941,17 @@ footer {
         <div class="testimonial-carousel">
             <div class="testimonial active">
                 <h3>Planejamento Financeiro Pessoal e Familiar</h3>
-                <p>"Obrigada pela parceria esse ano! Creio que vc não tem noção o quanto nos apoiou..."</p>
+                <p>"Obrigada pela parceria esse ano! Creio que vc não tem noção o quanto nos apoiou e quanto isso fez diferença em nossas vidas. Inclusive sobre conversar sobre dinheiro (eu e Alexandre) numa outra perspectiva."</p>
                 <h4>Fernanda e Alexandre</h4>
             </div>
             <div class="testimonial">
                 <h3>Workshop</h3>
-                <p>"Seu workshop foi leve, o que é difícil quando a gente fala de dinheiro..."</p>
+                <p>"Seu workshop foi leve, o que é difícil quando a gente fala de dinheiro, deu pra sentir teu cuidado, tua atenção, tua entrega! Me senti confiante em abrir um pouco da minha história e espero que tenha sido só o começo!"</p>
                 <h4>Julia</h4>
             </div>
             <div class="testimonial">
                 <h3>Mentoria em grupo</h3>
-                <p>"Minha vida financeira está ficando muito mais organizada com tua ajuda..."</p>
+                <p>"Minha vida financeira está ficando muito mais organizada com tua ajuda! Fiquei muito agradecida pelos aprendizados e irei aplicar na minha vida!"</p>
                 <h4>Florência</h4>
             </div>
             <div class="testimonial">
@@ -2983,7 +2984,7 @@ footer {
             <input type="number" id="principal" placeholder="Valor Inicial (R$)" min="0" step="0.01" required aria-label="Valor inicial em reais">
             <input type="number" id="monthly" placeholder="Aporte Mensal (R$)" min="0" step="0.01" required aria-label="Aporte mensal em reais">
             <input type="number" id="rate" placeholder="Taxa de Juros Anual (%)" min="0" step="0.01" required aria-label="Taxa de juros anual em porcentagem">
-            <input type="number" id="time" placeholder="Tempo (meses)" min="1" step="0.1" required aria-label="Tempo em meses">
+            <input type="number" id="time" placeholder="Tempo (meses)" min="1" step="1" required aria-label="Tempo em meses">
             <div class="button-group">
                 <button type="submit" aria-label="Calcular juros compostos">Calcular</button>
                 <button type="reset" class="reset" aria-label="Limpar formulário">Limpar</button>
@@ -3509,6 +3510,18 @@ function animateValue(element, start, end, duration) {
     requestAnimationFrame(step);
 }
 
+// Validação em tempo real para o campo "Tempo (meses)" aceitar apenas inteiros
+document.getElementById('time').addEventListener('input', function (e) {
+    let value = e.target.value;
+    if (value.includes('.') || value.includes(',')) {
+        e.target.value = Math.floor(parseFloat(value)) || 1;
+    }
+    if (value < 1) {
+        e.target.value = 1;
+    }
+});
+
+// Evento de submit do formulário
 compoundForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -3525,15 +3538,22 @@ compoundForm.addEventListener('submit', (e) => {
     }
 
     const monthlyRate = rate / 12;
-    const totalMonths = time;
+    const totalMonths = Math.floor(time); // Garante que o tempo seja inteiro
 
-    // Fórmula de juros compostos com aportes mensais
-    const futureValue = principal * Math.pow(1 + monthlyRate, totalMonths) +
-        monthly * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate);
+    // Calcular o valor futuro
+    let futureValue;
+    if (monthlyRate === 0) {
+        // Caso especial: taxa de juros zero
+        futureValue = principal + monthly * totalMonths; // Apenas soma dos aportes
+    } else {
+        // Fórmula de juros compostos com aportes mensais
+        futureValue = principal * Math.pow(1 + monthlyRate, totalMonths) +
+            monthly * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate);
+    }
 
     // Verificar se o resultado é válido
     if (isNaN(futureValue) || !isFinite(futureValue)) {
-        alert('Erro no cálculo. Verifique os valores inseridos.');
+        alert('Erro no cálculo. Verifique os valores inseridos (ex.: taxa de juros não pode ser zero com aportes mensais).');
         return;
     }
 
@@ -3545,6 +3565,9 @@ compoundForm.addEventListener('submit', (e) => {
     // Dados para o gráfico
     const labels = Array.from({ length: Math.ceil(totalMonths) + 1 }, (_, i) => i);
     const data = labels.map(month => {
+        if (monthlyRate === 0) {
+            return principal + monthly * month; // Sem juros, apenas soma linear
+        }
         return principal * Math.pow(1 + monthlyRate, month) +
             monthly * ((Math.pow(1 + monthlyRate, month) - 1) / monthlyRate);
     });
@@ -3727,7 +3750,7 @@ compoundForm.addEventListener('submit', (e) => {
     });
 });
 
-
+// Evento de reset do formulário
 compoundForm.addEventListener('reset', () => {
     compoundResult.style.display = 'none';
     resultValue.textContent = `R$ ${formatNumber(0)}`;

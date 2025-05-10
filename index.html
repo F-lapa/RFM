@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -261,215 +260,127 @@
         }
 
         /* Seção de Apresentação */
-        
+        .intro-section {
+            padding: 100px 100px;
+            background: #fef6e9;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 80px;
+            justify-content: center;
+            align-items: center;
+        }
 
-        
+        .intro-video {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
 
-        /* Seção de Apresentação */
-.intro-section {
-    padding: 100px 100px;
-    background: #fef6e9;
-    position: relative;
-    overflow-x: hidden;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 80px;
-    justify-content: center;
-    align-items: flex-start; /* Alinha os itens ao topo */
-}
+        .intro-video h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 60px;
+            color: #8B4513;
+            text-align: center;
+            animation: bounceTitle 3s infinite ease-in-out;
+        }
 
-.intro-content {
-    flex: 1;
-    min-width: 300px;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+        .video-container {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+            position: relative;
+            transform: perspective(1000px);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
 
-.intro-video {
-    width: 100%;
-}
+        .video-container:hover {
+            transform: perspective(1000px) translateY(-20px) rotateX(5deg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
 
-.intro-video h2 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 4.5rem;
-    font-weight: 900;
-    margin-bottom: 60px;
-    color: #8B4513;
-    text-align: center;
-    animation: bounceTitle 3s infinite ease-in-out;
-}
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-.video-container {
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-    position: relative;
-    transform: perspective(1000px);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(38, 25, 16, 0.3);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.video-container:hover {
-    transform: perspective(1000px) translateY(-20px) rotateX(5deg);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
+        .video-container:hover .video-overlay {
+            opacity: 1;
+        }
 
-.video-container video {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+        .play-button {
+            font-size: 4rem;
+            color: #eebc90;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
 
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(38, 25, 16, 0.3);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .play-button:hover {
+            transform: scale(1.2);
+        }
 
-.video-container:hover .video-overlay {
-    opacity: 1;
-}
-
-.play-button {
-    font-size: 4rem;
-    color: #eebc90;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.play-button:hover {
-    transform: scale(1.2);
-}
-
-.intro-text {
-    background: #fff;
-    border-radius: 30px;
-    padding: 40px;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-    text-align: center;
-}
-
-.intro-text h3 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-    color: #261910;
-    margin-bottom: 20px;
-}
-
-.intro-text p {
-    font-size: 1.2rem;
-    color: #3c2d21;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-.intro-profile {
-    flex: 1;
-    min-width: 300px;
-    max-width: 600px;
-    text-align: center;
-}
-
-.intro-profile img {
-    width: 350px;
-    height: 200px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    object-fit: cover;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-
-/* Ajustes para desktop */
-@media (min-width: 769px) {
-    .intro-section {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: stretch;
-    }
-    .intro-content {
-        max-width: 50%;
-        order: 1;
-    }
-    .intro-profile {
-        max-width: 40%;
-        order: 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .intro-profile img {
-        width: 100%;
-        max-width: 500px; /* Aumentado de 450px para 500px */
-        height: auto;
-        aspect-ratio: 3 / 2; /* Proporção mais equilibrada */
-        border-radius: 20px; /* Ajustado para combinar com a borda */
-        border: 6px double #eebc90; /* Borda dupla dourada estilosa */
-        padding: 8px; /* Espaço interno para efeito de moldura */
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Sombra mais pronunciada */
-        background: #fef6e9; /* Fundo leve para destacar a borda */
-    }
-}
-@media (max-width: 768px) {
-    .intro-section {
-        flex-direction: column;
-        padding: 100px 15px;
-        gap: 40px;
-    }
-    .intro-content {
-        max-width: 100%;
-        order: 1;
-    }
-    .intro-video {
-        min-width: 100%;
-    }
-    .intro-text {
-        display: none; /* Oculta o texto no mobile, pois ele será movido para intro-profile */
-    }
-    .intro-profile {
-        max-width: 100%;
+        .intro-profile {
+        flex: 1;
+        min-width: 300px;
+        max-width: 600px;
         background: #fff;
         border-radius: 30px;
-        padding: 20px;
+        padding: 40px;
         box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
         text-align: center;
-        order: 2;
-    }
-    .intro-profile img {
-        width: 220px;
-        height: 120px;
-        border-radius: 10px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-    .intro-profile::before {
-        content: "Roselaine Faustino Machado";
-        display: block;
-        font-family: 'Dancing Script', cursive;
-        font-size: 2.2rem;
-        color: #261910;
-        margin-bottom: 20px;
-    }
-    .intro-profile::after {
-        content: "Contadora de formação e especialista em finanças, durante mais de 15 anos dediquei meu tempo e experiência ajudando empresas a organizar a área contábil e financeira para planejar e gerir melhor seus negócios. Após experimentar o quanto a educação financeira e o autoconhecimento transformam vidas, hoje também sou especialista em investimentos certificada pela ANBIMA e me dedico a ajudar mulheres e famílias a buscar e manter a saúde financeira a partir de uma boa relação com o dinheiro que é apenas um meio para você obter mais SEGURANÇA, TRANQUILIDADE e LIBERDADE.";
-        display: block;
-        font-size: 1rem;
-        color: #3c2d21;
-        line-height: 1.8;
-        margin-top: 20px;
-    }
-    .intro-profile p {
-        display: none; /* Evita duplicação de texto */
-    }
-}
+    
+        }
+
+        .intro-profile img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .intro-profile h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #261910;
+            margin-bottom: 20px;
+        }
+
+        .intro-profile p {
+            font-size: 1.2rem;
+            color: #3c2d21;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        @keyframes bounceTitle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
         /* Seção de Serviços */
         .services {
             padding: 200px 100px;
@@ -1440,7 +1351,42 @@ footer {
                 font-size: 1.2rem;
             }
 
-        
+            .intro-section, .services, .calculator, .quiz, .about, .testimonials, .contact, .financial-health {
+                padding: 100px 15px;
+            }
+
+            .intro-video h2, .services h2, .calculator h2, .quiz h2, .about h2, .testimonials h2, .contact h2, .financial-health h2 {
+                font-size: 2.8rem;
+                margin-bottom: 60px;
+            }
+
+            .video-container {
+                max-width: 100%;
+                border-radius: 15px;
+            }
+
+            .play-button {
+                font-size: 2.5rem;
+            }
+
+            .intro-profile {
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            .intro-profile img {
+                width: 220px;
+                height: 220px;
+            }
+
+            .intro-profile h3 {
+                font-size: 2.2rem;
+            }
+
+            .intro-profile p {
+                font-size: 1rem;
+            }
+
             .service-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -2749,29 +2695,25 @@ footer {
     </section>
 
     <section class="intro-section" id="intro-section">
-        <div class="intro-content">
-            <div class="intro-video">
-                <h2>Conheça a RFM</h2>
-                <div class="video-container">
-                    <video controls poster="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=600">
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-of-colored-ribbons-2889-large.mp4" type="video/mp4" />
-                    </video>
-                    <div class="video-overlay">
-                        <i class="fas fa-play play-button" aria-label="Tocar vídeo"></i>
-                    </div>
+        <div class="intro-video">
+            <h2>Conheça a RFM</h2>
+            <div class="video-container">
+                <video controls poster="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&h=600">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-of-colored-ribbons-2889-large.mp4" type="video/mp4" />
+                </video>
+                <div class="video-overlay">
+                    <i class="fas fa-play play-button" aria-label="Tocar vídeo"></i>
                 </div>
-            </div>
-            <div class="intro-text">
-                <h3>Roselaine Faustino Machado</h3>
-                <p>Contadora de formação e especialista em finanças, durante mais de 15 anos dediquei meu tempo e experiência ajudando empresas a organizar a área contábil e financeira para planejar e gerir melhor seus negócios.</p>
-                <p>Após experimentar o quanto a educação financeira e o autoconhecimento transformam vidas, hoje também sou especialista em investimentos certificada pela ANBIMA e me dedico a ajudar mulheres e famílias a buscar e manter a saúde financeira a partir de uma boa relação com o dinheiro que é apenas um meio para você obter mais <strong>SEGURANÇA, TRANQUILIDADE e LIBERDADE.</strong></p>
             </div>
         </div>
         <div class="intro-profile">
             <img src="rose.png" alt="Foto de Roselaine Faustino Machado" loading="lazy">
+            <h3>Roselaine Faustino Machado</h3>
+            <p>Contadora de formação e especialista em finanças, durante mais de 15 anos dediquei meu tempo e experiência ajudando empresas a organizar a área contábil e financeira para planejar e gerir melhor seus negócios.</p>
+            <p>Após experimentar o quanto a educação financeira e o autoconhecimento transformam vidas, hoje também sou especialista em investimentos certificada pela ANBIMA e me dedico a ajudar mulheres e famílias a buscar e manter a saúde financeira a partir de uma boa relação com o dinheiro que é apenas um meio para você obter mais <strong>SEGURANÇA, TRANQUILIDADE e LIBERDADE.</strong></p>
         </div>
     </section>
-    
+
     <section class="services" id="services">
         <h2>Nossos Serviços</h2>
         <div class="service-grid">

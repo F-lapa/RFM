@@ -259,49 +259,98 @@
             box-shadow: 0 10px 30px rgba(238, 188, 144, 0.8);
         }
 
-        /* Seção de Apresentação */
-        .intro-section {
-            padding: 100px 100px;
-            background: #fef6e9;
-            position: relative;
-            overflow-x: hidden;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 80px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .intro-video {
-            flex: 1;
-            min-width: 300px;
-            max-width: 600px;
-        }
-
-        .intro-video h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 60px;
-            color: #8B4513;
-            text-align: center;
-            animation: bounceTitle 3s infinite ease-in-out;
-        }
-
-        .video-container {
+       /* Estilização da seção intro */
+.intro-section {
+    padding: 50px 15px;
+    background: linear-gradient(135deg, #f9f2e7 0%, #f5e6cc 100%); /* Degradê bege claro */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    padding-bottom: 56.25%; /* Proporção 16:9 para vídeos */
+    overflow: hidden;
+}
+
+.intro-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.15) 100%);
+    z-index: 0;
+}
+
+.intro-container {
+    max-width: 900px; /* Quadro compacto */
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-container h2 {
+    font-size: 3.2rem;
+    color: #3f2f24; /* Marrom escuro */
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Estilização do quadro */
+.intro-box {
+    perspective: none;
+}
+
+.intro-box-inner {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), inset 0 0 6px rgba(228, 162, 98, 0.1);
+    padding: 25px;
+    display: flex;
+    gap: 25px;
+    align-items: flex-start; /* Alinha conteúdo ao topo */
+    transition: box-shadow 0.4s ease;
+    animation: fadeInUp 1.2s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-box-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(228, 162, 98, 0.05) 0%, rgba(255, 255, 255, 0.1) 100%);
+    z-index: -1;
+}
+
+.intro-box:hover .intro-box-inner {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    transform: translateY(0); /* Estático */
+}
+
+/* Estilização do vídeo */
+.video-container {
+    position: relative;
+    flex: 1;
+    padding-bottom: 56.25%; /* Proporção 16:9 */
     height: 0;
     overflow: hidden;
-    border-radius: 30px;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-    transform: perspective(1000px);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .video-container:hover {
-    transform: perspective(1000px) translateY(-20px) rotateX(5deg);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(1.02);
 }
 
 .video-container iframe.youtube-iframe {
@@ -319,7 +368,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(38, 25, 16, 0.5); /* Ajustado para maior visibilidade */
+    background: linear-gradient(45deg, rgba(38, 25, 16, 0.5), rgba(228, 162, 98, 0.3));
     opacity: 1;
     transition: opacity 0.5s ease;
     display: flex;
@@ -330,74 +379,172 @@
 
 .video-container.playing .video-overlay {
     opacity: 0;
-    pointer-events: none; /* Impede interação após iniciar o vídeo */
+    pointer-events: none;
 }
 
 .play-button {
-    font-size: 4rem;
-    color: #eebc90;
+    font-size: 3rem;
+    color: #ffffff;
+    background: radial-gradient(circle, rgba(228, 162, 98, 0.7) 0%, transparent 70%);
+    padding: 12px;
+    border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .play-button:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
+    background: radial-gradient(circle, rgba(228, 162, 98, 0.9) 0%, transparent 70%);
 }
 
-/* Responsividade */
+/* Estilização do texto e imagem */
+.intro-text {
+    flex: 1;
+    text-align: left;
+    color: #261910;
+    animation: fadeInRight 1.4s ease-out;
+}
+
+.intro-text .intro-image {
+    width: 120px; /* Tamanho aumentado */
+    height: 120px;
+    border-radius: 15px; /* Retangular com bordas arredondadas */
+    object-fit: cover;
+    margin: 0 auto 15px; /* Centralizado */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: block;
+}
+
+.intro-text h3 {
+    font-size: 1.8rem;
+    font-family: 'Dancing Script', cursive;
+    color: #4a3c31;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    position: relative;
+    text-align: center; /* Centraliza o título para alinhar com a imagem */
+}
+
+.intro-text h3::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza a linha */
+    width: 40px;
+    height: 2px;
+    background: #e4a262;
+    border-radius: 2px;
+}
+
+.intro-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4a3c31;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.intro-text p strong {
+    color: #e4a262;
+    font-weight: 700;
+}
+
+/* Animações */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsividade para mobile */
 @media (max-width: 768px) {
+    .intro-section {
+        padding: 30px 10px;
+    }
+
+    .intro-container {
+        width: 95%;
+    }
+
+    .intro-container h2 {
+        font-size: 2.4rem;
+        margin-bottom: 25px;
+        color: #3f2f24;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .intro-box-inner {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .intro-box:hover .intro-box-inner {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
     .video-container {
-        padding-bottom: 56.25%; /* Mantém proporção 16:9 */
-        border-radius: 15px;
+        width: 100%;
+        padding-bottom: 56.25%;
+        border-radius: 8px;
+    }
+
+    .intro-text {
+        text-align: center;
+    }
+
+    .intro-text .intro-image {
+        width: 100px; /* Tamanho ajustado para mobile */
+        height: 100px;
+        margin: 0 auto 10px; /* Mantém centralizado */
+    }
+
+    .intro-text h3 {
+        font-size: 1.6rem;
+    }
+
+    .intro-text h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .intro-text p {
+        font-size: 0.9rem;
     }
 
     .play-button {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        padding: 10px;
     }
 }
-        .intro-profile {
-        flex: 1;
-        min-width: 300px;
-        max-width: 600px;
-        background: #fff;
-        border-radius: 30px;
-        padding: 40px;
-        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-        text-align: center;
-    
-        }
-
-        .intro-profile img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            object-fit: cover;
-        }
-
-        .intro-profile h3 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            color: #261910;
-            margin-bottom: 20px;
-        }
-
-        .intro-profile p {
-            font-size: 1.2rem;
-            color: #3c2d21;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        @keyframes bounceTitle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
 
         /* Seção de Serviços */
         .services {
@@ -2712,30 +2859,36 @@ footer {
         </div>
     </section>
 
-    <section class="intro-section" id="intro-section">
-        <div class="intro-video">
-            <h2>Conheça a RFM</h2>
-            <div class="video-container">
-                <iframe
-                    src="https://www.youtube.com/embed/k31XZu_kDVw?enablejsapi=1"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    class="youtube-iframe"
-                    title="Vídeo de apresentação da RFM Educação Financeira"
-                ></iframe>
-                <div class="video-overlay">
-                    <i class="fas fa-play play-button" aria-label="Tocar vídeo"></i>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<section class="intro-section" id="intro-section">
+    <div class="intro-container">
+        <h2>Conheça a RFM</h2>
+        <div class="intro-box">
+            <div class="intro-box-inner">
+                <div class="video-container">
+                    <iframe
+                        src="https://www.youtube.com/embed/k31XZu_kDVw?enablejsapi=1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        class="youtube-iframe"
+                        title="Vídeo de apresentação da RFM Educação Financeira"
+                    ></iframe>
+                    <div class="video-overlay">
+                        <i class="fas fa-play play-button" aria-label="Tocar vídeo"></i>
+                    </div>
+                </div>
+                <div class="intro-text">
+                    <img src="rose.png" alt="Foto de Roselaine Faustino Machado" class="intro-image" loading="lazy">
+                    <h3>Roselaine Faustino Machado</h3>
+                    <p>Contadora de formação e especialista em finanças, durante mais de 15 anos dediquei meu tempo e experiência ajudando empresas a organizar a área contábil e financeira para planejar e gerir melhor seus negócios.</p>
+                    <p>Após experimentar o quanto a educação financeira e o autoconhecimento transformam vidas, hoje também sou especialista em investimentos certificada pela ANBIMA e me dedico a ajudar mulheres e famílias a buscar e manter a saúde financeira a partir de uma boa relação com o dinheiro que é apenas um meio para você obter mais <strong>SEGURANÇA, TRANQUILIDADE e LIBERDADE.</strong></p>
                 </div>
             </div>
         </div>
-        <div class="intro-profile">
-            <img src="rose.png" alt="Foto de Roselaine Faustino Machado" loading="lazy">
-            <h3>Roselaine Faustino Machado</h3>
-            <p>Contadora de formação e especialista em finanças, durante mais de 15 anos dediquei meu tempo e experiência ajudando empresas a organizar a área contábil e financeira para planejar e gerir melhor seus negócios.</p>
-            <p>Após experimentar o quanto a educação financeira e o autoconhecimento transformam vidas, hoje também sou especialista em investimentos certificada pela ANBIMA e me dedico a ajudar mulheres e famílias a buscar e manter a saúde financeira a partir de uma boa relação com o dinheiro que é apenas um meio para você obter mais <strong>SEGURANÇA, TRANQUILIDADE e LIBERDADE.</strong></p>
-        </div>
-    </section>
+    </div>
+</section>
 
     <section class="services" id="services">
         <h2>Nossos Serviços</h2>

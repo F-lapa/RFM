@@ -288,7 +288,7 @@
     max-width: 1000px; /* Quadro amplo no desktop */
     width: 95%;
     margin: 0 auto;
-    text-align: center;
+    text-align: center; /* Centraliza o h2 */
     position: relative;
     z-index: 1;
 }
@@ -307,6 +307,10 @@
 
 /* Estilização do quadro */
 .intro-box {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    width: 100%;
     perspective: none;
 }
 
@@ -316,8 +320,12 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), inset 0 0 6px rgba(228, 162, 98, 0.1);
     padding: 30px;
     display: flex;
+    flex-direction: row; /* Vídeo e texto lado a lado */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
     gap: 25px;
-    align-items: flex-start; /* Alinha conteúdo ao topo */
+    max-width: 900px; /* Limita a largura do conteúdo */
+    width: 100%;
     transition: box-shadow 0.4s ease;
     animation: fadeInUp 1.2s ease-out;
     position: relative;
@@ -350,6 +358,7 @@
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    max-width: 450px; /* Limita a largura do vídeo */
 }
 
 .video-container:hover {
@@ -400,22 +409,13 @@
     background: radial-gradient(circle, rgba(228, 162, 98, 0.9) 0%, transparent 70%);
 }
 
-/* Estilização do texto e imagem */
+/* Estilização do texto */
 .intro-text {
     flex: 1;
-    text-align: left;
+    text-align: center; /* Centraliza o texto */
     color: #261910;
     animation: fadeInRight 1.4s ease-out;
-}
-
-.intro-text .intro-image {
-    width: 120px;
-    height: 120px;
-    border-radius: 15px; /* Retangular com bordas arredondadas */
-    object-fit: cover;
-    margin: 0 auto 15px; /* Centralizado */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    display: block;
+    max-width: 450px; /* Limita a largura do texto */
 }
 
 .intro-text h3 {
@@ -425,11 +425,10 @@
     margin-bottom: 15px;
     letter-spacing: 1px;
     position: relative;
-    text-align: center; /* Centraliza o título para alinhar com a imagem */
 }
 
 .intro-text h3::after {
-    display: none;
+    display: none; /* Mantém a linha desativada */
     content: '';
     position: absolute;
     bottom: -6px;
@@ -454,40 +453,6 @@
     font-weight: 700;
 }
 
-/* Animações */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 /* Responsividade para mobile */
 @media (max-width: 768px) {
     .intro-section {
@@ -509,9 +474,10 @@
     }
 
     .intro-box-inner {
-        flex-direction: column;
+        flex-direction: column; /* Empilha vídeo e texto */
         gap: 15px;
         padding: 15px;
+        align-items: center; /* Centraliza verticalmente */
     }
 
     .intro-box:hover .intro-box-inner {
@@ -522,25 +488,16 @@
         width: 100%;
         padding-bottom: 56.25%;
         border-radius: 8px;
+        max-width: 100%; /* Ocupa largura total */
     }
 
     .intro-text {
         text-align: center;
-    }
-
-    .intro-text .intro-image {
-        width: 100px;
-        height: 100px;
-        margin: 0 auto 10px; /* Mantém centralizado */
+        max-width: 100%; /* Ocupa largura total */
     }
 
     .intro-text h3 {
         font-size: 1.6rem;
-    }
-
-    .intro-text h3::after {
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     .intro-text p {

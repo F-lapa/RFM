@@ -843,92 +843,6 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Estilização dos detalhes do resultado da calculadora */
-.result-details {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background: #f9f2e7;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.result-details p {
-    font-size: 1.2rem;
-    color: #261910;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.result-details p strong {
-    color: #4A7043; /* Verde terroso */
-    font-weight: 700;
-}
-
-.result-details p span {
-    color: #8B4513; /* Marrom terroso */
-    font-weight: 600;
-}
-
-/* Animação para entrada dos detalhes */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsividade para dispositivos móveis */
-@media (max-width: 768px) {
-    .result-details {
-        padding: 15px;
-        gap: 10px;
-    }
-
-    .result-details p {
-        font-size: 1rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-
-    .result-details p strong {
-        font-size: 1.1rem;
-    }
-
-    .result-details p span {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .result-details {
-        padding: 10px;
-        gap: 8px;
-    }
-
-    .result-details p {
-        font-size: 0.9rem;
-    }
-
-    .result-details p strong {
-        font-size: 1rem;
-    }
-
-    .result-details p span {
-        font-size: 0.9rem;
-    }
-}
-
         /* Quiz de Perfil Financeiro */
 /* Quiz de Perfil Financeiro */
 .quiz {
@@ -3038,11 +2952,6 @@ footer {
         <div class="calculator-result" id="compound-result">
             <p>Seu investimento será:</p>
             <span class="result-value">R$ 0,00</span>
-            <div class="result-details">
-                <p><strong>Valor Investido:</strong> <span id="invested-value">R$ 0,00</span></p>
-                <p><strong>Total em Juros:</strong> <span id="interest-value">R$ 0,00</span></p>
-                <p><strong>Taxa Mensal:</strong> <span id="monthly-rate">0,00%</span></p>
-            </div>
             <canvas id="growth-chart"></canvas>
             <p class="motivational">"Comece hoje e veja seu dinheiro crescer para realizar seus sonhos!"</p>
         </div>
@@ -3546,14 +3455,13 @@ function formatNumber(value) {
 }
 
 // Função para animar a contagem do valor final
-
-function animateValue(element, start, end, duration, unit = '') {
+function animateValue(element, start, end, duration) {
     let startTimestamp = null;
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
         const value = start + (end - start) * progress;
-        element.textContent = unit === '%' ? `${formatNumber(value)}%` : `R$ ${formatNumber(value)}`;
+        element.textContent = `R$ ${formatNumber(value)}`;
         if (progress < 1) {
             requestAnimationFrame(step);
         }
@@ -3588,15 +3496,16 @@ compoundForm.addEventListener('submit', (e) => {
         return;
     }
 
-    // Calcular taxa mensal
     const monthlyRate = Math.pow(1 + rate, 1/12) - 1;
-    const totalMonths = Math.floor(time);
+    const totalMonths = Math.floor(time); // Garante que o tempo seja inteiro
 
-    // Calcular valor futuro
+    // Calcular o valor futuro
     let futureValue;
     if (monthlyRate === 0) {
-        futureValue = principal + monthly * totalMonths; // Sem juros, apenas soma dos aportes
+        // Caso especial: taxa de juros zero
+        futureValue = principal + monthly * totalMonths; // Apenas soma dos aportes
     } else {
+        // Fórmula de juros compostos com aportes mensais
         futureValue = principal * Math.pow(1 + monthlyRate, totalMonths) +
             monthly * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate);
     }
@@ -3607,90 +3516,69 @@ compoundForm.addEventListener('submit', (e) => {
         return;
     }
 
-    // Calcular valor investido e juros
-    const investedValue = principal + monthly * totalMonths;
-    const interestValue = futureValue - investedValue;
-    const monthlyRatePercent = monthlyRate * 100;
-
-    // Exibir resultados com animação
-    const resultValue = document.querySelector('#compound-result .result-value');
+    // Inicializar o valor como 0 e animar até o futureValue
     resultValue.textContent = `R$ ${formatNumber(0)}`;
-    document.getElementById('invested-value').textContent = `R$ ${formatNumber(0)}`;
-    document.getElementById('interest-value').textContent = `R$ ${formatNumber(0)}`;
-    document.getElementById('monthly-rate').textContent = `${formatNumber(0)}%`;
-
-    const compoundResult = document.getElementById('compound-result');
     compoundResult.style.display = 'block';
-    animateValue(resultValue, 0, futureValue, 1000);
-    animateValue(document.getElementById('invested-value'), 0, investedValue, 1000);
-    animateValue(document.getElementById('interest-value'), 0, interestValue, 1000);
-    animateValue(document.getElementById('monthly-rate'), 0, monthlyRatePercent, 1000, '%');
+    animateValue(resultValue, 0, futureValue, 2000); // Animação de 2 segundos
 
     // Dados para o gráfico
-    const labels = Array.from({ length: totalMonths + 1 }, (_, i) => i);
-    const totalData = labels.map(month => {
+    const labels = Array.from({ length: Math.ceil(totalMonths) + 1 }, (_, i) => i);
+    const data = labels.map(month => {
         if (monthlyRate === 0) {
-            return principal + monthly * month;
+            return principal + monthly * month; // Sem juros, apenas soma linear
         }
         return principal * Math.pow(1 + monthlyRate, month) +
             monthly * ((Math.pow(1 + monthlyRate, month) - 1) / monthlyRate);
     });
-    const investedData = labels.map(month => principal + monthly * month);
 
     // Destruir gráfico anterior, se existir
-    if (window.growthChart instanceof Chart) {
-        window.growthChart.destroy();
+    if (growthChart) {
+        growthChart.destroy();
     }
 
     // Criar novo gráfico
     const ctx = document.getElementById('growth-chart').getContext('2d');
-    window.growthChart = new Chart(ctx, {
+    growthChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels.map(m => m === 0 ? 'Início' : `${m}º mês`),
-            datasets: [
-                {
-                    label: 'Valor Total',
-                    data: totalData,
-                    borderColor: '#4A7043', // Verde terroso
-                    backgroundColor: '#4A7043',
-                    pointBackgroundColor: '#A8C686',
-                    pointBorderColor: '#4A7043',
-                    pointHoverBackgroundColor: '#4A7043',
-                    pointHoverBorderColor: '#A8C686',
-                    pointRadius: 6,
-                    pointHoverRadius: 10,
-                    pointStyle: 'circle',
-                    pointBorderWidth: 3,
-                    tension: 0.3,
-                    fill: false,
-                    borderWidth: 4
+            datasets: [{
+                label: 'Crescimento do Investimento',
+                data: data,
+                borderColor: '#eebc90',
+                backgroundColor: ctx => {
+                    const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 0, 300);
+                    gradient.addColorStop(0, 'rgba(238, 188, 144, 0.6)');
+                    gradient.addColorStop(1, 'rgba(238, 188, 144, 0.05)');
+                    return gradient;
                 },
-                {
-                    label: 'Valor Investido',
-                    data: investedData,
-                    borderColor: '#8B4513', // Marrom terroso
-                    backgroundColor: '#8B4513',
-                    pointBackgroundColor: '#D2B48C',
-                    pointBorderColor: '#8B4513',
-                    pointHoverBackgroundColor: '#8B4513',
-                    pointHoverBorderColor: '#D2B48C',
-                    pointRadius: 6,
-                    pointHoverRadius: 10,
-                    pointStyle: 'circle',
-                    pointBorderWidth: 3,
-                    tension: 0.3,
-                    fill: false,
-                    borderWidth: 4
-                }
-            ]
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#ffe0a8',
+                pointBorderColor: '#8B4513',
+                pointHoverBackgroundColor: '#8B4513',
+                pointHoverBorderColor: '#ffe0a8',
+                pointRadius: 5,
+                pointHoverRadius: 8,
+                pointStyle: 'circle',
+                pointBorderWidth: 2
+            }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             animation: {
-                duration: 1000, // Animação rápida
-                easing: 'easeOutCubic'
+                duration: 2000,
+                easing: 'easeOutQuart',
+                onProgress: function(animation) {
+                    const chart = animation.chart;
+                    chart.data.datasets[0].data = data.map((value, index) => {
+                        return index <= Math.floor(animation.currentStep / animation.numSteps * data.length)
+                            ? value
+                            : 0;
+                    });
+                    chart.update();
+                }
             },
             scales: {
                 x: {
@@ -3700,22 +3588,24 @@ compoundForm.addEventListener('submit', (e) => {
                         color: '#261910',
                         font: {
                             family: 'Poppins',
-                            size: 14,
-                            weight: '700'
+                            size: 16,
+                            weight: '600'
                         },
-                        padding: 8
+                        padding: 10
                     },
                     ticks: {
                         color: '#3c2d21',
                         font: {
                             family: 'Poppins',
-                            size: 11
+                            size: 12
                         },
-                        maxRotation: 30,
-                        minRotation: 30,
+                        maxRotation: 45,
+                        minRotation: 45,
                         callback: function(value, index) {
-                            if (index % 12 === 0 || index === 0) {
-                                return index === 0 ? 'Início' : `${index}º mês`;
+                            if (index % 12 === 0 && index !== 0) {
+                                return `${index}º mês`;
+                            } else if (index === 0) {
+                                return 'Início';
                             }
                             return '';
                         }
@@ -3731,45 +3621,44 @@ compoundForm.addEventListener('submit', (e) => {
                         color: '#261910',
                         font: {
                             family: 'Poppins',
-                            size: 14,
-                            weight: '700'
+                            size: 16,
+                            weight: '600'
                         },
-                        padding: 8
+                        padding: 10
                     },
                     beginAtZero: true,
                     ticks: {
                         color: '#3c2d21',
                         font: {
                             family: 'Poppins',
-                            size: 11
+                            size: 12
                         },
                         callback: function(value) {
                             return `R$ ${formatNumber(value)}`;
                         },
-                        padding: 8
+                        padding: 10
                     },
                     grid: {
-                        color: 'rgba(139, 69, 19, 0.1)',
+                        color: 'rgba(139, 69, 19, 0.15)',
                         drawBorder: false,
-                        borderDash: [4, 4],
-                        lineWidth: 2
+                        borderDash: [5, 5]
                     }
                 }
             },
             plugins: {
                 tooltip: {
                     enabled: true,
-                    backgroundColor: 'rgba(38, 25, 16, 0.95)',
+                    backgroundColor: 'rgba(38, 25, 16, 0.9)',
                     titleColor: '#ffe0a8',
                     bodyColor: '#ffe0a8',
                     borderColor: '#eebc90',
-                    borderWidth: 1,
-                    cornerRadius: 10,
-                    padding: 10,
-                    displayColors: true,
+                    borderWidth: 2,
+                    cornerRadius: 12,
+                    padding: 12,
+                    displayColors: false,
                     callbacks: {
                         label: function(context) {
-                            return `${context.dataset.label}: R$ ${formatNumber(context.parsed.y)}`;
+                            return `R$ ${formatNumber(context.parsed.y)}`;
                         }
                     }
                 },
@@ -3780,73 +3669,44 @@ compoundForm.addEventListener('submit', (e) => {
                         color: '#261910',
                         font: {
                             family: 'Poppins',
-                            size: 13,
-                            weight: '600'
+                            size: 14,
+                            weight: '500'
                         },
-                        padding: 15,
-                        boxWidth: 25,
-                        boxHeight: 10,
-                        usePointStyle: true
+                        padding: 20,
+                        boxWidth: 30
                     }
                 }
             },
             layout: {
                 padding: {
-                    top: 15,
-                    right: 15,
-                    bottom: 15,
-                    left: 15
+                    top: 20,
+                    right: 20,
+                    bottom: 20,
+                    left: 20
                 }
             },
             elements: {
                 line: {
-                    borderWidth: 4,
-                    borderCapStyle: 'round',
-                    borderJoinStyle: 'round'
-                },
-                point: {
-                    radius: 6,
-                    hoverRadius: 10,
-                    hitRadius: 15,
-                    hoverBorderWidth: 3
+                    borderWidth: 3
                 }
             }
         }
     });
 
-    // Animação do resultado
+    // Animação do resultado e pontos do gráfico
     gsap.from(compoundResult, {
         opacity: 0,
-        y: 20,
-        duration: 0.8,
+        y: 30,
+        duration: 1,
         ease: 'power3.out'
     });
-    gsap.from('.result-details', {
-        opacity: 0,
-        y: 15,
-        duration: 0.8,
-        ease: 'power3.out',
-        delay: 0.1
+    gsap.from(growthChart.data.datasets[0].data, {
+        duration: 2,
+        ease: 'power2.out',
+        onUpdate: function() {
+            growthChart.update();
+        }
     });
-});
-
-function formatNumber(number) {
-    return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-}
-
-gsap.from(growthChart.data.datasets[0].data, {
-    duration: 1,
-    ease: 'power3.out',
-    onUpdate: function() {
-        growthChart.update();
-    }
-});
-gsap.from(growthChart.data.datasets[1].data, {
-    duration: 1,
-    ease: 'power3.out',
-    onUpdate: function() {
-        growthChart.update();
-    }
 });
 
 // Evento de reset do formulário
